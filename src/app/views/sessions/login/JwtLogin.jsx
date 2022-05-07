@@ -7,7 +7,7 @@ import {
     FormControlLabel,
 } from '@mui/material'
 import React, { useState } from 'react'
-import useAuth from 'app/hooks/useAuth'
+//import useAuth from 'app/hooks/useAuth'
 import { useNavigate } from 'react-router-dom'
 import { Box, styled, useTheme } from '@mui/system'
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator'
@@ -57,7 +57,7 @@ const JwtLogin = () => {
         password: 'dummyPass',
     })
     const [message, setMessage] = useState('')
-    const { login } = useAuth()
+    //const { login } = useAuth()
 
     const handleChange = ({ target: { name, value } }) => {
         let temp = { ...userInfo }
@@ -69,17 +69,17 @@ const JwtLogin = () => {
     const textError = palette.error.main
     const textPrimary = palette.primary.main
 
-    const handleFormSubmit = async (event) => {
-        setLoading(true)
-        try {
-            await login(userInfo.email, userInfo.password)
-            navigate('/')
-        } catch (e) {
-            console.log(e)
-            setMessage(e.message)
-            setLoading(false)
-        }
-    }
+    // const handleFormSubmit = async (event) => {
+    //     setLoading(true)
+    //     try {
+    //         await login(userInfo.email, userInfo.password)
+    //         navigate('/')
+    //     } catch (e) {
+    //         console.log(e)
+    //         setMessage(e.message)
+    //         setLoading(false)
+    //     }
+    // }
 
     return (
         <JWTRoot>
@@ -95,7 +95,7 @@ const JwtLogin = () => {
                     </Grid>
                     <Grid item lg={7} md={7} sm={7} xs={12}>
                         <ContentBox>
-                            <ValidatorForm onSubmit={handleFormSubmit}>
+                            <ValidatorForm>
                                 <TextValidator
                                     sx={{ mb: 3, width: '100%' }}
                                     variant="outlined"

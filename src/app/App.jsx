@@ -1,11 +1,10 @@
-import '../fake-db'
+//import '../fake-db'
 import React from 'react'
 import { Store } from './redux/Store'
 import { Provider } from 'react-redux'
 import { AllPages } from './routes/routes'
 import { MatxTheme } from 'app/components'
 import { useRoutes } from 'react-router-dom'
-import { AuthProvider } from 'app/contexts/JWTAuthContext'
 import { SettingsProvider } from 'app/contexts/SettingsContext'
 
 const App = () => {
@@ -15,7 +14,7 @@ const App = () => {
         <Provider store={Store}>
             <SettingsProvider>
                 <MatxTheme>
-                    <AuthProvider>{all_pages}</AuthProvider>
+                    {all_pages}
                 </MatxTheme>
             </SettingsProvider>
         </Provider>

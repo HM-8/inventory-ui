@@ -1,4 +1,4 @@
-import useAuth from 'app/hooks/useAuth'
+//import useAuth from 'app/hooks/useAuth'
 import React, { useState } from 'react'
 import { Box, styled } from '@mui/system'
 import { useNavigate } from 'react-router-dom'
@@ -38,7 +38,7 @@ const JWTRegister = styled(JustifyBox)(() => ({
 const JwtRegister = () => {
     const navigate = useNavigate()
     const [state, setState] = useState({})
-    const { register } = useAuth()
+    //const { register } = useAuth()
 
     const handleChange = ({ target: { name, value } }) => {
         setState({
@@ -47,14 +47,14 @@ const JwtRegister = () => {
         })
     }
 
-    const handleFormSubmit = (event) => {
-        try {
-            register(state.email, state.username, state.password)
-            navigate('/')
-        } catch (e) {
-            console.log(e)
-        }
-    }
+    // const handleFormSubmit = (event) => {
+    //     try {
+    //         register(state.email, state.username, state.password)
+    //         navigate('/')
+    //     } catch (e) {
+    //         console.log(e)
+    //     }
+    // }
 
     let { username, email, password, agreement } = state
 
@@ -72,7 +72,7 @@ const JwtRegister = () => {
                     </Grid>
                     <Grid item lg={7} md={7} sm={7} xs={12}>
                         <Box p={4} height="100%">
-                            <ValidatorForm onSubmit={handleFormSubmit}>
+                            <ValidatorForm>
                                 <TextValidator
                                     sx={{ mb: 3, width: '100%' }}
                                     variant="outlined"

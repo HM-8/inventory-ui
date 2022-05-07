@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import useAuth from 'app/hooks/useAuth'
+//import useAuth from 'app/hooks/useAuth'
 import { H6, Small } from '../Typography'
 import { Box, styled, useTheme } from '@mui/system'
 import { useNavigate } from 'react-router-dom'
@@ -90,16 +90,16 @@ function ShoppingCart({ container }) {
     const [panelOpen, setPanelOpen] = useState(false)
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const { user } = useAuth()
+    //const { user } = useAuth()
     const { cartList } = useSelector((state) => state.ecommerce)
     const { settings } = useSettings()
     const theme = useTheme()
     const secondary = theme.palette.text.secondary
 
-    if (!cartListLoaded) {
-        dispatch(getCartList(user.id))
-        cartListLoaded = true
-    }
+    // if (!cartListLoaded) {
+    //     dispatch(getCartList(user.id))
+    //     cartListLoaded = true
+    // }
 
     const handleDrawerToggle = () => {
         setPanelOpen(!panelOpen)
@@ -162,7 +162,7 @@ function ShoppingCart({ container }) {
                                             onClick={() =>
                                                 dispatch(
                                                     updateCartAmount(
-                                                        user.id,
+                        
                                                         product.id,
                                                         product.amount + 1
                                                     )
@@ -179,7 +179,7 @@ function ShoppingCart({ container }) {
                                             onClick={() =>
                                                 dispatch(
                                                     updateCartAmount(
-                                                        user.id,
+                                                    
                                                         product.id,
                                                         product.amount - 1
                                                     )
@@ -208,7 +208,7 @@ function ShoppingCart({ container }) {
                                         onClick={() =>
                                             dispatch(
                                                 deleteProductFromCart(
-                                                    user.userId,
+                                                    
                                                     product.id
                                                 )
                                             )

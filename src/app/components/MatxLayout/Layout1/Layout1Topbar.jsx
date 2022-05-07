@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import useAuth from 'app/hooks/useAuth'
+//import useAuth from 'app/hooks/useAuth'
 import useSettings from 'app/hooks/useSettings'
 import { styled, useTheme, Box } from '@mui/system'
 import { Span } from '../../../components/Typography'
@@ -87,7 +87,7 @@ const IconBox = styled('div')(({ theme }) => ({
 const Layout1Topbar = () => {
     const theme = useTheme()
     const { settings, updateSettings } = useSettings()
-    const { logout, user } = useAuth()
+    //const { logout, user } = useAuth()
     const isMdScreen = useMediaQuery(theme.breakpoints.down('md'))
 
     const updateSidebarMode = (sidebarSettings) => {
@@ -150,11 +150,10 @@ const Layout1Topbar = () => {
                             <UserMenu>
                                 <Hidden xsDown>
                                     <Span>
-                                        Hi <strong>{user.name}</strong>
+                                        Hi
                                     </Span>
                                 </Hidden>
                                 <Avatar
-                                    src={user.avatar}
                                     sx={{ cursor: 'pointer' }}
                                 />
                             </UserMenu>
@@ -176,7 +175,7 @@ const Layout1Topbar = () => {
                             <Icon> settings </Icon>
                             <Span> Settings </Span>
                         </StyledItem>
-                        <StyledItem onClick={logout}>
+                        <StyledItem>
                             <Icon> power_settings_new </Icon>
                             <Span> Logout </Span>
                         </StyledItem>
