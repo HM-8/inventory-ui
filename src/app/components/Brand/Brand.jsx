@@ -27,14 +27,8 @@ const Brand = ({ children }) => {
             <Box display="flex" alignItems="center">
                 <MatxLogo />
                 <StyledSpan mode={mode} className="sidenavHoverShow">
-                    Matx
+                    HRMS
                 </StyledSpan>
-            </Box>
-            <Box
-                className="sidenavHoverShow"
-                sx={{ display: mode === 'compact' ? 'none' : 'block' }}
-            >
-                {children || null}
             </Box>
         </BrandRoot>
     )

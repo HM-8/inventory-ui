@@ -5,7 +5,7 @@ import useSettings from 'app/hooks/useSettings'
 import { styled, useTheme, Box } from '@mui/system'
 import { Span } from '../../../components/Typography'
 import { MatxMenu, MatxSearchBox } from 'app/components'
-import ShoppingCart from '../../ShoppingCart/ShoppingCart'
+//import ShoppingCart from '../../ShoppingCart/ShoppingCart'
 import NotificationBar from '../../NotificationBar/NotificationBar'
 import { themeShadows } from 'app/components/MatxTheme/themeColors'
 import { NotificationProvider } from 'app/contexts/NotificationContext'
@@ -122,20 +122,6 @@ const Layout1Topbar = () => {
                     <StyledIconButton onClick={handleSidebarToggle}>
                         <Icon>menu</Icon>
                     </StyledIconButton>
-
-                    <IconBox>
-                        <StyledIconButton>
-                            <Icon>mail_outline</Icon>
-                        </StyledIconButton>
-
-                        <StyledIconButton>
-                            <Icon>web_asset</Icon>
-                        </StyledIconButton>
-
-                        <StyledIconButton>
-                            <Icon>star_outline</Icon>
-                        </StyledIconButton>
-                    </IconBox>
                 </Box>
                 <Box display="flex" alignItems="center">
                     <MatxSearchBox />
@@ -143,7 +129,6 @@ const Layout1Topbar = () => {
                         <NotificationBar />
                     </NotificationProvider>
 
-                    <ShoppingCart />
 
                     <MatxMenu
                         menuButton={

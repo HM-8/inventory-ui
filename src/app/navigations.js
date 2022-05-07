@@ -1,136 +1,256 @@
 export const navigations = [
     {
         name: 'Dashboard',
-        path: '/dashboard/default',
+        path: '/dashboard',
         icon: 'dashboard',
     },
+    // {
+    //     label: 'PAGES',
+    //     type: 'label',
+    // },
     {
-        label: 'PAGES',
-        type: 'label',
-    },
-    {
-        name: 'Session/Auth',
-        icon: 'security',
+        name: 'Employee',
+        icon: 'badge',
         children: [
+            // {
+            //     name: 'Sign in',
+            //     iconText: 'SI',
+            //     path: '/session/signin',
+            // },
+            // {
+            //     name: 'Sign up',
+            //     iconText: 'SU',
+            //     path: '/session/signup',
+            // },
+            // {
+            //     name: 'Forgot Password',
+            //     iconText: 'FP',
+            //     path: '/session/forgot-password',
+            // },
+            // {
+            //     name: 'Error',
+            //     iconText: '404',
+            //     path: '/session/404',
+            // },
             {
-                name: 'Sign in',
-                iconText: 'SI',
-                path: '/session/signin',
+                name: 'Employee Details',
+                path: '/employee/employee-details',
             },
             {
-                name: 'Sign up',
-                iconText: 'SU',
-                path: '/session/signup',
+                name: 'Employment Type',
+                path: '/employee/employment-type',
             },
             {
-                name: 'Forgot Password',
-                iconText: 'FP',
-                path: '/session/forgot-password',
+                name: 'Employee Designation',
+                path: '/employee/employee-designation',
             },
             {
-                name: 'Error',
-                iconText: '404',
-                path: '/session/404',
+                name: 'Employee Appraisal',
+                path: '/employee/employee-appraisal',
+            },
+            {
+                name: 'Branch',
+                path: '/employee/branch',
+            },
+            {
+                name: 'Department',
+                path: '/employee/department',
             },
         ],
     },
     {
-        label: 'Components',
-        type: 'label',
-    },
-    {
-        name: 'Components',
-        icon: 'favorite',
-        badge: { value: '30+', color: 'secondary' },
+        name: 'Attendance',
+        icon: 'check_circle',
         children: [
             {
-                name: 'Auto Complete',
-                path: '/material/autocomplete',
-                iconText: 'A',
+                name: 'Employee Attendance',
+                path: '/attendance/employee-attendance',
             },
             {
-                name: 'Buttons',
-                path: '/material/buttons',
-                iconText: 'B',
+                name: 'Upload Attendance',
+                path: '/attendance/upload-attendance',
             },
             {
-                name: 'Checkbox',
-                path: '/material/checkbox',
-                iconText: 'C',
+                name: 'Employee Attendance Tool',
+                path: '/attendance/attendance-tool',
             },
             {
-                name: 'Dialog',
-                path: '/material/dialog',
-                iconText: 'D',
-            },
-            {
-                name: 'Expansion Panel',
-                path: '/material/expansion-panel',
-                iconText: 'E',
-            },
-            {
-                name: 'Form',
-                path: '/material/form',
-                iconText: 'F',
-            },
-            {
-                name: 'Icons',
-                path: '/material/icons',
-                iconText: 'I',
-            },
-            {
-                name: 'Menu',
-                path: '/material/menu',
-                iconText: 'M',
-            },
-            {
-                name: 'Progress',
-                path: '/material/progress',
-                iconText: 'P',
-            },
-            {
-                name: 'Radio',
-                path: '/material/radio',
-                iconText: 'R',
-            },
-            {
-                name: 'Switch',
-                path: '/material/switch',
-                iconText: 'S',
-            },
-            {
-                name: 'Slider',
-                path: '/material/slider',
-                iconText: 'S',
-            },
-            {
-                name: 'Snackbar',
-                path: '/material/snackbar',
-                iconText: 'S',
-            },
-            {
-                name: 'Table',
-                path: '/material/table',
-                iconText: 'T',
+                name: 'Attendance Request',
+                path: '/attendance/attendance-request',
             },
         ],
     },
     {
-        name: 'Charts',
-        icon: 'trending_up',
+        name: 'Leave',
+        icon: 'exit_to_app',
+        children: [
+            {
+                name: 'Leave Policy',
+                path: '/leave/leave-policy',
+            },
+            {
+                name: 'Leave Type',
+                path: '/leave/leave-type',
+            },
+            {
+                name: 'Leave Request',
+                path: '/leave/leave-request',
+            },
+            {
+                name: 'Extend Leave Request',
+                path: '/leave/extend-leave-request',
+            },
+        ],
+    },
+    {
+        name: 'Reports',
+        icon: 'assessment',
+        children: [
+            {
+                name: 'New Employees',
+                path: '/reports/new-employee-report',
+            },
+            {
+                name: 'Employee Promotion',
+                path: '/reports/employee-promotion-report',
+            },
+            {
+                name: 'Employee Transfer',
+                path: '/reports/employee-transfer-report',
+            },
+            {
+                name: 'Employee Appraisal',
+                path: '/reports/employee-appraisal-report',
+            },
+            {
+                name: 'Employee Termination',
+                path: '/reports/employee-termination-report',
+            },
+
+            {
+                name: 'Employee Leave',
+                path: '/reports/employee-leave-report',
+            },
+            {
+                name: 'Employee Attendance',
+                path: '/reports/employee-attendance-report',
+            },
+        ],
+    },
+    {
+        label: 'General',
+        type: 'label',
+    },
+    // {
+    //     name: 'Components',
+    //     icon: 'favorite',
+    //     badge: { value: '30+', color: 'secondary' },
+    //     children: [
+    //         {
+    //             name: 'Auto Complete',
+    //             path: '/material/autocomplete',
+    //             iconText: 'A',
+    //         },
+    //         {
+    //             name: 'Buttons',
+    //             path: '/material/buttons',
+    //             iconText: 'B',
+    //         },
+    //         {
+    //             name: 'Checkbox',
+    //             path: '/material/checkbox',
+    //             iconText: 'C',
+    //         },
+    //         {
+    //             name: 'Dialog',
+    //             path: '/material/dialog',
+    //             iconText: 'D',
+    //         },
+    //         {
+    //             name: 'Expansion Panel',
+    //             path: '/material/expansion-panel',
+    //             iconText: 'E',
+    //         },
+    //         {
+    //             name: 'Form',
+    //             path: '/material/form',
+    //             iconText: 'F',
+    //         },
+    //         {
+    //             name: 'Icons',
+    //             path: '/material/icons',
+    //             iconText: 'I',
+    //         },
+    //         {
+    //             name: 'Menu',
+    //             path: '/material/menu',
+    //             iconText: 'M',
+    //         },
+    //         {
+    //             name: 'Progress',
+    //             path: '/material/progress',
+    //             iconText: 'P',
+    //         },
+    //         {
+    //             name: 'Radio',
+    //             path: '/material/radio',
+    //             iconText: 'R',
+    //         },
+    //         {
+    //             name: 'Switch',
+    //             path: '/material/switch',
+    //             iconText: 'S',
+    //         },
+    //         {
+    //             name: 'Slider',
+    //             path: '/material/slider',
+    //             iconText: 'S',
+    //         },
+    //         {
+    //             name: 'Snackbar',
+    //             path: '/material/snackbar',
+    //             iconText: 'S',
+    //         },
+    //         {
+    //             name: 'Table',
+    //             path: '/material/table',
+    //             iconText: 'T',
+    //         },
+    //     ],
+    // },
+    // {
+    //     name: 'Charts',
+    //     icon: 'trending_up',
+
+    //     children: [
+    //         {
+    //             name: 'Echarts',
+    //             path: '/charts/echarts',
+    //             iconText: 'E',
+    //         },
+    //     ],
+    // },
+    {
+        name: 'Profile',
+        icon: 'account_circle',
 
         children: [
             {
-                name: 'Echarts',
-                path: '/charts/echarts',
+                name: 'Settings',
+                path: '/profile/settings',
+                iconText: 'E',
+            },
+            {
+                name: 'Log Out',
+                path: '/profile/logout',
                 iconText: 'E',
             },
         ],
     },
-    {
-        name: 'Documentation',
-        icon: 'launch',
-        type: 'extLink',
-        path: 'http://demos.ui-lib.com/matx-react-doc/',
-    },
+    // {
+    //     name: 'Documentation',
+    //     icon: 'launch',
+    //     type: 'extLink',
+    //     path: 'http://demos.ui-lib.com/matx-react-doc/',
+    // },
 ]

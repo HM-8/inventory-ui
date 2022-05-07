@@ -45,7 +45,7 @@ const StatCards = () => {
                     <ContentBox>
                         <Icon className="icon">group</Icon>
                         <Box ml="12px">
-                            <Small>New Leads</Small>
+                            <Small>Total Employees</Small>
                             <Heading>3050</Heading>
                         </Box>
                     </ContentBox>
@@ -59,10 +59,10 @@ const StatCards = () => {
             <Grid item xs={12} md={6}>
                 <StyledCard elevation={6}>
                     <ContentBox>
-                        <Icon className="icon">attach_money</Icon>
+                        <Icon className="icon">chat_bubble</Icon>
                         <Box ml="12px">
                             <Small sx={{ lineHeight: 1 }}>
-                                This week Sales
+                                Total Employees Online
                             </Small>
                             <Heading>$80,500</Heading>
                         </Box>
