@@ -8,7 +8,6 @@ import { styled, Box, useTheme } from '@mui/system'
 import React, { useEffect, useRef } from 'react'
 import { ThemeProvider, useMediaQuery } from '@mui/material'
 import SidenavTheme from '../../MatxTheme/SidenavTheme/SidenavTheme'
-import SecondarySidebar from '../../SecondarySidebar/SecondarySidebar'
 import { sidenavCompactWidth, sideNavWidth } from 'app/utils/constant'
 import { Outlet } from 'react-router-dom'
 
@@ -34,7 +33,7 @@ const StyledScrollBar = styled(Scrollbar)(() => ({
     flexDirection: 'column',
 }))
 
-const LayoutContainer = styled(Box)(({ width, secondarySidebar }) => ({
+const LayoutContainer = styled(Box)(({ width }) => ({
     height: '100vh',
     display: 'flex',
     flexGrow: '1',
@@ -44,12 +43,11 @@ const LayoutContainer = styled(Box)(({ width, secondarySidebar }) => ({
     position: 'relative',
     overflow: 'hidden',
     transition: 'all 0.3s ease',
-    marginRight: secondarySidebar.open ? 50 : 0,
 }))
 
 const Layout1 = () => {
     const { settings, updateSettings } = useSettings()
-    const { layout1Settings, secondarySidebar } = settings
+    const { layout1Settings } = settings
     const topbarTheme = settings.themes[layout1Settings.topbar.theme]
     const {
         leftSidebar: { mode: sidenavMode, show: showSidenav },
@@ -93,7 +91,6 @@ const Layout1 = () => {
 
             <LayoutContainer
                 width={sidenavWidth}
-                secondarySidebar={secondarySidebar}
             >
                 {layout1Settings.topbar.show && layout1Settings.topbar.fixed && (
                     // <Layout1Topbar fixed={true} />
@@ -145,7 +142,6 @@ const Layout1 = () => {
 
                 {settings.footer.show && settings.footer.fixed && <Footer />}
             </LayoutContainer>
-            {settings.secondarySidebar.show && <SecondarySidebar />}
         </Layout1Root>
     )
 }
