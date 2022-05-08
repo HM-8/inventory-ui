@@ -32,9 +32,9 @@ const AppForm = () => {
                 <SimpleForm />
             </SimpleCard>
             <Box py="12px" />
-            <SimpleCard title="stepper form">
-                <StepperForm />
-            </SimpleCard>
+            {/* <SimpleCard title="stepper form">
+                <StepperForm/>
+            </SimpleCard> */}
         </Container>
     )
 }
