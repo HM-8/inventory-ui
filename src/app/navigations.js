@@ -138,6 +138,11 @@ export const navigations = [
         ],
     },
     {
+        name: 'Default',
+        icon: 'lock_reset',
+        path: '/set-defaults'
+    },
+    {
         label: 'General',
         type: 'label',
     },
