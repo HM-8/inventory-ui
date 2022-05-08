@@ -6,11 +6,16 @@ import sessionRoutes from 'app/views/sessions/SessionRoutes'
 import MatxLayout from '../components/MatxLayout/MatxLayout'
 import { Navigate } from 'react-router-dom'
 
+import attendanceRoutes from 'app/views/attendance/AttendanceRoutes'
+import employeeRoutes from 'app/views/employee/EmployeeRoutes'
+import leaveRoutes from 'app/views/leave/LeaveRoutes'
+import reportRoutes from 'app/views/report/ReportRoutes'
+
 export const AllPages = () => {
     const all_routes = [
         {
             element: <MatxLayout />,
-            children: [...dashboardRoutes, ...chartsRoute, ...materialRoutes],
+            children: [...dashboardRoutes, ...chartsRoute, ...materialRoutes, ...attendanceRoutes, ...employeeRoutes, ...leaveRoutes, ...reportRoutes],
         },
         ...sessionRoutes,
         {
