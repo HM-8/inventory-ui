@@ -33,8 +33,8 @@ export const navigations = [
             //     path: '/session/404',
             // },
             {
-                name: 'Employee Details',
-                path: '/employee/employee-details',
+                name: 'Add Employee',
+                path: '/employee/add-employee',
             },
             {
                 name: 'Employment Type',
@@ -103,37 +103,37 @@ export const navigations = [
         ],
     },
     {
-        name: 'Reports',
+        name: 'Report',
         icon: 'assessment',
         children: [
             {
                 name: 'New Employees',
-                path: '/reports/new-employee-report',
+                path: '/report/new-employee-report',
             },
             {
                 name: 'Employee Promotion',
-                path: '/reports/employee-promotion-report',
+                path: '/report/employee-promotion-report',
             },
             {
                 name: 'Employee Transfer',
-                path: '/reports/employee-transfer-report',
+                path: '/report/employee-transfer-report',
             },
             {
                 name: 'Employee Appraisal',
-                path: '/reports/employee-appraisal-report',
+                path: '/report/employee-appraisal-report',
             },
             {
                 name: 'Employee Termination',
-                path: '/reports/employee-termination-report',
+                path: '/report/employee-termination-report',
             },
 
             {
                 name: 'Employee Leave',
-                path: '/reports/employee-leave-report',
+                path: '/report/employee-leave-report',
             },
             {
                 name: 'Employee Attendance',
-                path: '/reports/employee-attendance-report',
+                path: '/report/employee-attendance-report',
             },
         ],
     },
