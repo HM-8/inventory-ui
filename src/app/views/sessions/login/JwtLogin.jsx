@@ -53,8 +53,8 @@ const JwtLogin = () => {
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
     const [userInfo, setUserInfo] = useState({
-        email: 'jason@ui-lib.com',
-        password: 'dummyPass',
+        email: 'johndoe@gmail.com',
+        password: 'password',
     })
     const [message, setMessage] = useState('')
     //const { login } = useAuth()
@@ -169,7 +169,7 @@ const JwtLogin = () => {
                                             />
                                         )}
                                     </Box>
-                                    <Span sx={{ mr: 1, ml: '20px' }}>or</Span>
+                                    {/* <Span sx={{ mr: 1, ml: '20px' }}>or</Span>
                                     <Button
                                         sx={{ textTransform: 'capitalize' }}
                                         onClick={() =>
@@ -177,7 +177,7 @@ const JwtLogin = () => {
                                         }
                                     >
                                         Sign up
-                                    </Button>
+                                    </Button> */}
                                 </FlexBox>
                                 <Button
                                     sx={{ color: textPrimary }}
