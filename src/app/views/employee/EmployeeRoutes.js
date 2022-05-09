@@ -4,10 +4,12 @@ import Loadable from 'app/components/Loadable/Loadable'
 
 const AddEmployee = Loadable(lazy(() => import('./AddEmployee')))
 
-const EmploymentType = Loadable(lazy(() => import('./EmploymentType')))
-const AddEmploymentType = Loadable(lazy(() => import('./AddEmploymentType')))
+const EmploymentType = Loadable(lazy(() => import('./employment-type/EmploymentType')))
+const AddEmploymentType = Loadable(lazy(() => import('./employment-type/AddEmploymentType')))
 
-const EmployeeDesignation = Loadable(lazy(() => import('./EmployeeDesignation')))
+const EmployeeDesignation = Loadable(lazy(() => import('./designation/EmployeeDesignation')))
+const AddEmployeeDesignation = Loadable(lazy(() => import('./designation/AddEmployeeDesignation')))
+
 const EmployeeAppraisal = Loadable(lazy(() => import('./EmployeeAppraisal')))
 const Branch = Loadable(lazy(() => import('./Branch')))
 const Department = Loadable(lazy(() => import('./Department')))
@@ -31,6 +33,11 @@ const employeeRoutes = [
     {
         path: '/employee/employee-designation',
         element: <EmployeeDesignation />,
+        //auth: authRoles.admin,
+    },
+    {
+        path: '/employee/employee-designation/add',
+        element: <AddEmployeeDesignation />,
         //auth: authRoles.admin,
     },
     {
