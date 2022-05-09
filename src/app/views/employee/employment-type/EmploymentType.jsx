@@ -1,11 +1,11 @@
 import React from 'react'
-import PaginationTable from '../material-kit/tables/PaginationTable'
+import PaginationTable from '../../material-kit/tables/PaginationTable'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import { Box, styled } from '@mui/system'
 import { Grid } from '@mui/material'
-import TableButton from '../material-kit/buttons/LinkButton'
+import TableButton from '../../material-kit/buttons/LinkButton'
 
-import rows from '../../utils/data/employmentType.json'
+import rows from '../../../utils/data/employmentType.json'
 const columns = [
     { id: 'employment-type', label: 'Employment Type' },
     { id: 'description', label: 'Description' }
@@ -42,7 +42,7 @@ const EmploymentType = () => {
                     <TableButton buttonText="Add Employment Type" url={url}/>
                 </Grid>
             </Grid>
-            <SimpleCard title="Pagination Table">
+            <SimpleCard title="Employment Type">
                 <PaginationTable columns={columns} rows={rows} />
             </SimpleCard>
         </Container>
