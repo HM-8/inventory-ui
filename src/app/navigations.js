@@ -4,102 +4,98 @@ export const navigations = [
         path: '/dashboard',
         icon: 'dashboard',
     },
-    // {
-    //     label: 'PAGES',
-    //     type: 'label',
-    // },
     {
-        name: 'Employee',
+        name: 'General',
         icon: 'badge',
         children: [
-            // {
-            //     name: 'Sign in',
-            //     iconText: 'SI',
-            //     path: '/session/signin',
-            // },
-            // {
-            //     name: 'Sign up',
-            //     iconText: 'SU',
-            //     path: '/session/signup',
-            // },
-            // {
-            //     name: 'Forgot Password',
-            //     iconText: 'FP',
-            //     path: '/session/forgot-password',
-            // },
-            // {
-            //     name: 'Error',
-            //     iconText: '404',
-            //     path: '/session/404',
-            // },
             {
-                name: 'Add Employee',
-                path: '/employee/add-employee',
-            },
-            {
-                name: 'Employment Type',
-                path: '/employee/employment-type',
-            },
-            {
-                name: 'Employee Designation',
-                path: '/employee/employee-designation',
-            },
-            {
-                name: 'Employee Appraisal',
-                path: '/employee/employee-appraisal',
+                name: 'Product',
+                path: '/general/products',
             },
             {
                 name: 'Branch',
-                path: '/employee/branch',
+                path: '/general/branch',
             },
             {
-                name: 'Department',
-                path: '/employee/department',
+                name: 'Settings',
+                path: '/general/settings',
             },
         ],
     },
     {
-        name: 'Attendance',
+        name: 'Item',
         icon: 'check_circle',
         children: [
             {
-                name: 'Employee Attendance',
-                path: '/attendance/employee-attendance',
+                name: 'Item details',
+                path: '/item/details',
             },
             {
-                name: 'Upload Attendance',
-                path: '/attendance/upload-attendance',
+                name: 'Sale Item',
+                path: '/item/sales-item',
+            },
+        ],  
+    },
+    {
+        name: 'Transaction',
+        icon: 'exit_to_app',
+        children: [
+            {
+                name: 'Material request',
+                path: '/transaction/material-request',
             },
             {
-                name: 'Employee Attendance Tool',
-                path: '/attendance/attendance-tool',
+                name: 'Item transfer ',
+                path: '/transaction/inventory-item',
             },
             {
-                name: 'Attendance Request',
-                path: '/attendance/attendance-request',
+                name: 'Purchase order',
+                path: '/transaction/PO',
+            },
+            {
+                name: 'Sale order',
+                path: '/transaction/SO',
+            },
+            {
+                name: 'Processing receipts',
+                path: '/transaction/request',
+            },
+            {
+                name: 'Inventory entry ',
+                path: '/leave/extend-leave-request',
             },
         ],
     },
     {
-        name: 'Leave',
+        name: 'Tools',
         icon: 'exit_to_app',
         children: [
             {
-                name: 'Leave Policy',
-                path: '/leave/leave-policy',
+                name: 'Quality Inspection',
+                path: '/transaction/inventory-entry',
             },
             {
-                name: 'Leave Type',
+                name: '/tools/reconciliaiton',
                 path: '/leave/leave-type',
             },
             {
-                name: 'Leave Request',
-                path: '/leave/leave-request',
+                name: 'Quick Inventory Balance',
+                path: '/tools/balance',
+            },
+        ],
+    },
+    {
+        name: 'Return',
+        icon: 'exit_to_app',
+        children: [
+            {
+                name: 'Sales Return ',
+                path: '/return/sales-return',
             },
             {
-                name: 'Extend Leave Request',
-                path: '/leave/extend-leave-request',
-            },
+                name: 'Purchase Return ',
+                path: '/return/purchase-return',
+            }
         ],
     },
     {
@@ -107,33 +103,12 @@ export const navigations = [
         icon: 'assessment',
         children: [
             {
-                name: 'New Employees',
-                path: '/report/new-employee-report',
+                name: 'Ledger ',
+                path: '/report/ledger',
             },
             {
-                name: 'Employee Promotion',
-                path: '/report/employee-promotion-report',
-            },
-            {
-                name: 'Employee Transfer',
-                path: '/report/employee-transfer-report',
-            },
-            {
-                name: 'Employee Appraisal',
-                path: '/report/employee-appraisal-report',
-            },
-            {
-                name: 'Employee Termination',
-                path: '/report/employee-termination-report',
-            },
-
-            {
-                name: 'Employee Leave',
-                path: '/report/employee-leave-report',
-            },
-            {
-                name: 'Employee Attendance',
-                path: '/report/employee-attendance-report',
+                name: 'Stock Level Report',
+                path: '/transaction/purchase-request',
             },
         ],
     },
@@ -146,19 +121,6 @@ export const navigations = [
         label: 'General',
         type: 'label',
     },
-    
-    // {
-    //     name: 'Charts',
-    //     icon: 'trending_up',
-
-    //     children: [
-    //         {
-    //             name: 'Echarts',
-    //             path: '/charts/echarts',
-    //             iconText: 'E',
-    //         },
-    //     ],
-    // },
     {
         name: 'Profile',
         icon: 'account_circle',

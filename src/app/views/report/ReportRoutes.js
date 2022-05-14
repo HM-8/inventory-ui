@@ -1,15 +1,19 @@
 import React, { lazy } from 'react'
 import Loadable from 'app/components/Loadable/Loadable'
-//import { authRoles } from '../../auth/authRoles'
 
-//const Analytics = Loadable(lazy(() => import('./Analytics')))
+const Ledger= Loadable(lazy(()=>import('./Ledger')))
+const StockLevelReport= Loadable(lazy(()=>import('./StockLevelReport')))
 
-const reportRoutes = [
+
+const ReportRoutes = [
     {
-        path: '/report',
-        //element: <Analytics />,
-        //auth: authRoles.admin,
+        path: '/report/ledger',
+        element: <Ledger />,
     },
+    {
+        path: '/transaction/purchase-request',
+        element: <StockLevelReport />,
+    }
 ]
 
-export default reportRoutes
+export default ReportRoutes
