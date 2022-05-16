@@ -20,7 +20,7 @@ export const AllPages = () => {
     const all_routes = [
         {
             element: <MatxLayout />,
-            children: [...dashboardRoutes, ...chartsRoute, ...materialRoutes,...ReturnReport,...TransactionRoute,...GeneralRoutes, ...employeeRoutes, ...reportRoutes, ...defaultRoutes, ...ItemRoutes, ToolsRoute,...profileRoutes],
+            children: [...dashboardRoutes, ...chartsRoute, ...materialRoutes,...ReturnReport,...TransactionRoute,...GeneralRoutes, ...employeeRoutes, ...reportRoutes, ...defaultRoutes, ...ItemRoutes, ...ToolsRoute,...profileRoutes],
         },
         ...sessionRoutes,
         {

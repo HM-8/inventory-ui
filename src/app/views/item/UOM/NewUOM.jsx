@@ -1,33 +1,18 @@
-// import {TextField,  } from '@mui/material'
 import React from 'react'
-// import Form from '../material-kit/forms/Form'
-// import DropDown from '../material-kit/drop-down/DropDown'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-
-// import { makeStyles } from '@mui/styles';
 import {
-    //   Container,
     Grid,
-    Typography,
+    IconButton,
+    Icon
 } from '@mui/material'
 
-import Textfield from '../../components/FormsUI/Textfield'
-import Select from '../../components/FormsUI/Select'
-import DateTimePicker from '../../components/FormsUI/DataTimePicker'
-import Checkbox from '../../components/FormsUI/Checkbox'
-import Button from '../../components/FormsUI/Button/index'
-// import countries from './data/countries.json';
-import countries from '../../utils/data/countries.json'
-
+import Textfield from '../../../components/FormsUI/Textfield'
+import Button from '../../../components/FormsUI/Button/index'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
 
-// import dropDownData from '../../../utils/data/dropDownData.json'
-import dropDownData from '../../utils/data/dropDownData.json'
-import { DatePicker, LocalizationProvider } from '@mui/lab'
-import AdapterDateFns from '@mui/lab/AdapterDateFns'
-
+import { useTheme } from '@emotion/react'
 const buttonText = 'Save'
 
 const Container = styled('div')(({ theme }) => ({
@@ -80,20 +65,21 @@ const FORM_VALIDATION = Yup.object().shape({
         .required('The terms and conditions must be accepted.'),
 })
 
-function MaterailRequest() {
+function NewUOM() {
     // const classes = useStyles();
-
+    const { palette } = useTheme()
+    const textColor = palette.text.primary
     return (
         <Container>
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'Transaction', path: '/dashboard' },
-                        { name: 'Materail Request' },
+                        { name: 'UOM', path: '/item/uom' },
+                        { name: 'New UOM' },
                     ]}
                 />
             </div>
-            <SimpleCard title="Materail Request">
+            <SimpleCard title="New UOM">
                 <Grid container>
                     <Grid item xs={12}>
                         <Container maxWidth="md">
@@ -108,57 +94,49 @@ function MaterailRequest() {
                             >
                                 <Form>
                                     <Grid container spacing={2}>
-                                        <Grid item xs={6}>
+                                        <Grid item xs={4}>
                                             <Textfield
                                                 name="firstName"
-                                                label="Requested by"
+                                                label="measurement unit"
                                             />
                                         </Grid>
 
-                                        <Grid item xs={6}>
+                                        <Grid item xs={4}>
                                             <Textfield
                                                 name="lastName"
-                                                label="Request to"
-                                            />
-                                        </Grid>
-                                        <Grid item xs={12}>
-                                            <DateTimePicker
-                                                name="departureDate"
-                                                label="Required date "
+                                                label="Abbreviation "
                                             />
                                         </Grid>
 
-                                        <Grid item xs={6}>
-                                            <Select
-                                                name="country"
-                                                label="Status "
-                                                options={countries}
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Select
-                                                name="country"
-                                                label="Item List"
-                                                options={countries}
-                                            />
-                                        </Grid>
-                                        <Grid item xs={6}>
+                                        <Grid item xs={4}>
                                             <Textfield
-                                                name="addressLine1"
-                                                label="Quantity"
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="addressLine2"
+                                                name="email"
                                                 label="Description"
                                             />
                                         </Grid>
 
-                                        <Grid item xs={6}>
-                                            <Button>Submit Form</Button>
+                                        <Grid item xs={2}>
+                                            <IconButton
+                                                sx={{ mt: 0.5 }}
+                                                // onClick={addComponent}
+                                            >
+                                                <Icon sx={{ color: textColor }}>
+                                                    add_circle
+                                                </Icon>
+                                            </IconButton>
+                                        </Grid>
+                                        <Grid item xs={2}>
+                                            <IconButton
+                                                sx={{ mt: 0.5, ml: -8 }}
+                                                // onClick={removeComponent}
+                                            >
+                                                <Icon sx={{ color: textColor }}>
+                                                    remove_circle
+                                                </Icon>
+                                            </IconButton>
+                                        </Grid>                                          
+                                        <Grid item xs={12}>
+                                            <Button>Add</Button>
                                         </Grid>
                                     </Grid>
                                 </Form>
@@ -173,4 +151,4 @@ function MaterailRequest() {
     )
 }
 
-export default MaterailRequest
+export default NewUOM

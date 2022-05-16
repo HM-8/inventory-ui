@@ -80,69 +80,62 @@ const FORM_VALIDATION = Yup.object().shape({
         .required('The terms and conditions must be accepted.'),
 })
 
-function QIB() {
+function BinCard() {
     // const classes = useStyles();
 
     return (
-        <Container>
-            <div className="breadcrumb">
-                <Breadcrumb
-                    routeSegments={[
-                        { name: 'Tools', path: '/dashboard' },
-                        { name: 'Search' },
-                    ]}
+        <>
+            
+            <Grid item xs={12}>
+                <Typography>Bin Card</Typography>
+            </Grid>
+            <Grid item xs={6}>
+                <Textfield name="lastName" label="Bin No" />
+            </Grid>
+
+            <Grid item xs={6}>
+                <Select
+                    name="country"
+                    label="Bin Location"
+                    options={countries}
                 />
-            </div>
-            <SimpleCard title="Search">
-                <Grid container>
-                    <Grid item xs={12}></Grid>
-                    <Grid item xs={12}>
-                        <Container maxWidth="md">
-                            <Formik
-                                initialValues={{
-                                    ...INITIAL_FORM_STATE,
-                                }}
-                                validationSchema={FORM_VALIDATION}
-                                onSubmit={(values) => {
-                                    console.log(values)
-                                }}
-                            >
-                                <Form>
-                                    <Grid container spacing={2}>
-                                    <Grid item xs={6}>
-                                            <Select
-                                                name="country"
-                                                label="Item name "
-                                                options={countries}
-                                            />
-                                        </Grid>
+            </Grid>
 
-                                        <Grid item xs={6}>
-                                            <Select
-                                                name="country"
-                                                label="Branch"
-                                                options={countries}
-                                            />
-                                        </Grid>
+            <Grid item xs={6}>
+                <Textfield name="phone" label="Minimum Quantity " />
+            </Grid>
+            <Grid item xs={6}>
+                <Textfield name="phone" label="Maximum Quantity " />
+            </Grid>
+            <Grid item xs={12}>
+                <Typography>Ordering Level</Typography>
+            </Grid>
 
-                                        <Grid item xs={6}>
-                                            <Typography>Table</Typography>
-                                        </Grid>
+            <Grid item xs={6}>
+                <DateTimePicker name="arrivealDate" label="Date" />
+            </Grid>
 
-                                        <Grid item xs={12}>
-                                            <Button>Submit Form</Button>
-                                        </Grid>
-                                    </Grid>
-                                </Form>
-                            </Formik>
+            <Grid item xs={6}>
+                <Textfield name="addressLine1" label="Contact No" />
+            </Grid>
 
-                            {/* </div> */}
-                        </Container>
-                    </Grid>
-                </Grid>
-            </SimpleCard>
-        </Container>
+            <Grid item xs={6}>
+                <Textfield name="addressLine2" label="Quantity Received " />
+            </Grid>
+
+            <Grid item xs={6}>
+                <Textfield name="city" label="Quantity Issued" />
+            </Grid>
+
+            <Grid item xs={6}>
+                <Textfield name="state" label="Balance" />
+            </Grid>
+
+            <Grid item xs={6}>
+                <Textfield name="phone" label="Remarks" />
+            </Grid>
+        </>
     )
 }
 
-export default QIB
+export default BinCard

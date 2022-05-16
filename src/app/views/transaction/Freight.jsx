@@ -14,6 +14,8 @@ import {
 
 import Textfield from '../../components/FormsUI/Textfield'
 import Select from '../../components/FormsUI/Select'
+import DateTimePicker from '../../components/FormsUI/DataTimePicker'
+import Checkbox from '../../components/FormsUI/Checkbox'
 import Button from '../../components/FormsUI/Button/index'
 // import countries from './data/countries.json';
 import countries from '../../utils/data/countries.json'
@@ -78,7 +80,7 @@ const FORM_VALIDATION = Yup.object().shape({
         .required('The terms and conditions must be accepted.'),
 })
 
-function PurchaseOrder() {
+function Freight() {
     // const classes = useStyles();
 
     return (
@@ -87,11 +89,11 @@ function PurchaseOrder() {
                 <Breadcrumb
                     routeSegments={[
                         { name: 'Transaction', path: '/dashboard' },
-                        { name: 'Purchase Order' },
+                        { name: 'Freight' },
                     ]}
                 />
             </div>
-            <SimpleCard title="Purchase Order">
+            <SimpleCard title="Freight">
                 <Grid container>
                     <Grid item xs={12}>
                         <Container maxWidth="md">
@@ -109,7 +111,29 @@ function PurchaseOrder() {
                                     <Grid item xs={6}>
                                             <Select
                                                 name="country"
-                                                label="Item Name "
+                                                label="Items No "
+                                                options={countries}
+                                            />
+                                        </Grid>
+                                        
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="firstName"
+                                                label="Item Name"
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="lastName"
+                                                label="Quantity"
+                                            />
+                                        </Grid>
+
+                                        {/* <Grid item xs={6}>
+                                            <Select
+                                                name="country"
+                                                label="Status "
                                                 options={countries}
                                             />
                                         </Grid>
@@ -117,40 +141,118 @@ function PurchaseOrder() {
                                         <Grid item xs={6}>
                                             <Select
                                                 name="country"
-                                                label="Item Variant "
+                                                label="Item List"
                                                 options={countries}
                                             />
-                                        </Grid>
+                                        </Grid> */}
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="firstName"
-                                                label="Quantity "
+                                                name="addressLine1"
+                                                label="Length"
                                             />
                                         </Grid>
 
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="lastName"
-                                                label="Description "
+                                                name="addressLine2"
+                                                label="Width"
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="addressLine2"
+                                                label="Height"
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="addressLine2"
+                                                label="Weight"
                                             />
                                         </Grid>
 
                                         <Grid item xs={12}>
-                                            <Typography>
-                                            supplier
-                                            </Typography>
+                                            <Typography>Pickup</Typography>
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="addressLine2"
+                                                label=" Branch name"
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={12}>
+                                            <Typography></Typography>
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="firstName"
+                                                label="House No"
+                                            />
                                         </Grid>
 
                                         <Grid item xs={6}>
                                             <Textfield
                                                 name="lastName"
-                                                label="Name"
+                                                label="Kebele"
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="email"
+                                                label="Wereda"
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="phone"
+                                                label="City"
                                             />
                                         </Grid>
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="addressLine1"
-                                                label="Company Tel No"
+                                                name="phone"
+                                                label="Subcity"
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="phone"
+                                                label="Area name "
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={12}>
+                                            <Typography>Contact Info</Typography>
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="phone"
+                                                label="Company Tel No "
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="phone"
+                                                label="Contact Person Mobile No "
+                                            />
+                                        </Grid> 
+
+
+                                        
+                                        <Grid item xs={12}>
+                                            <Typography>Delivery</Typography>
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="addressLine2"
+                                                label=" Branch name"
                                             />
                                         </Grid>
 
@@ -198,17 +300,33 @@ function PurchaseOrder() {
                                             />
                                         </Grid>
 
+
                                         <Grid item xs={6}>
-                                            <Select
-                                                name="country"
-                                                label="Price "
-                                                options={countries}
+                                            <Textfield
+                                                name="phone"
+                                                label="Reasons /Description/"
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={12}>
+                                            <Typography>Trip Date </Typography>
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <DateTimePicker
+                                                name="departureDate"
+                                                label="From "
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <DateTimePicker
+                                                name="departureDate"
+                                                label="To "
                                             />
                                         </Grid>
 
                                         <Grid item xs={12}>
                                             <Typography>
-                                                Check Received by
+                                            Transport Requestor 
                                             </Typography>
                                         </Grid>
                                         <Grid item xs={6}>
@@ -225,23 +343,6 @@ function PurchaseOrder() {
                                         </Grid>
 
                                         <Grid item xs={12}>
-                                            <Typography>
-                                                Check Approved By
-                                            </Typography>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="addressLine2"
-                                                label="Name"
-                                            />
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                        <Textfield
-                                                name="addressLine2"
-                                                label="Signature"
-                                            />
-                                        </Grid>
-                                        <Grid item xs={6}>
                                             <Button>Submit Form</Button>
                                         </Grid>
                                     </Grid>
@@ -257,4 +358,4 @@ function PurchaseOrder() {
     )
 }
 
-export default PurchaseOrder
+export default Freight

@@ -1,32 +1,18 @@
-// import {TextField,  } from '@mui/material'
 import React from 'react'
-// import Form from '../material-kit/forms/Form'
-// import DropDown from '../material-kit/drop-down/DropDown'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-
-// import { makeStyles } from '@mui/styles';
 import {
-    //   Container,
     Grid,
     Typography,
 } from '@mui/material'
 
 import Textfield from '../../components/FormsUI/Textfield'
 import Select from '../../components/FormsUI/Select'
-import DateTimePicker from '../../components/FormsUI/DataTimePicker'
-import Checkbox from '../../components/FormsUI/Checkbox'
 import Button from '../../components/FormsUI/Button/index'
-// import countries from './data/countries.json';
-import countries from '../../utils/data/countries.json'
+import DropDownData from '../../utils/data/dropDownData.json'
 
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
-
-// import dropDownData from '../../../utils/data/dropDownData.json'
-import dropDownData from '../../utils/data/dropDownData.json'
-import { DatePicker, LocalizationProvider } from '@mui/lab'
-import AdapterDateFns from '@mui/lab/AdapterDateFns'
 
 const buttonText = 'Save'
 
@@ -80,21 +66,20 @@ const FORM_VALIDATION = Yup.object().shape({
         .required('The terms and conditions must be accepted.'),
 })
 
-function ItemTransfer() {
-    // const classes = useStyles();
-
+function Branch() {
     return (
         <Container>
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'Transaction', path: '/dashboard' },
-                        { name: 'Item Transfer' },
+                        { name: 'Branch', path: '/general/branch' },
+                        { name: 'New Branch' },
                     ]}
                 />
             </div>
-            <SimpleCard title="SIV Form">
+            <SimpleCard title="Add Branch">
                 <Grid container>
+                    <Grid item xs={12}></Grid>
                     <Grid item xs={12}>
                         <Container maxWidth="md">
                             <Formik
@@ -108,100 +93,102 @@ function ItemTransfer() {
                             >
                                 <Form>
                                     <Grid container spacing={2}>
+                                        <Grid item xs={12}>
+                                            <Typography>Location</Typography>
+                                        </Grid>
                                         <Grid item xs={6}>
                                             <Textfield
                                                 name="firstName"
-                                                label="Branch name"
+                                                label="House No"
                                             />
                                         </Grid>
 
                                         <Grid item xs={6}>
                                             <Textfield
                                                 name="lastName"
-                                                label="Item code"
+                                                label="Kebele"
                                             />
                                         </Grid>
 
-                                        <Grid item xs={12}>
+                                        <Grid item xs={6}>
                                             <Textfield
-                                                name="lastName"
-                                                label="SIV No"
+                                                name="email"
+                                                label="Wereda"
                                             />
                                         </Grid>
 
-                                        <Grid item xs={12}>
-                                            <DateTimePicker
-                                                name="departureDate"
-                                                label="Issue Date "
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="phone"
+                                                label="City"
+                                            />
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="phone"
+                                                label="Subcity"
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="phone"
+                                                label="Area name "
                                             />
                                         </Grid>
                                         <Grid item xs={12}>
-                                            <DateTimePicker
-                                                name="departureDate"
-                                                label="Req Date"
-                                            />
+                                            <Typography>Telephone</Typography>
                                         </Grid>
+
                                         <Grid item xs={6}>
                                             <Textfield
                                                 name="addressLine1"
-                                                label="Req No"
+                                                label="Mobile No"
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="addressLine2"
+                                                label="Home No"
                                             />
                                         </Grid>
 
                                         <Grid item xs={12}>
-                                            <Typography>
-                                                Bin Location
-                                            </Typography>
+                                            <Textfield
+                                                name="addressLine2"
+                                                label="Branch Manager"
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <Typography>Email</Typography>
                                         </Grid>
 
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="addressLine2"
-                                                label="Previous"
+                                                name="city"
+                                                label="Personal Email"
                                             />
                                         </Grid>
+
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="addressLine2"
-                                                label="New"
+                                                name="state"
+                                                label="Company Email"
                                             />
                                         </Grid>
                                         <Grid item xs={12}>
-                                            <Typography>
-                                                SIV Received by
-                                            </Typography>
+                                            <Typography>Type </Typography>
                                         </Grid>
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="addressLine2"
-                                                label="Name"
-                                            />
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                        <Textfield
-                                                name="addressLine2"
-                                                label="Signature"
+                                        <Grid item xs={12}>
+                                            <Select
+                                                name="country"
+                                                label="Inventory Type"
+                                                options={DropDownData}
                                             />
                                         </Grid>
 
                                         <Grid item xs={12}>
-                                            <Typography>
-                                                SIV Approved By
-                                            </Typography>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="addressLine2"
-                                                label="Name"
-                                            />
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                        <Textfield
-                                                name="addressLine2"
-                                                label="Signature"
-                                            />
-                                        </Grid>
-                                        <Grid item xs={6}>
                                             <Button>Submit Form</Button>
                                         </Grid>
                                     </Grid>
@@ -217,4 +204,4 @@ function ItemTransfer() {
     )
 }
 
-export default ItemTransfer
+export default Branch

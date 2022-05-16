@@ -4,8 +4,9 @@ import Loadable from 'app/components/Loadable/Loadable'
 
 // const AddEmployee = Loadable(lazy(() => import('./AddEmployee')))
 const Products= Loadable(lazy(()=>import('./Products')))
-const Branchs= Loadable(lazy(()=>import('./Branch')))
+const Branch= Loadable(lazy(()=>import('./Branch')))
 const Settings= Loadable(lazy(()=>import('./Settings')))
+const NewBranch= Loadable(lazy(()=>import('./AddBranch')))
 
 const employeeRoutes = [
     {
@@ -13,8 +14,12 @@ const employeeRoutes = [
         element: <Products />,
     },
     {
+        path: '/general/NewBranch',
+        element: <NewBranch />,
+    },
+    {
         path: '/general/branch',
-        element: <Branchs />,
+        element: <Branch />,
     },
     {
         path: '/general/settings',

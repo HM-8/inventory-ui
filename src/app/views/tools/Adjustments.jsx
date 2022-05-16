@@ -80,7 +80,7 @@ const FORM_VALIDATION = Yup.object().shape({
         .required('The terms and conditions must be accepted.'),
 })
 
-function QIB() {
+function Adjustments() {
     // const classes = useStyles();
 
     return (
@@ -89,55 +89,17 @@ function QIB() {
                 <Breadcrumb
                     routeSegments={[
                         { name: 'Tools', path: '/dashboard' },
-                        { name: 'Search' },
+                        { name: 'Reconciliation' },
                     ]}
                 />
             </div>
-            <SimpleCard title="Search">
+            <SimpleCard title="Reconciliation">
                 <Grid container>
-                    <Grid item xs={12}></Grid>
                     <Grid item xs={12}>
-                        <Container maxWidth="md">
-                            <Formik
-                                initialValues={{
-                                    ...INITIAL_FORM_STATE,
-                                }}
-                                validationSchema={FORM_VALIDATION}
-                                onSubmit={(values) => {
-                                    console.log(values)
-                                }}
-                            >
-                                <Form>
-                                    <Grid container spacing={2}>
-                                    <Grid item xs={6}>
-                                            <Select
-                                                name="country"
-                                                label="Item name "
-                                                options={countries}
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Select
-                                                name="country"
-                                                label="Branch"
-                                                options={countries}
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Typography>Table</Typography>
-                                        </Grid>
-
-                                        <Grid item xs={12}>
-                                            <Button>Submit Form</Button>
-                                        </Grid>
-                                    </Grid>
-                                </Form>
-                            </Formik>
-
-                            {/* </div> */}
-                        </Container>
+                        <Typography>Maintenance and repair</Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Typography>Inventory Reconciliation Adjustment </Typography>
                     </Grid>
                 </Grid>
             </SimpleCard>
@@ -145,4 +107,4 @@ function QIB() {
     )
 }
 
-export default QIB
+export default Adjustments

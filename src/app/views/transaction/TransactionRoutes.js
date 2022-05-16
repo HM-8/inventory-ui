@@ -1,19 +1,15 @@
 import React, { lazy } from 'react'
 import Loadable from 'app/components/Loadable/Loadable'
 
-const InventoryEntry= Loadable(lazy(()=>import('./InventoryEntry')))
+const Freight= Loadable(lazy(()=>import('./Freight')))
 const ItemTransfer= Loadable(lazy(()=>import('./ItemTransfer')))
-const MaterialRequest= Loadable(lazy(()=>import('./ItemTransfer')))
-const PurchaseRequest= Loadable(lazy(()=>import('./ItemTransfer')))
-const ProcessingRecipet= Loadable(lazy(()=>import('./ItemTransfer')))
-const PO= Loadable(lazy(()=>import('./ItemTransfer')))
-const SO= Loadable(lazy(()=>import('./ItemTransfer')))
-const Transaction= Loadable(lazy(()=>import('./ItemTransfer')))
+const MaterialRequest= Loadable(lazy(()=>import('./MaterialRequest')))
+const PO= Loadable(lazy(()=>import('./PurchaseOrder')))
 
 const TransactionRoutes = [
     {
-        path: '/transaction/inventory-entry',
-        element: <InventoryEntry />,
+        path: '/transaction/freight',
+        element: <Freight />,
     },
     {
         path: '/transaction/transfer',
@@ -24,24 +20,8 @@ const TransactionRoutes = [
         element: <MaterialRequest />,
     },
     {
-        path: '/transaction/purchase-request',
-        element: <PurchaseRequest />,
-    },
-    {
-        path: '/transaction/request',
-        element: <ProcessingRecipet />,
-    },
-    {
         path: '/transaction/PO',
         element: <PO />,
-    },
-    {
-        path: '/transaction/SO',
-        element: <SO />,
-    },
-    {
-        path: '/transaction/transaction',
-        element: <Transaction />,
     }
 ]
 

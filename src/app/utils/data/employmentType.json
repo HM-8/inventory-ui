@@ -1,6 +1,7 @@
 [
     {
-        "employment-type": "Intern",
-        "description": "A short term position"
+        "product-name": "Water Bottle",
+        "product-type": "Bottle ",
+        "description": "Water that has been Bottled"
     }
 ]

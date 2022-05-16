@@ -1,34 +1,16 @@
-// import {TextField,  } from '@mui/material'
 import React from 'react'
-// import Form from '../material-kit/forms/Form'
-// import DropDown from '../material-kit/drop-down/DropDown'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-
-// import { makeStyles } from '@mui/styles';
 import {
-    //   Container,
     Grid,
     Typography,
 } from '@mui/material'
-
-import Textfield from '../../components/FormsUI/Textfield'
-import Select from '../../components/FormsUI/Select'
-import DateTimePicker from '../../components/FormsUI/DataTimePicker'
-import Checkbox from '../../components/FormsUI/Checkbox'
-import Button from '../../components/FormsUI/Button/index'
-// import countries from './data/countries.json';
-import countries from '../../utils/data/countries.json'
-
+import Textfield from '../../../components/FormsUI/Textfield'
+import Select from '../../../components/FormsUI/Select'
+import Button from '../../../components/FormsUI/Button/index'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
-
-// import dropDownData from '../../../utils/data/dropDownData.json'
-import dropDownData from '../../utils/data/dropDownData.json'
-import { DatePicker, LocalizationProvider } from '@mui/lab'
-import AdapterDateFns from '@mui/lab/AdapterDateFns'
-
-const buttonText = 'Save'
+import DropDownData from '../../../utils/data/subcategory.json'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -80,20 +62,19 @@ const FORM_VALIDATION = Yup.object().shape({
         .required('The terms and conditions must be accepted.'),
 })
 
-function MaterailRequest() {
-    // const classes = useStyles();
+function NewCategories() {
 
     return (
         <Container>
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'Transaction', path: '/dashboard' },
-                        { name: 'Materail Request' },
+                        { name: 'Catergory', path: '/item/category' },
+                        { name: 'New Categories' },
                     ]}
                 />
             </div>
-            <SimpleCard title="Materail Request">
+            <SimpleCard title="New Category">
                 <Grid container>
                     <Grid item xs={12}>
                         <Container maxWidth="md">
@@ -108,57 +89,35 @@ function MaterailRequest() {
                             >
                                 <Form>
                                     <Grid container spacing={2}>
-                                        <Grid item xs={6}>
+                                        <Grid item xs={4}>
                                             <Textfield
                                                 name="firstName"
-                                                label="Requested by"
+                                                label="Categroy Name"
                                             />
                                         </Grid>
 
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="lastName"
-                                                label="Request to"
-                                            />
-                                        </Grid>
-                                        <Grid item xs={12}>
-                                            <DateTimePicker
-                                                name="departureDate"
-                                                label="Required date "
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
+                                        <Grid item xs={4}>
                                             <Select
                                                 name="country"
-                                                label="Status "
-                                                options={countries}
+                                                label="Subcategory"
+                                                options={DropDownData}
                                             />
                                         </Grid>
 
-                                        <Grid item xs={6}>
-                                            <Select
-                                                name="country"
-                                                label="Item List"
-                                                options={countries}
-                                            />
-                                        </Grid>
-                                        <Grid item xs={6}>
+                                        <Grid item xs={4}>
                                             <Textfield
-                                                name="addressLine1"
-                                                label="Quantity"
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="addressLine2"
+                                                name="email"
                                                 label="Description"
                                             />
                                         </Grid>
 
-                                        <Grid item xs={6}>
-                                            <Button>Submit Form</Button>
+                                        <Grid item xs={12}>
+                                            <Typography>
+                                                +
+                                            </Typography>
+                                        </Grid>                                          
+                                        <Grid item xs={12}>
+                                            <Button>Add</Button>
                                         </Grid>
                                     </Grid>
                                 </Form>
@@ -173,4 +132,4 @@ function MaterailRequest() {
     )
 }
 
-export default MaterailRequest
+export default NewCategories

@@ -27,6 +27,7 @@ import styled from '@emotion/styled'
 import dropDownData from '../../utils/data/dropDownData.json'
 import { DatePicker, LocalizationProvider } from '@mui/lab'
 import AdapterDateFns from '@mui/lab/AdapterDateFns'
+import BinCard from './BinCard'
 
 const buttonText = 'Save'
 
@@ -80,69 +81,35 @@ const FORM_VALIDATION = Yup.object().shape({
         .required('The terms and conditions must be accepted.'),
 })
 
-function QIB() {
+function Form1() {
     // const classes = useStyles();
 
     return (
-        <Container>
-            <div className="breadcrumb">
-                <Breadcrumb
-                    routeSegments={[
-                        { name: 'Tools', path: '/dashboard' },
-                        { name: 'Search' },
-                    ]}
+        <>
+            <Grid item xs={6}>
+                <Textfield name="firstName" label="Batch no " />
+            </Grid>
+            <Grid item xs={6}>
+                <DateTimePicker name="Expirydate" label="Expiry Date" />
+            </Grid>
+
+            <Grid item xs={6}>
+                <Select
+                    name="country"
+                    label="Departement Name"
+                    options={countries}
                 />
-            </div>
-            <SimpleCard title="Search">
-                <Grid container>
-                    <Grid item xs={12}></Grid>
-                    <Grid item xs={12}>
-                        <Container maxWidth="md">
-                            <Formik
-                                initialValues={{
-                                    ...INITIAL_FORM_STATE,
-                                }}
-                                validationSchema={FORM_VALIDATION}
-                                onSubmit={(values) => {
-                                    console.log(values)
-                                }}
-                            >
-                                <Form>
-                                    <Grid container spacing={2}>
-                                    <Grid item xs={6}>
-                                            <Select
-                                                name="country"
-                                                label="Item name "
-                                                options={countries}
-                                            />
-                                        </Grid>
+            </Grid>
+            <Grid item xs={6}>
+                <Select name="country" label="Office No" options={countries} />
+            </Grid>
+            <BinCard />
 
-                                        <Grid item xs={6}>
-                                            <Select
-                                                name="country"
-                                                label="Branch"
-                                                options={countries}
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Typography>Table</Typography>
-                                        </Grid>
-
-                                        <Grid item xs={12}>
-                                            <Button>Submit Form</Button>
-                                        </Grid>
-                                    </Grid>
-                                </Form>
-                            </Formik>
-
-                            {/* </div> */}
-                        </Container>
-                    </Grid>
-                </Grid>
-            </SimpleCard>
-        </Container>
+            <Grid item xs={12}>
+                <Button>Generate BIN Card</Button>
+            </Grid>
+        </>
     )
 }
 
-export default QIB
+export default Form1

@@ -27,14 +27,30 @@ export const navigations = [
         icon: 'check_circle',
         children: [
             {
-                name: 'Item details',
-                path: '/item/details',
+                name: 'GRV',
+                path: '/item/GRV',
             },
             {
-                name: 'Sale Item',
+                name: 'Item Variant',
+                path: '/item/variant',
+            },
+            {
+                name: 'Unit of Measurement (UOM)',
+                path: '/item/uom',
+            },
+            {
+                name: 'Supplier',
+                path: '/item/supplier',
+            },
+            {
+                name: 'Item Category',
+                path: '/item/category',
+            },
+            {
+                name: 'Item Sale',
                 path: '/item/sales-item',
             },
-        ],  
+        ],
     },
     {
         name: 'Transaction',
@@ -46,23 +62,15 @@ export const navigations = [
             },
             {
                 name: 'Item transfer ',
-                path: '/transaction/inventory-item',
+                path: '/transaction/transfer',
             },
             {
                 name: 'Purchase order',
                 path: '/transaction/PO',
             },
             {
-                name: 'Sale order',
-                path: '/transaction/SO',
-            },
-            {
-                name: 'Processing receipts',
-                path: '/transaction/request',
-            },
-            {
-                name: 'Inventory entry ',
-                path: '/leave/extend-leave-request',
+                name: 'Freight',
+                path: '/transaction/freight',
             },
         ],
     },
@@ -71,30 +79,16 @@ export const navigations = [
         icon: 'exit_to_app',
         children: [
             {
-                name: 'Quality Inspection',
-                path: '/transaction/inventory-entry',
-            },
-            {
-                name: '/tools/reconciliaiton',
-                path: '/leave/leave-type',
+                name: 'Inventory Reconciliation ',
+                path: '/tools/reconciliaiton',
             },
             {
                 name: 'Quick Inventory Balance',
                 path: '/tools/balance',
             },
-        ],
-    },
-    {
-        name: 'Return',
-        icon: 'exit_to_app',
-        children: [
             {
-                name: 'Sales Return ',
-                path: '/return/sales-return',
-            },
-            {
-                name: 'Purchase Return ',
-                path: '/return/purchase-return',
+                name: 'Adjustment',
+                path: '/tools/inspection',
             }
         ],
     },
@@ -103,12 +97,26 @@ export const navigations = [
         icon: 'assessment',
         children: [
             {
-                name: 'Ledger ',
-                path: '/report/ledger',
+                name: 'Monthly Report',
+                path: '/report/monthly',
             },
             {
-                name: 'Stock Level Report',
-                path: '/transaction/purchase-request',
+                name: 'Yearly Report',
+                path: '/report/yearly',
+            },
+            {
+                name: 'Bin card Report',
+                // icon: 'assessment',
+                children: [
+                    {
+                        name: 'Items',
+                        path: '/report/bin-item',
+                    },
+                    {
+                        name: 'Service',
+                        path: '/report/bin-service',
+                    }
+                ]
             },
         ],
     },

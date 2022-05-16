@@ -1,20 +1,19 @@
 import React from 'react'
-import PaginationTable from '../material-kit/tables/PaginationTable'
+import PaginationTable from '../../material-kit/tables/PaginationTable'
+
 import { Breadcrumb, SimpleCard } from 'app/components'
 import { Box, styled } from '@mui/system'
 import { Grid } from '@mui/material'
-import TableButton from '../material-kit/buttons/LinkButton'
+import TableButton from '../../material-kit/buttons/LinkButton'
 
-import rows from '../../utils/data/Branch.json'
+import rows from '../../../utils/data/category.json'
 
 const columns = [
-    { id: 'location', label: 'Location' },
-    { id: 'branch-manager', label: 'Branch Manager' },
-    { id: 'telephone', label: 'Telephone' },
-    { id: 'email', label: 'Email' },
-    { id: 'type', label: 'Inventory Type' }
+    { id: 'categroy-name', label: 'Categroy Name' },
+    { id: 'subcategory', label: 'Sub Category' },
+    { id: 'description', label: 'Description' },
 ]
-const url = '/general/NewBranch';
+const url = '/item/Newcategory';
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -29,28 +28,28 @@ const Container = styled('div')(({ theme }) => ({
     },
 }))
 
-const Branch = () => {
+const Category = () => {
     return (
         <Container>
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'General', path: '/dashboard' },
-                        { name: 'Branch' },
+                        { name: 'Item', path: '/dashboard' },
+                        { name: 'Category' },
                     ]}
                 />
             </div>
             <Box py="1px" />
             <Grid container direction="row" spacing={2} justifyContent="flex-end">
                 <Grid item>
-                    <TableButton buttonText="Add Branch" url={url}/>
+                    <TableButton buttonText="Add Category" url={url}/>
                 </Grid>
             </Grid>
-            <SimpleCard title="Employment Type">
+            <SimpleCard title="Category List">
                 <PaginationTable columns={columns} rows={rows} />
             </SimpleCard>
         </Container>
     )
 }
 
-export default Branch
+export default Category
