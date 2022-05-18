@@ -1,38 +1,18 @@
-// import {TextField,  } from '@mui/material'
 import React from 'react'
-// import Form from '../material-kit/forms/Form'
-// import DropDown from '../material-kit/drop-down/DropDown'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-
-// import { makeStyles } from '@mui/styles';
 import {
-    //   Container,
     Grid,
     Typography,
 } from '@mui/material'
 import DropDownData from '../../utils/data/dropDownData.json'
+import uom from '../../utils/data/uomlist.json'
 import Textfield from '../../components/FormsUI/Textfield'
 import Select from '../../components/FormsUI/Select'
-import DateTimePicker from '../../components/FormsUI/DataTimePicker'
-import Checkbox from '../../components/FormsUI/Checkbox'
 import Button from '../../components/FormsUI/Button/index'
-// import countries from './data/countries.json';
-import countries from '../../utils/data/countries.json'
 
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
-
-// import dropDownData from '../../../utils/data/dropDownData.json'
-import dropDownData from '../../utils/data/dropDownData.json'
-import { DatePicker, LocalizationProvider } from '@mui/lab'
-import AdapterDateFns from '@mui/lab/AdapterDateFns'
-import Form1 from './GRV/Form1'
-import Form2 from './Form2'
-import Form3 from './Form3'
-import Form4 from './Form4'
-const buttonText = 'Save'
-
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
     [theme.breakpoints.down('sm')]: {
@@ -83,7 +63,7 @@ const FORM_VALIDATION = Yup.object().shape({
         .required('The terms and conditions must be accepted.'),
 })
 
-function Variants() {
+function SaleItem() {
     // const classes = useStyles();
 
     return (
@@ -96,7 +76,7 @@ function Variants() {
                     ]}
                 />
             </div>
-            <SimpleCard title="GRV Form">
+            <SimpleCard title="Sales Item">
                 <Grid container>
                     <Grid item xs={12}>
                         <Container maxWidth="md">
@@ -131,7 +111,7 @@ function Variants() {
                                                 label="Bin No"
                                             />
                                         </Grid>
-                                        <Grid item xs={4}>
+                                        <Grid item xs={6}>
                                             <Select
                                                 name="country"
                                                 label="Subcategory"
@@ -139,18 +119,18 @@ function Variants() {
                                             />
                                         </Grid>
 
-                                        <Grid item xs={4}>
+                                        <Grid item xs={6}>
                                             <Select
                                                 name="country"
                                                 label="Item Variant "
                                                 options={DropDownData}
                                             />
                                         </Grid>
-                                        <Grid item xs={4}>
+                                        <Grid item xs={6}>
                                             <Select
                                                 name="country"
                                                 label="UMO"
-                                                options={DropDownData}
+                                                options={uom}
                                             />
                                         </Grid>
 
@@ -165,15 +145,9 @@ function Variants() {
                                                 name="email"
                                                 label="Discount"
                                             />
-                                        </Grid>
-
-                                        <Grid item xs={12}>
-                                            <Typography>
-                                                +
-                                            </Typography>
                                         </Grid>                                          
                                         <Grid item xs={12}>
-                                            <Button>Submit Form</Button>
+                                            <Button>ADD</Button>
                                         </Grid>
                                     </Grid>
                                 </Form>
@@ -188,4 +162,4 @@ function Variants() {
     )
 }
 
-export default Variants
+export default SaleItem

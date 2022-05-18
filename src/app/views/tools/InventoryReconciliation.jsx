@@ -142,11 +142,6 @@ function Reconciliation() {
                                                 label="Qty"
                                             />
                                         </Grid>
-
-                                        <Grid item xs={12}>
-                                            <Typography>+  - </Typography>
-                                        </Grid>
-
                                         
                                         <Grid item xs={12}>
                                             <Typography>Posting </Typography>
@@ -187,75 +182,6 @@ function Reconciliation() {
                                                 label="Report Code"
                                             />
                                         </Grid>
-                                        {/* <Grid item xs={12}>
-                                            <Textfield
-                                                name="email"
-                                                label="Email"
-                                            />
-                                        </Grid>
-
-                                        
-
-                                        <Grid item xs={12}>
-                                            <Textfield
-                                                name="addressLine2"
-                                                label="Address Line 2"
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="city"
-                                                label="City"
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="state"
-                                                label="State"
-                                            />
-                                        </Grid>
-
-                                        
-
-                                        <Grid item xs={12}>
-                                            <Typography>
-                                                Booking information
-                                            </Typography>
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <DateTimePicker
-                                                name="arrivealDate"
-                                                label="Arrival Date"
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <DateTimePicker
-                                                name="departureDate"
-                                                label="Departure Date"
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={12}>
-                                            <Textfield
-                                                name="message"
-                                                label="Message"
-                                                multiline={true}
-                                                rows={4}
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={12}>
-                                            <Checkbox
-                                                name="termsOfService"
-                                                legend="Terms Of Service"
-                                                label="I agree"
-                                            />
-                                        </Grid> */}
-
                                         <Grid item xs={12}>
                                             <Button>Submit Form</Button>
                                         </Grid>

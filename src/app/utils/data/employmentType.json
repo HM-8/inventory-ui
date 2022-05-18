@@ -1,7 +1,7 @@
 [
     {
-        "product-name": "Water Bottle",
-        "product-type": "Bottle ",
+        "productname": "Water Bottle",
+        "producttype": "Bottle ",
         "description": "Water that has been Bottled"
     }
 ]

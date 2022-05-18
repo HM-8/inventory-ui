@@ -1,7 +1,7 @@
 [
     {
-        "attribute-name": "Water Bottle",
-        "options": "Bottle ",
+        "measurementunit": "liter",
+        "abbreviation": "l ",
         "description": "Water that has been Bottled"
     }
 ]

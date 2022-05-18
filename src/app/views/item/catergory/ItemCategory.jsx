@@ -5,8 +5,9 @@ import { Breadcrumb, SimpleCard } from 'app/components'
 import { Box, styled } from '@mui/system'
 import { Grid } from '@mui/material'
 import TableButton from '../../material-kit/buttons/LinkButton'
-
+import AddCategory from './NewCategory'
 import rows from '../../../utils/data/category.json'
+import FormDialog from 'app/views/material-kit/dialog/FormDialog'
 
 const columns = [
     { id: 'categroy-name', label: 'Categroy Name' },
@@ -42,7 +43,8 @@ const Category = () => {
             <Box py="1px" />
             <Grid container direction="row" spacing={2} justifyContent="flex-end">
                 <Grid item>
-                    <TableButton buttonText="Add Category" url={url}/>
+                    {/* <TableButton buttonText="Add Category" url={url}/> */}
+                    <FormDialog title={'New Variant'} buttonText={'Add Row'}><AddCategory /></FormDialog>
                 </Grid>
             </Grid>
             <SimpleCard title="Category List">

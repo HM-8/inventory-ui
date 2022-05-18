@@ -4,13 +4,11 @@ import { Breadcrumb, SimpleCard } from 'app/components'
 import { Box, styled } from '@mui/system'
 import { Grid,Button } from '@mui/material'
 import NewProducts from './NewProducts'
-import rows from '../../utils/data/employmentType.json'
+import data from '../../utils/data/employmentType.json'
+import EditIcon from '@mui/icons-material/Edit'
+import DeleteIcon from '@mui/icons-material/Delete'
 
-const columns = [
-    { id: 'product-name', label: 'Product Name' },
-    { id: 'product-type', label: 'Product Type' },
-    { id: 'description', label: 'Description' },
-]
+
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
     [theme.breakpoints.down('sm')]: {
@@ -23,6 +21,37 @@ const Container = styled('div')(({ theme }) => ({
         },
     },
 }))
+
+const columns = [
+    { id: 'productname', label: 'Product Name',minWidth: 10  },
+    { id: 'producttype', label: 'Product Type',minWidth: 10  },
+    { id: 'description', label: 'Description',minWidth: 10  },
+    { id: 'edit', label: '' ,minWidth: 10 },
+    { id: 'del', label: '',minWidth: 10  },
+]
+
+function createData(productname,producttype, description,edit, del) {
+    return {
+        productname: productname,
+        producttype: producttype,
+        description:description,
+        edit: edit,
+        del: del,
+    }
+}
+
+const rows = data.map((item, index) => {
+    const container = {}
+    createData(
+        (container.productname = item.productname),
+        (container.producttype = item.producttype),
+        (container.description = item.description),
+        (container.edit = <EditIcon />),
+        (container.del = <DeleteIcon />)
+    )
+    return container
+})
+
 const StyledButton = styled(Button)(({ theme }) => ({
     margin: theme.spacing(1),
 }))
@@ -51,7 +80,7 @@ const Products = () => {
                 spacing={2}
                 justifyContent="flex-end"
             >
-                <Grid item xs={6}>
+                <Grid item xs={12}>
                     <div>{show ? <NewProducts /> : null}</div>
                     </Grid>
                 <Grid item>

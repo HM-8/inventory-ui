@@ -1,13 +1,12 @@
 import React from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import {
-    Grid,
-    Typography,
-} from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 
 import Textfield from '../../../components/FormsUI/Textfield'
 import Button from '../../../components/FormsUI/Button/index'
+import Select from '../../../components/FormsUI/Select'
+import Suppliers from '../../../utils/data/Supplierlist.json'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
 const buttonText = 'Save'
@@ -90,13 +89,21 @@ function NewSupplier() {
                             >
                                 <Form>
                                     <Grid container spacing={2}>
-                                    <Grid item xs={6}>
-                                            <Textfield
+                                        {/* <Grid item xs={6}>
+                                            <Select
+                                                name="country"
+                                                label="Company Name "
+                                                options={Suppliers}
+                                            />
+                                        </Grid> */}
+                                        <Grid item xs={12}>
+                                            <Select
                                                 name="firstName"
-                                                label="Company Name"
+                                                label="Company Name "
+                                                options={Suppliers}
                                             />
                                         </Grid>
-                                    <Grid item xs={12}>
+                                        <Grid item xs={12}>
                                             <Typography>Location</Typography>
                                         </Grid>
                                         <Grid item xs={6}>
@@ -172,7 +179,7 @@ function NewSupplier() {
                                                 name="state"
                                                 label="Company Email"
                                             />
-                                        </Grid>                                         
+                                        </Grid>
                                         <Grid item xs={12}>
                                             <Button>Submit Form</Button>
                                         </Grid>

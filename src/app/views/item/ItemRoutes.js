@@ -1,7 +1,7 @@
 import React, { lazy } from 'react'
 import Loadable from 'app/components/Loadable/Loadable'
 
-const GRV= Loadable(lazy(()=>import('./GRV')))
+const GRV= Loadable(lazy(()=>import('./GRV/GRV')))
 const Variant= Loadable(lazy(()=>import('./variant/ItemVariant')))
 const UOM= Loadable(lazy(()=>import('./UOM/UOM')))
 const Supplier= Loadable(lazy(()=>import('./supplier/Supplier')))

@@ -1,37 +1,19 @@
-// import {TextField,  } from '@mui/material'
-import React from 'react'
-// import Form from '../material-kit/forms/Form'
-// import DropDown from '../material-kit/drop-down/DropDown'
+import React, { useState } from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
+import { Grid, TextField, Typography } from '@mui/material'
 
-// import { makeStyles } from '@mui/styles';
-import {
-    //   Container,
-    Grid,
-    Typography,
-} from '@mui/material'
-
-import Textfield from '../../components/FormsUI/Textfield'
-import Select from '../../components/FormsUI/Select'
-import DateTimePicker from '../../components/FormsUI/DataTimePicker'
-import Checkbox from '../../components/FormsUI/Checkbox'
-import Button from '../../components/FormsUI/Button/index'
-// import countries from './data/countries.json';
-import countries from '../../utils/data/countries.json'
-
+import Textfield from '../../../components/FormsUI/Textfield'
+import Select from '../../../components/FormsUI/Select'
+import DateTimePicker from '../../../components/FormsUI/DataTimePicker'
+import Button from '../../../components/FormsUI/Button/index'
+import Branches from '../../../utils/data/BranchList.json'
+import Suppliers from '../../../utils/data/Supplierlist.json'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
-
-// import dropDownData from '../../../utils/data/dropDownData.json'
-import dropDownData from '../../utils/data/dropDownData.json'
-import { DatePicker, LocalizationProvider } from '@mui/lab'
-import AdapterDateFns from '@mui/lab/AdapterDateFns'
-import Form1 from './Form1'
-import Form2 from './Form2'
-import Form3 from './Form3'
-import Form4 from './Form4'
-const buttonText = 'Save'
+import attribute from '../../../utils/data/AttributeLIst.json'
+import category from '../../../utils/data/categorylist.json'
+import subcategory from '../../../utils/data/subcategory.json'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -85,7 +67,10 @@ const FORM_VALIDATION = Yup.object().shape({
 
 function Products() {
     // const classes = useStyles();
-
+    const [state, setstate] = useState({
+        date: new Date(),
+    })
+    const { quantity, date } = state
     return (
         <Container>
             <div className="breadcrumb">
@@ -112,9 +97,10 @@ function Products() {
                                 <Form>
                                     <Grid container spacing={2}>
                                         <Grid item xs={6}>
-                                            <Textfield
-                                                name="firstName"
-                                                label="Branch"
+                                            <Select
+                                                name="country"
+                                                label="Branch "
+                                                options={Branches}
                                             />
                                         </Grid>
 
@@ -131,11 +117,11 @@ function Products() {
                                                 label="GRV No"
                                             />
                                         </Grid>
-
                                         <Grid item xs={6}>
-                                            <Textfield
-                                                name="phone"
-                                                label="Supplier -Drop Down"
+                                            <Select
+                                                name="country"
+                                                label="Suppliers "
+                                                options={Suppliers}
                                             />
                                         </Grid>
                                         <Grid item xs={6}>
@@ -178,12 +164,22 @@ function Products() {
                                                 label="Description"
                                             />
                                         </Grid>
-
-                                        <Grid item xs={12}>
-                                            <Select
-                                                name="country"
+                                        <Grid item lg={6} md={6} sm={12} xs={12} sx={{ mt: 2 }}>
+                                            <TextField
+                                                sx={{ mb: 4 }}
                                                 label="Quantity"
-                                                options={countries}
+                                                // onChange={handleChange}
+                                                type="number"
+                                                name="quantity"
+                                                value={quantity || ''}
+                                                validators={[
+                                                    'required',
+                                                    'minStringLength:16',
+                                                    'maxStringLength: 16',
+                                                ]}
+                                                errorMessages={[
+                                                    'this field is required',
+                                                ]}
                                             />
                                         </Grid>
 
@@ -192,25 +188,25 @@ function Products() {
                                                 Item Variant
                                             </Typography>
                                         </Grid>
-                                        <Grid item xs={12}>
+                                        <Grid item xs={6}>
                                             <Select
                                                 name="country"
                                                 label="Item Attribute"
-                                                options={countries}
+                                                options={attribute}
                                             />
                                         </Grid>
-                                        <Grid item xs={12}>
+                                        <Grid item xs={6}>
                                             <Select
                                                 name="country"
                                                 label="Options"
-                                                options={countries}
+                                                options={category}
                                             />
                                         </Grid>
                                         <Grid item xs={6}>
                                             <Select
                                                 name="country"
                                                 label="Category"
-                                                options={countries}
+                                                options={category}
                                             />
                                         </Grid>
 
@@ -218,7 +214,7 @@ function Products() {
                                             <Select
                                                 name="country"
                                                 label="SubCategory "
-                                                options={countries}
+                                                options={subcategory}
                                             />
                                         </Grid>
 
@@ -229,7 +225,7 @@ function Products() {
 
                                         <Grid item xs={12}>
                                             <Typography>
-                                            GRV Prepared By
+                                                GRV Prepared By
                                             </Typography>
                                         </Grid>
 
@@ -244,10 +240,10 @@ function Products() {
                                                 name="state"
                                                 label="Signature"
                                             />
-                                        </Grid> 
+                                        </Grid>
                                         <Grid item xs={12}>
                                             <Typography>
-                                            GRV Checked By
+                                                GRV Checked By
                                             </Typography>
                                         </Grid>
 
@@ -262,9 +258,9 @@ function Products() {
                                                 name="state"
                                                 label="Signature"
                                             />
-                                        </Grid>                                            
+                                        </Grid>
                                         <Grid item xs={12}>
-                                            <Button>Submit Form</Button>
+                                            <Button>Send</Button>
                                         </Grid>
                                     </Grid>
                                 </Form>
