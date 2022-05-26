@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import { Grid, Icon, Typography, IconButton } from '@mui/material'
-
-import Textfield from '../../../components/FormsUI/Textfield'
-import Button from '../../../components/FormsUI/Button/index'
-import { Breadcrumb, SimpleCard } from 'app/components'
+import {
+    Grid,
+    Icon,
+    Typography,
+    TextField,
+    Button,
+    IconButton,
+} from '@mui/material'
 import styled from '@emotion/styled'
 import { useTheme } from '@emotion/react'
 
@@ -22,25 +24,13 @@ const Container = styled('div')(({ theme }) => ({
     },
 }))
 
-const INITIAL_FORM_STATE = {
-    productName: '',
-    productType: '',
-    description: '',
-}
-
-const FORM_VALIDATION = Yup.object().shape({
-    // productName: Yup.string().required('Required'),
-    // productType: Yup.string().required('Required'),
-    // description: Yup.string().required('Required'),
-})
-
-function Products() {
+function AddVariants() {
     const { palette } = useTheme()
     const textColor = palette.text.primary
     const [components, setComponents] = useState([
         {
-            productName: '',
-            productType: '',
+            AttributeName: '',
+            Options: '',
             description: '',
         },
     ])
@@ -49,8 +39,8 @@ function Products() {
         setComponents([
             ...components,
             {
-                productName: '',
-                productType: '',
+                AttributeName: '',
+                Options: '',
                 description: '',
             },
         ])
@@ -65,42 +55,44 @@ function Products() {
         values[index][event.target.name] = event.target.value
         setComponents(values)
     }
-    const handleSubmit = (event) => {
-        event.preventDefault()
+    const handleSubmit = () => {
         console.log(components)
     }
     return (
-        <SimpleCard>
             <Grid container>
                 <Grid item xs={12}>
                     <Container maxWidth="md">
-                        <Formik
-                            initialValues={{
-                                ...INITIAL_FORM_STATE,
-                            }}
-                            validationSchema={FORM_VALIDATION}
-                            onSubmit={(values) => {
-                                console.log(values)
-                            }}
-                        >
-                            <Form>
+                        <form onSubmit={handleSubmit}>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} style={{marginLeft:'2px'}}>
+                                    <Typography>Add Product</Typography>
+                                </Grid>
                                 {components.map((item, index) => (
-                                    <Grid container spacing={3} key={index}>
-                                        <Grid item xs={4}>
-                                            <Textfield
-                                                name="productName"
+                                    <Grid
+                                        container
+                                        spacing={2}
+                                        key={index}
+                                        style={{
+                                            margin: '1px',
+                                        }}
+                                    >
+                                        <Grid item xs={3}>
+                                            <TextField
+                                                name="AttributeName"
                                                 label="Attribute Name"
-                                                value={item.productName}
+                                                fullWidth
+                                                value={item.AttributeName}
                                                 onChange={(event) =>
                                                     handleChange(index, event)
                                                 }
                                             />
                                         </Grid>
                                         <Grid item xs={3}>
-                                            <Textfield
-                                                name="productType"
-                                                label="Options Name"
-                                                value={item.productType}
+                                            <TextField
+                                                name="Options"
+                                                label="Options"
+                                                fullWidth
+                                                value={item.Options}
                                                 onChange={(event) =>
                                                     handleChange(index, event)
                                                 }
@@ -108,16 +100,17 @@ function Products() {
                                         </Grid>
 
                                         <Grid item xs={3}>
-                                            <Textfield
+                                            <TextField
                                                 name="description"
                                                 label="Description"
+                                                fullWidth
                                                 value={item.description}
                                                 onChange={(event) =>
                                                     handleChange(index, event)
                                                 }
                                             />
                                         </Grid>
-                                        <Grid item xs={1}>
+                                        <Grid item xs={2}>
                                             <IconButton
                                                 sx={{ mt: 0.5 }}
                                                 onClick={addComponent}
@@ -150,19 +143,21 @@ function Products() {
                                     </Grid>
                                 ))}
                                 <Grid item xs={12}>
-                                    <Button onClick={() => handleSubmit()}>
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={() => handleSubmit()}
+                                    >
                                         Add
                                     </Button>
                                 </Grid>
-                            </Form>
-                        </Formik>
-
-                        {/* </div> */}
+                            </Grid>
+                        </form>
                     </Container>
                 </Grid>
             </Grid>
-        </SimpleCard>
     )
 }
 
-export default Products
+export default AddVariants
+

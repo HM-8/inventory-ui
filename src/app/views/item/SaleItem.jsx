@@ -5,7 +5,7 @@ import {
     Grid,
     Typography,
 } from '@mui/material'
-import DropDownData from '../../utils/data/dropDownData.json'
+import DropDownData from '../../utils/data/subcategory.json'
 import uom from '../../utils/data/uomlist.json'
 import Textfield from '../../components/FormsUI/Textfield'
 import Select from '../../components/FormsUI/Select'
@@ -13,6 +13,8 @@ import Button from '../../components/FormsUI/Button/index'
 
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
+import Variant from '../../utils/data/variants.json'
+
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
     [theme.breakpoints.down('sm')]: {
@@ -28,27 +30,21 @@ const Container = styled('div')(({ theme }) => ({
 
 const INITIAL_FORM_STATE = {
     firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    addressLine1: '',
-    addressLine2: '',
-    city: '',
-    state: '',
-    country: '',
-    arrivealDate: '',
-    departureDate: '',
-    message: '',
-    termsOfService: false,
+    barcode:'',
+    binNo:'',
+    subcategory:'',
+    variant:'',
+    uom:'',
+    qty:'',
+    discount:'',
 }
 
 const FORM_VALIDATION = Yup.object().shape({
     firstName: Yup.string().required('Required'),
-    lastName: Yup.string().required('Required'),
-    email: Yup.string().email('Invalid email.').required('Required'),
-    phone: Yup.number()
+    barcode: Yup.string().required('Required'),
+    binNo: Yup.number()
         .integer()
-        .typeError('Please enter a valid phone number')
+        .typeError('Please enter a valid Bin number')
         .required('Required'),
     addressLine1: Yup.string().required('Required'),
     addressLine2: Yup.string(),
@@ -71,12 +67,12 @@ function SaleItem() {
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'Item', path: '/dashboard' },
-                        { name: 'Item Variants' },
+                        { name: 'Inventory managment', path: '/dashboard' },
+                        { name: 'Item Sales' },
                     ]}
                 />
             </div>
-            <SimpleCard title="Sales Item">
+            <SimpleCard title="Item Sales">
                 <Grid container>
                     <Grid item xs={12}>
                         <Container maxWidth="md">
@@ -93,7 +89,7 @@ function SaleItem() {
                                     <Grid container spacing={2}>
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="firstName"
+                                                name="barcode"
                                                 label="Barcode"
                                             />
                                         </Grid>
@@ -107,13 +103,13 @@ function SaleItem() {
 
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="email"
+                                                name="binNo"
                                                 label="Bin No"
                                             />
                                         </Grid>
                                         <Grid item xs={6}>
                                             <Select
-                                                name="country"
+                                                name="subcategory"
                                                 label="Subcategory"
                                                 options={DropDownData}
                                             />
@@ -121,14 +117,14 @@ function SaleItem() {
 
                                         <Grid item xs={6}>
                                             <Select
-                                                name="country"
+                                                name="variant"
                                                 label="Item Variant "
-                                                options={DropDownData}
+                                                options={Variant}
                                             />
                                         </Grid>
                                         <Grid item xs={6}>
                                             <Select
-                                                name="country"
+                                                name="uom"
                                                 label="UMO"
                                                 options={uom}
                                             />
@@ -136,13 +132,13 @@ function SaleItem() {
 
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="email"
+                                                name="qty"
                                                 label="Quantity"
                                             />
                                         </Grid>
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="email"
+                                                name="discount"
                                                 label="Discount"
                                             />
                                         </Grid>                                          

@@ -9,7 +9,6 @@ import Select from '../../../components/FormsUI/Select'
 import Suppliers from '../../../utils/data/Supplierlist.json'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
-const buttonText = 'Save'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -25,45 +24,42 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 const INITIAL_FORM_STATE = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    addressLine1: '',
-    addressLine2: '',
-    city: '',
-    state: '',
-    country: '',
-    arrivealDate: '',
-    departureDate: '',
-    message: '',
-    termsOfService: false,
+    CompanyName: '',
+    houseNo: '',
+    kebele: '',
+    Wereda: '',
+    City: '',
+    Subcity: '',
+    AreaName: '',
+    MobileNo: '',
+    HomeNo: '',
+    Personalemail: '',
+    CompanyEmail: '',
 }
 
 const FORM_VALIDATION = Yup.object().shape({
-    firstName: Yup.string().required('Required'),
-    lastName: Yup.string().required('Required'),
-    email: Yup.string().email('Invalid email.').required('Required'),
-    phone: Yup.number()
-        .integer()
-        .typeError('Please enter a valid phone number')
+    CompanyName: Yup.string().required('Required'),
+    houseNo: Yup.string().required('Required'),
+    kebele: Yup.string().required('Required'),
+    Wereda: Yup.number()
+        .typeError('Please enter a valid Wereda number')
         .required('Required'),
-    addressLine1: Yup.string().required('Required'),
-    addressLine2: Yup.string(),
+    MobileNo: Yup.number()
+        .integer()
+        .typeError('Please enter a valid Mobile number')
+        .required('Required'),
+    Subcity: Yup.string().required('Required'),
+    AreaName: Yup.string(),
     city: Yup.string().required('Required'),
-    state: Yup.string().required('Required'),
-    country: Yup.string().required('Required'),
-    arrivealDate: Yup.date().required('Required'),
-    departureDate: Yup.date().required('Required'),
-    message: Yup.string(),
-    termsOfService: Yup.boolean()
-        .oneOf([true], 'The terms and conditions must be accepted.')
-        .required('The terms and conditions must be accepted.'),
+    HomeNo: Yup.string().required('Required'),
+    Personalemail: Yup.string().email('Invalid email.').required('Required'),
+    CompanyEmail: Yup.string().email('Invalid email.').required('Required'),
 })
+const StyledButton = styled(Button)(({ theme }) => ({
+    margin: theme.spacing(1),
+}))
 
 function NewSupplier() {
-    // const classes = useStyles();
-
     return (
         <Container>
             <div className="breadcrumb">
@@ -89,17 +85,10 @@ function NewSupplier() {
                             >
                                 <Form>
                                     <Grid container spacing={2}>
-                                        {/* <Grid item xs={6}>
-                                            <Select
-                                                name="country"
-                                                label="Company Name "
-                                                options={Suppliers}
-                                            />
-                                        </Grid> */}
                                         <Grid item xs={12}>
                                             <Select
-                                                name="firstName"
-                                                label="Company Name "
+                                                name="CompanyName"
+                                                label="Supplier Company "
                                                 options={Suppliers}
                                             />
                                         </Grid>
@@ -108,41 +97,41 @@ function NewSupplier() {
                                         </Grid>
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="firstName"
+                                                name="houseNo"
                                                 label="House No"
                                             />
                                         </Grid>
 
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="lastName"
+                                                name="kebele"
                                                 label="Kebele"
                                             />
                                         </Grid>
 
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="email"
+                                                name="wereda"
                                                 label="Wereda"
                                             />
                                         </Grid>
 
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="phone"
+                                                name="City"
                                                 label="City"
                                             />
                                         </Grid>
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="phone"
+                                                name="Subcity"
                                                 label="Subcity"
                                             />
                                         </Grid>
 
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="phone"
+                                                name="AreaName"
                                                 label="Area name "
                                             />
                                         </Grid>
@@ -152,14 +141,14 @@ function NewSupplier() {
 
                                         <Grid item xs={12}>
                                             <Textfield
-                                                name="addressLine1"
+                                                name="MobileNo"
                                                 label="Mobile No"
                                             />
                                         </Grid>
 
                                         <Grid item xs={12}>
                                             <Textfield
-                                                name="addressLine2"
+                                                name="HomeNo"
                                                 label="Home No"
                                             />
                                         </Grid>
@@ -169,14 +158,14 @@ function NewSupplier() {
 
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="city"
+                                                name="Personalemail"
                                                 label="Personal Email"
                                             />
                                         </Grid>
 
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="state"
+                                                name="CompanyEmail"
                                                 label="Company Email"
                                             />
                                         </Grid>
@@ -186,8 +175,6 @@ function NewSupplier() {
                                     </Grid>
                                 </Form>
                             </Formik>
-
-                            {/* </div> */}
                         </Container>
                     </Grid>
                 </Grid>

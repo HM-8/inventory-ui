@@ -27,6 +27,7 @@ import styled from '@emotion/styled'
 import dropDownData from '../../utils/data/dropDownData.json'
 import { DatePicker, LocalizationProvider } from '@mui/lab'
 import AdapterDateFns from '@mui/lab/AdapterDateFns'
+import { Link } from 'react-router-dom'
 
 const buttonText = 'Save'
 
@@ -80,6 +81,10 @@ const FORM_VALIDATION = Yup.object().shape({
         .required('The terms and conditions must be accepted.'),
 })
 
+const StyledButton = styled(Button)(({ theme }) => ({
+    margin: theme.spacing(1),
+}))
+
 function Freight() {
     // const classes = useStyles();
 
@@ -89,7 +94,7 @@ function Freight() {
                 <Breadcrumb
                     routeSegments={[
                         { name: 'Transaction', path: '/dashboard' },
-                        { name: 'Freight' },
+                        { name: 'Item Transfer' },
                     ]}
                 />
             </div>
@@ -108,14 +113,14 @@ function Freight() {
                             >
                                 <Form>
                                     <Grid container spacing={2}>
-                                    <Grid item xs={6}>
+                                        <Grid item xs={6}>
                                             <Select
                                                 name="country"
                                                 label="Items No "
                                                 options={countries}
                                             />
                                         </Grid>
-                                        
+
                                         <Grid item xs={6}>
                                             <Textfield
                                                 name="firstName"
@@ -129,22 +134,6 @@ function Freight() {
                                                 label="Quantity"
                                             />
                                         </Grid>
-
-                                        {/* <Grid item xs={6}>
-                                            <Select
-                                                name="country"
-                                                label="Status "
-                                                options={countries}
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Select
-                                                name="country"
-                                                label="Item List"
-                                                options={countries}
-                                            />
-                                        </Grid> */}
                                         <Grid item xs={6}>
                                             <Textfield
                                                 name="addressLine1"
@@ -174,7 +163,9 @@ function Freight() {
                                         </Grid>
 
                                         <Grid item xs={12}>
-                                            <Typography>Pickup</Typography>
+                                            <Typography>
+                                                <h3>Pickup</h3>
+                                            </Typography>
                                         </Grid>
                                         <Grid item xs={6}>
                                             <Textfield
@@ -182,7 +173,9 @@ function Freight() {
                                                 label=" Branch name"
                                             />
                                         </Grid>
-
+                                        <Grid item xs={12}>
+                                            <Typography>Address</Typography>
+                                        </Grid>
                                         <Grid item xs={12}>
                                             <Typography></Typography>
                                         </Grid>
@@ -228,7 +221,9 @@ function Freight() {
                                         </Grid>
 
                                         <Grid item xs={12}>
-                                            <Typography>Contact Info</Typography>
+                                            <Typography>
+                                                Contact Info
+                                            </Typography>
                                         </Grid>
                                         <Grid item xs={6}>
                                             <Textfield
@@ -242,12 +237,12 @@ function Freight() {
                                                 name="phone"
                                                 label="Contact Person Mobile No "
                                             />
-                                        </Grid> 
+                                        </Grid>
 
-
-                                        
                                         <Grid item xs={12}>
-                                            <Typography>Delivery</Typography>
+                                            <Typography>
+                                                <h3>Delivery</h3>
+                                            </Typography>
                                         </Grid>
                                         <Grid item xs={6}>
                                             <Textfield
@@ -300,7 +295,6 @@ function Freight() {
                                             />
                                         </Grid>
 
-
                                         <Grid item xs={6}>
                                             <Textfield
                                                 name="phone"
@@ -326,7 +320,7 @@ function Freight() {
 
                                         <Grid item xs={12}>
                                             <Typography>
-                                            Transport Requestor 
+                                                Transport Requestor
                                             </Typography>
                                         </Grid>
                                         <Grid item xs={6}>
@@ -336,12 +330,40 @@ function Freight() {
                                             />
                                         </Grid>
                                         <Grid item xs={6}>
-                                        <Textfield
+                                            <Textfield
                                                 name="addressLine2"
                                                 label="Signature"
                                             />
                                         </Grid>
 
+                                        <Grid item xs={12}>
+                                            <Typography>
+                                                Transport Approver
+                                            </Typography>
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="addressLine2"
+                                                label="Name"
+                                            />
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="addressLine2"
+                                                label="Signature"
+                                            />
+                                        </Grid>
+
+                                        <Link to="/transaction/SIV">
+                                        <Grid xs={12}>
+                                            <StyledButton
+                                                variant="contained"
+                                                color="secondary"
+                                            >
+                                                SIV 
+                                            </StyledButton>
+                                        </Grid>
+                                        </Link>
                                         <Grid item xs={12}>
                                             <Button>Submit Form</Button>
                                         </Grid>

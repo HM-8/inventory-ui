@@ -17,17 +17,10 @@ import Select from '../../components/FormsUI/Select'
 import DateTimePicker from '../../components/FormsUI/DataTimePicker'
 import Checkbox from '../../components/FormsUI/Checkbox'
 import Button from '../../components/FormsUI/Button/index'
-// import countries from './data/countries.json';
-import countries from '../../utils/data/countries.json'
-
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
-
-// import dropDownData from '../../../utils/data/dropDownData.json'
-import dropDownData from '../../utils/data/dropDownData.json'
-import { DatePicker, LocalizationProvider } from '@mui/lab'
-import AdapterDateFns from '@mui/lab/AdapterDateFns'
-
+import Branch from '../../utils/data/BranchList.json'
+import itemlist from '../../utils/data/itemlist.json'
 const buttonText = 'Save'
 
 const Container = styled('div')(({ theme }) => ({
@@ -113,15 +106,15 @@ function QIB() {
                                             <Select
                                                 name="country"
                                                 label="Item name "
-                                                options={countries}
+                                                options={itemlist}
                                             />
                                         </Grid>
 
                                         <Grid item xs={6}>
                                             <Select
-                                                name="country"
+                                                name="state"
                                                 label="Branch"
-                                                options={countries}
+                                                options={Branch}
                                             />
                                         </Grid>
 
@@ -130,7 +123,7 @@ function QIB() {
                                         </Grid>
 
                                         <Grid item xs={12}>
-                                            <Button>Submit Form</Button>
+                                            <Button>Submit</Button>
                                         </Grid>
                                     </Grid>
                                 </Form>

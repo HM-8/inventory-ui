@@ -1,32 +1,18 @@
-// import {TextField,  } from '@mui/material'
 import React from 'react'
-// import Form from '../material-kit/forms/Form'
-// import DropDown from '../material-kit/drop-down/DropDown'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 
-// import { makeStyles } from '@mui/styles';
 import {
-    //   Container,
     Grid,
     Typography,
 } from '@mui/material'
 
-import Textfield from '../../components/FormsUI/Textfield'
-import Select from '../../components/FormsUI/Select'
-import DateTimePicker from '../../components/FormsUI/DataTimePicker'
-import Checkbox from '../../components/FormsUI/Checkbox'
 import Button from '../../components/FormsUI/Button/index'
-// import countries from './data/countries.json';
-import countries from '../../utils/data/countries.json'
 
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
+import TextareaAutosize from '@mui/material/TextareaAutosize'
 
-// import dropDownData from '../../../utils/data/dropDownData.json'
-import dropDownData from '../../utils/data/dropDownData.json'
-import { DatePicker, LocalizationProvider } from '@mui/lab'
-import AdapterDateFns from '@mui/lab/AdapterDateFns'
 
 const buttonText = 'Save'
 
@@ -80,6 +66,10 @@ const FORM_VALIDATION = Yup.object().shape({
         .required('The terms and conditions must be accepted.'),
 })
 
+const StyledButton = styled(Button)(({ theme }) => ({
+    margin: theme.spacing(1),
+}))
+
 function Adjustments() {
     // const classes = useStyles();
 
@@ -97,9 +87,27 @@ function Adjustments() {
                 <Grid container>
                     <Grid item xs={12}>
                         <Typography>Maintenance and repair</Typography>
+                        <Grid item xs={12}>
+                            <TextareaAutosize
+                                aria-label="minimum height"
+                                minRows={8}
+                                placeholder="   Drag and Drop file Here"
+                                style={{ width: 1000, borderRadius: '10px', padding:'10px' }}
+                            />
+                        </Grid>
                     </Grid>
                     <Grid item xs={12}>
-                        <Typography>Inventory Reconciliation Adjustment </Typography>
+                        <Typography>
+                            Inventory Reconciliation Adjustment{' '}
+                        </Typography>
+                        <Grid item xs={12}>
+                            <TextareaAutosize
+                                aria-label="minimum height"
+                                minRows={8}
+                                placeholder="   Drag and Drop file Here"
+                                style={{ width: 1000, borderRadius: '10px',padding:'10px' }}
+                            />
+                        </Grid>
                     </Grid>
                 </Grid>
             </SimpleCard>

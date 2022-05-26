@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
-import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import { Grid, Icon, Typography, IconButton } from '@mui/material'
-
-import Textfield from '../../../components/FormsUI/Textfield'
-import Button from '../../../components/FormsUI/Button/index'
+import {
+    Grid,
+    Icon,
+    Typography,
+    TextField,
+    Button,
+    IconButton,
+} from '@mui/material'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
 import { useTheme } from '@emotion/react'
 
 const Container = styled('div')(({ theme }) => ({
-    margin: '10px',
+    marginLeft: '2px',
     [theme.breakpoints.down('sm')]: {
         margin: '16px',
     },
@@ -23,24 +26,24 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 const INITIAL_FORM_STATE = {
-    productName: '',
-    productType: '',
+    MeasurementUnit: '',
+    abbreviation: '',
     description: '',
 }
 
 const FORM_VALIDATION = Yup.object().shape({
-    // productName: Yup.string().required('Required'),
-    // productType: Yup.string().required('Required'),
-    // description: Yup.string().required('Required'),
+    MeasurementUnit: Yup.string().required('Required'),
+    abbreviation: Yup.string().required('Required'),
+    description: Yup.string().required('Required'),
 })
 
-function UOM() {
+function NewUom() {
     const { palette } = useTheme()
     const textColor = palette.text.primary
     const [components, setComponents] = useState([
         {
-            productName: '',
-            productType: '',
+            MeasurementUnit: '',
+            abbreviation: '',
             description: '',
         },
     ])
@@ -49,8 +52,8 @@ function UOM() {
         setComponents([
             ...components,
             {
-                productName: '',
-                productType: '',
+                MeasurementUnit: '',
+                abbreviation: '',
                 description: '',
             },
         ])
@@ -65,42 +68,41 @@ function UOM() {
         values[index][event.target.name] = event.target.value
         setComponents(values)
     }
-    const handleSubmit = (event) => {
-        event.preventDefault()
+    const handleSubmit = () => {
         console.log(components)
     }
     return (
-        <SimpleCard>
             <Grid container>
                 <Grid item xs={12}>
                     <Container maxWidth="md">
-                        <Formik
-                            initialValues={{
-                                ...INITIAL_FORM_STATE,
-                            }}
-                            validationSchema={FORM_VALIDATION}
-                            onSubmit={(values) => {
-                                console.log(values)
-                            }}
-                        >
-                            <Form>
+                        <form onSubmit={handleSubmit}>
+                            <Grid container spacing={2}>
                                 {components.map((item, index) => (
-                                    <Grid container spacing={3} key={index}>
-                                        <Grid item xs={4}>
-                                            <Textfield
-                                                name="productName"
+                                    <Grid
+                                        container
+                                        spacing={2}
+                                        key={index}
+                                        style={{
+                                            margin: '1px',
+                                        }}
+                                    >
+                                        <Grid item xs={3}>
+                                            <TextField
+                                                name="MeasurementUnit"
                                                 label="Measurement Unit"
-                                                value={item.productName}
+                                                fullWidth
+                                                value={item.MeasurementUnit}
                                                 onChange={(event) =>
                                                     handleChange(index, event)
                                                 }
                                             />
                                         </Grid>
                                         <Grid item xs={3}>
-                                            <Textfield
-                                                name="productType"
-                                                label="Abbreviation"
-                                                value={item.productType}
+                                            <TextField
+                                                name="abbreviation"
+                                                label="abbreviation"
+                                                fullWidth
+                                                value={item.abbreviation}
                                                 onChange={(event) =>
                                                     handleChange(index, event)
                                                 }
@@ -108,16 +110,17 @@ function UOM() {
                                         </Grid>
 
                                         <Grid item xs={3}>
-                                            <Textfield
+                                            <TextField
                                                 name="description"
                                                 label="Description"
+                                                fullWidth
                                                 value={item.description}
                                                 onChange={(event) =>
                                                     handleChange(index, event)
                                                 }
                                             />
                                         </Grid>
-                                        <Grid item xs={1}>
+                                        <Grid item xs={2}>
                                             <IconButton
                                                 sx={{ mt: 0.5 }}
                                                 onClick={addComponent}
@@ -150,19 +153,21 @@ function UOM() {
                                     </Grid>
                                 ))}
                                 <Grid item xs={12}>
-                                    <Button onClick={() => handleSubmit()}>
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={() => handleSubmit()}
+                                    >
                                         Add
                                     </Button>
                                 </Grid>
-                            </Form>
-                        </Formik>
-
-                        {/* </div> */}
+                            </Grid>
+                        </form>
                     </Container>
                 </Grid>
             </Grid>
-        </SimpleCard>
     )
 }
 
-export default UOM
+export default NewUom
+

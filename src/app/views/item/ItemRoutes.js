@@ -6,7 +6,7 @@ const Variant= Loadable(lazy(()=>import('./variant/ItemVariant')))
 const UOM= Loadable(lazy(()=>import('./UOM/UOM')))
 const Supplier= Loadable(lazy(()=>import('./supplier/Supplier')))
 const Category= Loadable(lazy(()=>import('./catergory/ItemCategory')))
-const SaleItem= Loadable(lazy(()=>import('./SaleItem')))
+// const SaleItem= Loadable(lazy(()=>import('./SaleItem')))
 const NewVariant= Loadable(lazy(()=>import('./variant/AddVariatn')))
 const NewUOM=Loadable(lazy(()=>import('./UOM/NewUOM')))
 const Newsupplier=Loadable(lazy(()=>import('./supplier/NewSupplier')))
@@ -14,11 +14,11 @@ const NewCategory=Loadable(lazy(()=>import('./catergory/NewCategory')))
 
 const ItemRoutes = [
     {
-        path: '/item/GRV',
+        path: '/inventory/item/grv',
         element: <GRV />,
     },
     {
-        path: '/item/variant',
+        path: 'inventory/item/variant',
         element: <Variant />,
     },
     {
@@ -26,7 +26,7 @@ const ItemRoutes = [
         element: <NewVariant />,
     },
     {
-        path: '/item/uom',
+        path: '/inventory/item/uom',
         element: <UOM />,
     },
     {
@@ -34,7 +34,7 @@ const ItemRoutes = [
         element: <NewUOM />,
     },
     {
-        path: '/item/supplier',
+        path: '/inventory/item/supplier',
         element: <Supplier />,
     },
     {
@@ -42,17 +42,17 @@ const ItemRoutes = [
         element: <Newsupplier />,
     },
     {
-        path: '/item/category',
+        path: '/inventory/item/category',
         element: <Category />,
     },
     {
         path: '/item/Newcategory',
         element: <NewCategory />,
     },
-    {
-        path: '/item/sales-item',
-        element: <SaleItem />,
-    },
+    // {
+    //     path: '/IM/sales',
+    //     element: <SaleItem />,
+    // },
 ]
 
 export default ItemRoutes

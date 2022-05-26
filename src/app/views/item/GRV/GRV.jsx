@@ -29,44 +29,39 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 const INITIAL_FORM_STATE = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    addressLine1: '',
-    addressLine2: '',
-    city: '',
-    state: '',
-    country: '',
-    arrivealDate: '',
-    departureDate: '',
-    message: '',
-    termsOfService: false,
+    code: '',
+    invoiceno: '',
+    itemname: '',
+    description: '',
+    branch: '',
+    supplier: '',
+    variant: '',
+    optiones: '',
+    category: '',
+    subcategory: '',
+    contactno:'',
+    date: '',
 }
 
 const FORM_VALIDATION = Yup.object().shape({
-    firstName: Yup.string().required('Required'),
-    lastName: Yup.string().required('Required'),
-    email: Yup.string().email('Invalid email.').required('Required'),
-    phone: Yup.number()
+    code: Yup.string().required('Required'),
+    itemname: Yup.string().required('Required'),
+    invoiceno: Yup.number()
         .integer()
         .typeError('Please enter a valid phone number')
         .required('Required'),
-    addressLine1: Yup.string().required('Required'),
-    addressLine2: Yup.string(),
-    city: Yup.string().required('Required'),
-    state: Yup.string().required('Required'),
-    country: Yup.string().required('Required'),
-    arrivealDate: Yup.date().required('Required'),
-    departureDate: Yup.date().required('Required'),
-    message: Yup.string(),
-    termsOfService: Yup.boolean()
-        .oneOf([true], 'The terms and conditions must be accepted.')
-        .required('The terms and conditions must be accepted.'),
+    description: Yup.string().required('Required'),
+    branch: Yup.string().required('Required'),
+    supplier: Yup.string().required('Required'),
+    variant: Yup.string().required('Required'),
+    optiones: Yup.string().required('Required'),
+    category: Yup.string().required('Required'),
+    contactno: Yup.string().required('Required'),
+    date: Yup.date().required('Required'),
+    description: Yup.string(),
 })
 
 function Products() {
-    // const classes = useStyles();
     const [state, setstate] = useState({
         date: new Date(),
     })
@@ -76,7 +71,7 @@ function Products() {
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'General', path: '/dashboard' },
+                        { name: 'Item', path: '/dashboard' },
                         { name: 'GRV' },
                     ]}
                 />
@@ -98,7 +93,7 @@ function Products() {
                                     <Grid container spacing={2}>
                                         <Grid item xs={6}>
                                             <Select
-                                                name="country"
+                                                name="branch"
                                                 label="Branch "
                                                 options={Branches}
                                             />
@@ -106,41 +101,34 @@ function Products() {
 
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="lastName"
+                                                name="code"
                                                 label="Item code"
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="email"
-                                                label="GRV No"
                                             />
                                         </Grid>
                                         <Grid item xs={6}>
                                             <Select
-                                                name="country"
+                                                name="supplier"
                                                 label="Suppliers "
                                                 options={Suppliers}
                                             />
                                         </Grid>
                                         <Grid item xs={6}>
                                             <DateTimePicker
-                                                name="arrivealDate"
-                                                label="Date"
+                                                name="date"
+                                                label="date"
                                             />
                                         </Grid>
 
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="addressLine1"
+                                                name="contactno"
                                                 label="Contact No"
                                             />
                                         </Grid>
 
-                                        <Grid item xs={12}>
+                                        <Grid item xs={6}>
                                             <Textfield
-                                                name="addressLine2"
+                                                name="invoiceno"
                                                 label="Invoice No"
                                             />
                                         </Grid>
@@ -153,18 +141,18 @@ function Products() {
 
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="city"
+                                                name="itemname"
                                                 label="Item name"
                                             />
                                         </Grid>
 
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="state"
+                                                name="description"
                                                 label="Description"
                                             />
                                         </Grid>
-                                        <Grid item lg={6} md={6} sm={12} xs={12} sx={{ mt: 2 }}>
+                                        {/* <Grid item lg={6} md={6} sm={12} xs={12} sx={{ mt: 2 }}>
                                             <TextField
                                                 sx={{ mb: 4 }}
                                                 label="Quantity"
@@ -181,7 +169,7 @@ function Products() {
                                                     'this field is required',
                                                 ]}
                                             />
-                                        </Grid>
+                                        </Grid> */}
 
                                         <Grid item xs={12}>
                                             <Typography>
@@ -190,21 +178,21 @@ function Products() {
                                         </Grid>
                                         <Grid item xs={6}>
                                             <Select
-                                                name="country"
+                                                name="variant"
                                                 label="Item Attribute"
                                                 options={attribute}
                                             />
                                         </Grid>
                                         <Grid item xs={6}>
                                             <Select
-                                                name="country"
+                                                name="optiones"
                                                 label="Options"
                                                 options={category}
                                             />
                                         </Grid>
                                         <Grid item xs={6}>
                                             <Select
-                                                name="country"
+                                                name="category"
                                                 label="Category"
                                                 options={category}
                                             />
@@ -212,53 +200,12 @@ function Products() {
 
                                         <Grid item xs={6}>
                                             <Select
-                                                name="country"
+                                                name="subcategory"
                                                 label="SubCategory "
                                                 options={subcategory}
                                             />
                                         </Grid>
 
-                                        {/* <Form1 /> */}
-                                        {/* <Form2 /> */}
-                                        {/* <Form3 /> */}
-                                        {/* <Form4 /> */}
-
-                                        <Grid item xs={12}>
-                                            <Typography>
-                                                GRV Prepared By
-                                            </Typography>
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="state"
-                                                label="Name"
-                                            />
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="state"
-                                                label="Signature"
-                                            />
-                                        </Grid>
-                                        <Grid item xs={12}>
-                                            <Typography>
-                                                GRV Checked By
-                                            </Typography>
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="state"
-                                                label="Name"
-                                            />
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="state"
-                                                label="Signature"
-                                            />
-                                        </Grid>
                                         <Grid item xs={12}>
                                             <Button>Send</Button>
                                         </Grid>

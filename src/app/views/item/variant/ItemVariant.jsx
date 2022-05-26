@@ -65,7 +65,7 @@ const ItemVariant = () => {
                 <Breadcrumb
                     routeSegments={[
                         { name: 'Item', path: '/dashboard' },
-                        { name: 'Varaint' },
+                        { name: 'Suppler' },
                     ]}
                 />
             </div>

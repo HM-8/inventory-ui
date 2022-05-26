@@ -24,7 +24,7 @@ const AppTable = () => {
                 <Breadcrumb
                     routeSegments={[
                         { name: 'Material', path: '/material' },
-                        { name: 'Tab' },
+                        { name: 'Table' },
                     ]}
                 />
             </div>

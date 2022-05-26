@@ -23,10 +23,8 @@ import countries from '../../utils/data/countries.json'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
 
-// import dropDownData from '../../../utils/data/dropDownData.json'
-import dropDownData from '../../utils/data/dropDownData.json'
-import { DatePicker, LocalizationProvider } from '@mui/lab'
-import AdapterDateFns from '@mui/lab/AdapterDateFns'
+import itemlist from '../../utils/data/itemlist.json'
+import branch from '../../utils/data/BranchList.json'
 
 const buttonText = 'Save'
 
@@ -50,10 +48,12 @@ const INITIAL_FORM_STATE = {
     phone: '',
     addressLine1: '',
     addressLine2: '',
+    code:'',
     city: '',
     state: '',
     country: '',
-    arrivealDate: '',
+    reportTo:'',
+    reportDate: '',
     departureDate: '',
     message: '',
     termsOfService: false,
@@ -113,7 +113,7 @@ function Reconciliation() {
                                             <Select
                                                 name="country"
                                                 label="Item name "
-                                                options={countries}
+                                                options={itemlist}
                                             />
                                         </Grid>
 
@@ -121,7 +121,7 @@ function Reconciliation() {
                                             <Select
                                                 name="country"
                                                 label="Branch"
-                                                options={countries}
+                                                options={branch}
                                             />
                                         </Grid>
 
@@ -165,20 +165,20 @@ function Reconciliation() {
                                         </Grid>
                                         <Grid item xs={12}>
                                             <DateTimePicker
-                                                name="departureDate"
+                                                name="reportDate"
                                                 label="Date"
                                             />
                                         </Grid>
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="phone"
+                                                name="reportTo"
                                                 label="Report to"
                                             />
                                         </Grid>
 
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="phone"
+                                                name="code"
                                                 label="Report Code"
                                             />
                                         </Grid>

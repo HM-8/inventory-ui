@@ -22,11 +22,7 @@ import countries from '../../utils/data/countries.json'
 
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
-
-// import dropDownData from '../../../utils/data/dropDownData.json'
-import dropDownData from '../../utils/data/dropDownData.json'
-import { DatePicker, LocalizationProvider } from '@mui/lab'
-import AdapterDateFns from '@mui/lab/AdapterDateFns'
+import itemlist from '../../utils/data/itemlist.json'
 
 const buttonText = 'Save'
 
@@ -131,16 +127,8 @@ function MaterailRequest() {
                                         <Grid item xs={6}>
                                             <Select
                                                 name="country"
-                                                label="Status "
-                                                options={countries}
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Select
-                                                name="country"
                                                 label="Item List"
-                                                options={countries}
+                                                options={itemlist}
                                             />
                                         </Grid>
                                         <Grid item xs={6}>
@@ -157,8 +145,8 @@ function MaterailRequest() {
                                             />
                                         </Grid>
 
-                                        <Grid item xs={6}>
-                                            <Button>Submit Form</Button>
+                                        <Grid item xs={12}>
+                                            <Button>Submit </Button>
                                         </Grid>
                                     </Grid>
                                 </Form>
