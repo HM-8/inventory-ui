@@ -1,14 +1,18 @@
-import { Grid, Icon, IconButton, TextField, Typography } from '@mui/material'
-import React, { useEffect, useState } from 'react'
-import Form from '../../material-kit/forms/Form'
-import DropDown from '../../material-kit/drop-down/DropDown'
+import React from 'react'
+import { Formik, Form } from 'formik'
+import * as Yup from 'yup'
+import {
+    Grid,
+    Typography,
+} from '@mui/material'
+
+import Textfield from '../../../components/FormsUI/Textfield'
+import DateTimePicker from '../../../components/FormsUI/DataTimePicker'
+import Select from '../../../components/FormsUI/Select'
+import Button from '../../../components/FormsUI/Button/index'
+import itemlist from '../../../utils/data/BranchList.json'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
-import vehicleNameDD from '../../../utils/data/vehicleNameDD.json' 
-import { DatePicker, LocalizationProvider } from '@mui/lab'
-import assignmentStatus from '../../../utils/data/assignmentStatus.json' 
-import AdapterDateFns from '@mui/lab/AdapterDateFns'
-import { useTheme } from '@emotion/react'
 
 const buttonText = 'Save'
 
@@ -25,135 +29,130 @@ const Container = styled('div')(({ theme }) => ({
     },
 }))
 
+const INITIAL_FORM_STATE = {
+    vehicleName: '',
+    driverName: '',
+    FuelMeasurment: '',
+    AssignmentStatus: '',
+    TrackUsage: '',
+    StartDate: '',
+    EndDate: ''
+}
+
+const FORM_VALIDATION = Yup.object().shape({
+    vehicleName: Yup.string().required('Required'),
+    driverName: Yup.string().required('Required'),
+    FuelMeasurment: Yup.number()
+        .integer()
+        .typeError('Please enter a valid phone number')
+        .required('Required'),
+    AssignmentStatus: Yup.string().required('Required'),
+    TrackUsage: Yup.string(),
+    StartDate: Yup.date().required('Required'),
+    EndDate: Yup.date().required('Required'),
+})
+
 function AddVehicleAssignment() {
-    const { palette } = useTheme()
-    const textColor = palette.text.primary
-    
     return (
         <Container>
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        {
-                            name: 'Vehicle Assignment',
-                            path: '/transport/assignment',
-                        },
-                        { name: 'Add Vehicle Assignment' },
+                        { name: 'Vehicle Assignment', path: '/transport/assignment' },
+                        { name: 'New Vehicle Assignment' },
                     ]}
                 />
             </div>
             <SimpleCard title="Add Vehicle Assignment">
-                <Form buttonText={buttonText}>
-                <Grid container spacing={6}>
-                    <Grid item lg={6} md={6} sm={12} xs={12} sx={{ mt: 2 }}>
-                        <DropDown
-                            label="Vehicle Name"
-                            
-                            name="vehicleName"
-                            
-                            validators={['required']}
-                            options={vehicleNameDD}
-                            errorMessages={[
-                                'this field is required',
-                            ]}
-                        />
+                <Grid container>
+                    <Grid item xs={12}></Grid>
+                    <Grid item xs={12}>
+                        <Container maxWidth="md">
+                            <Formik
+                                initialValues={{
+                                    ...INITIAL_FORM_STATE,
+                                }}
+                                validationSchema={FORM_VALIDATION}
+                                onSubmit={(values) => {
+                                    console.log(values)
+                                }}
+                            >
+                                <Form>
+                                    <Grid container spacing={2}>
+                                        <Grid item xs={12}>
+                                            <Typography>Location</Typography>
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <Select
+                                                name="vehicleName"
+                                                label="Vehicle Name"
+                                                options={itemlist}
+                                            />
+                                        </Grid>
 
-<br/><br/>
-<DropDown
-                            label="Driver Name"
-                            
-                            name="driverName"
-                            
-                            validators={['required']}
-                            options={vehicleNameDD}
-                            errorMessages={[
-                                'this field is required',
-                            ]}
-                        />
-                        <br/><br/>
-                    <DropDown
-                            label="Fuel Measurement In"
-                            
-                            name="fuelMeasurement"
-                             
-                            validators={['required']}
-                            options={vehicleNameDD}
-                            errorMessages={[
-                                'this field is required',
-                            ]}
-                        />
-                       <br/><br/>
-                    < DropDown
-                            label="Track Usage As"
-                            
-                            name="trackUsage"
-                           
-                            validators={['required']}
-                            options={vehicleNameDD}
-                            errorMessages={[
-                                'this field is required',
-                            ]}
-                        />
-                        <br/><br/>
-                            <TextField
-                            label="Starting Kilometer"
-                            type="number"
-                            name="startKM"
-                            validators={['required']}
-                            errorMessages={['this field is required']}
-                        />
-                        
-                       </Grid>
-                       <Grid item lg={6} md={6} sm={12} xs={6} sx={{ mt: 2 }}>
- <LocalizationProvider dateAdapter={AdapterDateFns}>
-                            <DatePicker
-                               
-                                renderInput={(props) => (
-                                    <TextField
-                                        {...props}
-                                        // variant="Outlined"
-                                        id="mui-pickers-date"
-                                        label="Start Date"
-                                        sx={{ mb: 2, width: '100%' }}
-                                    />
-                                )}
-                            />
-                        </LocalizationProvider>
-                       <LocalizationProvider dateAdapter={AdapterDateFns}>
-                            <DatePicker
-                               
-                                renderInput={(props) => (
-                                    <TextField
-                                        {...props}
-                                        // variant="Outlined"
-                                        id="mui-pickers-date"
-                                        label="End Date"
-                                        sx={{ mb: 2, width: '100%' }}
-                                    />
-                                )}
-                            />
-                        </LocalizationProvider>
-                        
-                    
-                         
-                     
-                        < DropDown
-                            label="Assignment Status"
-                            
-                            name="assStatus"
-                           
-                            validators={['required']}
-                            options={assignmentStatus}
-                            errorMessages={[
-                                'this field is required',
-                            ]}
-                        />
-                            
-                        </Grid>
-                      
-                    </Grid> 
-                   
-                </Form>
+                                        <Grid item xs={6}>
+                                            <DateTimePicker
+                                                name="StartDate"
+                                                label="Start Date "
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={6}>
+                                            <Select
+                                                name="driverName"
+                                                label="Driver Name"
+                                                options={itemlist}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <DateTimePicker
+                                                name="EndDate"
+                                                label="End Date "
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={6}>
+                                            <Select
+                                                name="FuelMeasurment"
+                                                label="Fuel Measurment in"
+                                                options={itemlist}
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={6}>
+                                            <Select
+                                                name="AssignmentStatus"
+                                                label="Assignment Status"
+                                                options={itemlist}
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={6}>
+                                            <Select
+                                                name="TrackUsage"
+                                                label="Track Usage As"
+                                                options={itemlist}
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="StartingKM"
+                                                label="Starting Kilometer "
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={12}>
+                                            <Button>Submit Form</Button>
+                                        </Grid>
+                                    </Grid>
+                                </Form>
+                            </Formik>
+
+                            {/* </div> */}
+                        </Container>
+                    </Grid>
+                </Grid>
             </SimpleCard>
         </Container>
     )
