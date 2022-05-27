@@ -13,6 +13,7 @@ const Creation= Loadable(lazy(()=>import('./hr/NewEmployee')))
 const SalaryDetails= Loadable(lazy(()=>import('./hr/SalaryDetails')))
 const Registration = Loadable(lazy(()=>import('./transport/VehicleRegistration')))
 const Assignment= Loadable(lazy(()=>import('./transport/VechileAssignemt')))
+const NewAssignment= Loadable(lazy(()=>import('./transport/AddVehicleAssignment')))
 
 
 const RegisterRouter = [
@@ -53,6 +54,10 @@ const RegisterRouter = [
     },{
         path: '/transport/assignment',
         element: <Assignment />,
+    },
+    {
+        path: '/transport/Vehicle-assignment/add',
+        element: <NewAssignment />,
     },
 ]
 
