@@ -42,10 +42,7 @@ const INITIAL_FORM_STATE = {
 const FORM_VALIDATION = Yup.object().shape({
     vehicleName: Yup.string().required('Required'),
     driverName: Yup.string().required('Required'),
-    FuelMeasurment: Yup.number()
-        .integer()
-        .typeError('Please enter a valid phone number')
-        .required('Required'),
+    FuelMeasurment: Yup.string().required('Required'),
     AssignmentStatus: Yup.string().required('Required'),
     TrackUsage: Yup.string(),
     StartDate: Yup.date().required('Required'),
