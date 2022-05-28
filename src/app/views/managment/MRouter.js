@@ -26,6 +26,9 @@ const VihicleHistory = Loadable(lazy(() => import('./logistic/Vechicle')))
 const EmployeeTransportation = Loadable(lazy(() => import('./logistic/tripManagment/Employee')))
 const ItemTransportation = Loadable(lazy(() => import('./logistic/tripManagment/Item')))
 const NewVendor = Loadable(lazy(() => import('./logistic/NewVendor')))
+const NewIssues = Loadable(lazy(() => import('./logistic/NewIssues')))
+const NewFuelEntry = Loadable(lazy(() => import('./logistic/NewFuelEntry')))
+
 
 const MRouter = [
     {
@@ -100,12 +103,21 @@ const MRouter = [
     {
         path: '/logistic/issues',
         element: <Issues />,
-    }, {
+    },
+    {
+        path: '/logistic/new-issues',
+        element: <NewIssues />,
+    },
+     {
         path: '/logistic/serive-maintainance',
         element: <Service />,
     }, {
         path: '/logistic/fuel-entry',
         element: <FuelEntry />,
+    },
+    {
+        path: '/logistic/fuel-entry/new',
+        element: <NewFuelEntry />,
     },
     {
         path: '/logistic/vehicle-history',
