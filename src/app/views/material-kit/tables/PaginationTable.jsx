@@ -5,10 +5,11 @@ import {
     TableRow,
     TableCell,
     TablePagination,
+    IconButton,
+    Icon,
 } from '@mui/material'
 import React from 'react'
 import { Box, styled } from '@mui/system'
-
 
 const StyledTable = styled(Table)(({ theme }) => ({
     whiteSpace: 'pre',
@@ -24,7 +25,7 @@ const StyledTable = styled(Table)(({ theme }) => ({
         '& tr': {
             '& td': {
                 paddingLeft: 0,
-                textTransform: 'capitalize',
+                // textTransform: 'capitalize',
             },
         },
     },
@@ -49,9 +50,7 @@ const PaginationTable = ({ columns, rows, ...otherProps }) => {
                 <TableHead>
                     <TableRow>
                         {columns.map((column) => (
-                            <TableCell
-                                key={column.id}
-                            >
+                            <TableCell key={column.id}>
                                 {column.label}
                             </TableCell>
                         ))}
@@ -84,6 +83,14 @@ const PaginationTable = ({ columns, rows, ...otherProps }) => {
                                         </TableCell>
                                     )
                                 })}
+                                <TableCell>
+                                    <IconButton>
+                                    <Icon color="primary">create</Icon>
+                                    </IconButton>
+                                    <IconButton>
+                                        <Icon color="error">delete</Icon>
+                                    </IconButton>
+                                </TableCell>
                             </TableRow>
                         ))}
                 </TableBody>
