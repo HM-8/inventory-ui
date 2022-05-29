@@ -22,12 +22,13 @@ const Vendor = Loadable(lazy(() => import('./logistic/Vendor')))
 const Issues = Loadable(lazy(() => import('./logistic/Issues')))
 const Service = Loadable(lazy(() => import('./logistic/ServiceManagent')))
 const FuelEntry = Loadable(lazy(() => import('./logistic/FuelEntry')))
-const VihicleHistory = Loadable(lazy(() => import('./logistic/Vechicle')))
+const VihicleHistory = Loadable(lazy(() => import('./logistic/VechicleHistroy')))
 const EmployeeTransportation = Loadable(lazy(() => import('./logistic/tripManagment/Employee')))
 const ItemTransportation = Loadable(lazy(() => import('./logistic/tripManagment/Item')))
 const NewVendor = Loadable(lazy(() => import('./logistic/NewVendor')))
 const NewIssues = Loadable(lazy(() => import('./logistic/NewIssues')))
 const NewFuelEntry = Loadable(lazy(() => import('./logistic/NewFuelEntry')))
+const NewVihicleHistory = Loadable(lazy(() => import('./logistic/newVehicleHistroy')))
 
 
 const MRouter = [
@@ -122,6 +123,11 @@ const MRouter = [
     {
         path: '/logistic/vehicle-history',
         element: <VihicleHistory />,
+    },
+    {
+        //shouldn't this be automatic
+        path: '/logistic/vehicle-history/new',
+        element: <NewVihicleHistory />,
     },
     {
         path: '/logistic/trips/employee',
