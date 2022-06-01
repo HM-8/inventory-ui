@@ -54,6 +54,7 @@ const PaginationTable = ({ columns, rows, ...otherProps }) => {
                                 {column.label}
                             </TableCell>
                         ))}
+                        <TableCell>Actions</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
