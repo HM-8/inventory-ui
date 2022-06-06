@@ -19,60 +19,36 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 const columns = [
-    { id: 'ItemName ', label: 'Item Name',minWidth: 10  },
-    { id: 'Qty ', label: 'Bin No',minWidth: 10  },
-    { id: 'Length  ', label: 'Min Quantity  ',minWidth: 10  },
-    { id: 'Width  ', label: 'Max Quantity ',minWidth: 10  },
-    { id: 'Height  ', label: 'Height  ',minWidth: 10  },
-    { id: 'Weight  ', label: 'Selling Price',minWidth: 10  },
-    { id: 'Branch  ', label: 'Issued ',minWidth: 10  },
-    { id: 'Address ', label: 'Address ',minWidth: 10  },
-    { id: 'MobileNo ', label: 'Item Name',minWidth: 10  },
-    { id: 'Delivery ', label: 'Bin No',minWidth: 10  },
+    { id: 'EmployeeNo ', label: 'Item Name',minWidth: 10  },
+    { id: 'Department ', label: 'Bin No',minWidth: 10  },
     { id: 'Address  ', label: 'Min Quantity  ',minWidth: 10  },
     { id: 'Requestor  ', label: 'Max Quantity ',minWidth: 10  },
     { id: 'Head  ', label: 'Head  ',minWidth: 10  },
     { id: 'Approver  ', label: 'Selling Price',minWidth: 10  },
-    { id: 'MobileNo  ', label: 'Issued ',minWidth: 10  },
+    { id: 'From  ', label: 'Issued ',minWidth: 10  },
     { id: 'To ', label: 'To ',minWidth: 10  },
     ]
 
-function createData(ItemName ,Qty , Length  , Width ,Height ,Weight  ,Branch,MobileNo ,Delivery , Address  , Requestor ,Head ,Approver ,To) {
+function createData(EmployeeNo ,Department , Address  , Requestor ,Head ,Approver  ,From ,To) {
     return {
-        ItemName : ItemName ,
-        Qty : Qty ,
-        Length  :Length  ,
-        Address:Address,
-        Branch :Branch ,
-        Weight  :Weight  ,
-        Height :Height ,
-        Width :Width,
-        MobileNo : MobileNo ,
-        Delivery : Delivery ,
+        EmployeeNo : EmployeeNo ,
+        Department : Department ,
         Address  :Address  ,
         To:To,
-        MobileNo :MobileNo ,
+        From :From ,
         Approver  :Approver  ,
         Head :Head ,
-        Requestor :Requestor       
+        Requestor :Requestor      
     }
 }
 
 const rows = data.map((item, index) => {
     const container = {}
     createData(
-        (container.ItemName  = item.ItemName ),
-        (container.Qty  = item.Qty ),
-        (container.Length   = item.Length  ),
-        (container.Branch  = item.Branch ),
-        (container.Weight   = item.Weight  ),
-        (container.Height  = item.Height ),
-        (container.Width  = item.Width ),
-        (container.Address  = item.Address ),
-        (container.MobileNo  = item.MobileNo ),
-        (container.Delivery  = item.Delivery ),
+        (container.EmployeeNo  = item.EmployeeNo ),
+        (container.Department  = item.Department ),
         (container.Address   = item.Address  ),
-        (container.MobileNo  = item.MobileNo ),
+        (container.From  = item.From ),
         (container.Approver   = item.Approver  ),
         (container.Head  = item.Head ),
         (container.Requestor  = item.Requestor ),
@@ -84,23 +60,23 @@ const StyledButton = styled(Button)(({ theme }) => ({
     margin: theme.spacing(1),
 }))
 
-const ItemTransfer = () => {
+const TravelRequest = () => {
     return (
         <Container>
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
                         { name: 'Report', path: '/dashboard' },
-                        { name: 'Item Transfer Report  ' },
+                        { name: 'Travel Request Report  ' },
                     ]}
-                />      
+                />
             </div>
             <Box py="1px" />
-            <SimpleCard title="Item Transfer Report">
+            <SimpleCard title="Trave lRequest Report">
                 <PaginationTable columns={columns} rows={rows} />
             </SimpleCard>
         </Container>
     )
 }
 
-export default ItemTransfer
+export default TravelRequest

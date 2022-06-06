@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import PaginationTable from '../../material-kit/tables/PaginationTable'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import { Box, styled } from '@mui/system'
-import { Grid,Button } from '@mui/material'
+import { Grid, Button } from '@mui/material'
 import NewProducts from './NewProducts'
 import data from '../../../utils/data/employmentType.json'
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
-
+import BracodeReader from './BracodeReader'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -23,18 +23,18 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 const columns = [
-    { id: 'productname', label: 'Product Name',minWidth: 10  },
-    { id: 'producttype', label: 'Product Type',minWidth: 10  },
-    { id: 'description', label: 'Description',minWidth: 10  },
-    { id: 'edit', label: '' ,minWidth: 10 },
-    { id: 'del', label: '',minWidth: 10  },
+    { id: 'productname', label: 'Product Name', minWidth: 10 },
+    { id: 'producttype', label: 'Product Type', minWidth: 10 },
+    { id: 'description', label: 'Description', minWidth: 10 },
+    { id: 'edit', label: '', minWidth: 10 },
+    { id: 'del', label: '', minWidth: 10 },
 ]
 
-function createData(productname,producttype, description,edit, del) {
+function createData(productname, producttype, description, edit, del) {
     return {
         productname: productname,
         producttype: producttype,
-        description:description,
+        description: description,
         edit: edit,
         del: del,
     }
@@ -61,7 +61,7 @@ const Products = () => {
 
     const handleButton = () => {
         setShow(!show)
-        console.log(show);
+        console.log(show)
     }
     return (
         <Container>
@@ -81,12 +81,19 @@ const Products = () => {
                 justifyContent="flex-end"
             >
                 <Grid item xs={12}>
+                    <BracodeReader />
+                </Grid>
+                <Grid item xs={12}>
                     <div>{show ? <NewProducts /> : null}</div>
-                    </Grid>
+                </Grid>
                 <Grid item>
-                <StyledButton variant="contained" color="primary" onClick={() => handleButton()}>
-                    Add Row
-                </StyledButton>
+                    <StyledButton
+                        variant="contained"
+                        color="primary"
+                        onClick={() => handleButton()}
+                    >
+                        Add Row
+                    </StyledButton>
                 </Grid>
             </Grid>
             <SimpleCard title="Pagination Table">

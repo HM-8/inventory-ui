@@ -95,6 +95,12 @@ function NewVendor() {
                                                 label="Vendor Name"
                                             />
                                         </Grid>
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="vendortype"
+                                                label="Vendor Type"
+                                            />
+                                        </Grid>
 
                                         <Grid item xs={12}>
                                             <Typography className='font'>

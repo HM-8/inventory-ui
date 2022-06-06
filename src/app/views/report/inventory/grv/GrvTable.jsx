@@ -22,26 +22,26 @@ function createData(name, calories, fat, carbs, protein, price) {
     protein,
     price,
     history: [
-      {
-        name: 'T-shirt',
-        Barcode: '11091700',
-        description:'This is a valuable sthn sthn',
-        amount: 3,
-        variant:'Medium Reds and pins',
-        category:'Shirt',
-        subCategory:'Consumable',
-        price:'2,000'
-      },
-      {
-        name: 'T-shirt',
-        Barcode: '11091700',
-        description:'This is a valuable sthn sthn',
-        amount: 5,
-        variant:'Large blue',
-        category:'Shirt',
-        subCategory:'Consumable',
-        price:'2,000'
-      },
+      // {
+      //   name: 'T-shirt',
+      //   Barcode: '11091700',
+      //   description:'This is a valuable sthn sthn',
+      //   amount: 3,
+      //   variant:'Medium Reds and pins',
+      //   category:'Shirt',
+      //   subCategory:'Consumable',
+      //   price:'2,000'
+      // },
+      // {
+      //   name: 'T-shirt',
+      //   Barcode: '11091700',
+      //   description:'This is a valuable sthn sthn',
+      //   amount: 5,
+      //   variant:'Large blue',
+      //   category:'Shirt',
+      //   subCategory:'Consumable',
+      //   price:'2,000'
+      // },
     ],
   };
 }

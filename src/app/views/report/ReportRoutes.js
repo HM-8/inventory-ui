@@ -9,9 +9,6 @@ const SivReport = Loadable(lazy(() => import('./inventory/SivReport')))
 const GrvReport = Loadable(lazy(() => import('./inventory/grv/GrvReport')))
 const POReport = Loadable(lazy(() => import('./inventory/PoReport')))
 
-const EmployeeTransportation = Loadable(lazy(() => import('./transport/Employee')))
-const ItemTransportation = Loadable(lazy(() => import('./transport/ItemTransport')))
-
 const NewEmployees = Loadable(lazy(() => import('./hr/NewEmployee.jsx')))
 const Promotion = Loadable(lazy(() => import('./hr/EmployeePromotion.jsx')))
 const Transfer = Loadable(lazy(() => import('./hr/Transfer')))
@@ -22,6 +19,11 @@ const Attendance = Loadable(lazy(() => import('./hr/Attendance')))
 const TravelRequests = Loadable(lazy(() => import('./hr/TravelRequest.jsx')))
 
 
+const EmployeeTransportation = Loadable(lazy(() => import('./transport/TravelRequest')))
+const ItemTransportation = Loadable(lazy(() => import('./transport/ItemTransport')))
+const Expiry = Loadable(lazy(() => import('./transport/ExpiryReinders')))
+const KmService = Loadable(lazy(() => import('./transport/reminders/KilometerServiceReminder ')))
+const RenewalReminder = Loadable(lazy(() => import('./transport/reminders/RenewalReminder')))
 
 const ReportRoutes = [
     {
@@ -52,19 +54,6 @@ const ReportRoutes = [
         path: '/report/inventory/po',
         element: <POReport />,
     },
-
-
-    
-    {
-        path: '/report/transport/employee-transport',
-        element: <EmployeeTransportation />,
-    }, 
-    {
-        path: '/report/inventory/item-transfer',
-        element: <ItemTransportation />,
-    },
-
-
     
      {
         path: '/report/hr/new-empolyees',
@@ -97,7 +86,27 @@ const ReportRoutes = [
     {
         path: '/report/hr/travelRequest',
         element: <TravelRequests />,
-    }
+    },
+
+    {
+        path: '/report/transport/employee-transport',
+        element: <EmployeeTransportation />,
+    }, 
+    {
+        path: '/report/inventory/item-transfer',
+        element: <ItemTransportation />,
+    },
+    {
+        path: '/report/inventory/expiry',
+        element: <Expiry />,
+    }, 
+    {
+        path: '/report/transport/reminders/kmservice',
+        element: <KmService />,
+    },{
+        path: '/report/inventory/reminders/renewal',
+        element: <RenewalReminder />,
+    }, 
 ]
 
 export default ReportRoutes

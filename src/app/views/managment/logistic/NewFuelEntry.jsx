@@ -90,12 +90,6 @@ function NewFuelEntry() {
                                     <Grid container spacing={2}>
                                         <Grid item xs={12}>
                                             <Textfield
-                                                name="vehicleName"
-                                                label="Vehicle Name"
-                                            />
-                                        </Grid>
-                                        <Grid item xs={12}>
-                                            <Textfield
                                                 name="plate number"
                                                 label="Plate Number"
                                             />
@@ -107,19 +101,22 @@ function NewFuelEntry() {
                                                     />
                                                 </Grid>
                                         <Grid item xs={12}>
-                                            <Typography>Fuel Entry Details</Typography>
-                                        </Grid>
-                                        <Grid item xs={12}>
-                                            <Textfield
-                                                name="km"
-                                                label="Kilometer"
+                                            <Select
+                                                name="Vendor"
+                                                label="Vendor"
+                                                options={Vehicle}
                                             />
                                         </Grid>
                                         <Grid item xs={12}>
-                                            <Select
-                                                name="Vendor"
+                                            <Textfield
+                                                name="plate number"
+                                                label="Price unit"
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <Textfield
+                                                name="plate number"
                                                 label="Coupon Number"
-                                                options={Vehicle}
                                             />
                                         </Grid>
                                         <Grid item xs={12}>

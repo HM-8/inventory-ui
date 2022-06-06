@@ -295,7 +295,7 @@ export const navigations = [
                 path: '/logistic/issues',
             },
             {
-                name: 'Service and Maintainance',
+                name: 'Record Maintenance Details',
                 path: '/logistic/serive-maintainance',
             },
             {
@@ -404,15 +404,33 @@ export const navigations = [
                 icon: 'local_shipping',
                 children: [
                     {
-                        name: 'Employee Transport',
+                        name: 'Travel Request',
                         path: '/report/transport/employee-transport',
                     },
                     {
                         name: 'Item Transfer',
                         path: '/report/inventory/item-transfer',
                     },
+                    {
+                        name: 'Expiry Reinders ',
+                        path: '/report/inventory/expiry',
+                    },
+                    {
+                        name: 'Reminders',
+                        children: [
+                            {
+                                name: 'Kilometer Service Reminder ',
+                                path: '/report/transport/reminders/kmservice',
+                            },
+                            {
+                                name: 'Renewal Reminder ',
+                                path: '/report/inventory/reminders/renewal',
+                            },
+                        ],
+                    },
                 ],
             },
+            
         ],
     },
 
