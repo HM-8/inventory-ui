@@ -15,3 +15,4 @@ function BracodeReader() {
 }
 
 export default BracodeReader
+
