@@ -1,7 +1,7 @@
 import React, { lazy } from 'react'
 import Loadable from 'app/components/Loadable/Loadable'
 
-const Inspection= Loadable(lazy(()=>import('./InventoryInspection')))
+const Inspection= Loadable(lazy(()=>import('./Adjustments')))
 const Reconciliation= Loadable(lazy(()=>import('./InventoryReconciliation')))
 const Balance= Loadable(lazy(()=>import('./QuickInventoryBalance')))
 

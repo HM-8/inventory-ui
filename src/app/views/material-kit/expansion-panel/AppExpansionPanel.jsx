@@ -26,7 +26,7 @@ const AppExpansionPanel = () => {
                 <Breadcrumb
                     routeSegments={[
                         { name: 'Material', path: '/material' },
-                        { name: 'Expansion Panel' },
+                        { name: 'expansion-panel' },
                     ]}
                 />
             </div>

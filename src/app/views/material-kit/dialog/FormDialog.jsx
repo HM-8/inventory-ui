@@ -7,7 +7,7 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
 
-export default function FormDialog() {
+export default function FormDialog({ title,buttonText, children}) {
     const [open, setOpen] = React.useState(false)
 
     function handleClickOpen() {
@@ -25,27 +25,16 @@ export default function FormDialog() {
                 color="primary"
                 onClick={handleClickOpen}
             >
-                Open form dialog
+                {buttonText}
             </Button>
             <Dialog
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="form-dialog-title"
             >
-                <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+                <DialogTitle id="form-dialog-title">{title}</DialogTitle>
                 <DialogContent>
-                    <DialogContentText>
-                        To subscribe to this website, please enter your email
-                        address here. We will send updates occasionally.
-                    </DialogContentText>
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        id="name"
-                        label="Email Address"
-                        type="email"
-                        fullWidth
-                    />
+                    {children}
                 </DialogContent>
                 <DialogActions>
                     <Button
@@ -56,7 +45,7 @@ export default function FormDialog() {
                         Cancel
                     </Button>
                     <Button onClick={handleClose} color="primary">
-                        Subscribe
+                        Done
                     </Button>
                 </DialogActions>
             </Dialog>
