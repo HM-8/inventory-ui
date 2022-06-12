@@ -118,8 +118,8 @@ function PersonalDetails() {
                                     </Grid>
                                     <Grid item xs={4}>
                                         <Textfield
-                                            name="full_name"
-                                            label="Full Name "
+                                            name="first_name"
+                                            label="First Name "
                                         />
                                     </Grid>
 

@@ -53,7 +53,7 @@ const steps = [
     {
         id: 5,
         label: 'Work Experience ',
-        form: <Experience  />,
+        form: <Experience />,
     },
     {
         id: 6,
