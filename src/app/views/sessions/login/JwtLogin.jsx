@@ -12,6 +12,10 @@ import { useNavigate } from 'react-router-dom'
 import { Box, styled, useTheme } from '@mui/system'
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator'
 import { Paragraph, Span } from 'app/components/Typography'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+    login,
+} from 'app/redux/actions/AuthenticationAction'
 
 const FlexBox = styled(Box)(() => ({
     display: 'flex',
@@ -51,6 +55,7 @@ const StyledProgress = styled(CircularProgress)(() => ({
 
 const JwtLogin = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const [loading, setLoading] = useState(false)
     const [userInfo, setUserInfo] = useState({
         email: 'johndoe@gmail.com',
@@ -137,6 +142,7 @@ const JwtLogin = () => {
                                                     target: {
                                                         name: 'agreement',
                                                         value: checked,
+                                            
                                                     },
                                                 })
                                             }
@@ -159,6 +165,13 @@ const JwtLogin = () => {
                                             color="primary"
                                             disabled={loading}
                                             type="submit"
+                                            onClick={() =>
+                                                dispatch(
+                                                    login(
+                                                        userInfo  
+                                                    )
+                                                )
+                                            }
                                         >
                                             Sign in
                                         </Button>

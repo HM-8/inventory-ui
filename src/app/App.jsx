@@ -1,6 +1,6 @@
 //import '../fake-db'
 import React from 'react'
-import { Store } from './redux/Store'
+import store from './redux/Store'
 import { Provider } from 'react-redux'
 import { AllPages } from './routes/routes'
 import { MatxTheme } from 'app/components'
@@ -11,7 +11,7 @@ const App = () => {
     const all_pages = useRoutes(AllPages())
 
     return (
-        <Provider store={Store}>
+        <Provider store={store}>
             <SettingsProvider>
                 <MatxTheme>
                     {all_pages}
