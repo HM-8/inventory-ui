@@ -8,7 +8,7 @@ const dashboardRoutes = [
     {
         path: '/dashboard',
         element: <Analytics />,
-        //auth: authRoles.admin,
+        // auth: authRoles.user,
     },
 ]
 
