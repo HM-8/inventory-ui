@@ -1,20 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { TextField } from '@mui/material';
-import { useField,useFormikContext } from 'formik';
-import LocalizationProvider from '@mui/lab/LocalizationProvider'
-import { DatePicker } from '@mui/lab'
-import AdapterDateFns from '@mui/lab/AdapterDateFns'
+import { useField } from 'formik';
 
 const DateTimePicker = ({
-  ...props
+  name,
+  ...otherProps
 }) => {
-  const { setFieldValue } = useFormikContext();
-  const [field, meta] = useField(props);
+  const [field, meta] = useField(name);
 
   const configDateTimePicker = {
     ...field,
-    ...props,
-
+    ...otherProps,
+    type: 'date',
     variant: 'outlined',
     fullWidth: true,
     InputLabelProps: {
@@ -22,27 +19,15 @@ const DateTimePicker = ({
     }
   };
 
-  if (meta && meta.touched && meta.error) {
+  if(meta && meta.touched && meta.error) {
     configDateTimePicker.error = true;
     configDateTimePicker.helperText = meta.error;
   }
+
   return (
-    // <TextField
-    //   {...configDateTimePicker}
-    // />
-    <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <DatePicker
-        selected={(field.value && new Date(field.value)) || null}
-        onChange={(val) => {
-          setFieldValue(field.name, val);
-        }}
-        renderInput={(configDateTimePicker) => (
-          <TextField
-            {...configDateTimePicker}
-          />
-        )}
-      />
-    </LocalizationProvider>
+    <TextField
+      {...configDateTimePicker}
+    />
   );
 };
 
