@@ -13,7 +13,7 @@ import {
 const initialState = {
     // productList: [],
     // cartList: [],
-    user: []
+    userList: []
 }
 
 const AuthenticationReducer = function (state = initialState, action) {
@@ -69,7 +69,8 @@ const AuthenticationReducer = function (state = initialState, action) {
         case LOGIN: {
             return {
                 ...state,
-                user: [...action.payload],
+                user: [action.payload.user],
+                token: [action.payload.tokens],
             }
         }
         default: {

@@ -95,14 +95,15 @@ export const login = (userInfo) => (dispatch) => {
     axios
         .post('http://localhost:4040/v1/auth/login', userInfo)
         .then((res) => {
-            console.log(res.data)
+            console.log(res.data);
+
             dispatch({
                 type: LOGIN,
                 payload: res.data,
-            })
+            });
         })
         .catch((error) => {
-            console.log(error.response.data)
+            // console.log(error.res.data)
         })
 }
 
@@ -115,16 +116,4 @@ export const getItems = () => (dispatch) => {
     }
 
     console.log('State user', user)
-    // const config = {
-    //     headers: { Authorization: `Bearer ${user.access_token}` },
-    // }
-
-    // axios.get('https://62a99115ec36bf40bdb9d7b7.mockapi.io/api/items', config).then((res) => {
-    //     console.log(res.data)
-
-    //     dispatch({
-    //         type: ITEMS,
-    //         payload: res.data,
-    //     })
-    // })
 }
