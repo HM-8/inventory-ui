@@ -8,6 +8,7 @@ const Branch= Loadable(lazy(()=>import('./General/branch/Branch')))
 const Settings= Loadable(lazy(()=>import('../settings/Inventory')))
 const NewBranch= Loadable(lazy(()=>import('./General/branch/AddBranch')))
 const Company= Loadable(lazy(()=>import('./General/company/Company')))
+const EditCompany= Loadable(lazy(()=>import('./General/company/EditCompanyInfo')))
 const Department= Loadable(lazy(()=>import('./General/department/Department')))
 const Creation= Loadable(lazy(()=>import('./hr/NewEmployee')))
 const SalaryDetails= Loadable(lazy(()=>import('./hr/SalaryDetails')))
@@ -34,8 +35,8 @@ const RegisterRouter = [
         element: <Company />,
     },
     {
-        path: '/general/department',
-        element: <Department />,
+        path: '/general/edit-company',
+        element: <EditCompany />,
     },
     {
         path: '/settings/tranport',

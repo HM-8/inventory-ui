@@ -128,7 +128,7 @@ const JwtLogin = () => {
                                     validators={['required']}
                                     errorMessages={['this field is required']}
                                 />
-                                <FormControlLabel
+                                {/* <FormControlLabel
                                     sx={{ mb: '12px', maxWidth: 288 }}
                                     name="agreement"
                                     onChange={handleChange}
@@ -150,7 +150,7 @@ const JwtLogin = () => {
                                         />
                                     }
                                     label="Remeber me"
-                                />
+                                /> */}
 
                                 {message && (
                                     <Paragraph sx={{ color: textError }}>
