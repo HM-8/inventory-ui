@@ -92,8 +92,11 @@ export const LOGIN = 'LOGIN'
 // }
 
 export const login = (userInfo) => (dispatch) => {
-    console.log("user info",userInfo);
-    axios.post('https://62a99115ec36bf40bdb9d7b7.mockapi.io/api/users', { userInfo }).then((res) => {
+
+    const user=JSON.stringify(userInfo);
+
+    console.log("user info",user);
+    axios.post('http://localhost:4040/v1/auth/login', { user }).then((res) => {
         console.log(res.data)
         dispatch({
             type: LOGIN,
