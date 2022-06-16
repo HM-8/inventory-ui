@@ -7,6 +7,10 @@ import TableButton from '../../material-kit/buttons/LinkButton'
 
 import rows from '../../../utils/data/AssignedVehicles.json'
 
+
+import { useDispatch, useSelector } from 'react-redux'
+
+
 const columns = [
     { id: 'DriverName', label: 'Driver Name' },
     { id: 'Name', label: 'Vehicle Name' },
@@ -35,6 +39,9 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 const VehicleAssignment = () => {
+    const dispatch = useDispatch()
+    const { vehicleList } = useSelector((state) => state.vehicle)
+    console.log(vehicleList);
     return (
         <Container>
             <div className="breadcrumb">
@@ -46,6 +53,10 @@ const VehicleAssignment = () => {
                 />
             </div>
             <Box py="1px" />
+
+            {vehicleList.map((vhil)=>{
+                <div>{"vehicle"+vhil}</div>
+            })}
             <Grid container direction="row" spacing={2} justifyContent="flex-end">
                 <Grid item>
                     <TableButton buttonText="Add Vehicle Assignment" url={url}/>
