@@ -39,9 +39,14 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 const VehicleAssignment = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const { vehicleList } = useSelector((state) => state.vehicle)
-    console.log(vehicleList);
+
+    const user= useSelector((state)=>state.auth.user[0])
+    const token=useSelector((state)=>state.auth.token[0])
+    console.log("user Info "+user.role);
+    console.log("user token "+token);
+    // console.log(vehicleList);
     return (
         <Container>
             <div className="breadcrumb">
@@ -57,6 +62,8 @@ const VehicleAssignment = () => {
             {vehicleList.map((vhil)=>{
                 <div>{"vehicle"+vhil}</div>
             })}
+
+
             <Grid container direction="row" spacing={2} justifyContent="flex-end">
                 <Grid item>
                     <TableButton buttonText="Add Vehicle Assignment" url={url}/>
