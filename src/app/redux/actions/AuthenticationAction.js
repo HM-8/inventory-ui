@@ -1,5 +1,5 @@
 import axios from 'axios'
-import store from '../Store';
+import store from '../Store'
 
 // export const GET_PRODUCT_LIST = 'GET_PRODUCT_LIST'
 // export const GET_CART_LIST = 'GET_CART_LIST'
@@ -92,31 +92,32 @@ export const LOGIN = 'LOGIN'
 // }
 
 export const login = (userInfo) => (dispatch) => {
-
-    const user=JSON.stringify(userInfo);
-
-    console.log("user info",user);
-    axios.post('http://localhost:4040/v1/auth/login', { user }).then((res) => {
-        console.log(res.data)
-        dispatch({
-            type: LOGIN,
-            payload: res.data,
+    axios
+        .post('http://localhost:4040/v1/auth/login', userInfo)
+        .then((res) => {
+            console.log(res.data)
+            dispatch({
+                type: LOGIN,
+                payload: res.data,
+            })
         })
-    })
+        .catch((error) => {
+            console.log(error.response.data)
+        })
 }
 
 export const getItems = () => (dispatch) => {
     const {user} = store.getState().auth;
 
-    if(!user) {
-        console.log("State user", user);
-        console.error("User state is empty");
+    if (!user) {
+        console.log('State user', user)
+        console.error('User state is empty')
     }
-    
-    console.log("State user", user);
-    const config = {
-        headers: { Authorization: `Bearer ${user.access_token}` }
-    };
+
+    console.log('State user', user)
+    // const config = {
+    //     headers: { Authorization: `Bearer ${user.access_token}` },
+    // }
 
     // axios.get('https://62a99115ec36bf40bdb9d7b7.mockapi.io/api/items', config).then((res) => {
     //     console.log(res.data)
@@ -127,4 +128,3 @@ export const getItems = () => (dispatch) => {
     //     })
     // })
 }
-
