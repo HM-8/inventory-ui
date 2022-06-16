@@ -13,7 +13,9 @@ const TextfieldWrapper = ({
     ...otherProps,
     type:"file",
     fullWidth: true,
-    variant: 'outlined'
+    variant: 'standard',
+    InputLabelProps:{ shrink: true }
+    // defaultValue= ' ',
   };
 
   if (mata && mata.touched && mata.error) {

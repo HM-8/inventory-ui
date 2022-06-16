@@ -8,21 +8,6 @@ import TableButton from '../../material-kit/buttons/LinkButton'
 import rows from '../../../utils/data/AssignedVehicles.json'
 
 const columns = [
-// ÷Vehicle Plate No.
-// Vehicle Name 
-// No. of Employees - based on their No
-// Employee Name
-// Employee ID
-// [Fetch their contact details and Address]
-// Description
-// Service 
-// Starting Date
-// End Date
-// Kilometer Reading
-// Starting Kilometer
-// Returning Kilometer
-
-
     { id: 'VehiclePlateNo', label: 'Plate No' },
     { id: 'Name', label: 'Vehicle Name' },
     { id: 'No_of_Employee', label: '# of Employees' },
@@ -66,7 +51,7 @@ const VehicleHistory = () => {
             <Box py="1px" />
             <Grid container direction="row" spacing={2} justifyContent="flex-end">
                 <Grid item>
-                    <TableButton buttonText="Add New Employee Service" url={url}/>
+                    <TableButton buttonText="Add history" url={url}/>
                 </Grid>
             </Grid>
             <SimpleCard title="Vechicle Service History">

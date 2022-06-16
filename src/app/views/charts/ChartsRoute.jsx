@@ -8,7 +8,7 @@ const chartsRoute = [
     {
         path: '/charts/echarts',
         element: <AppEchart />,
-        //auth: authRoles.editor,
+        //auth: [authRoles.editor, ],
     },
 ]
 
