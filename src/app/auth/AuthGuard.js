@@ -39,7 +39,14 @@ const AuthGuard = ({ children }) => {
     }, [pathname, previouseRoute])
 
     if (authenticated) return <>{children}</>
-    else {
+    if (!isAuthenticated) {
+        return (
+            <Navigate
+                to="/session/login"
+                state={{ redirectUrl: previouseRoute }}
+            />
+        )
+    } else {
         return (
             <Navigate
                 to="/session/404"
