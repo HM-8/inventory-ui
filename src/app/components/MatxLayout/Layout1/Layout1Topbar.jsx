@@ -1,11 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-//import useAuth from 'app/hooks/useAuth'
 import useSettings from 'app/hooks/useSettings'
 import { styled, useTheme, Box } from '@mui/system'
 import { Span } from '../../../components/Typography'
 import { MatxMenu, MatxSearchBox } from 'app/components'
-//import ShoppingCart from '../../ShoppingCart/ShoppingCart'
 import NotificationBar from '../../NotificationBar/NotificationBar'
 import { themeShadows } from 'app/components/MatxTheme/themeColors'
 import { NotificationProvider } from 'app/contexts/NotificationContext'
@@ -18,6 +16,7 @@ import {
     Hidden,
 } from '@mui/material'
 import { topBarHeight } from 'app/utils/constant'
+import useAuth from 'app/hooks/useAuth'
 
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
     color: theme.palette.text.primary,
@@ -87,8 +86,10 @@ const IconBox = styled('div')(({ theme }) => ({
 const Layout1Topbar = () => {
     const theme = useTheme()
     const { settings, updateSettings } = useSettings()
-    //const { logout, user } = useAuth()
+    const { logout } = useAuth()
     const isMdScreen = useMediaQuery(theme.breakpoints.down('md'))
+    const userName = window.localStorage.getItem('userName')
+    const userImage = window.localStorage.getItem('userImage')
 
     const updateSidebarMode = (sidebarSettings) => {
         updateSettings({
@@ -129,16 +130,16 @@ const Layout1Topbar = () => {
                         <NotificationBar />
                     </NotificationProvider>
 
-
                     <MatxMenu
                         menuButton={
                             <UserMenu>
                                 <Hidden xsDown>
                                     <Span>
-                                        Hi
+                                        Hi <strong>{userName}</strong>
                                     </Span>
                                 </Hidden>
                                 <Avatar
+                                    src={userImage}
                                     sx={{ cursor: 'pointer' }}
                                 />
                             </UserMenu>
@@ -160,9 +161,11 @@ const Layout1Topbar = () => {
                             <Icon> settings </Icon>
                             <Span> Settings </Span>
                         </StyledItem>
-                        <StyledItem>
-                            <Icon> power_settings_new </Icon>
-                            <Span> Logout </Span>
+                        <StyledItem onClick={logout}>
+                            <Link to="/session/logout">
+                                <Icon> power_settings_new </Icon>
+                                <Span> Logout </Span>
+                            </Link>
                         </StyledItem>
                     </MatxMenu>
                 </Box>

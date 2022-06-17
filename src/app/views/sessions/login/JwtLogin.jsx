@@ -2,20 +2,14 @@ import {
     Card,
     Grid,
     Button,
-    Checkbox,
     CircularProgress,
-    FormControlLabel,
 } from '@mui/material'
 import React, { useState } from 'react'
-//import useAuth from 'app/hooks/useAuth'
+import useAuth from 'app/hooks/useAuth'
 import { useNavigate } from 'react-router-dom'
 import { Box, styled, useTheme } from '@mui/system'
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator'
 import { Paragraph, Span } from 'app/components/Typography'
-import { useDispatch, useSelector } from 'react-redux'
-import {
-    login,
-} from 'app/redux/actions/AuthenticationAction'
 
 const FlexBox = styled(Box)(() => ({
     display: 'flex',
@@ -55,14 +49,10 @@ const StyledProgress = styled(CircularProgress)(() => ({
 
 const JwtLogin = () => {
     const navigate = useNavigate()
-    const dispatch = useDispatch()
     const [loading, setLoading] = useState(false)
-    const [userInfo, setUserInfo] = useState({
-        email: 'johndoe@gmail.com',
-        password: 'password',
-    })
+    const [userInfo, setUserInfo] = useState('')
     const [message, setMessage] = useState('')
-    //const { login } = useAuth()
+    const { login } = useAuth()
 
     const handleChange = ({ target: { name, value } }) => {
         let temp = { ...userInfo }
@@ -74,17 +64,17 @@ const JwtLogin = () => {
     const textError = palette.error.main
     const textPrimary = palette.primary.main
 
-    // const handleFormSubmit = async (event) => {
-    //     setLoading(true)
-    //     try {
-    //         await login(userInfo.email, userInfo.password)
-    //         navigate('/')
-    //     } catch (e) {
-    //         console.log(e)
-    //         setMessage(e.message)
-    //         setLoading(false)
-    //     }
-    // }
+    const handleFormSubmit = async (event) => {
+        setLoading(true)
+        try {
+            await login(userInfo)
+            navigate('/')
+        } catch (e) {
+            console.log(e)
+            setMessage(e.message)
+            setLoading(false)
+        }
+    }
 
     return (
         <JWTRoot>
@@ -100,7 +90,7 @@ const JwtLogin = () => {
                     </Grid>
                     <Grid item lg={7} md={7} sm={7} xs={12}>
                         <ContentBox>
-                            <ValidatorForm>
+                            <ValidatorForm onSubmit={handleFormSubmit}>
                                 <TextValidator
                                     sx={{ mb: 3, width: '100%' }}
                                     variant="outlined"
@@ -128,29 +118,6 @@ const JwtLogin = () => {
                                     validators={['required']}
                                     errorMessages={['this field is required']}
                                 />
-                                {/* <FormControlLabel
-                                    sx={{ mb: '12px', maxWidth: 288 }}
-                                    name="agreement"
-                                    onChange={handleChange}
-                                    control={
-                                        <Checkbox
-                                            size="small"
-                                            onChange={({
-                                                target: { checked },
-                                            }) =>
-                                                handleChange({
-                                                    target: {
-                                                        name: 'agreement',
-                                                        value: checked,
-                                            
-                                                    },
-                                                })
-                                            }
-                                            checked={userInfo.agreement || true}
-                                        />
-                                    }
-                                    label="Remeber me"
-                                /> */}
 
                                 {message && (
                                     <Paragraph sx={{ color: textError }}>
@@ -165,13 +132,6 @@ const JwtLogin = () => {
                                             color="primary"
                                             disabled={loading}
                                             type="submit"
-                                            onClick={() =>
-                                                dispatch(
-                                                    login(
-                                                        userInfo  
-                                                    )
-                                                )
-                                            }
                                         >
                                             Sign in
                                         </Button>
@@ -182,7 +142,7 @@ const JwtLogin = () => {
                                             />
                                         )}
                                     </Box>
-                                    {/* <Span sx={{ mr: 1, ml: '20px' }}>or</Span>
+                                    <Span sx={{ mr: 1, ml: '20px' }}>or</Span>
                                     <Button
                                         sx={{ textTransform: 'capitalize' }}
                                         onClick={() =>
@@ -190,7 +150,7 @@ const JwtLogin = () => {
                                         }
                                     >
                                         Sign up
-                                    </Button> */}
+                                    </Button>
                                 </FlexBox>
                                 <Button
                                     sx={{ color: textPrimary }}

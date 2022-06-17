@@ -3,9 +3,6 @@ import { Grid, Typography, Button } from '@mui/material'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
 import { useDispatch } from 'react-redux'
-import {
-    getItems,
-} from 'app/redux/actions/AuthenticationAction'
 
 const StyledButton = styled(Button)(({ theme }) => ({
     margin: theme.spacing(1),
@@ -53,11 +50,7 @@ function Company() {
                         Offical Email
                     </Grid>
                     <Grid item xs={12}>
-                        <StyledButton variant="contained" color="secondary" onClick={() =>
-                                                dispatch(
-                                                    getItems()
-                                                )
-                                            }> 
+                        <StyledButton variant="contained" color="secondary"> 
                             Edit
                         </StyledButton>
                     </Grid>

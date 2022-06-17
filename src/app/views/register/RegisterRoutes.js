@@ -1,6 +1,6 @@
 import React, { lazy } from 'react'
 import Loadable from 'app/components/Loadable/Loadable'
-//import { authRoles } from '../../auth/authRoles'
+// import { authRoles } from '../../auth/authRoles'
 
 // const AddEmployee = Loadable(lazy(() => import('./AddEmployee')))
 const Products= Loadable(lazy(()=>import('./inventory/Products')))
@@ -33,6 +33,7 @@ const RegisterRouter = [
     {
         path: '/general/company',
         element: <Company />,
+        // auth: authRoles.admin,
     },
     {
         path: '/general/edit-company',
