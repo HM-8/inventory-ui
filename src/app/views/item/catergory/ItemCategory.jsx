@@ -1,20 +1,14 @@
-import React from 'react'
+import AddCategory from './NewCategory'
+import FormDialog from 'app/views/material-kit/dialog/FormDialog'
+import React, { useState } from 'react'
 import PaginationTable from '../../material-kit/tables/PaginationTable'
-
 import { Breadcrumb, SimpleCard } from 'app/components'
 import { Box, styled } from '@mui/system'
-import { Grid } from '@mui/material'
-import TableButton from '../../material-kit/buttons/LinkButton'
-import AddCategory from './NewCategory'
-import rows from '../../../utils/data/category.json'
-import FormDialog from 'app/views/material-kit/dialog/FormDialog'
+import { Grid, Button } from '@mui/material'
+import data from '../../../utils/data/employmentType.json'
+import EditIcon from '@mui/icons-material/Edit'
+import DeleteIcon from '@mui/icons-material/Delete'
 
-const columns = [
-    { id: 'categroy-name', label: 'Categroy Name' },
-    { id: 'subcategory', label: 'Sub Category' },
-    { id: 'description', label: 'Description' },
-]
-const url = '/item/Newcategory';
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -29,22 +23,68 @@ const Container = styled('div')(({ theme }) => ({
     },
 }))
 
+const columns = [
+    { id: 'categroyName', label: 'Categroy Name' },
+    { id: 'subcategory', label: 'Sub Category' },
+    { id: 'description', label: 'Description' },
+    { id: 'edit', label: '', minWidth: 10 },
+    { id: 'del', label: '', minWidth: 10 },
+]
+
+function createData(categroyName, subcategory, description, email, edit, del) {
+    return {
+        categroyName: categroyName,
+        subcategory: subcategory,
+        description: description,
+        edit: edit,
+        del: del,
+    }
+}
+
+const rows = data.map((item, index) => {
+    const container = {}
+    createData(
+        (container.categroyName = item.categroyName),
+        (container.subcategory = item.subcategory),
+        (container.description = item.description),
+        (container.edit = <EditIcon />),
+        (container.del = <DeleteIcon />)
+    )
+    return container
+})
+
+const StyledButton = styled(Button)(({ theme }) => ({
+    margin: theme.spacing(1),
+}))
+
 const Category = () => {
+    const [show, setShow] = useState(false)
+
+    const handleButton = () => {
+        setShow(!show)
+        console.log(show)
+    }
     return (
         <Container>
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'Item', path: '/dashboard' },
+                        { name: 'Inventory', path: '/dashboard' },
                         { name: 'Category' },
                     ]}
                 />
             </div>
             <Box py="1px" />
-            <Grid container direction="row" spacing={2} justifyContent="flex-end">
+            <Grid
+                container
+                direction="row"
+                spacing={2}
+                justifyContent="flex-end"
+            >
                 <Grid item>
-                    {/* <TableButton buttonText="Add Category" url={url}/> */}
-                    <FormDialog title={'New Variant'} buttonText={'Add Row'}><AddCategory /></FormDialog>
+                <Grid item>
+                     <FormDialog title={'New Variant'} buttonText={'Add Row'}><AddCategory /></FormDialog>
+                 </Grid>
                 </Grid>
             </Grid>
             <SimpleCard title="Category List">

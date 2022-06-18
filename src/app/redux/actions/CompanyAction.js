@@ -11,8 +11,18 @@ export const DELETE_PRODUCT_FROM_CART = 'DELETE_PRODUCT_FROM_CART'
 
 export const UPDATE_CART_AMOUNT = 'UPDATE_CART_AMOUNT'
 
+const AuthStr = `Bearer ${accessToken}`; 
 export const getCompanyInfo = () => (dispatch) => {
-    axios.get('http://localhost:4040/v1/company').then((res) => {
+    axios.get(
+        `http://localhost:4040/v1/comapny/${userId}`,
+        {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Authorization': AuthStr
+            }
+        }
+    ).then((res) => {
         dispatch({
             type: GET_PRODUCT_LIST,
             payload: res.data,
@@ -21,7 +31,7 @@ export const getCompanyInfo = () => (dispatch) => {
 }
 
 export const addCompanyInfo = (uid, productId) => (dispatch) => {
-    axios.post('/api/ecommerce/add-to-cart', { uid, productId }).then((res) => {
+    axios.post('http://localhost:4040/v1/company', { uid, productId }).then((res) => {
         console.log(res.data)
         dispatch({
             type: ADD_PRODUCT_TO_CART,
@@ -41,14 +51,14 @@ export const addCompanyInfo = (uid, productId) => (dispatch) => {
 //         })
 // }
 
-export const updateCompanyInfo = (uid, productId, amount) => (dispatch) => {
-    console.log(uid, productId, amount)
-    axios
-        .post('/api/ecommerce/update-cart-amount', { uid, productId, amount })
-        .then((res) => {
-            dispatch({
-                type: UPDATE_CART_AMOUNT,
-                payload: res.data,
-            })
-        })
-}
+// export const updateCompanyInfo = (uid, productId, amount) => (dispatch) => {
+//     console.log(uid, productId, amount)
+//     axios
+//         .post('http://localhost:4040/v1/company', { uid, productId, amount })
+//         .then((res) => {
+//             dispatch({
+//                 type: UPDATE_CART_AMOUNT,
+//                 payload: res.data,
+//             })
+//         })
+// }

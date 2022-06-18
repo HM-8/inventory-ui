@@ -81,12 +81,7 @@ const Deparment = () => {
                 spacing={2}
                 justifyContent="flex-end"
             >
-                {/* <Grid item xs={12}>
-                    <BracodeReader />
-                </Grid> */}
-                {/* <Grid item xs={12}>
-                    <div>{show ? <NewProducts /> : null}</div>
-                </Grid> */}
+                
                 <Grid item>
                 <Grid item>
                     <FormDialog title={'New Variant'} buttonText={'Add Row'}><AddDepartment /></FormDialog>

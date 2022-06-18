@@ -250,21 +250,6 @@ function InsuranceDetail() {
                                             label="Company's Tel "
                                         />
                                     </Grid>
-                                    <Grid item xs={12}>
-                                        <Typography>Insurance Date</Typography>
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <DateTimePicker
-                                            name="IDFrom"
-                                            label="From "
-                                        />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <DateTimePicker
-                                            name="IDTo"
-                                            label="To"
-                                        />
-                                    </Grid>
                                 </Grid>
                             </Form>
                         </Formik>

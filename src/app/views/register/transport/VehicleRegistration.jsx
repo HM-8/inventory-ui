@@ -1,13 +1,3 @@
-// import React from 'react'
-
-// function VehicleRegistration() {
-//   return (
-//     <div>VehicleRegistration</div>
-//   )
-// }
-
-// export default VehicleRegistration
-
 import React from 'react'
 import { styled } from '@mui/system'
 import { Breadcrumb, SimpleCard } from 'app/components'
