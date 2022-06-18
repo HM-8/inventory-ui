@@ -1,3 +1,5 @@
+import { authRoles } from './auth/authRoles'
+
 export const navigations = [
     {
         label: 'Company Setup',
