@@ -11,7 +11,7 @@ const CompanyReducer = function (state = initialState, action) {
         case GET_COMPANY_INFO: {
             return {
                 ...state,
-                companyInfo: [action.payload],
+                companyInfo: action.payload,
             }
         }
         // case GET_CATEGORY_LIST: {

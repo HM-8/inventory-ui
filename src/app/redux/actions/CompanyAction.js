@@ -9,6 +9,7 @@ const AuthStr = `Bearer ${accessToken}`;
 
 export const getCompanyInfo = () => (dispatch) => {
     const companyid="62adcb6e495011c76f401a1e";
+
     axios.get(
         `http://localhost:4040/v1/company/${companyid}`,
         {
@@ -19,6 +20,7 @@ export const getCompanyInfo = () => (dispatch) => {
             }
         }
     ).then((res) => {
+        console.log("Company response", res.data);
         dispatch({
             type: GET_COMPANY_INFO,
             payload: res.data,

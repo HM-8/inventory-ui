@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { getCompanyInfo } from 'app/redux/actions/CompanyAction.js'
+import { intlFormat } from 'date-fns/esm'
 
 const StyledButton = styled(Button)(({ theme }) => ({
     margin: theme.spacing(1),
@@ -25,49 +26,60 @@ const Container = styled('div')(({ theme }) => ({
 
 function Company() {
     const navigate = useNavigate()
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        
-        return () => {
-            dispatch(getCompanyInfo())
-        }
+        dispatch(getCompanyInfo())
     }, [])
 
-    const { company } = useSelector((state) => state.company.companyInfo[0])
-    console.log('company ' + company)
+    const companyInfo = useSelector((state) => state.company.companyInfo)
+    console.log('Company state' + companyInfo)
 
     return (
         <Container>
             <div className="breadcrumb">
                 <Breadcrumb
-                    routeSegments={[{ name: 'Company', path: '/dashbaord' }]}
+                    routeSegments={[{ name: 'Company', path: '/dashboard' }]}
                 />
             </div>
             <SimpleCard title="Company ">
                 <Grid container>
-                    {/* {
-                        company.map((info,index)=>{
-                            
-                        })
-                    } */}
+                    {
+                        // companyInfo.map((info,index)=>{
+                        //     const company = {
+                        //         name: info.name,
+                        //         abbreviation: info.abbreviation,
+                        //         website: info.website,
+                        //         telephone: info.telephone,
+                        //         fax: info.fax,
+                        //         email: info.email
+
+                        //     }
+                        // })
+                    }
                     <Grid item xs={6}>
-                        Company Name
+                        Company Name 
+                        {/* <strong>{companyInfo.name}</strong> */}
                     </Grid>
                     <Grid item xs={6}>
-                        Abbreviation
+                        Abbreviation 
+                        {/* <strong>{companyInfo.abbreviation}</strong> */}
                     </Grid>
                     <Grid item xs={6}>
-                        Website Link
+                        Website Link 
+                        {/* <strong>{companyInfo.website}</strong> */}
                     </Grid>
                     <Grid item xs={6}>
-                        Company Telephone
+                        Company Telephone 
+                        {/* <strong>{companyInfo.telephone}</strong> */}
                     </Grid>
                     <Grid item xs={6}>
-                        Fax
+                        Fax 
+                        {/* <strong>{companyInfo.fax}</strong> */}
                     </Grid>
                     <Grid item xs={6}>
-                        Offical Email
+                        Official Email 
+                        {/* <strong>{companyInfo.email}</strong> */}
                     </Grid>
                     <Grid item xs={12}>
                         <StyledButton
