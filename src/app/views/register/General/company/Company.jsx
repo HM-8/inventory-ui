@@ -50,7 +50,7 @@ function Company() {
                         Offical Email
                     </Grid>
                     <Grid item xs={12}>
-                        <StyledButton variant="contained" color="secondary"> 
+                        <StyledButton variant="contained" color="secondary" href='/general/edit-company'> 
                             Edit
                         </StyledButton>
                     </Grid>

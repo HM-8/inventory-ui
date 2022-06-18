@@ -90,7 +90,7 @@ function AddDepartment() {
                                         <Grid item xs={3}>
                                             <TextField
                                                 name="DepartmentHead"
-                                                label="Department Head"
+                                                label="Head"
                                                 fullWidth
                                                 value={item.DepartmentHead}
                                                 onChange={(event) =>

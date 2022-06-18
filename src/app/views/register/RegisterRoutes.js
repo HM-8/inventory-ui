@@ -31,6 +31,10 @@ const RegisterRouter = [
         element: <Branch />,
     },
     {
+        path: '/general/department',
+        element: <Department />,
+    },
+    {
         path: '/general/company',
         element: <Company />,
         // auth: authRoles.admin,
