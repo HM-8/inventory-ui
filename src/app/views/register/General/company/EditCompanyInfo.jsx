@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import {
@@ -11,9 +11,10 @@ import Button from '../../../../components/FormsUI/Button/index'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
 import { useDispatch,useSelector } from 'react-redux'
+import { getCompanyInfo } from 'app/redux/actions/CompanyAction.js'
 
 import {
-    updateCompanyInfo,
+    updateCompanyInfo
 } from 'app/redux/actions/CompanyAction.js'
 
 
@@ -30,26 +31,38 @@ const Container = styled('div')(({ theme }) => ({
     },
 }))
 
-const INITIAL_FORM_STATE = {
-    CompanyName: '',
-    Abbreviation: '',
-    Website: '',
-    CompanyTel: '',
-    Fax: '',
-    email: '',
-}
 
-const FORM_VALIDATION = Yup.object().shape({
-    CompanyName: Yup.string().required('Required'),
-    Abbreviation: Yup.string().required('Required'),
-    Website: Yup.string().required('Required'),
-    CompanyTel: Yup.string().required('Required'),
-    Fax: Yup.string(),
-    email: Yup.string().email('Invalid Email').required('Required'),  
-})
 
 function Company() {
     const dispatch = useDispatch(); 
+
+    window.onload = function() {
+        var reloading = sessionStorage.getItem("refresh");
+        if (reloading) {
+            sessionStorage.removeItem("refresh");
+            dispatch(getCompanyInfo())
+        }
+    }
+    
+    function reloadP() {
+        sessionStorage.setItem("refresh", "true");
+        document.location.reload();
+    }
+
+    const companyInfo = useSelector((state) => state.company.companyInfo)
+
+    const INITIAL_FORM_STATE = {...companyInfo}
+    
+    const FORM_VALIDATION = Yup.object().shape({
+        name: Yup.string().required('Required'),
+        abbreviation: Yup.string().required('Required'),
+        website: Yup.string().required('Required'),
+        telephone: Yup.string().required('Required'),
+        fax: Yup.string(),  
+    })
+    
+    console.log('Company state from Edit Company',companyInfo)
+
     return (
         <Container>
             <div className="breadcrumb">
@@ -62,7 +75,6 @@ function Company() {
             </div>
             <SimpleCard title="Edit Company Info">
                 <Grid container>
-                    <Grid item xs={12}></Grid>
                     <Grid item xs={12}>
                         <Container maxWidth="md">
                             <Formik
@@ -71,48 +83,53 @@ function Company() {
                                 }}
                                 validationSchema={FORM_VALIDATION}
                                 onSubmit={(values) => 
-                                    dispatch(
-                                        updateCompanyInfo(
-                                            values
-                                        )
-                                    )
-                                    // console.log(values)
+                                    // dispatch(
+                                    //     updateCompanyInfo(
+                                    //         values
+                                    //     )
+                                    // )
+                                    console.log(values)
                                 }
                             >
                                 <Form>
                                     <Grid container spacing={2}>
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="CompanyName"
-                                                label="Company Name "
+                                                name="name"
+                                                label="Company Name"
+                                                // value={companyInfo.name}
                                             />
                                         </Grid>
 
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="Abbreviation"
+                                                name="abbreviation"
                                                 label="Abbreviation "
+                                                // value={companyInfo.Abbreviation}
                                             />
                                         </Grid>
                                         
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="Website"
+                                                name="website"
                                                 label="Website "
+                                                // value={companyInfo.Website}
                                             />
                                         </Grid>
 
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="CompanyTel"
+                                                name="telephone"
                                                 label="Company Telephone Number "
+                                                // value={companyInfo.CompanyTel}
                                             />
                                         </Grid>
 
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="Fax"
+                                                name="fax"
                                                 label="Fax "
+                                                // value={companyInfo.Fax}
                                             />
                                         </Grid>
 
@@ -120,6 +137,7 @@ function Company() {
                                             <Textfield
                                                 name="email"
                                                 label="Email"
+                                                // value={companyInfo.email}
                                             />
                                         </Grid>
                                         <Grid item xs={12}>
