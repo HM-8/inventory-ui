@@ -25,7 +25,7 @@ const AuthGuard = ({ children }) => {
     const { pathname } = useLocation()
     const routes = flat(AllPages())
 
-    console.log(user)
+    console.log("user", user)
 
     const isUserRoleAuthenticated = getUserRoleAuthStatus(
         pathname,
@@ -39,17 +39,10 @@ const AuthGuard = ({ children }) => {
     }, [pathname, previouseRoute])
 
     if (authenticated) return <>{children}</>
-    if (!isAuthenticated) {
+    else {
         return (
             <Navigate
                 to="/session/login"
-                state={{ redirectUrl: previouseRoute }}
-            />
-        )
-    } else {
-        return (
-            <Navigate
-                to="/session/404"
                 state={{ redirectUrl: previouseRoute }}
             />
         )

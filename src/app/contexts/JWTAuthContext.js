@@ -20,16 +20,16 @@ const isValidToken = (accessToken) => {
 }
 
 const setSession = (accessToken, refreshToken, user) => {
-    console.log("Session user", user);
     if (accessToken) {
         localStorage.setItem('accessToken', accessToken)
         localStorage.setItem('refreshToken', refreshToken)
+        localStorage.setItem('userID', user.id)
         localStorage.setItem('userName', user.name)
         localStorage.setItem('userImage', user.image)
         axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`
     } else {
         localStorage.removeItem('accessToken')
-        localStorage.removeItem('refreshToken')
+        localStorage.removeItem('userID')
         localStorage.removeItem('userName')
         localStorage.removeItem('userImage')
         delete axios.defaults.headers.common.Authorization
@@ -91,14 +91,16 @@ export const AuthProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState)
 
     const login = async (userInfo) => {
-        console.log('user info', userInfo)
         const response = await axios.post(
             'http://localhost:4040/v1/auth/login',
             userInfo
         )
+
         const { tokens, user } = response.data
 
-        setSession(tokens.access.token, tokens.refresh.token, user)
+        const accessToken = tokens.access.token
+        const refreshToken = tokens.access.token
+        setSession(accessToken, refreshToken, user)
 
         dispatch({
             type: 'LOGIN',
@@ -117,11 +119,24 @@ export const AuthProvider = ({ children }) => {
         ;(async () => {
             try {
                 const accessToken = window.localStorage.getItem('accessToken')
+                const refreshToken = window.localStorage.getItem('refreshToken')
+                const userId = window.localStorage.getItem('userID')
+                const AuthStr = `Bearer ${accessToken}`; 
 
-                if (accessToken && isValidToken(accessToken)) {
-                    setSession(accessToken)
-                    const response = await axios.get('/api/auth/profile')
-                    const { user } = response.data
+                if (accessToken && userId && isValidToken(accessToken)) {
+                    const response = await axios.get(
+                        `http://localhost:4040/v1/users/${userId}`,
+                        {
+                            headers : {
+                                'Content-Type' : 'application/json',
+                                'Accept' : 'application/json',
+                                'Authorization' : AuthStr
+                              }
+                        }   
+                    )
+                    const user = response.data
+                    console.log("user", user);
+                    setSession(accessToken, refreshToken, user)
 
                     dispatch({
                         type: 'INIT',
