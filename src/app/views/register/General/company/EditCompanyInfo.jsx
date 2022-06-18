@@ -10,7 +10,7 @@ import Textfield from '../../../../components/FormsUI/Textfield'
 import Button from '../../../../components/FormsUI/Button/index'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
 
 import {
     updateCompanyInfo,
@@ -37,8 +37,6 @@ const INITIAL_FORM_STATE = {
     CompanyTel: '',
     Fax: '',
     email: '',
-    DateofIncorporation: '',
-    upload:''
 }
 
 const FORM_VALIDATION = Yup.object().shape({
@@ -47,13 +45,11 @@ const FORM_VALIDATION = Yup.object().shape({
     Website: Yup.string().required('Required'),
     CompanyTel: Yup.string().required('Required'),
     Fax: Yup.string(),
-    email: Yup.string().email('Invalid Email').required('Required'),
-    DateofIncorporation: Yup.date().required('Required'),
-    upload: Yup.string().required('Required'),    
+    email: Yup.string().email('Invalid Email').required('Required'),  
 })
 
 function Company() {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch(); 
     return (
         <Container>
             <div className="breadcrumb">
@@ -80,6 +76,7 @@ function Company() {
                                             values
                                         )
                                     )
+                                    // console.log(values)
                                 }
                             >
                                 <Form>

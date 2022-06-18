@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { getCompanyInfo } from 'app/redux/actions/CompanyAction.js'
-import { intlFormat } from 'date-fns/esm'
+// import { intlFormat } from 'date-fns/esm'
 
 const StyledButton = styled(Button)(({ theme }) => ({
     margin: theme.spacing(1),
@@ -53,33 +53,38 @@ function Company() {
                         //         telephone: info.telephone,
                         //         fax: info.fax,
                         //         email: info.email
-
                         //     }
                         // })
                     }
                     <Grid item xs={6}>
-                        Company Name 
-                        {/* <strong>{companyInfo.name}</strong> */}
+                        Company Name
                     </Grid>
                     <Grid item xs={6}>
-                        Abbreviation 
-                        {/* <strong>{companyInfo.abbreviation}</strong> */}
+                        <strong>{companyInfo.name}</strong>
                     </Grid>
                     <Grid item xs={6}>
-                        Website Link 
-                        {/* <strong>{companyInfo.website}</strong> */}
+                        Abbreviation
                     </Grid>
                     <Grid item xs={6}>
-                        Company Telephone 
-                        {/* <strong>{companyInfo.telephone}</strong> */}
+                        <strong>{companyInfo.abbreviation}</strong>
                     </Grid>
                     <Grid item xs={6}>
-                        Fax 
-                        {/* <strong>{companyInfo.fax}</strong> */}
+                        Website Link
                     </Grid>
                     <Grid item xs={6}>
-                        Official Email 
-                        {/* <strong>{companyInfo.email}</strong> */}
+                        <strong>{companyInfo.website}</strong>
+                    </Grid>
+                    <Grid item xs={6}>
+                        Company Telephone
+                    </Grid>
+                    <Grid item xs={6}>
+                        <strong>{companyInfo.telephone}</strong>
+                    </Grid>
+                    <Grid item xs={6}>
+                        Fax
+                    </Grid>
+                    <Grid item xs={6}>
+                        <strong>{companyInfo.fax}</strong>
                     </Grid>
                     <Grid item xs={12}>
                         <StyledButton

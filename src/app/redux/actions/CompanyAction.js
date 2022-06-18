@@ -6,10 +6,9 @@ export const UPDATE_COMPANY_INFO = 'UPDATE_COMPANY_INFO'
 
 const accessToken = window.localStorage.getItem('accessToken')
 const AuthStr = `Bearer ${accessToken}`; 
+const companyid="62adcb6e495011c76f401a1e";
 
 export const getCompanyInfo = () => (dispatch) => {
-    const companyid="62adcb6e495011c76f401a1e";
-
     axios.get(
         `http://localhost:4040/v1/company/${companyid}`,
         {
@@ -42,7 +41,7 @@ export const addCompanyInfo = (companyid) => (dispatch) => {
 export const updateCompanyInfo = (companyid, amount) => (dispatch) => {
     console.log(companyid, amount)
     axios
-        .post('http://localhost:4040/v1/company', { companyid, amount })
+        .patch('http://localhost:4040/v1/company', { companyid, amount })
         .then((res) => {
             dispatch({
                 type: UPDATE_COMPANY_INFO,
