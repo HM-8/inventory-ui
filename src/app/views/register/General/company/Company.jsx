@@ -3,6 +3,7 @@ import { Grid, Typography, Button } from '@mui/material'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const StyledButton = styled(Button)(({ theme }) => ({
     margin: theme.spacing(1),
@@ -22,6 +23,8 @@ const Container = styled('div')(({ theme }) => ({
 
 function Company() {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     return (
         <Container>
             <div className="breadcrumb">
@@ -50,7 +53,9 @@ function Company() {
                         Offical Email
                     </Grid>
                     <Grid item xs={12}>
-                        <StyledButton variant="contained" color="secondary" href='/general/edit-company'> 
+                        <StyledButton variant="contained" color="secondary" onClick={() =>
+                                        navigate('/general/edit-company')
+                                    }> 
                             Edit
                         </StyledButton>
                     </Grid>
