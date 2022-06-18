@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Grid, Typography, Button } from '@mui/material'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+
+import { getCompanyInfo } from 'app/redux/actions/CompanyAction.js'
 
 const StyledButton = styled(Button)(({ theme }) => ({
     margin: theme.spacing(1),
@@ -22,8 +24,18 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 function Company() {
-    const dispatch = useDispatch()
     const navigate = useNavigate()
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        
+        return () => {
+            dispatch(getCompanyInfo())
+        }
+    }, [])
+
+    const { company } = useSelector((state) => state.company.companyInfo[0])
+    console.log('company ' + company)
 
     return (
         <Container>
@@ -34,6 +46,11 @@ function Company() {
             </div>
             <SimpleCard title="Company ">
                 <Grid container>
+                    {/* {
+                        company.map((info,index)=>{
+                            
+                        })
+                    } */}
                     <Grid item xs={6}>
                         Company Name
                     </Grid>
@@ -53,9 +70,11 @@ function Company() {
                         Offical Email
                     </Grid>
                     <Grid item xs={12}>
-                        <StyledButton variant="contained" color="secondary" onClick={() =>
-                                        navigate('/general/edit-company')
-                                    }> 
+                        <StyledButton
+                            variant="contained"
+                            color="secondary"
+                            onClick={() => navigate('/general/edit-company')}
+                        >
                             Edit
                         </StyledButton>
                     </Grid>

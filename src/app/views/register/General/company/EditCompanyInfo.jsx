@@ -10,8 +10,12 @@ import Textfield from '../../../../components/FormsUI/Textfield'
 import Button from '../../../../components/FormsUI/Button/index'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
+import { useDispatch } from 'react-redux'
 
-const buttonText = 'Save'
+import {
+    updateCompanyInfo,
+} from 'app/redux/actions/CompanyAction.js'
+
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -49,6 +53,7 @@ const FORM_VALIDATION = Yup.object().shape({
 })
 
 function Company() {
+    const dispatch = useDispatch();
     return (
         <Container>
             <div className="breadcrumb">
@@ -69,9 +74,13 @@ function Company() {
                                     ...INITIAL_FORM_STATE,
                                 }}
                                 validationSchema={FORM_VALIDATION}
-                                onSubmit={(values) => {
-                                    console.log(values)
-                                }}
+                                onSubmit={(values) => 
+                                    dispatch(
+                                        updateCompanyInfo(
+                                            values
+                                        )
+                                    )
+                                }
                             >
                                 <Form>
                                     <Grid container spacing={2}>
