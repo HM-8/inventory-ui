@@ -1,22 +1,17 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import {
-    Grid,
-    Typography,
-} from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 
 import Textfield from '../../../../components/FormsUI/Textfield'
 import Button from '../../../../components/FormsUI/Button/index'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
-import { useDispatch,useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getCompanyInfo } from 'app/redux/actions/CompanyAction.js'
 
-import {
-    updateCompanyInfo
-} from 'app/redux/actions/CompanyAction.js'
-
+import { updateCompanyInfo } from 'app/redux/actions/CompanyAction.js'
+import { useRef } from 'react'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -31,45 +26,44 @@ const Container = styled('div')(({ theme }) => ({
     },
 }))
 
-
-
 function Company() {
-    const dispatch = useDispatch(); 
-
-    window.onload = function() {
-        var reloading = sessionStorage.getItem("refresh");
-        if (reloading) {
-            sessionStorage.removeItem("refresh");
-            dispatch(getCompanyInfo())
-        }
-    }
-    
-    function reloadP() {
-        sessionStorage.setItem("refresh", "true");
-        document.location.reload();
-    }
-
+    const dispatch = useDispatch()
+    const INITIAL_FORM_STATE = useRef({
+        name: '',
+        abbreviation: '',
+        website: '',
+        telephone: '',
+        fax: '',
+        email: '',
+    })
     const companyInfo = useSelector((state) => state.company.companyInfo)
 
-    const INITIAL_FORM_STATE = {...companyInfo}
-    
+    useEffect(() => {
+        console.log('use effect', INITIAL_FORM_STATE)
+        if (INITIAL_FORM_STATE.current.name === '') {
+            dispatch(getCompanyInfo())
+            INITIAL_FORM_STATE.current = { ...companyInfo }
+        }
+    }, [])
+
+    console.log('initial', INITIAL_FORM_STATE.current)
+    console.log('company', companyInfo)
+
     const FORM_VALIDATION = Yup.object().shape({
         name: Yup.string().required('Required'),
         abbreviation: Yup.string().required('Required'),
         website: Yup.string().required('Required'),
         telephone: Yup.string().required('Required'),
-        fax: Yup.string(),  
+        fax: Yup.string(),
     })
-    
-    console.log('Company state from Edit Company',companyInfo)
 
     return (
         <Container>
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'Company', path: '/dashbaord' },
-                        {name: 'Edit Company Info'}
+                        { name: 'Company', path: '/general/company' },
+                        { name: 'Edit Company Info' },
                     ]}
                 />
             </div>
@@ -79,10 +73,10 @@ function Company() {
                         <Container maxWidth="md">
                             <Formik
                                 initialValues={{
-                                    ...INITIAL_FORM_STATE,
+                                    ...INITIAL_FORM_STATE.current,
                                 }}
                                 validationSchema={FORM_VALIDATION}
-                                onSubmit={(values) => 
+                                onSubmit={(values) =>
                                     // dispatch(
                                     //     updateCompanyInfo(
                                     //         values
@@ -108,7 +102,7 @@ function Company() {
                                                 // value={companyInfo.Abbreviation}
                                             />
                                         </Grid>
-                                        
+
                                         <Grid item xs={6}>
                                             <Textfield
                                                 name="website"
