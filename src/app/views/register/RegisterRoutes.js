@@ -1,6 +1,6 @@
 import React, { lazy } from 'react'
 import Loadable from 'app/components/Loadable/Loadable'
-//import { authRoles } from '../../auth/authRoles'
+// import { authRoles } from '../../auth/authRoles'
 
 // const AddEmployee = Loadable(lazy(() => import('./AddEmployee')))
 const Products= Loadable(lazy(()=>import('./inventory/Products')))
@@ -8,6 +8,7 @@ const Branch= Loadable(lazy(()=>import('./General/branch/Branch')))
 const Settings= Loadable(lazy(()=>import('../settings/Inventory')))
 const NewBranch= Loadable(lazy(()=>import('./General/branch/AddBranch')))
 const Company= Loadable(lazy(()=>import('./General/company/Company')))
+const EditCompany= Loadable(lazy(()=>import('./General/company/EditCompanyInfo')))
 const Department= Loadable(lazy(()=>import('./General/department/Department')))
 const Creation= Loadable(lazy(()=>import('./hr/NewEmployee')))
 const SalaryDetails= Loadable(lazy(()=>import('./hr/SalaryDetails')))
@@ -30,12 +31,17 @@ const RegisterRouter = [
         element: <Branch />,
     },
     {
-        path: '/general/company',
-        element: <Company />,
-    },
-    {
         path: '/general/department',
         element: <Department />,
+    },
+    {
+        path: '/general/company',
+        element: <Company />,
+        // auth: authRoles.admin,
+    },
+    {
+        path: '/general/edit-company',
+        element: <EditCompany />,
     },
     {
         path: '/settings/tranport',

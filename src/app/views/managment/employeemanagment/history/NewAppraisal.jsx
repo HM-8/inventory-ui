@@ -1,18 +1,15 @@
 import React from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import {
-    Grid,
-    Typography,
-} from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 
 import Textfield from '../../../../components/FormsUI/Textfield'
-import DateTimePicker from '../../../../components/FormsUI/DataTimePicker'
 import Select from '../../../../components/FormsUI/Select'
-import Button from '../../../../components/FormsUI/Button/index'
-import itemlist from '../../../../utils/data/BranchList.json'
+import Button from '../../../../components/FormsUI/Button'
+import DateTimePicker from '../../../../components/FormsUI/DataTimePicker'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
+import Paymentmode from '../../../../utils/data/paymentmode.json'
 import Upload from '../../../../components/FormsUI/fileupload'
 
 const buttonText = 'Save'
@@ -31,40 +28,39 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 const INITIAL_FORM_STATE = {
-    CompanyName: '',
-    Abbreviation: '',
-    Website: '',
-    CompanyTel: '',
-    Fax: '',
-    email: '',
-    DateofIncorporation: '',
-    upload:''
+    vehicleName: '',
+    driverName: '',
+    FuelMeasurment: '',
+    AssignmentStatus: '',
+    TrackUsage: '',
+    StartDate: '',
+    EndDate: '',
 }
 
 const FORM_VALIDATION = Yup.object().shape({
-    CompanyName: Yup.string().required('Required'),
-    Abbreviation: Yup.string().required('Required'),
-    Website: Yup.string().required('Required'),
-    CompanyTel: Yup.string().required('Required'),
-    Fax: Yup.string(),
-    email: Yup.string().email('Invalid Email').required('Required'),
-    DateofIncorporation: Yup.date().required('Required'),
-    upload: Yup.string().required('Required'),    
+    vehicleName: Yup.string().required('Required'),
+    driverName: Yup.string().required('Required'),
+    FuelMeasurment: Yup.string().required('Required'),
+    AssignmentStatus: Yup.string().required('Required'),
+    TrackUsage: Yup.string(),
+    StartDate: Yup.date().required('Required'),
+    EndDate: Yup.date().required('Required'),
 })
 
-function UploadAttendance() {
+function NewAppraisal() {
     return (
         <Container>
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'Company', path: '/dashbaord' },
-                        { name: 'Company' },
+                        { name: 'Appraisal', path: '/history/appraisal' },
+                        { name: 'New Appraisal' },
                     ]}
                 />
             </div>
-            <SimpleCard title="Add Vehicle Assignment">
+            <SimpleCard title="LeavePolicy">
                 <Grid container>
+                    <Grid item xs={12}></Grid>
                     <Grid item xs={12}>
                         <Container maxWidth="md">
                             <Formik
@@ -78,13 +74,26 @@ function UploadAttendance() {
                             >
                                 <Form>
                                     <Grid container spacing={2}>
-                                        <Grid item xs={6}>
+                                    <Grid item xs={6}>
                                             <Upload
                                                 name="upload"
-                                                label="Upload Attendance Document "
+                                                label="Upload Peer Review Questions "
                                             />
                                         </Grid>
 
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="reviews"
+                                                label="No of Reviews "
+                                            />
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="value"
+                                                label="Average value earned  "
+                                            />
+                                        </Grid>
+                                        
                                         <Grid item xs={12}>
                                             <Button>Submit Form</Button>
                                         </Grid>
@@ -101,4 +110,4 @@ function UploadAttendance() {
     )
 }
 
-export default UploadAttendance
+export default NewAppraisal

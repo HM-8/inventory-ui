@@ -10,6 +10,7 @@ import DateTimePicker from '../../../../components/FormsUI/DataTimePicker'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
 import Paymentmode from '../../../../utils/data/paymentmode.json'
+import Upload from '../../../../components/FormsUI/fileupload'
 
 const buttonText = 'Save'
 
@@ -46,18 +47,18 @@ const FORM_VALIDATION = Yup.object().shape({
     EndDate: Yup.date().required('Required'),
 })
 
-function Attendance() {
+function NewTransfer() {
     return (
         <Container>
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'Dashboard', path: '/dashboard' },
-                        { name: 'Attendance' },
+                        { name: 'Transfer', path: '/history/appraisal' },
+                        { name: 'New Transfer' },
                     ]}
                 />
             </div>
-            <SimpleCard title="Attendance">
+            <SimpleCard title="LeavePolicy">
                 <Grid container>
                     <Grid item xs={12}></Grid>
                     <Grid item xs={12}>
@@ -73,56 +74,46 @@ function Attendance() {
                             >
                                 <Form>
                                     <Grid container spacing={2}>
+                                        {/* <Grid item xs={6}>
+                                            <Upload
+                                                name="upload"
+                                                label="Upload Peer Review Questions "
+                                            />
+                                        </Grid> */}
+
                                         <Grid item xs={6}>
-                                            <Select
-                                                name="emp_id"
-                                                label="Employee Id"
-                                                options={Paymentmode}
+                                            <Textfield
+                                                name="CurrentBranch"
+                                                label="Current Branch "
+                                            />
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="NewBranch"
+                                                label="New Branch  "
                                             />
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <Textfield
-                                                name="emp_name"
-                                                label="Employee Name "
+                                            <DateTimePicker
+                                                name="SuggestedDate"
+                                                label="Suggested Date "
                                             />
                                         </Grid>
+
                                         <Grid item xs={6}>
                                             <DateTimePicker
-                                                name="date"
-                                                label="Date "
+                                                name="ApprovedDate"
+                                                label="Approved Date "
                                             />
                                         </Grid>
-                                        <Grid item xs={6}>
-                                            <Select
-                                                name="status"
-                                                label="Status"
-                                                options={Paymentmode}
-                                            />
-                                        </Grid>
+                                        
                                         <Grid item xs={12}>
-                                        <Typography>Shift time</Typography>
-                                      </Grid>
-                                    <Grid item xs={6}>
-                                        <DateTimePicker
-                                            name="start_date"
-                                            label="Start date  "
-                                        />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <DateTimePicker
-                                            name="end_date"
-                                            label="End date "
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12}>
                                             <Button>Submit Form</Button>
                                         </Grid>
                                     </Grid>
                                 </Form>
                             </Formik>
-
-                            {/* </div> */}
                         </Container>
                     </Grid>
                 </Grid>
@@ -131,4 +122,4 @@ function Attendance() {
     )
 }
 
-export default Attendance
+export default NewTransfer

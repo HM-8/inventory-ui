@@ -29,6 +29,11 @@ const NewVendor = Loadable(lazy(() => import('./logistic/NewVendor')))
 const NewIssues = Loadable(lazy(() => import('./logistic/NewIssues')))
 const NewFuelEntry = Loadable(lazy(() => import('./logistic/NewFuelEntry')))
 const NewVihicleHistory = Loadable(lazy(() => import('./logistic/newVehicleHistroy')))
+const NewAppraisal = Loadable(lazy(() => import('./employeemanagment/history/NewAppraisal')))
+const NewPromotion = Loadable(lazy(() => import('./employeemanagment/history/NewPromotion')))
+const NewTransfer = Loadable(lazy(() => import('./employeemanagment/history/NewTranfer')))
+const NewEMPTransport = Loadable(lazy(() => import('./logistic/tripManagment/NewEmployeeTransfer')))
+const NewItemTransport = Loadable(lazy(() => import('./logistic/tripManagment/NewItemTransfer')))
 
 
 const MRouter = [
@@ -109,7 +114,7 @@ const MRouter = [
         path: '/logistic/new-issues',
         element: <NewIssues />,
     },
-     {
+    {
         path: '/logistic/serive-maintainance',
         element: <Service />,
     }, {
@@ -134,8 +139,28 @@ const MRouter = [
         element: <EmployeeTransportation />,
     },
     {
+        path: '/logistic/trips/new-employee',
+        element: <NewEMPTransport />,
+    },
+    {
         path: '/logistic/trips/item',
         element: <ItemTransportation />,
+    },
+    {
+        path: '/logistic/trips/new-item',
+        element: <NewItemTransport />,
+    },
+    {
+        path: '/general/NewAppraisal',
+        element: <NewAppraisal />,
+    },
+    {
+        path: '/general/NewPromotion',
+        element: <NewPromotion />,
+    },
+    {
+        path: '/general/NewTransfer',
+        element: <NewTransfer />,
     },
 ]
 

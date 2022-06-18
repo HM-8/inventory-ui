@@ -15,8 +15,10 @@ if (
     devtools = window.__REDUX_DEVTOOLS_EXTENSION__()
 }
 
-export const Store = createStore(
+const store = createStore(
     RootReducer,
     initialState,
     compose(applyMiddleware(...middlewares), devtools)
 )
+
+export default store;

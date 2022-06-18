@@ -5,36 +5,9 @@ import { Box, styled } from '@mui/system'
 import { Grid } from '@mui/material'
 import TableButton from '../../../material-kit/buttons/LinkButton'
 
-import rows from '../../../../utils/data/vehicleNameDD.json'
-const columns = [
-//     Request Approver 
-// Name
-// Signature
-// Approver 
-    // Assign Fuel
-    // Assign car 
-// Assign pocket money for the driver
-// Record the ff
-    // Service Date
-    // Address
-    // House No.
-    // Kebele
-    // Wereda
-    // Subcity
-    // City
-    // Area name (optional)
-// Starting
-// Kilometer
-// Time
-// Return  
-// Time
-// Kilometer
-// Kilometer difference
-// Items Receiver Affirmation 
-// Name
-// Signature
+import rows from '../../../../utils/data/AssignedVehicles.json'
 
-    
+const columns = [
     { id: 'lcc', label: 'RA Name' },
     { id: 'pc', label: 'RA Signature'},
     { id: 't', label: 'Fuel' },
@@ -48,10 +21,8 @@ const columns = [
     { id: 't', label: 'KM diff' },
     { id: 't', label: 'IR. Name' },
     { id: 't', label: 'IR. Signature' },
-   
-   
 ]
-const url = '/trip/item/add';
+const url = '/logistic/trips/new-item';
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -66,29 +37,28 @@ const Container = styled('div')(({ theme }) => ({
     },
 }))
 
-const ItemTransportation = () => {
+const FuelEntry = () => {
     return (
         <Container>
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
                         { name: 'Dashboard', path: '/dashboard' },
-                        { name: 'Item Transport Info' },
+                        { name: 'Item Transfer' },
                     ]}
                 />
             </div>
             <Box py="1px" />
             <Grid container direction="row" spacing={2} justifyContent="flex-end">
                 <Grid item>
-                    <TableButton buttonText="Add New Item Transport" url={url}/>
-                <br/><br/>
+                    <TableButton buttonText="Add Item Transport" url={url}/>
                 </Grid>
             </Grid>
-            <SimpleCard title="Item Transport History">
+            <SimpleCard title="Item Transport">
                 <PaginationTable columns={columns} rows={rows} />
             </SimpleCard>
         </Container>
     )
 }
 
-export default ItemTransportation
+export default FuelEntry

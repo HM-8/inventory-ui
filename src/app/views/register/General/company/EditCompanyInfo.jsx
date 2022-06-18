@@ -52,19 +52,20 @@ const FORM_VALIDATION = Yup.object().shape({
     upload: Yup.string().required('Required'),    
 })
 
-function UploadAttendance() {
+function Company() {
     return (
         <Container>
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
                         { name: 'Company', path: '/dashbaord' },
-                        { name: 'Company' },
+                        {name: 'Edit Company Info'}
                     ]}
                 />
             </div>
-            <SimpleCard title="Add Vehicle Assignment">
+            <SimpleCard title="Edit Company Info">
                 <Grid container>
+                    <Grid item xs={12}></Grid>
                     <Grid item xs={12}>
                         <Container maxWidth="md">
                             <Formik
@@ -79,12 +80,46 @@ function UploadAttendance() {
                                 <Form>
                                     <Grid container spacing={2}>
                                         <Grid item xs={6}>
-                                            <Upload
-                                                name="upload"
-                                                label="Upload Attendance Document "
+                                            <Textfield
+                                                name="CompanyName"
+                                                label="Company Name "
                                             />
                                         </Grid>
 
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="Abbreviation"
+                                                label="Abbreviation "
+                                            />
+                                        </Grid>
+                                        
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="Website"
+                                                label="Website "
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="CompanyTel"
+                                                label="Company Telephone Number "
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="Fax"
+                                                label="Fax "
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="email"
+                                                label="Email"
+                                            />
+                                        </Grid>
                                         <Grid item xs={12}>
                                             <Button>Submit Form</Button>
                                         </Grid>
@@ -101,4 +136,4 @@ function UploadAttendance() {
     )
 }
 
-export default UploadAttendance
+export default Company

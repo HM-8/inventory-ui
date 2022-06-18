@@ -14,16 +14,37 @@ import RegisterRoutes from 'app/views/register/RegisterRoutes'
 import ItemRoutes from 'app/views/item/ItemRoutes'
 import ToolsRoute from 'app/views/tools/ToolsRoutes'
 import TransactionRoute from 'app/views/transaction/TransactionRoutes'
-import ReturnReport from "app/views/return/ReturnRoutes"
+import ReturnReport from 'app/views/return/ReturnRoutes'
 import PersonalRouter from 'app/views/personalPage/personalRouter'
 import MRouter from 'app/views/managment/MRouter'
 import SettingsRouter from 'app/views/settings/SettingsRouter'
+import AuthGuard from 'app/auth/AuthGuard'
 
 export const AllPages = () => {
     const all_routes = [
         {
-            element: <MatxLayout />,
-            children: [...dashboardRoutes, ...chartsRoute, ...materialRoutes,...ReturnReport,...TransactionRoute,...RegisterRoutes, ...employeeRoutes, ...reportRoutes, ...defaultRoutes, ...ItemRoutes, ...ToolsRoute,...profileRoutes,...PersonalRouter, ...MRouter,...SettingsRouter],
+            element: (
+                <AuthGuard>
+                    <MatxLayout />
+                </AuthGuard>
+            ),
+            children: [
+                ...dashboardRoutes,
+                ...chartsRoute,
+                ...materialRoutes,
+                ...ReturnReport,
+                ...TransactionRoute,
+                ...RegisterRoutes,
+                ...employeeRoutes,
+                ...reportRoutes,
+                ...defaultRoutes,
+                ...ItemRoutes,
+                ...ToolsRoute,
+                ...profileRoutes,
+                ...PersonalRouter,
+                ...MRouter,
+                ...SettingsRouter,
+            ],
         },
         ...sessionRoutes,
         {
