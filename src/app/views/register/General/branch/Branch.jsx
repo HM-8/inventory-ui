@@ -1,70 +1,14 @@
-// import React from 'react'
-// import PaginationTable from '../../../material-kit/tables/PaginationTable'
-// import { Breadcrumb, SimpleCard } from 'app/components'
-// import { Box, styled } from '@mui/system'
-// import { Grid } from '@mui/material'
 import TableButton from '../../../material-kit/buttons/LinkButton'
-
-// import rows from '../../../../utils/data/Branch.json'
-
-// const columns = [
-//     { id: 'location', label: 'Location' },
-//     { id: 'branch-manager', label: 'Branch Manager' },
-//     { id: 'telephone', label: 'Telephone' },
-//     { id: 'email', label: 'Email' },
-//     { id: 'type', label: 'Inventory Type' }
-
-// ]
-// const url = '/general/NewBranch';
-
-// const Container = styled('div')(({ theme }) => ({
-//     margin: '30px',
-//     [theme.breakpoints.down('sm')]: {
-//         margin: '16px',
-//     },
-//     '& .breadcrumb': {
-//         marginBottom: '30px',
-//         [theme.breakpoints.down('sm')]: {
-//             marginBottom: '16px',
-//         },
-//     },
-// }))
-
-// const Branch = () => {
-//     return (
-//         <Container>
-//             <div className="breadcrumb">
-//                 <Breadcrumb
-//                     routeSegments={[
-//                         { name: 'General', path: '/dashboard' },
-//                         { name: 'Branch' },
-//                     ]}
-//                 />
-//             </div>
-//             <Box py="1px" />
-//             <Grid container direction="row" spacing={2} justifyContent="flex-end">
-//                 <Grid item>
-//                     <TableButton buttonText="Add Branch" url={url}/>
-//                 </Grid>
-//             </Grid>
-//             <SimpleCard title="Branches">
-//                 <PaginationTable columns={columns} rows={rows} />
-//             </SimpleCard>
-//         </Container>
-//     )
-// }
-
-// export default Branch
-
-import React, { useState } from 'react'
-import PaginationTable from '../../../material-kit/tables/PaginationTable'
-import { Breadcrumb, SimpleCard } from 'app/components'
+import { DeleteButton } from '../../../material-kit/buttons/DeleteButton'
+import { EditButton } from '../../../material-kit/buttons/EditButton'
+import { Grid } from '@mui/material'
 import { Box, styled } from '@mui/system'
-import { Grid, Button } from '@mui/material'
-import data from '../../../../utils/data/employmentType.json'
-import EditIcon from '@mui/icons-material/Edit'
-import DeleteIcon from '@mui/icons-material/Delete'
-const url = '/general/NewBranch';
+import { Breadcrumb, SimpleCard } from 'app/components'
+import { getallBranches } from 'app/redux/actions/BranchAction'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import PaginationTable from '../../../material-kit/tables/PaginationTable'
+const url = '/general/NewBranch'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -80,58 +24,89 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 const columns = [
-    { id: 'location', label: 'Location' },
+    { id: 'city', label: 'City' },
+    { id: 'subCity', label: 'SubCity' },
+    { id: 'wereda', label: 'Wereda' },
+    { id: 'kebele', label: 'Kebele' },
+    { id: 'houseNo', label: 'House No' },
     { id: 'branchManager', label: 'Branch Manager' },
-    { id: 'telephone', label: 'Telephone' },
-    { id: 'email', label: 'Email' },
-    { id: 'type', label: 'Inventory Type' },
+    { id: 'mobTel', label: 'Mobile Telephone' },
+    { id: 'officeTel', label: 'OfficeTelephone' },
+    { id: 'personalEmail', label: 'Personal Email' },
+    { id: 'officeEmail', label: 'Office Email' },
+    { id: 'type', label: 'Type' },
     { id: 'edit', label: '', minWidth: 10 },
     { id: 'del', label: '', minWidth: 10 },
 ]
 
-function createData(location, branchManager, telephone, email,type,edit, del) {
+function createData(
+    city,
+    subCity,
+    wereda,
+    kebele,
+    houseNo,
+    branchManager,
+    mobTel,
+    officeTel,
+    personalEmail,
+    officeEmail,
+    type,
+    edit,
+    del
+) {
     return {
-        location: location,
+        city: city,
+        subCity: subCity,
+        wereda: wereda,
+        kebele: kebele,
+        houseNo: houseNo,
         branchManager: branchManager,
-        telephone: telephone,
-        email:email,
-        type:type,
+        mobTel: mobTel,
+        officeTel: officeTel,
+        personalEmail: personalEmail,
+        officeEmail: officeEmail,
+        type: type,
         edit: edit,
         del: del,
     }
 }
 
-const rows = data.map((item, index) => {
-    const container = {}
-    createData(
-        (container.location = item.location),
-        (container.branchManager = item.branchManager),
-        (container.telephone = item.telephone),
-        (container.email = item.email),
-        (container.type = item.type),
-        (container.edit = <EditIcon />),
-        (container.del = <DeleteIcon />)
-    )
-    return container
-})
-
-const StyledButton = styled(Button)(({ theme }) => ({
-    margin: theme.spacing(1),
-}))
-
 const Branch = () => {
     const [show, setShow] = useState(false)
+    const dispatch = useDispatch()
+    const { branches } = useSelector((state) => state.branch)
 
-    const handleButton = () => {
-        setShow(!show)
-        console.log(show)
-    }
+    useEffect(() => {
+        dispatch(getallBranches())
+    }, [])
+
+    console.log(branches)
+    const rows = branches.map((item) => {
+        const container = {}
+        createData(
+            (container.city = item.location.city),
+            (container.subCity = item.location.subCity),
+            (container.wereda = item.location.wereda),
+            (container.kebele = item.location.kebele),
+            (container.houseNo = item.location.houseNo),
+            (container.branchManager = item.branchManager),
+            (container.mobTel = item.telephone.mobile),
+            (container.officeTel = item.telephone.office),
+            (container.personalEmail = item.email.personal),
+            (container.officeEmail = item.email.office),
+            (container.type = item.type),
+            (container.edit = <EditButton url={url} item={item} />),
+            (container.del = <DeleteButton id={item.id} />)
+        )
+        return container
+    })
+
     return (
         <Container>
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'Inventory', path: '/dashboard' },
+                        { name: 'General', path: '/dashboard' },
                         { name: 'Branch' },
                     ]}
                 />
@@ -143,21 +118,15 @@ const Branch = () => {
                 spacing={2}
                 justifyContent="flex-end"
             >
-                {/* <Grid item xs={12}>
-                    <BracodeReader />
-                </Grid> */}
-                {/* <Grid item xs={12}>
-                    <div>{show ? <NewProducts /> : null}</div>
-                </Grid> */}
                 <Grid item>
                     <Grid item>
-                    <Grid item>
-                     <TableButton buttonText="Add Branch" url={url}/>
-                 </Grid>
+                        <Grid item>
+                            <TableButton buttonText="Add Branch" url={url} />
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>
-            <SimpleCard title="Pagination Table">
+            <SimpleCard title="Branches">
                 <PaginationTable columns={columns} rows={rows} />
             </SimpleCard>
         </Container>

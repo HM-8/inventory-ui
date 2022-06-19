@@ -1,10 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import {
-    Grid,
-    Typography,
-} from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 
 import Textfield from '../../../../components/FormsUI/Textfield'
 import Select from '../../../../components/FormsUI/Select'
@@ -13,6 +10,8 @@ import DropDownData from '../../../../utils/data/dropDownData.json'
 
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
+import { useLocation } from 'react-router-dom'
+import FormButton from 'app/views/material-kit/buttons/FormButton'
 
 const buttonText = 'Save'
 
@@ -30,43 +29,56 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 const INITIAL_FORM_STATE = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    addressLine1: '',
-    addressLine2: '',
     city: '',
-    state: '',
-    country: '',
-    arrivealDate: '',
-    departureDate: '',
-    message: '',
-    termsOfService: false,
+    subCity: '',
+    wereda: '',
+    kebele: '',
+    houseNo: '',
+    branchManager: '',
+    mobTel: '',
+    officeTel: '',
+    personalEmail: '',
+    officeEmail: '',
+    type: '',
 }
 
 const FORM_VALIDATION = Yup.object().shape({
-    firstName: Yup.string().required('Required'),
-    lastName: Yup.string().required('Required'),
-    email: Yup.string().email('Invalid email.').required('Required'),
-    phone: Yup.number()
+    city: Yup.string().required('Required'),
+    subCity: Yup.string().required('Required'),
+    wereda: Yup.string().required('Required'),
+    kebele: Yup.string().required('Required'),
+    houseNo: Yup.string().required('Required'),
+    branchManager: Yup.string().required('Required'),
+    mobTel: Yup.number()
         .integer()
         .typeError('Please enter a valid phone number')
         .required('Required'),
-    addressLine1: Yup.string().required('Required'),
-    addressLine2: Yup.string(),
-    city: Yup.string().required('Required'),
-    state: Yup.string().required('Required'),
-    country: Yup.string().required('Required'),
-    arrivealDate: Yup.date().required('Required'),
-    departureDate: Yup.date().required('Required'),
-    message: Yup.string(),
-    termsOfService: Yup.boolean()
-        .oneOf([true], 'The terms and conditions must be accepted.')
-        .required('The terms and conditions must be accepted.'),
+    officeTel: Yup.number()
+        .integer()
+        .typeError('Please enter a valid phone number')
+        .required('Required'),
+    personalEmail: Yup.string().email('Invalid email.').required('Required'),
+    officeEmail: Yup.string().email('Invalid email.').required('Required'),
+    type: Yup.string().required('Required'),
 })
 
 function Branch() {
+    const location = useLocation();
+    const [buttonText, setButtonText] = useState('Submit');
+    const [titleText, setTitleText] = useState('Add Branch');
+    const url = '/general/branch';
+
+    useEffect(() => {
+        if (location.state !== null) {
+            var button = { ...buttonText };
+            var title = { ...titleText };
+            button = 'Update';
+            title = 'Edit Branch';
+            setButtonText(button);
+            setTitleText(title);
+        }
+    }, []);
+
     return (
         <Container>
             <div className="breadcrumb">
@@ -77,7 +89,7 @@ function Branch() {
                     ]}
                 />
             </div>
-            <SimpleCard title="Add Branch">
+            <SimpleCard title={titleText}>
                 <Grid container>
                     <Grid item xs={12}></Grid>
                     <Grid item xs={12}>
@@ -98,65 +110,59 @@ function Branch() {
                                         </Grid>
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="firstName"
+                                                name="houseNo"
                                                 label="House No"
                                             />
                                         </Grid>
 
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="lastName"
+                                                name="kebele"
                                                 label="Kebele"
                                             />
                                         </Grid>
 
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="email"
+                                                name="wereda"
                                                 label="Wereda"
                                             />
                                         </Grid>
 
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="phone"
+                                                name="city"
                                                 label="City"
                                             />
                                         </Grid>
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="phone"
+                                                name="subCity"
                                                 label="Subcity"
                                             />
                                         </Grid>
 
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="phone"
-                                                label="Area name "
-                                            />
-                                        </Grid>
                                         <Grid item xs={12}>
                                             <Typography>Telephone</Typography>
                                         </Grid>
 
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="addressLine1"
+                                                name="mobTel"
                                                 label="Mobile No"
                                             />
                                         </Grid>
 
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="addressLine2"
-                                                label="Home No"
+                                                name="officeTel"
+                                                label="Office No"
                                             />
                                         </Grid>
 
                                         <Grid item xs={12}>
                                             <Textfield
-                                                name="addressLine2"
+                                                name="branchManager"
                                                 label="Branch Manager"
                                             />
                                         </Grid>
@@ -166,15 +172,15 @@ function Branch() {
 
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="city"
+                                                name="personalEmail"
                                                 label="Personal Email"
                                             />
                                         </Grid>
 
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="state"
-                                                label="Company Email"
+                                                name="officeEmail"
+                                                label="Office Email"
                                             />
                                         </Grid>
                                         <Grid item xs={12}>
@@ -182,14 +188,14 @@ function Branch() {
                                         </Grid>
                                         <Grid item xs={12}>
                                             <Select
-                                                name="country"
+                                                name="type"
                                                 label="Inventory Type"
                                                 options={DropDownData}
                                             />
                                         </Grid>
 
                                         <Grid item xs={12}>
-                                            <Button>Submit Form</Button>
+                                        <FormButton title={buttonText} url={url}></FormButton>
                                         </Grid>
                                     </Grid>
                                 </Form>

@@ -47,7 +47,7 @@ function Company() {
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'Company', path: '/dashbaord' },
+                        { name: 'Company', path: '/general/company' },
                         { name: 'Edit Company Info' },
                     ]}
                 />
@@ -59,7 +59,7 @@ function Company() {
                         <Container maxWidth="md">
                             <Formik
                                 initialValues={{
-                                    ...INITIAL_FORM_STATE,
+                                    ...INITIAL_FORM_STATE.current,
                                 }}
                                 validationSchema={FORM_VALIDATION}
                                 onSubmit={(values) =>
