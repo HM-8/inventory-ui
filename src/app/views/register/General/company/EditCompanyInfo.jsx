@@ -34,21 +34,14 @@ const Container = styled('div')(({ theme }) => ({
 
 
 function Company() {
+   
     const dispatch = useDispatch(); 
+    // const [shouldRender, setShouldRender] = useState(true);
 
-    window.onload = function() {
-        var reloading = sessionStorage.getItem("refresh");
-        if (reloading) {
-            sessionStorage.removeItem("refresh");
-            dispatch(getCompanyInfo())
-        }
-    }
-    
-    function reloadP() {
-        sessionStorage.setItem("refresh", "true");
-        document.location.reload();
-    }
-
+    useEffect(() => {
+        dispatch(getCompanyInfo())
+         
+    }, [])
     const companyInfo = useSelector((state) => state.company.companyInfo)
 
     const INITIAL_FORM_STATE = {...companyInfo}
@@ -61,7 +54,7 @@ function Company() {
         fax: Yup.string(),  
     })
     
-    console.log('Company state from Edit Company',companyInfo)
+    // console.log('Company state from Edit Company',companyInfo)
 
     return (
         <Container>
@@ -75,6 +68,7 @@ function Company() {
             </div>
             <SimpleCard title="Edit Company Info">
                 <Grid container>
+                    <Grid item xs={12}></Grid>
                     <Grid item xs={12}>
                         <Container maxWidth="md">
                             <Formik
@@ -96,7 +90,7 @@ function Company() {
                                         <Grid item xs={6}>
                                             <Textfield
                                                 name="name"
-                                                label="Company Name"
+                                                label="Company Name "
                                                 // value={companyInfo.name}
                                             />
                                         </Grid>
