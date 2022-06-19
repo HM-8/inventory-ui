@@ -59,7 +59,7 @@ function Company() {
                         <Container maxWidth="md">
                             <Formik
                                 initialValues={{
-                                    ...INITIAL_FORM_STATE.current,
+                                    ...INITIAL_FORM_STATE,
                                 }}
                                 validationSchema={FORM_VALIDATION}
                                 onSubmit={(values) =>
