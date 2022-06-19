@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import { Formik, Form } from 'formik'
+import { Grid } from '@mui/material'
+import { Form, Formik } from 'formik'
+import { useEffect } from 'react'
 import * as Yup from 'yup'
-import { Grid, Typography } from '@mui/material'
 
-import Textfield from '../../../../components/FormsUI/Textfield'
-import Button from '../../../../components/FormsUI/Button/index'
-import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
-import { useDispatch } from 'react-redux'
-import { updateCompanyInfo } from 'app/redux/actions/CompanyAction.js'
+import { Breadcrumb, SimpleCard } from 'app/components'
 import DateTimePicker from 'app/components/FormsUI/DataTimePicker'
-import { useLocation } from 'react-router-dom'
+import { updateCompanyInfo } from 'app/redux/actions/CompanyAction.js'
 import FormButton from 'app/views/material-kit/buttons/FormButton'
+import { useDispatch } from 'react-redux'
+import { useLocation } from 'react-router-dom'
+import Textfield from '../../../../components/FormsUI/Textfield'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -26,36 +25,22 @@ const Container = styled('div')(({ theme }) => ({
     },
 }))
 
-// var INITIAL_FORM_STATE = {
-//   name: '',
-//   abbreviation: '',
-//   website: '',
-//   telephone: '',
-//   fax: '',
-//   email: '',
-//   date: ''
-// }
-
 function Company() {
     const location = useLocation()
-    const [buttonText, setButtonText] = useState('Submit')
-    const [titleText, setTitleText] = useState('Add Company')
-    const [data, setData] = useState('');
-    const url = '/general/company'
-    const INITIAL_FORM_STATE = {...data};
-
-    useEffect(() => {
-        if (location.state === 'edit') {
-            setButtonText('Update')
-            setTitleText('Edit Company')
-            setData(JSON.parse(window.localStorage.getItem('COMPANY_INFO')))
-            
-
-        }
-    }, [])
-
-
     const dispatch = useDispatch()
+    var buttonText = 'Submit'
+    var titleText = 'Add Company'
+    var data = ''
+    const url = '/general/company'
+    console.log('location state', location.search)
+
+    if (location.state === 'edit') {
+        buttonText = 'Update'
+        titleText = 'Edit Company'
+        data = JSON.parse(window.localStorage.getItem('COMPANY_INFO'))
+    }
+
+    const INITIAL_FORM_STATE = { ...data }
     console.log('data', data)
     console.log('initial', INITIAL_FORM_STATE)
 
@@ -68,6 +53,8 @@ function Company() {
         email: Yup.string().required('Required'),
         date: Yup.string(),
     })
+
+    useEffect(() => {}, [])
 
     return (
         <Container>
@@ -89,12 +76,8 @@ function Company() {
                                     ...INITIAL_FORM_STATE,
                                 }}
                                 validationSchema={FORM_VALIDATION}
-                                onSubmit={
-                                    (values) =>
-                                        dispatch(
-                                            updateCompanyInfo(data.id, values)
-                                        )
-                                    // console.log(values)
+                                onSubmit={(values) =>
+                                    dispatch(updateCompanyInfo(data.id, values))
                                 }
                             >
                                 <Form>

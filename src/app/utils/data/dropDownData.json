@@ -1,5 +1,5 @@
 {
-    "Supermarket": "Supermarket / Display",
-    "Inventory": "Inventory/supermarket stock",
-    "Warehouse": "Warehouse/main"
+    "Supermarket": "Supermarket",
+    "Inventory": "Inventory",
+    "Warehouse": "Warehouse"
 }

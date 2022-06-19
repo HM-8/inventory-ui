@@ -1,12 +1,12 @@
-import TableButton from '../../../material-kit/buttons/LinkButton'
-import { DeleteButton } from '../../../material-kit/buttons/DeleteButton'
-import { EditButton } from '../../../material-kit/buttons/EditButton'
 import { Grid } from '@mui/material'
 import { Box, styled } from '@mui/system'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import { getallBranches } from 'app/redux/actions/BranchAction'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { DeleteButton } from '../../../material-kit/buttons/DeleteButton'
+import { EditButton } from '../../../material-kit/buttons/EditButton'
+import TableButton from '../../../material-kit/buttons/LinkButton'
 import PaginationTable from '../../../material-kit/tables/PaginationTable'
 const url = '/general/NewBranch'
 
@@ -86,7 +86,7 @@ const Branch = () => {
         localStorage.setItem('BRANCHES_INFO',JSON.stringify(branches))
     }, [branches])
     
-    const rows = branches.map((item) => {
+    const rows = branches.map((item, index) => {
         const container = {}
         createData(
             (container.city = item.location.city),
@@ -100,7 +100,7 @@ const Branch = () => {
             (container.personalEmail = item.email.personal),
             (container.officeEmail = item.email.office),
             (container.type = item.type),
-            (container.edit = <EditButton url={url} item={item} />),
+            (container.edit = <EditButton url={`${url}/?${index}`} state='edit'/>),
             (container.del = <DeleteButton id={item.id} />)
         )
         return container
@@ -126,7 +126,7 @@ const Branch = () => {
                 <Grid item>
                     <Grid item>
                         <Grid item>
-                            <TableButton buttonText="Add Branch" url={url} />
+                            <TableButton buttonText="Add Branch" url={url}/>
                         </Grid>
                     </Grid>
                 </Grid>

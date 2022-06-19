@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import { Grid, Typography } from '@mui/material'
 
 import Textfield from '../../../../components/FormsUI/Textfield'
 import Select from '../../../../components/FormsUI/Select'
-import Button from '../../../../components/FormsUI/Button/index'
 import DropDownData from '../../../../utils/data/dropDownData.json'
 import { useDispatch } from 'react-redux'
 import { Breadcrumb, SimpleCard } from 'app/components'
@@ -14,12 +13,10 @@ import { useLocation } from 'react-router-dom'
 import FormButton from 'app/views/material-kit/buttons/FormButton'
 
 import {
-    getBranchInfo,
     addBranchInfo,
     updateBranchInfo,
 } from 'app/redux/actions/BranchAction'
 
-const buttonText = 'Save'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -37,23 +34,35 @@ const Container = styled('div')(({ theme }) => ({
 function Branch() {
     const location = useLocation()
     const dispatch = useDispatch()
-    const [buttonText, setButtonText] = useState('Submit')
-    const [titleText, setTitleText] = useState('Add Branch')
+    var buttonText = 'Submit'
+    var titleText = 'Add Branch'
+    var data = ''
     const url = '/general/branch'
+    console.log('location state', location.search)
 
-    useEffect(() => {
-        if (location.state !== null) {
-            var button = { ...buttonText }
-            var title = { ...titleText }
-            button = 'Update'
-            title = 'Edit Branch'
-            setButtonText(button)
-            setTitleText(title)
+    if (location.state === 'edit') {
+        buttonText = 'Update'
+        titleText = 'Edit Branch'
+        const object = JSON.parse(window.localStorage.getItem('BRANCHES_INFO'))
+        const index = Number(location.search.charAt(1))
+        data = {
+            city: object[index].location.city,
+            subCity: object[index].location.subCity,
+            wereda: object[index].location.wereda,
+            kebele: object[index].location.kebele,
+            houseNo: object[index].location.houseNo,
+            branchManager: object[index].branchManager,
+            mobTel: object[index].telephone.mobile,
+            officeTel: object[index].telephone.office,
+            personalEmail: object[index].email.personal,
+            officeEmail: object[index].email.office,
+            type: object[index].type,
         }
-    }, [])
+    }
 
-    const data = JSON.parse(window.localStorage.getItem('BRANCHES_INFO'))
     const INITIAL_FORM_STATE = { ...data }
+    console.log('data', data)
+    console.log('initial', INITIAL_FORM_STATE)
 
     const FORM_VALIDATION = Yup.object().shape({
         city: Yup.string().required('Required'),
@@ -98,9 +107,11 @@ function Branch() {
                                 }}
                                 validationSchema={FORM_VALIDATION}
                                 onSubmit={(values) => {
-                                    if (location.state !== null)
+                                    if (location.state === 'edit') {
                                         dispatch(updateBranchInfo(values))
-                                    else dispatch(addBranchInfo(values))
+                                    } else {
+                                        dispatch(addBranchInfo(values))
+                                    }
                                     console.log(values)
                                 }}
                             >
@@ -197,14 +208,13 @@ function Branch() {
 
                                         <Grid item xs={12}>
                                             <FormButton
+                                                url={url}
                                                 title={buttonText}
                                             ></FormButton>
                                         </Grid>
                                     </Grid>
                                 </Form>
                             </Formik>
-
-                            {/* </div> */}
                         </Container>
                     </Grid>
                 </Grid>
