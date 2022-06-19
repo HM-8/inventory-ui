@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Grid, Typography, Button } from '@mui/material'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
@@ -35,6 +35,10 @@ function Company() {
     const companyInfo = useSelector((state) => state.company.companyInfo)
     console.log('Company state' + companyInfo)
 
+    useEffect(() => {
+        localStorage.setItem('COMPANY_INFO',JSON.stringify(companyInfo))
+    }, [companyInfo])
+
     return (
         <Container>
             <div className="breadcrumb">
@@ -44,18 +48,6 @@ function Company() {
             </div>
             <SimpleCard title="Company ">
                 <Grid container>
-                    {
-                        // companyInfo.map((info,index)=>{
-                        //     const company = {
-                        //         name: info.name,
-                        //         abbreviation: info.abbreviation,
-                        //         website: info.website,
-                        //         telephone: info.telephone,
-                        //         fax: info.fax,
-                        //         email: info.email
-                        //     }
-                        // })
-                    }
                     <Grid item xs={6}>
                         Company Name
                     </Grid>

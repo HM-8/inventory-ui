@@ -1,22 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import {
-    Grid,
-    Typography,
-} from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 
 import Textfield from '../../../../components/FormsUI/Textfield'
 import Button from '../../../../components/FormsUI/Button/index'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
-import { useDispatch,useSelector } from 'react-redux'
-import { getCompanyInfo } from 'app/redux/actions/CompanyAction.js'
-
-import {
-    updateCompanyInfo
-} from 'app/redux/actions/CompanyAction.js'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { updateCompanyInfo } from 'app/redux/actions/CompanyAction.js'
+import DateTimePicker from 'app/components/FormsUI/DataTimePicker'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -31,30 +24,23 @@ const Container = styled('div')(({ theme }) => ({
     },
 }))
 
-
-
 function Company() {
-   
-    const dispatch = useDispatch(); 
-    // const [shouldRender, setShouldRender] = useState(true);
+    const dispatch = useDispatch()
+    const companyId = '62adcb6e495011c76f401a1e'
 
-    useEffect(() => {
-        dispatch(getCompanyInfo())
-         
-    }, [])
-    const companyInfo = useSelector((state) => state.company.companyInfo)
+    const data = JSON.parse(window.localStorage.getItem('COMPANY_INFO'))
+    // const state= JSON.parse(data);
+    const INITIAL_FORM_STATE = {...data }
 
-    const INITIAL_FORM_STATE = {...companyInfo}
-    
     const FORM_VALIDATION = Yup.object().shape({
         name: Yup.string().required('Required'),
         abbreviation: Yup.string().required('Required'),
         website: Yup.string().required('Required'),
         telephone: Yup.string().required('Required'),
-        fax: Yup.string(),  
+        fax: Yup.string(),
+        email:Yup.string().required('Required'),
+        date: Yup.string(),
     })
-    
-    // console.log('Company state from Edit Company',companyInfo)
 
     return (
         <Container>
@@ -62,7 +48,7 @@ function Company() {
                 <Breadcrumb
                     routeSegments={[
                         { name: 'Company', path: '/dashbaord' },
-                        {name: 'Edit Company Info'}
+                        { name: 'Edit Company Info' },
                     ]}
                 />
             </div>
@@ -76,13 +62,9 @@ function Company() {
                                     ...INITIAL_FORM_STATE,
                                 }}
                                 validationSchema={FORM_VALIDATION}
-                                onSubmit={(values) => 
-                                    // dispatch(
-                                    //     updateCompanyInfo(
-                                    //         values
-                                    //     )
-                                    // )
-                                    console.log(values)
+                                onSubmit={(values) =>
+                                    dispatch(updateCompanyInfo(values))
+                                    // console.log(values)
                                 }
                             >
                                 <Form>
@@ -91,7 +73,6 @@ function Company() {
                                             <Textfield
                                                 name="name"
                                                 label="Company Name "
-                                                // value={companyInfo.name}
                                             />
                                         </Grid>
 
@@ -99,15 +80,13 @@ function Company() {
                                             <Textfield
                                                 name="abbreviation"
                                                 label="Abbreviation "
-                                                // value={companyInfo.Abbreviation}
                                             />
                                         </Grid>
-                                        
+
                                         <Grid item xs={6}>
                                             <Textfield
                                                 name="website"
                                                 label="Website "
-                                                // value={companyInfo.Website}
                                             />
                                         </Grid>
 
@@ -115,7 +94,6 @@ function Company() {
                                             <Textfield
                                                 name="telephone"
                                                 label="Company Telephone Number "
-                                                // value={companyInfo.CompanyTel}
                                             />
                                         </Grid>
 
@@ -123,7 +101,6 @@ function Company() {
                                             <Textfield
                                                 name="fax"
                                                 label="Fax "
-                                                // value={companyInfo.Fax}
                                             />
                                         </Grid>
 
@@ -131,11 +108,20 @@ function Company() {
                                             <Textfield
                                                 name="email"
                                                 label="Email"
-                                                // value={companyInfo.email}
                                             />
                                         </Grid>
+                                        <Grid item xs={6}>
+                                            <DateTimePicker
+                                                name="date"
+                                                label="date"
+                                            />
+                                            {/* <Textfield
+                                                name="date"
+                                                label="date"
+                                            /> */}
+                                        </Grid>
                                         <Grid item xs={12}>
-                                            <Button>Submit Form</Button>
+                                            <Button>Submit</Button>
                                         </Grid>
                                     </Grid>
                                 </Form>
