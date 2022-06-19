@@ -29,11 +29,11 @@ const columns = [
     { id: 'wereda', label: 'Wereda' },
     { id: 'kebele', label: 'Kebele' },
     { id: 'houseNo', label: 'House No' },
-    { id: 'branchManager', label: 'Branch Manager' },
-    { id: 'mobTel', label: 'Mobile Telephone' },
-    { id: 'officeTel', label: 'OfficeTelephone' },
-    { id: 'personalEmail', label: 'Personal Email' },
-    { id: 'officeEmail', label: 'Office Email' },
+    { id: 'branchManager', label: 'Manager' },
+    { id: 'mobTel', label: 'Mobile no' },
+    { id: 'officeTel', label: 'Office telno' },
+    { id: 'personalEmail', label: 'Personal Email', minWidth: 10 },
+    { id: 'officeEmail', label: 'Office Email', minWidth: 10 },
     { id: 'type', label: 'Type' },
     { id: 'edit', label: '', minWidth: 10 },
     { id: 'del', label: '', minWidth: 10 },
@@ -74,13 +74,18 @@ function createData(
 const Branch = () => {
     const [show, setShow] = useState(false)
     const dispatch = useDispatch()
-    const { branches } = useSelector((state) => state.branch)
 
     useEffect(() => {
         dispatch(getallBranches())
     }, [])
-
-    console.log(branches)
+    const {branches}  = useSelector((state) => state.branch)
+    
+    console.log("Branches",branches)
+    
+    useEffect(() => {
+        localStorage.setItem('BRANCHES_INFO',JSON.stringify(branches))
+    }, [branches])
+    
     const rows = branches.map((item) => {
         const container = {}
         createData(

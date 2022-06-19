@@ -7,9 +7,9 @@ export const UPDATE_BRANCH_INFO = 'UPDATE_BRANCH_INFO'
 export const DELETE_BRANCH_INFO = 'DELETE_BRANCH_INFO'
 
 const accessToken = window.localStorage.getItem('accessToken')
-const AuthStr = `Bearer ${accessToken}`; 
+const AuthStr = `Bearer ${accessToken}`;
 
-export const getCompanyInfo = (branchid) => (dispatch) => {
+export const getBranchInfo = (branchid) => (dispatch) => {
     axios.get(
         `http://localhost:4040/v1/branch/${branchid}`,
         {
@@ -45,8 +45,28 @@ export const getallBranches = () => (dispatch) => {
     })
 }
 
-export const addCompanyInfo = (data) => (dispatch) => {
-    axios.post('http://localhost:4040/v1/branch', {data}).then((res) => {
+export const addBranchInfo = (data) => (dispatch) => {
+    // const branchManagerId= String(data.branchManager)
+    axios.post('http://localhost:4040/v1/branch', 
+    {
+        branchManager: data.branchManager,
+        location: {
+            city: data.city,
+            subCity: data.subCity,
+            wereda: data.wereda,
+            kebele: data.kebele,
+            houseNo: data.houseNo
+        },
+        telephone: {
+            mobile: data.mobTel,
+            office: data.officeTel
+        },
+        email: {
+            personal: data.personalEmail,
+            office: data.officeEmail
+        },
+        type: data.type
+    }).then((res) => {
         console.log(res.data)
         dispatch({
             type: ADD_BRANCH_INFO,
@@ -65,7 +85,7 @@ export const deleteBranchInfo = (branchid) => (dispatch) => {
     })
 }
 
-export const updateCompanyInfo = (branchid, data) => (dispatch) => {
+export const updateBranchInfo = (branchid, data) => (dispatch) => {
     axios
         .patch(`http://localhost:4040/v1/branch/${branchid}`, { data })
         .then((res) => {

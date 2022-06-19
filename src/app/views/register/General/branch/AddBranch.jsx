@@ -7,11 +7,17 @@ import Textfield from '../../../../components/FormsUI/Textfield'
 import Select from '../../../../components/FormsUI/Select'
 import Button from '../../../../components/FormsUI/Button/index'
 import DropDownData from '../../../../utils/data/dropDownData.json'
-
+import { useDispatch } from 'react-redux'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
 import { useLocation } from 'react-router-dom'
 import FormButton from 'app/views/material-kit/buttons/FormButton'
+
+import {
+    getBranchInfo,
+    addBranchInfo,
+    updateBranchInfo,
+} from 'app/redux/actions/BranchAction'
 
 const buttonText = 'Save'
 
@@ -28,56 +34,48 @@ const Container = styled('div')(({ theme }) => ({
     },
 }))
 
-const INITIAL_FORM_STATE = {
-    city: '',
-    subCity: '',
-    wereda: '',
-    kebele: '',
-    houseNo: '',
-    branchManager: '',
-    mobTel: '',
-    officeTel: '',
-    personalEmail: '',
-    officeEmail: '',
-    type: '',
-}
-
-const FORM_VALIDATION = Yup.object().shape({
-    city: Yup.string().required('Required'),
-    subCity: Yup.string().required('Required'),
-    wereda: Yup.string().required('Required'),
-    kebele: Yup.string().required('Required'),
-    houseNo: Yup.string().required('Required'),
-    branchManager: Yup.string().required('Required'),
-    mobTel: Yup.number()
-        .integer()
-        .typeError('Please enter a valid phone number')
-        .required('Required'),
-    officeTel: Yup.number()
-        .integer()
-        .typeError('Please enter a valid phone number')
-        .required('Required'),
-    personalEmail: Yup.string().email('Invalid email.').required('Required'),
-    officeEmail: Yup.string().email('Invalid email.').required('Required'),
-    type: Yup.string().required('Required'),
-})
-
 function Branch() {
-    const location = useLocation();
-    const [buttonText, setButtonText] = useState('Submit');
-    const [titleText, setTitleText] = useState('Add Branch');
-    const url = '/general/branch';
+    const location = useLocation()
+    const dispatch = useDispatch()
+    const [buttonText, setButtonText] = useState('Submit')
+    const [titleText, setTitleText] = useState('Add Branch')
+    const url = '/general/branch'
 
     useEffect(() => {
         if (location.state !== null) {
-            var button = { ...buttonText };
-            var title = { ...titleText };
-            button = 'Update';
-            title = 'Edit Branch';
-            setButtonText(button);
-            setTitleText(title);
+            var button = { ...buttonText }
+            var title = { ...titleText }
+            button = 'Update'
+            title = 'Edit Branch'
+            setButtonText(button)
+            setTitleText(title)
         }
-    }, []);
+    }, [])
+
+    const data = JSON.parse(window.localStorage.getItem('BRANCHES_INFO'))
+    const INITIAL_FORM_STATE = { ...data }
+
+    const FORM_VALIDATION = Yup.object().shape({
+        city: Yup.string().required('Required'),
+        subCity: Yup.string().required('Required'),
+        wereda: Yup.string().required('Required'),
+        kebele: Yup.string().required('Required'),
+        houseNo: Yup.string().required('Required'),
+        branchManager: Yup.string().required('Required'),
+        mobTel: Yup.number()
+            .integer()
+            .typeError('Please enter a valid phone number')
+            .required('Required'),
+        officeTel: Yup.number()
+            .integer()
+            .typeError('Please enter a valid phone number')
+            .required('Required'),
+        personalEmail: Yup.string()
+            .email('Invalid email.')
+            .required('Required'),
+        officeEmail: Yup.string().email('Invalid email.').required('Required'),
+        type: Yup.string().required('Required'),
+    })
 
     return (
         <Container>
@@ -100,6 +98,9 @@ function Branch() {
                                 }}
                                 validationSchema={FORM_VALIDATION}
                                 onSubmit={(values) => {
+                                    if (location.state !== null)
+                                        dispatch(updateBranchInfo(values))
+                                    else dispatch(addBranchInfo(values))
                                     console.log(values)
                                 }}
                             >
@@ -195,7 +196,9 @@ function Branch() {
                                         </Grid>
 
                                         <Grid item xs={12}>
-                                        <FormButton title={buttonText} url={url}></FormButton>
+                                            <FormButton
+                                                title={buttonText}
+                                            ></FormButton>
                                         </Grid>
                                     </Grid>
                                 </Form>

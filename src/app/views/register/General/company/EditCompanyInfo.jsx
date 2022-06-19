@@ -7,7 +7,7 @@ import Textfield from '../../../../components/FormsUI/Textfield'
 import Button from '../../../../components/FormsUI/Button/index'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { updateCompanyInfo } from 'app/redux/actions/CompanyAction.js'
 import DateTimePicker from 'app/components/FormsUI/DataTimePicker'
 
@@ -26,7 +26,6 @@ const Container = styled('div')(({ theme }) => ({
 
 function Company() {
     const dispatch = useDispatch()
-    const companyId = '62adcb6e495011c76f401a1e'
 
     const data = JSON.parse(window.localStorage.getItem('COMPANY_INFO'))
     // const state= JSON.parse(data);
