@@ -7,9 +7,9 @@ const StyledButton = styled(Button)(({ theme }) => ({
     margin: theme.spacing(1),
 }))
 
-function TableButton({buttonText, url}) {
+function TableButton({buttonText, url, state}) {
     return (
-        <StyledButton variant="contained" color="primary" component={Link} to={url}>
+        <StyledButton variant="contained" color="primary" component={Link} to={url} state={state}>
             {buttonText}
         </StyledButton>
     )

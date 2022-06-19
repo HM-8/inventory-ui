@@ -6,11 +6,10 @@ export const UPDATE_COMPANY_INFO = 'UPDATE_COMPANY_INFO'
 
 const accessToken = window.localStorage.getItem('accessToken')
 const AuthStr = `Bearer ${accessToken}`;
-const companyid = "62adcb6e495011c76f401a1e";
 
 export const getCompanyInfo = () => (dispatch) => {
     axios.get(
-        `http://localhost:4040/v1/company/${companyid}`,
+        `http://localhost:4040/v1/company`,
         {
             headers: {
                 'Content-Type': 'application/json',
@@ -19,7 +18,6 @@ export const getCompanyInfo = () => (dispatch) => {
             }
         }
     ).then((res) => {
-        console.log("Company response", res.data);
         dispatch({
             type: GET_COMPANY_INFO,
             payload: res.data,
@@ -37,7 +35,7 @@ export const getCompanyInfo = () => (dispatch) => {
 //     })
 // }
 
-export const updateCompanyInfo = (values) => (dispatch) => {
+export const updateCompanyInfo = (companyid, values) => (dispatch) => {
     console.log(values)
     delete values.id; 
     axios

@@ -6,7 +6,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { getCompanyInfo } from 'app/redux/actions/CompanyAction.js'
+import TableButton from 'app/views/material-kit/buttons/LinkButton'
 // import { intlFormat } from 'date-fns/esm'
+const url = '/general/edit-company'
 
 const StyledButton = styled(Button)(({ theme }) => ({
     margin: theme.spacing(1),
@@ -36,7 +38,7 @@ function Company() {
     console.log('Company state' + companyInfo)
 
     useEffect(() => {
-        localStorage.setItem('COMPANY_INFO',JSON.stringify(companyInfo))
+        localStorage.setItem('COMPANY_INFO', JSON.stringify(companyInfo))
     }, [companyInfo])
 
     return (
@@ -79,13 +81,7 @@ function Company() {
                         <strong>{companyInfo.fax}</strong>
                     </Grid>
                     <Grid item xs={12}>
-                        <StyledButton
-                            variant="contained"
-                            color="secondary"
-                            onClick={() => navigate('/general/edit-company')}
-                        >
-                            Edit
-                        </StyledButton>
+                        <TableButton buttonText="Edit" url={url} state='edit'/>
                     </Grid>
                 </Grid>
             </SimpleCard>

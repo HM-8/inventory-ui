@@ -10,6 +10,8 @@ import styled from '@emotion/styled'
 import { useDispatch } from 'react-redux'
 import { updateCompanyInfo } from 'app/redux/actions/CompanyAction.js'
 import DateTimePicker from 'app/components/FormsUI/DataTimePicker'
+import { useLocation } from 'react-router-dom'
+import FormButton from 'app/views/material-kit/buttons/FormButton'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -24,12 +26,38 @@ const Container = styled('div')(({ theme }) => ({
     },
 }))
 
-function Company() {
-    const dispatch = useDispatch()
+// var INITIAL_FORM_STATE = {
+//   name: '',
+//   abbreviation: '',
+//   website: '',
+//   telephone: '',
+//   fax: '',
+//   email: '',
+//   date: ''
+// }
 
-    const data = JSON.parse(window.localStorage.getItem('COMPANY_INFO'))
-    // const state= JSON.parse(data);
-    const INITIAL_FORM_STATE = {...data }
+function Company() {
+    const location = useLocation()
+    const [buttonText, setButtonText] = useState('Submit')
+    const [titleText, setTitleText] = useState('Add Company')
+    const [data, setData] = useState('');
+    const url = '/general/company'
+    const INITIAL_FORM_STATE = {...data};
+
+    useEffect(() => {
+        if (location.state === 'edit') {
+            setButtonText('Update')
+            setTitleText('Edit Company')
+            setData(JSON.parse(window.localStorage.getItem('COMPANY_INFO')))
+            
+
+        }
+    }, [])
+
+
+    const dispatch = useDispatch()
+    console.log('data', data)
+    console.log('initial', INITIAL_FORM_STATE)
 
     const FORM_VALIDATION = Yup.object().shape({
         name: Yup.string().required('Required'),
@@ -37,7 +65,7 @@ function Company() {
         website: Yup.string().required('Required'),
         telephone: Yup.string().required('Required'),
         fax: Yup.string(),
-        email:Yup.string().required('Required'),
+        email: Yup.string().required('Required'),
         date: Yup.string(),
     })
 
@@ -47,11 +75,11 @@ function Company() {
                 <Breadcrumb
                     routeSegments={[
                         { name: 'Company', path: '/general/company' },
-                        { name: 'Edit Company Info' },
+                        { name: titleText },
                     ]}
                 />
             </div>
-            <SimpleCard title="Edit Company Info">
+            <SimpleCard title={titleText}>
                 <Grid container>
                     <Grid item xs={12}></Grid>
                     <Grid item xs={12}>
@@ -61,8 +89,11 @@ function Company() {
                                     ...INITIAL_FORM_STATE,
                                 }}
                                 validationSchema={FORM_VALIDATION}
-                                onSubmit={(values) =>
-                                    dispatch(updateCompanyInfo(values))
+                                onSubmit={
+                                    (values) =>
+                                        dispatch(
+                                            updateCompanyInfo(data.id, values)
+                                        )
                                     // console.log(values)
                                 }
                             >
@@ -120,7 +151,10 @@ function Company() {
                                             /> */}
                                         </Grid>
                                         <Grid item xs={12}>
-                                            <Button>Submit</Button>
+                                            <FormButton
+                                                title={buttonText}
+                                                url={url}
+                                            ></FormButton>
                                         </Grid>
                                     </Grid>
                                 </Form>

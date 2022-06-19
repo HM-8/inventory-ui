@@ -46,7 +46,6 @@ export const getallBranches = () => (dispatch) => {
 }
 
 export const addBranchInfo = (data) => (dispatch) => {
-    // const branchManagerId= String(data.branchManager)
     axios.post('http://localhost:4040/v1/branch', 
     {
         branchManager: data.branchManager,
