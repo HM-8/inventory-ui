@@ -70,7 +70,6 @@ function Experience() {
     return (
         <Container>
             <Grid container>
-                <Grid item xs={12}></Grid>
                 <Grid item xs={12}>
                     <Container maxWidth="md">
                         <Formik
@@ -84,13 +83,10 @@ function Experience() {
                         >
                             <Form>
                                 <Grid container spacing={2}>
-                                    <Grid item xs={12}>
-                                        <Typography>Previous Company info</Typography>
-                                    </Grid>
                                     <Grid item xs={6}>
                                         <Textfield
                                             name="name"
-                                            label="Name "
+                                            label="Company Name "
                                         />
                                     </Grid>
                                     <Grid item xs={6}>
@@ -101,59 +97,14 @@ function Experience() {
                                     </Grid>
 
                                     <Grid item xs={6}>
-                                        <Textfield
-                                            name="email"
-                                            label="email"
-                                        />
-                                    </Grid>
-
-                                    <Grid item xs={12}>
-                                        <Typography>Address</Typography>
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <Typography></Typography>
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="firstName"
-                                            label="House No"
-                                        />
+                                        <Textfield name="email" label="Company Email" />
                                     </Grid>
 
                                     <Grid item xs={6}>
                                         <Textfield
-                                            name="lastName"
-                                            label="Kebele"
+                                            name="previous_salary"
+                                            label="Person of Contact (Email)"
                                         />
-                                    </Grid>
-
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="email"
-                                            label="Wereda"
-                                        />
-                                    </Grid>
-
-                                    <Grid item xs={6}>
-                                        <Textfield name="phone" label="City" />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="phone"
-                                            label="Subcity"
-                                        />
-                                    </Grid>
-
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="phone"
-                                            label="Area name "
-                                        />
-                                    </Grid>
-
-                                    <br />
-                                    <Grid item xs={12}>
-                                        <Typography>Previous Info</Typography>
                                     </Grid>
                                     <Grid item xs={6}>
                                         <Textfield
@@ -161,14 +112,6 @@ function Experience() {
                                             label="Previous Designation "
                                         />
                                     </Grid>
-
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="previous_salary"
-                                            label="Previous Base Salary  "
-                                        />
-                                    </Grid>
-
                                 </Grid>
                             </Form>
                         </Formik>
