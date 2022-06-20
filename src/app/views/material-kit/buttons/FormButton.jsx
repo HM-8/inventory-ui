@@ -11,7 +11,7 @@ const FormButton = ({
   const { submitForm } = useFormikContext();
 
   const handleSubmit = () => {
-    if(url !== undefined & url != null)
+    if(url !== undefined && url != null)
     {
       window.location = url;
     }

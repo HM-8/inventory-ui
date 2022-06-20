@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Grid, Typography, Button } from '@mui/material'
+import React, { useEffect } from 'react'
+import { Grid, Button } from '@mui/material'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
 import { useSelector, useDispatch } from 'react-redux'
@@ -7,12 +7,8 @@ import { useNavigate } from 'react-router-dom'
 
 import { getCompanyInfo } from 'app/redux/actions/CompanyAction.js'
 import TableButton from 'app/views/material-kit/buttons/LinkButton'
-// import { intlFormat } from 'date-fns/esm'
 const url = '/general/edit-company'
 
-const StyledButton = styled(Button)(({ theme }) => ({
-    margin: theme.spacing(1),
-}))
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
     [theme.breakpoints.down('sm')]: {
@@ -27,7 +23,6 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 function Company() {
-    const navigate = useNavigate()
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -48,6 +43,32 @@ function Company() {
                     routeSegments={[{ name: 'Company', path: '/dashboard' }]}
                 />
             </div>
+
+            {companyInfo ? (
+                ''
+            ) : (
+                <div>
+                    <Grid
+                        container
+                        direction="row"
+                        spacing={2}
+                        justifyContent="flex-end"
+                    >
+                        <Grid item>
+                            <Grid item>
+                                <Grid item>
+                                    <TableButton
+                                        buttonText="Add Company"
+                                        url={url}
+                                        state="add"
+                                    />
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </div>
+            )}
+
             <SimpleCard title="Company ">
                 <Grid container>
                     <Grid item xs={6}>
@@ -80,8 +101,8 @@ function Company() {
                     <Grid item xs={6}>
                         <strong>{companyInfo.fax}</strong>
                     </Grid>
-                    <Grid item xs={12}>
-                        <TableButton buttonText="Edit" url={url} state='edit'/>
+                    <Grid item xs={6}>
+                        <TableButton buttonText="Edit" url={url} state="edit" />
                     </Grid>
                 </Grid>
             </SimpleCard>

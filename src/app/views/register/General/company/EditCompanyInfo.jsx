@@ -6,7 +6,7 @@ import * as Yup from 'yup'
 import styled from '@emotion/styled'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import DateTimePicker from 'app/components/FormsUI/DataTimePicker'
-import { updateCompanyInfo } from 'app/redux/actions/CompanyAction.js'
+import { addCompanyInfo, updateCompanyInfo } from 'app/redux/actions/CompanyAction.js'
 import FormButton from 'app/views/material-kit/buttons/FormButton'
 import { useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
@@ -76,9 +76,13 @@ function Company() {
                                     ...INITIAL_FORM_STATE,
                                 }}
                                 validationSchema={FORM_VALIDATION}
-                                onSubmit={(values) =>
-                                    dispatch(updateCompanyInfo(data.id, values))
-                                }
+                                onSubmit={(values) =>{
+                                    if (location.state === 'edit') {
+                                        dispatch(updateCompanyInfo(data.id, values))
+                                    } else {
+                                        dispatch(addCompanyInfo(values))
+                                    }
+                                }}
                             >
                                 <Form>
                                     <Grid container spacing={2}>
