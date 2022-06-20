@@ -136,16 +136,7 @@ const JwtLogin = () => {
                                                 className="buttonProgress"
                                             />
                                         )}
-                                    </Box>
-                                    <Span sx={{ mr: 1, ml: '20px' }}>or</Span>
-                                    <Button
-                                        sx={{ textTransform: 'capitalize' }}
-                                        onClick={() =>
-                                            navigate('/session/signup')
-                                        }
-                                    >
-                                        Sign up
-                                    </Button>
+                                    </Box>git 
                                 </FlexBox>
                                 <Button
                                     sx={{ color: textPrimary }}
