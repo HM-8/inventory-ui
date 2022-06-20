@@ -37,7 +37,7 @@ function Branch() {
     var buttonText = 'Submit'
     var titleText = 'Add Branch'
     var data = ''
-    const url = '/general/branch'
+    const url = '/hr/branch'
     console.log('location state', location.search)
 
     if (location.state === 'edit') {
@@ -91,7 +91,7 @@ function Branch() {
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'Branch', path: '/general/branch' },
+                        { name: 'Branch', path: '/hr/branch' },
                         { name: 'New Branch' },
                     ]}
                 />

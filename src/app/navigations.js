@@ -18,7 +18,11 @@ export const navigations = [
                     {
                         name: 'Company',
                         path: '/general/company',
-                    }
+                    },
+                    {
+                        name: 'Settings',
+                        path: '/general/settings',
+                    },
                 ],
             },
             {
@@ -31,11 +35,15 @@ export const navigations = [
                     },
                     {
                         name: 'Branch',
-                        path: '/general/branch',
+                        path: '/hr/branch',
                     },
                     {
                         name: 'Department',
-                        path: '/general/department',
+                        path: '/hr/department',
+                    },
+                    {
+                        name: 'Designation',
+                        path: '/hr/designation',
                     },
                     // {
                     //     name: 'Salery Details',

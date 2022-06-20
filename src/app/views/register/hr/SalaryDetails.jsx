@@ -50,10 +50,9 @@ const FORM_VALIDATION = Yup.object().shape({
 function SalaryDetails() {
     return (
         <Container>
-                <Grid container>
-                    <Grid item xs={12}></Grid>
-                    <Grid item xs={12}>
-                        <Container maxWidth="md">
+            <Grid container>
+                <Grid item xs={12}>
+                    <Container maxWidth="md">
                             <Formik
                                 initialValues={{
                                     ...INITIAL_FORM_STATE,

@@ -9,7 +9,7 @@ import Insurance from './employeeCreation/InsuranceDetail'
 import Qualification from './employeeCreation/EducationalQualification'
 import Experience from './employeeCreation/WorkExperience'
 import SalaryDetails from './SalaryDetails'
-
+import EmployeeSetup from './employeeCreation/EmployeeSetup'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -52,7 +52,12 @@ const steps = [
     },
     {
         id: 5,
-        label: 'Salery Details ',
+        label: 'Setup ',
+        form: <EmployeeSetup />,
+    },
+    {
+        id: 6,
+        label: 'Salary Details ',
         form: <SalaryDetails />,
     },
 ]
@@ -63,7 +68,7 @@ const NewEmployee = () => {
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'Dashboard', path: '/dashboard' },
+                        { name: 'HR', path: '/dashboard' },
                         { name: 'Add Employee' },
                     ]}
                 />
