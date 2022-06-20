@@ -8,7 +8,7 @@ function BracodeReader() {
     const StyledButton = styled(Button)(({ theme }) => ({
         margin: theme.spacing(1),
     }))
-    const [data, setData] = useState('Not Found')
+    const [data, setData] = useState('Barcode')
     const [stopStream, setStopStream] = useState(false)
 
     return (
@@ -23,17 +23,19 @@ function BracodeReader() {
                             setData(result.text)
                             setStopStream(true)
                         } else {
-                            setData('Not Found')
+                            setData('Barcode')
                         }
                     }}
                 />
-            ) : (
-                'Nothing to show here'
-            )}
+            ) : " "}
 
             <p>{data}</p>
-            <button onClick={() => setStopStream(true)}>Scan</button>
-            <button onClick={() => setStopStream(false)}>Cancel</button>
+            {/* <button onClick={() => setStopStream(true)}>Scan</button> */}
+            <StyledButton  onClick={() => setStopStream(true)}variant="contained" color="secondary">
+                Scan
+                </StyledButton>
+            {/* <button onClick={() => setStopStream(false)}>Cancel</button> */}
+            <StyledButton onClick={() => setStopStream(false)} color="primary">Cancel</StyledButton>
         </>
     )
 }
