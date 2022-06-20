@@ -45,6 +45,10 @@ export const navigations = [
                         name: 'Designation',
                         path: '/hr/designation',
                     },
+                    // {
+                    //     name: 'Salery Details',
+                    //     path: '/hr/salaryDetails',
+                    // },
                 ],
             },
             {

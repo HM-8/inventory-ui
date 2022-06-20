@@ -150,11 +150,6 @@ function SalaryDetails() {
                                                 label="House Allowance fee "
                                             />
                                         </Grid>
-
-
-                                        <Grid item xs={12}>
-                                            <Button>Submit Form</Button>
-                                        </Grid>
                                     </Grid>
                                 </Form>
                             </Formik>
@@ -163,7 +158,6 @@ function SalaryDetails() {
                         </Container>
                     </Grid>
                 </Grid>
-         
         </Container>
     )
 }
