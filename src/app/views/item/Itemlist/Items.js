@@ -72,6 +72,7 @@ const TopSellingTable = () => {
                 <Select size="small" defaultValue="this_month">
                     <MenuItem value="this_month">Inventory</MenuItem>
                     <MenuItem value="last_month">Supermarket</MenuItem>
+                    <MenuItem value="last_month">Warehouse</MenuItem>
                 </Select>
             </CardHeader>
             <Box overflow="auto">

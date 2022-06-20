@@ -81,9 +81,6 @@ const Products = () => {
                 justifyContent="flex-end"
             >
                 <Grid item xs={12}>
-                    <BracodeReader />
-                </Grid>
-                <Grid item xs={12}>
                     <div>{show ? <NewProducts /> : null}</div>
                 </Grid>
                 <Grid item>

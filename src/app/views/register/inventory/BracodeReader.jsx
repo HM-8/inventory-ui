@@ -27,18 +27,32 @@ function BracodeReader() {
                         }
                     }}
                 />
-            ) : " "}
+            ) : (
+                ' '
+            )}
 
             <p>{data}</p>
             {/* <button onClick={() => setStopStream(true)}>Scan</button> */}
-            <StyledButton  onClick={() => setStopStream(true)}variant="contained" color="secondary">
+            <Button
+                onClick={() => setStopStream(true)}
+                variant="contained"
+                color="secondary"
+            >
                 Scan
-                </StyledButton>
+            </Button>
+            <StyledButton onClick={() => setStopStream(false)} color="primary" variant="outlined">
+                Cancel Scan
+            </StyledButton>
+            <StyledButton
+                onClick={() => setStopStream(true)}
+                variant="contained"
+                color="secondary"
+            >
+                Generate
+            </StyledButton>
             {/* <button onClick={() => setStopStream(false)}>Cancel</button> */}
-            <StyledButton onClick={() => setStopStream(false)} color="primary">Cancel</StyledButton>
         </>
     )
 }
 
 export default BracodeReader
-

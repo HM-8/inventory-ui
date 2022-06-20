@@ -10,7 +10,7 @@ import TableButton from '../../material-kit/buttons/LinkButton'
 
 import Items from './Items'
 
-const url = '/inventory/item/newitem';
+const url = '/inventory/item/newitem'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -24,7 +24,6 @@ const Container = styled('div')(({ theme }) => ({
         },
     },
 }))
-
 
 const StyledButton = styled(Button)(({ theme }) => ({
     margin: theme.spacing(1),
@@ -41,9 +40,7 @@ const ItemList = () => {
         <Container>
             <div className="breadcrumb">
                 <Breadcrumb
-                    routeSegments={[
-                        { name: 'Items', path: '/dashboard' },
-                    ]}
+                    routeSegments={[{ name: 'Items', path: '/dashboard' }]}
                 />
             </div>
             <Box py="1px" />
@@ -54,15 +51,14 @@ const ItemList = () => {
                 justifyContent="flex-end"
             >
                 <Grid item>
-                <Grid item>
-                     <TableButton buttonText="Add Item" url={url}/>
-                </Grid>
+                    <Grid item>
+                        <TableButton buttonText="Add Item" url={url} />
+                    </Grid>
                 </Grid>
             </Grid>
-            <SimpleCard>
-                {/* <PaginationTable columns={columns} rows={rows} /> */}
-                <Grid><Items /></Grid>
-            </SimpleCard>
+            <Grid>
+                <Items />
+            </Grid>
         </Container>
     )
 }
