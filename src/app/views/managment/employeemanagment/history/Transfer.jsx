@@ -1,14 +1,19 @@
-import React, { useState } from 'react'
-import PaginationTable from '../../../material-kit/tables/PaginationTable'
-import { Breadcrumb, SimpleCard } from 'app/components'
-import { Box, styled } from '@mui/system'
-import { Grid, Button } from '@mui/material'
-import data from '../../../../utils/data/employmentType.json'
-import EditIcon from '@mui/icons-material/Edit'
-import DeleteIcon from '@mui/icons-material/Delete'
-import TableButton from '../../../material-kit/buttons/LinkButton'
+import React from 'react'
+import { Formik, Form } from 'formik'
+import * as Yup from 'yup'
+import { Grid, Typography } from '@mui/material'
 
-const url = '/general/NewTransfer'
+import Textfield from '../../../../components/FormsUI/Textfield'
+import Select from '../../../../components/FormsUI/Select'
+import Button from '../../../../components/FormsUI/Button'
+import DateTimePicker from '../../../../components/FormsUI/DataTimePicker'
+import { Breadcrumb, SimpleCard } from 'app/components'
+import styled from '@emotion/styled'
+import Paymentmode from '../../../../utils/data/paymentmode.json'
+import Upload from '../../../../components/FormsUI/fileupload'
+import itemlist from '../../../../utils/data/itemlist.json'
+
+const buttonText = 'Save'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -23,78 +28,97 @@ const Container = styled('div')(({ theme }) => ({
     },
 }))
 
-const columns = [
-    { id: 'CurrentBranch', label: 'Current Branch', minWidth: 10 },
-    { id: 'NewBranch', label: 'New Branch ', minWidth: 10 },
-    { id: 'SuggestedDate', label: 'Suggested Date', minWidth: 10 },
-    { id: 'ApprovedDate', label: 'Approved Date', minWidth: 10 },
-    { id: 'edit', label: '', minWidth: 10 },
-    { id: 'del', label: '', minWidth: 10 },
-]
-
-function createData(CurrentBranch, NewBranch, SuggestedDate,ApprovedDate ,edit, del) {
-    return {
-        CurrentBranch: CurrentBranch,
-        NewBranch: NewBranch,
-        SuggestedDate: SuggestedDate,
-        ApprovedDate:ApprovedDate,
-        edit: edit,
-        del: del,
-    }
+const INITIAL_FORM_STATE = {
+    vehicleName: '',
+    driverName: '',
+    FuelMeasurment: '',
+    AssignmentStatus: '',
+    TrackUsage: '',
+    StartDate: '',
+    EndDate: '',
 }
 
-const rows = data.map((item, index) => {
-    const container = {}
-    createData(
-        (container.CurrentBranch = item.CurrentBranch),
-        (container.NewBranch = item.NewBranch),
-        (container.SuggestedDate = item.SuggestedDate),
-        (container.ApprovedDate = item.ApprovedDate),
-        (container.edit = <EditIcon />),
-        (container.del = <DeleteIcon />)
-    )
-    return container
+const FORM_VALIDATION = Yup.object().shape({
+    vehicleName: Yup.string().required('Required'),
+    driverName: Yup.string().required('Required'),
+    FuelMeasurment: Yup.string().required('Required'),
+    AssignmentStatus: Yup.string().required('Required'),
+    TrackUsage: Yup.string(),
+    StartDate: Yup.date().required('Required'),
+    EndDate: Yup.date().required('Required'),
 })
 
-const StyledButton = styled(Button)(({ theme }) => ({
-    margin: theme.spacing(1),
-}))
-
-const Transfer = () => {
-    const [show, setShow] = useState(false)
-
-    const handleButton = () => {
-        setShow(!show)
-        console.log(show)
-    }
+function Transfer() {
     return (
         <Container>
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'Inventory', path: '/dashboard' },
-                        { name: 'Transfers' },
+                        { name: 'Transfer', path: '/history/appraisal' },
+                        { name: 'New Transfer' },
                     ]}
                 />
             </div>
-            <Box py="1px" />
-            <Grid
-                container
-                direction="row"
-                spacing={2}
-                justifyContent="flex-end"
-            >
-                <Grid item>
-                    <Grid item>
-                        <TableButton buttonText="New Transfer" url={url} />
+            <SimpleCard title="Transfer">
+                <Grid container>
+                    <Grid item xs={12}></Grid>
+                    <Grid item xs={12}>
+                        <Container maxWidth="md">
+                            <Formik
+                                initialValues={{
+                                    ...INITIAL_FORM_STATE,
+                                }}
+                                validationSchema={FORM_VALIDATION}
+                                onSubmit={(values) => {
+                                    console.log(values)
+                                }}
+                            >
+                                <Form>
+                                    <Grid container spacing={2}>
+                                        <Grid item xs={6}>
+                                            <Select
+                                                name="employeeid"
+                                                label="Employee"
+                                                options={itemlist}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="CurrentBranch"
+                                                label="Current Branch "
+                                            />
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="NewBranch"
+                                                label="New Branch  "
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={6}>
+                                            <DateTimePicker
+                                                name="SuggestedDate"
+                                                label="Suggested Date "
+                                            />
+                                        </Grid>
+
+                                        {/* <Grid item xs={6}>
+                                            <DateTimePicker
+                                                name="ApprovedDate"
+                                                label="Approved Date "
+                                            />
+                                        </Grid> */}
+
+                                        <Grid item xs={12}>
+                                            <Button>Submit Form</Button>
+                                        </Grid>
+                                    </Grid>
+                                </Form>
+                            </Formik>
+                        </Container>
                     </Grid>
                 </Grid>
-            </Grid>
-            <Grid item xs={12}>
-                <SimpleCard title="Promotions">
-                    <PaginationTable columns={columns} rows={rows} />
-                </SimpleCard>
-            </Grid>
+            </SimpleCard>
         </Container>
     )
 }
