@@ -56,6 +56,10 @@ export const navigations = [
                         icon: 'exit_to_app',
                         children: [
                             {
+                                name: 'Item List',
+                                path: '/inventory/item/itemlist',
+                            },
+                            {
                                 name: 'GRV',
                                 path: '/inventory/item/grv',
                             },
@@ -132,15 +136,15 @@ export const navigations = [
                     },
                 ],
             },
-            {
-                name: 'My Status',
-                path: '/profile/my-status',
-            },
-            {
-                name: 'My Salary',
-                path: '/profile/my-salary',
-                iconText: 'E',
-            },
+            // {
+            //     name: 'My Status',
+            //     path: '/profile/my-status',
+            // },
+            // {
+            //     name: 'My Salary',
+            //     path: '/profile/my-salary',
+            //     iconText: 'E',
+            // },
             {
                 name: 'Log Out',
                 path: '/session/logout',
@@ -189,10 +193,10 @@ export const navigations = [
                         name: 'Update Leave Policy',
                         path: '/leave/leave-policy',
                     },
-                    {
-                        name: 'Leave Type',
-                        path: '/leave/leave-type',
-                    },
+                    // {
+                    //     name: 'Leave Type',
+                    //     path: '/leave/leave-type',
+                    // },
                 ],
             },
             {
@@ -399,19 +403,19 @@ export const navigations = [
                         name: 'Expiry Reinders ',
                         path: '/report/inventory/expiry',
                     },
-                    {
-                        name: 'Reminders',
-                        children: [
-                            {
-                                name: 'Kilometer Service Reminder ',
-                                path: '/report/transport/reminders/kmservice',
-                            },
-                            {
-                                name: 'Renewal Reminder ',
-                                path: '/report/inventory/reminders/renewal',
-                            },
-                        ],
-                    },
+                    // {
+                    //     name: 'Reminders',
+                    //     children: [
+                    //         {
+                    //             name: 'Kilometer Service Reminder ',
+                    //             path: '/report/transport/reminders/kmservice',
+                    //         },
+                    //         {
+                    //             name: 'Renewal Reminder ',
+                    //             path: '/report/inventory/reminders/renewal',
+                    //         },
+                    //     ],
+                    // },
                 ],
             },
             
