@@ -11,6 +11,7 @@ import itemlist from '../../../utils/data/BranchList.json'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
 import Paymentmode from '../../../utils/data/paymentmode.json'
+import allowance from '../../../utils/data/allowance.json'
 
 const buttonText = 'Save'
 
@@ -53,111 +54,78 @@ function SalaryDetails() {
             <Grid container>
                 <Grid item xs={12}>
                     <Container maxWidth="md">
-                            <Formik
-                                initialValues={{
-                                    ...INITIAL_FORM_STATE,
-                                }}
-                                validationSchema={FORM_VALIDATION}
-                                onSubmit={(values) => {
-                                    console.log(values)
-                                }}
-                            >
-                                <Form>
-                                    <Grid container spacing={2}>
-                                        <Grid item xs={6}>
-                                            <Select
-                                                name="payment_mode"
-                                                label="Payment modes"
-                                                options={Paymentmode}
-                                            />
-                                        </Grid>
-                                        <Grid item xs={12}>
-                                            <Typography>Bank Details</Typography>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="bank_name"
-                                                label="Bank Name "
-                                            />
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="account_name"
-                                                label="Account Name "
-                                            />
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="account_no"
-                                                label="Account No "
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="salary"
-                                                label="Base Salary "
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={12}>
-                                            <Typography>Allowance</Typography>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="travel_allowence"
-                                                label="Travel Allowance fee "
-                                            />
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="position_allowance"
-                                                label="Position Allowance fee "
-                                            />
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="house_allownace"
-                                                label="House Allowance fee "
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="livin_cost"
-                                                label="Living Cost Adjustment fee "
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={12}>
-                                            <Typography>Other</Typography>
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="alllowanc_name"
-                                                label="Allowance name "
-                                            />
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="amount"
-                                                label="Amount "
-                                            />
-                                        </Grid>
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="house_allownace"
-                                                label="House Allowance fee "
-                                            />
-                                        </Grid>
+                        <Formik
+                            initialValues={{
+                                ...INITIAL_FORM_STATE,
+                            }}
+                            validationSchema={FORM_VALIDATION}
+                            onSubmit={(values) => {
+                                console.log(values)
+                            }}
+                        >
+                            <Form>
+                                <Grid container spacing={2}>
+                                    <Grid item xs={6}>
+                                        <Select
+                                            name="payment_mode"
+                                            label="Payment Mode"
+                                            options={Paymentmode}
+                                        />
                                     </Grid>
-                                </Form>
-                            </Formik>
 
-                            {/* </div> */}
-                        </Container>
-                    </Grid>
+                                    <Grid item xs={6}>
+                                        <Textfield
+                                            name="salary"
+                                            label="Base Salary "
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <Typography>Bank Details</Typography>
+                                    </Grid>
+                                    <Grid item xs={6}>
+                                        <Textfield
+                                            name="bank_name"
+                                            label="Bank Name "
+                                        />
+                                    </Grid>
+                                    <Grid item xs={6}>
+                                        <Textfield
+                                            name="account_name"
+                                            label="Account Name "
+                                        />
+                                    </Grid>
+                                    <Grid item xs={6}>
+                                        <Textfield
+                                            name="account_no"
+                                            label="Account No "
+                                        />
+                                    </Grid>
+
+                                    <Grid item xs={12}>
+                                        <Typography>Allowance</Typography>
+                                    </Grid>
+                                    <Grid item xs={6}>
+                                        <Select
+                                            name="payment_mode"
+                                            label="Allowance Type"
+                                            options={allowance}
+                                        />
+                                    </Grid>
+
+                                    <Grid item xs={6}>
+                                        <Textfield
+                                            name="amount"
+                                            label="Amount "
+                                        />
+                                    </Grid>
+                                </Grid>
+                            </Form>
+                        </Formik>
+
+                        {/* </div> */}
+                    </Container>
                 </Grid>
+            </Grid>
         </Container>
     )
 }

@@ -69,22 +69,22 @@ const FORM_VALIDATION = Yup.object().shape({
         .integer()
         .typeError('Please enter a valid phone number')
         .required('Required'),
-        city: Yup.string().required('Required'),
-        subcity: Yup.string(),
-        areaCode: Yup.date().required('Required'),
-        houseNo: Yup.date().required('Required'),
-        kebele: Yup.string().required('Required'),
-        wereda: Yup.string(),
-        subcity: Yup.date().required('Required'),
-        city: Yup.date().required('Required'),
-        nameofInsured: Yup.string().required('Required'),
-        subcity: Yup.string(),
-        areaCode: Yup.date().required('Required'),
-        houseNo: Yup.date().required('Required'),
-        kebele: Yup.string().required('Required'),
-        wereda: Yup.string(),
-        subcity: Yup.date().required('Required'),
-        city: Yup.date().required('Required'),
+    city: Yup.string().required('Required'),
+    subcity: Yup.string(),
+    areaCode: Yup.date().required('Required'),
+    houseNo: Yup.date().required('Required'),
+    kebele: Yup.string().required('Required'),
+    wereda: Yup.string(),
+    subcity: Yup.date().required('Required'),
+    city: Yup.date().required('Required'),
+    nameofInsured: Yup.string().required('Required'),
+    subcity: Yup.string(),
+    areaCode: Yup.date().required('Required'),
+    houseNo: Yup.date().required('Required'),
+    kebele: Yup.string().required('Required'),
+    wereda: Yup.string(),
+    subcity: Yup.date().required('Required'),
+    city: Yup.date().required('Required'),
 })
 
 function InsuranceDetail() {
@@ -105,75 +105,50 @@ function InsuranceDetail() {
                         >
                             <Form>
                                 <Grid container spacing={2}>
-                                <Grid item xs={6}>
+                                    <Grid item xs={6}>
                                         <Select
                                             name="insurance_type"
                                             label="Insurance Type"
                                             options={InsurnaceType}
                                         />
-                                    </Grid>   
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="Healthinsuranceprovider "
-                                            label="Health insurance provider  "
-                                        />
                                     </Grid>
-                                    <Grid item xs={12}>
-                                        <Typography>Insurance Agents</Typography>
-                                    </Grid>
-                                    <Grid item xs={4}>
-                                        <Textfield
-                                            name="first_name"
-                                            label="First Name "
-                                        />
-                                    </Grid>
-
-                                    <Grid item xs={4}>
-                                        <Textfield
-                                            name="middle_name"
-                                            label="Middle Name "
-                                        />
-                                    </Grid>
-                                    <Grid item xs={4}>
-                                        <Textfield
-                                            name="last_name"
-                                            label="Last Name "
-                                        />
-                                    </Grid>
-
-                                    <Grid item xs={12}>
-                                        <Typography>Telephone</Typography>
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="MobileNumber"
-                                            label="Mobile No "
-                                        />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="OfficeNumber"
-                                            label="Office No "
-                                        />
-                                    </Grid>
-                                    
                                     <Grid item xs={6}>
                                         <Textfield
                                             name="insuranceNo"
                                             label="Health insurance No "
                                         />
                                     </Grid>
-
                                     <Grid item xs={6}>
-                                            <Upload
-                                                name="upload"
-                                                label="Upload Document "
-                                            />
-                                        </Grid>
-                                        <Grid item xs={12}>
-                                        <Typography>Other</Typography>
+                                        <Textfield
+                                            name="Healthinsuranceprovider "
+                                            label="Health Insurance Provider (Company Name)"
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <Typography>
+                                            Agent Information
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item xs={6}>
+                                        <Textfield
+                                            name="first_name"
+                                            label="Agent Full Name "
+                                        />
                                     </Grid>
 
+                                    <Grid item xs={6}>
+                                        <Textfield
+                                            name="first_name"
+                                            label="Agent Phone Number "
+                                        />
+                                    </Grid>
+
+                                    <Grid item xs={6}>
+                                        <Upload
+                                            name="upload"
+                                            label="Upload Document "
+                                        />
+                                    </Grid>
                                 </Grid>
                             </Form>
                         </Formik>

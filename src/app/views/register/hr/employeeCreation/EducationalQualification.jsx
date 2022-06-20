@@ -90,106 +90,30 @@ function RoadFunds() {
                                             label="School/University Name "
                                         />
                                     </Grid>
-                                    <Grid item xs={12}>
-                                        <Typography>Address</Typography>
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <Typography></Typography>
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="firstName"
-                                            label="House No"
-                                        />
-                                    </Grid>
 
                                     <Grid item xs={6}>
                                         <Textfield
-                                            name="lastName"
-                                            label="Kebele"
+                                            name="school"
+                                            label="Degree Type"
                                         />
                                     </Grid>
-
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="email"
-                                            label="Wereda"
-                                        />
-                                    </Grid>
-
-                                    <Grid item xs={6}>
-                                        <Textfield name="phone" label="City" />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="phone"
-                                            label="Subcity"
-                                        />
-                                    </Grid>
-
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="phone"
-                                            label="Area name "
-                                        />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <Select
-                                            name="roadfundno"
-                                            label="Field"
-                                            options={itemlist}
-                                        />
-                                    </Grid>
+                                   
                                     <Grid item xs={6}>
                                         <DateTimePicker
                                             name="completed_year"
-                                            label="Year completed "
+                                            label="Year Started "
                                         />
                                     </Grid>
                                     <Grid item xs={6}>
                                         <DateTimePicker
                                             name="timeofIssuance"
-                                            label="Time of Issurance "
-                                        />
-                                    </Grid>
-                                    {/* 
-                                    <LocalizationProvider
-                                        dateAdapter={AdapterDateFns}
-                                    >
-                                        <TimePicker
-                                            value={timeofIssuance}
-                                            onChange={handleDateChange}
-                                            renderInput={(props) => (
-                                                <TextField
-                                                    {...props}
-                                                    // variant="Outlined"
-                                                    id="mui-pickers-date"
-                                                    label="Time of Issurance"
-                                                    sx={{
-                                                        mb: 2,
-                                                        width: '100%',
-                                                    }}
-                                                />
-                                            )}
-                                        />
-                                    </LocalizationProvider> */}
-
-                                    <Grid item xs={6}>
-                                        <DateTimePicker
-                                            name="expiryDate"
-                                            label="Expiry Date "
-                                        />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="recievedFrom"
-                                            label="Recieved From "
+                                            label="Year Completed "
                                         />
                                     </Grid>
                                     <Grid item xs={6}>
                                             <Upload
                                                 name="upload"
-                                                label="Upload CV "
+                                                label="Upload Certification"
                                             />
                                         </Grid>
                                 </Grid>
