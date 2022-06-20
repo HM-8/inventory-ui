@@ -50,15 +50,6 @@ const FORM_VALIDATION = Yup.object().shape({
 function SalaryDetails() {
     return (
         <Container>
-            <div className="breadcrumb">
-                <Breadcrumb
-                    routeSegments={[
-                        { name: 'Dashboard', path: '/dashboard' },
-                        { name: 'Sales Details' },
-                    ]}
-                />
-            </div>
-            <SimpleCard title="Sales Details">
                 <Grid container>
                     <Grid item xs={12}></Grid>
                     <Grid item xs={12}>
@@ -160,11 +151,6 @@ function SalaryDetails() {
                                                 label="House Allowance fee "
                                             />
                                         </Grid>
-
-
-                                        <Grid item xs={12}>
-                                            <Button>Submit Form</Button>
-                                        </Grid>
                                     </Grid>
                                 </Form>
                             </Formik>
@@ -173,7 +159,6 @@ function SalaryDetails() {
                         </Container>
                     </Grid>
                 </Grid>
-            </SimpleCard>
         </Container>
     )
 }
