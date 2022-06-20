@@ -4,13 +4,11 @@ import { Breadcrumb, SimpleCard } from 'app/components'
 import StepperForm from '../../material-kit/forms/StepperForm'
 
 import PersonalDetails from './employeeCreation/PersonalDetails'
-import FamilyBackground from './employeeCreation/FamilyBackground';
-import Insurance from './employeeCreation/InsuranceDetail';
-import ContactDetails from './employeeCreation/ContactsDetails';
-import Qualification from './employeeCreation/EducationalQualification';
-import Experience  from './employeeCreation/WorkExperience';
-import EmergencyContact from './employeeCreation/EmergencyContact';
- 
+import FamilyBackground from './employeeCreation/FamilyBackground'
+import Insurance from './employeeCreation/InsuranceDetail'
+import Qualification from './employeeCreation/EducationalQualification'
+import Experience from './employeeCreation/WorkExperience'
+
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
     [theme.breakpoints.down('sm')]: {
@@ -28,7 +26,7 @@ const steps = [
     {
         id: 0,
         label: 'Personal Details',
-        form: <PersonalDetails/>,
+        form: <PersonalDetails />,
     },
     {
         id: 1,
@@ -42,25 +40,14 @@ const steps = [
     },
     {
         id: 3,
-        label: 'Contact Details',
-        form: <ContactDetails />,
-    },
-    {
-        id: 4,
         label: 'Educational Qualification',
         form: <Qualification />,
     },
     {
-        id: 5,
+        id: 4,
         label: 'Work Experience ',
         form: <Experience />,
     },
-    {
-        id: 6,
-        label: 'Emergency Contact ',
-        form: <EmergencyContact />,
-    }
-
 ]
 
 const NewEmployee = () => {
@@ -82,5 +69,3 @@ const NewEmployee = () => {
 }
 
 export default NewEmployee
-
-

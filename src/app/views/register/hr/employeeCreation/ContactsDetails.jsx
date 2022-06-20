@@ -136,13 +136,6 @@ function BoloDetails() {
                                             label="Subcity"
                                         />
                                     </Grid>
-
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="phone"
-                                            label="Area name "
-                                        />
-                                    </Grid>
                                     <Grid item xs={12}>
                                         <Typography>Email</Typography>
                                     </Grid>

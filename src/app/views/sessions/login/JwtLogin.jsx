@@ -136,7 +136,7 @@ const JwtLogin = () => {
                                                 className="buttonProgress"
                                             />
                                         )}
-                                    </Box>git 
+                                    </Box>
                                 </FlexBox>
                                 <Button
                                     sx={{ color: textPrimary }}
