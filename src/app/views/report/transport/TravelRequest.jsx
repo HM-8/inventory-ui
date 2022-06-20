@@ -72,7 +72,7 @@ const TravelRequest = () => {
                 />
             </div>
             <Box py="1px" />
-            <SimpleCard title="Trave lRequest Report">
+            <SimpleCard title="Trave Request Report">
                 <PaginationTable columns={columns} rows={rows} />
             </SimpleCard>
         </Container>

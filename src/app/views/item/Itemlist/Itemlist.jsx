@@ -8,6 +8,10 @@ import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
 import TableButton from '../../material-kit/buttons/LinkButton'
 
+import Items from './Items'
+
+const url = '/inventory/item/newitem';
+
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
     [theme.breakpoints.down('sm')]: {
@@ -21,38 +25,12 @@ const Container = styled('div')(({ theme }) => ({
     },
 }))
 
-const columns = [
-  { id: 'employee', label: 'Employee', minWidth: 10 },
-    { id: 'terminationDate', label: 'Termination Date', minWidth: 10 },
-    { id: 'description', label: 'Description ', minWidth: 10 },
-    { id: 'returnedItems', label: 'Returned Items', minWidth: 10 },
-]
-
-function createData(terminationDate, description, returnedItems,ApprovedDate,employee) {
-    return {
-        terminationDate: terminationDate,
-        description: description,
-        returnedItems: returnedItems,
-        employee:employee,
-    }
-}
-
-const rows = data.map((item, index) => {
-    const container = {}
-    createData(
-        (container.terminationDate = item.terminationDate),
-        (container.description = item.description),
-        (container.returnedItems = item.returnedItems),
-        (container.employee = item.employee),
-    )
-    return container
-})
 
 const StyledButton = styled(Button)(({ theme }) => ({
     margin: theme.spacing(1),
 }))
 
-const Termination = () => {
+const ItemList = () => {
     const [show, setShow] = useState(false)
 
     const handleButton = () => {
@@ -64,8 +42,7 @@ const Termination = () => {
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'Report', path: '/dashboard' },
-                        { name: 'Termination' },
+                        { name: 'Items', path: '/dashboard' },
                     ]}
                 />
             </div>
@@ -76,14 +53,18 @@ const Termination = () => {
                 spacing={2}
                 justifyContent="flex-end"
             >
+                <Grid item>
+                <Grid item>
+                     <TableButton buttonText="Add Item" url={url}/>
+                </Grid>
+                </Grid>
             </Grid>
-            <Grid item xs={12}>
-                <SimpleCard title="Promotions">
-                    <PaginationTable columns={columns} rows={rows} />
-                </SimpleCard>
-            </Grid>
+            <SimpleCard>
+                {/* <PaginationTable columns={columns} rows={rows} /> */}
+                <Grid><Items /></Grid>
+            </SimpleCard>
         </Container>
     )
 }
 
-export default Termination
+export default ItemList
