@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material'
 import { Box, styled } from '@mui/system'
 import { Breadcrumb, SimpleCard } from 'app/components'
-import { getallBranches } from 'app/redux/actions/BranchAction'
+import { deleteBranchInfo, getallBranches } from 'app/redux/actions/BranchAction'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { DeleteButton } from '../../../material-kit/buttons/DeleteButton'
@@ -101,7 +101,7 @@ const Branch = () => {
             (container.officeEmail = item.email.office),
             (container.type = item.type),
             (container.edit = <EditButton url={`${url}/?${index}`} state='edit'/>),
-            (container.del = <DeleteButton id={item.id} />)
+            (container.del = <DeleteButton action={deleteBranchInfo(item.id)} />)
         )
         return container
     })

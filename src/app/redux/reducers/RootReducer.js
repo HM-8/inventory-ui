@@ -6,6 +6,7 @@ import NavigationReducer from './NavigationReducer'
 import VehicleReducer from './VehicleReducer'
 import CompanyReducer from './CompanyReducer'
 import BranchReducer from './BranchReducer'
+import DepartmentReducer from './DepartmentReducer'
 
 const RootReducer = combineReducers({
     notifications: NotificationReducer,
@@ -14,7 +15,8 @@ const RootReducer = combineReducers({
     ecommerce: EcommerceReducer,
     vehicle:VehicleReducer,
     company:CompanyReducer,
-    branch: BranchReducer
+    branch: BranchReducer,
+    department: DepartmentReducer, 
 })
 
 export default RootReducer

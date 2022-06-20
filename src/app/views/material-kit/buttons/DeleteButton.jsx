@@ -1,19 +1,16 @@
 import React from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { deleteBranchInfo } from 'app/redux/actions/BranchAction'
 import { useDispatch } from 'react-redux';
 
-export const DeleteButton = ({ id, ...otherProps }) => {
-    console.log("delete id", id);
-    
+export const DeleteButton = ({ action, ...otherProps }) => {    
     const dispatch = useDispatch();
 
-    const deleteEntry = (id) => {
-        dispatch(deleteBranchInfo(id))
+    const deleteEntry = (action) => {
+        dispatch(action)
     };
 
     const handleSubmit = () => {
-        deleteEntry(id);
+        deleteEntry(action);
     };
     
     const configButton = {
