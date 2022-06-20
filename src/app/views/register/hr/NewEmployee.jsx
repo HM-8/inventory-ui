@@ -8,6 +8,8 @@ import FamilyBackground from './employeeCreation/FamilyBackground'
 import Insurance from './employeeCreation/InsuranceDetail'
 import Qualification from './employeeCreation/EducationalQualification'
 import Experience from './employeeCreation/WorkExperience'
+import SalaryDetails from './SalaryDetails'
+
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -47,6 +49,11 @@ const steps = [
         id: 4,
         label: 'Work Experience ',
         form: <Experience />,
+    },
+    {
+        id: 5,
+        label: 'Salery Details ',
+        form: <SalaryDetails />,
     },
 ]
 
