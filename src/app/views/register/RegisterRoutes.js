@@ -2,7 +2,6 @@ import React, { lazy } from 'react'
 import Loadable from 'app/components/Loadable/Loadable'
 // import { authRoles } from '../../auth/authRoles'
 
-// const AddEmployee = Loadable(lazy(() => import('./AddEmployee')))
 const Products= Loadable(lazy(()=>import('./inventory/Products')))
 const Branch= Loadable(lazy(()=>import('./General/branch/Branch')))
 const Settings= Loadable(lazy(()=>import('../settings/Inventory')))
@@ -11,7 +10,6 @@ const Company= Loadable(lazy(()=>import('./General/company/Company')))
 const EditCompany= Loadable(lazy(()=>import('./General/company/EditCompanyInfo')))
 const Department= Loadable(lazy(()=>import('./General/department/Department')))
 const Creation= Loadable(lazy(()=>import('./hr/NewEmployee')))
-const SalaryDetails= Loadable(lazy(()=>import('./hr/SalaryDetails')))
 const Registration = Loadable(lazy(()=>import('./transport/VehicleRegistration')))
 const Assignment= Loadable(lazy(()=>import('./transport/VechileAssignemt')))
 const NewAssignment= Loadable(lazy(()=>import('./transport/AddVehicleAssignment')))
@@ -23,15 +21,15 @@ const RegisterRouter = [
         element: <Products />,
     },
     {
-        path: '/general/newbranch',
+        path: '/hr/newbranch',
         element: <NewBranch />,
     },
     {
-        path: '/general/branch',
+        path: '/hr/branch',
         element: <Branch />,
     },
     {
-        path: '/general/department',
+        path: '/hr/department',
         element: <Department />,
     },
     {
@@ -52,9 +50,6 @@ const RegisterRouter = [
         element: <Creation />,
     },
     {
-        path: '/hr/salaryDetails',
-        element: <SalaryDetails />,
-    },{
         path: '/transport/regsitration',
         element: <Registration />,
     },{

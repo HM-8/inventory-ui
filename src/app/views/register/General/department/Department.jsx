@@ -84,7 +84,7 @@ const Department = () => {
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'General', path: '/dashboard' },
+                        { name: 'HR', path: '/dashboard' },
                         { name: 'Department' },
                     ]}
                 />

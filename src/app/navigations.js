@@ -20,12 +20,8 @@ export const navigations = [
                         path: '/general/company',
                     },
                     {
-                        name: 'Branch',
-                        path: '/general/branch',
-                    },
-                    {
-                        name: 'Department',
-                        path: '/general/department',
+                        name: 'Settings',
+                        path: '/general/settings',
                     },
                 ],
             },
@@ -38,8 +34,16 @@ export const navigations = [
                         path: '/hr/empCreation',
                     },
                     {
-                        name: 'Salery Details',
-                        path: '/hr/salaryDetails',
+                        name: 'Branch',
+                        path: '/hr/branch',
+                    },
+                    {
+                        name: 'Department',
+                        path: '/hr/department',
+                    },
+                    {
+                        name: 'Designation',
+                        path: '/hr/designation',
                     },
                 ],
             },

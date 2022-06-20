@@ -1,10 +1,7 @@
 import React from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import {
-    Grid,
-    Typography,
-} from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 
 import Textfield from '../../../../components/FormsUI/Textfield'
 import DateTimePicker from '../../../../components/FormsUI/DataTimePicker'
@@ -12,7 +9,6 @@ import Select from '../../../../components/FormsUI/Select'
 import genderList from '../../../../utils/data/GenderList.json'
 import styled from '@emotion/styled'
 import { useDispatch } from 'react-redux'
-
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -64,9 +60,6 @@ const FORM_VALIDATION = Yup.object().shape({
 })
 
 function PersonalDetails() {
-    const dispatch = useDispatch()
-
-
     return (
         <Container>
             <Grid container>
@@ -80,7 +73,7 @@ function PersonalDetails() {
                             validationSchema={FORM_VALIDATION}
                             onSubmit={(values) => {
                                 //dispatch(addBranchInfo(values))
-                                console.log("personal details", values)
+                                console.log('personal details', values)
                             }}
                         >
                             <Form>
@@ -186,7 +179,7 @@ function PersonalDetails() {
                                     <Grid item xs={12}>
                                         <Typography>Email</Typography>
                                     </Grid>
-                                <Grid item xs={6}>
+                                    <Grid item xs={6}>
                                         <Textfield
                                             name="personalEmail"
                                             label="Personal Email"
@@ -199,7 +192,6 @@ function PersonalDetails() {
                                             label="Company Email"
                                         />
                                     </Grid>
-
                                 </Grid>
                             </Form>
                         </Formik>

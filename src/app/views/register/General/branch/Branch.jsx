@@ -8,7 +8,7 @@ import { DeleteButton } from '../../../material-kit/buttons/DeleteButton'
 import { EditButton } from '../../../material-kit/buttons/EditButton'
 import TableButton from '../../../material-kit/buttons/LinkButton'
 import PaginationTable from '../../../material-kit/tables/PaginationTable'
-const url = '/general/NewBranch'
+const url = '/hr/NewBranch'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -111,12 +111,12 @@ const Branch = () => {
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'General', path: '/dashboard' },
+                        { name: 'HR', path: '/dashboard' },
                         { name: 'Branch' },
                     ]}
                 />
             </div>
-            <Box py="1px" />
+            <Box py="1px" />    
             <Grid
                 container
                 direction="row"

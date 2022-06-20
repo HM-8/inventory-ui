@@ -50,19 +50,9 @@ const FORM_VALIDATION = Yup.object().shape({
 function SalaryDetails() {
     return (
         <Container>
-            <div className="breadcrumb">
-                <Breadcrumb
-                    routeSegments={[
-                        { name: 'Dashboard', path: '/dashboard' },
-                        { name: 'Sales Details' },
-                    ]}
-                />
-            </div>
-            <SimpleCard title="Sales Details">
-                <Grid container>
-                    <Grid item xs={12}></Grid>
-                    <Grid item xs={12}>
-                        <Container maxWidth="md">
+            <Grid container>
+                <Grid item xs={12}>
+                    <Container maxWidth="md">
                             <Formik
                                 initialValues={{
                                     ...INITIAL_FORM_STATE,
@@ -173,7 +163,7 @@ function SalaryDetails() {
                         </Container>
                     </Grid>
                 </Grid>
-            </SimpleCard>
+         
         </Container>
     )
 }
