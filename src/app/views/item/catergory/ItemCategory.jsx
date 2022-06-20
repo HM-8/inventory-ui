@@ -83,7 +83,7 @@ const Category = () => {
             >
                 <Grid item>
                 <Grid item>
-                     <FormDialog title={'New Variant'} buttonText={'Add Row'}><AddCategory /></FormDialog>
+                     <FormDialog title={'New Category'} buttonText={'Add Row'}><AddCategory /></FormDialog>
                  </Grid>
                 </Grid>
             </Grid>

@@ -78,14 +78,14 @@ const Branch = () => {
     useEffect(() => {
         dispatch(getallBranches())
     }, [])
-    const {branches}  = useSelector((state) => state.branch)
-    
-    console.log("Branches",branches)
-    
+    const { branches } = useSelector((state) => state.branch)
+
+    console.log('Branches', branches)
+
     useEffect(() => {
-        localStorage.setItem('BRANCHES_INFO',JSON.stringify(branches))
+        localStorage.setItem('BRANCHES_INFO', JSON.stringify(branches))
     }, [branches])
-    
+
     const rows = branches.map((item, index) => {
         const container = {}
         createData(
@@ -100,7 +100,9 @@ const Branch = () => {
             (container.personalEmail = item.email.personal),
             (container.officeEmail = item.email.office),
             (container.type = item.type),
-            (container.edit = <EditButton url={`${url}/?${index}`} state='edit'/>),
+            (container.edit = (
+                <EditButton url={`${url}/?${index}`} state="edit" />
+            )),
             (container.del = <DeleteButton id={item.id} />)
         )
         return container
@@ -126,7 +128,7 @@ const Branch = () => {
                 <Grid item>
                     <Grid item>
                         <Grid item>
-                            <TableButton buttonText="Add Branch" url={url}/>
+                            <TableButton buttonText="Add Branch" url={url} />
                         </Grid>
                     </Grid>
                 </Grid>
