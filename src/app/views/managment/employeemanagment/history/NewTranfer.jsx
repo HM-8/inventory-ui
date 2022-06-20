@@ -11,6 +11,7 @@ import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
 import Paymentmode from '../../../../utils/data/paymentmode.json'
 import Upload from '../../../../components/FormsUI/fileupload'
+import itemlist from '../../../../utils/data/itemlist.json'
 
 const buttonText = 'Save'
 
@@ -58,7 +59,7 @@ function NewTransfer() {
                     ]}
                 />
             </div>
-            <SimpleCard title="LeavePolicy">
+            <SimpleCard title="Transfer">
                 <Grid container>
                     <Grid item xs={12}></Grid>
                     <Grid item xs={12}>
@@ -74,13 +75,13 @@ function NewTransfer() {
                             >
                                 <Form>
                                     <Grid container spacing={2}>
-                                        {/* <Grid item xs={6}>
-                                            <Upload
-                                                name="upload"
-                                                label="Upload Peer Review Questions "
+                                        <Grid item xs={6}>
+                                            <Select
+                                                name="employeeid"
+                                                label="Employee"
+                                                options={itemlist}
                                             />
-                                        </Grid> */}
-
+                                        </Grid>
                                         <Grid item xs={6}>
                                             <Textfield
                                                 name="CurrentBranch"
@@ -101,13 +102,13 @@ function NewTransfer() {
                                             />
                                         </Grid>
 
-                                        <Grid item xs={6}>
+                                        {/* <Grid item xs={6}>
                                             <DateTimePicker
                                                 name="ApprovedDate"
                                                 label="Approved Date "
                                             />
-                                        </Grid>
-                                        
+                                        </Grid> */}
+
                                         <Grid item xs={12}>
                                             <Button>Submit Form</Button>
                                         </Grid>
