@@ -1,6 +1,6 @@
 import React from 'react'
 import * as Yup from 'yup'
-import { Grid, Typography } from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
 
 import Textfield from '../../../../components/FormsUI/Textfield'
 import DateTimePicker from '../../../../components/FormsUI/DataTimePicker'
@@ -25,8 +25,8 @@ const Container = styled('div')(({ theme }) => ({
 const PersonalDetails=props =>{
     return (
         <section>
+            <Box py="12px" />
             <Grid container>
-                <Grid item xs={12}></Grid>
                 <Grid item xs={12}>
                     <Grid container spacing={2}>
                         <Grid item xs={12}>

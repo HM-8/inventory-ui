@@ -74,6 +74,7 @@ const NewEmployee = () => {
                     ]}
                 />
             </div>
+            
             <SimpleCard title="New Employee">
             <OrderForm />
             </SimpleCard>

@@ -1,10 +1,7 @@
 import React from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import {
-    Grid,
-    Typography,
-} from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 
 import Textfield from '../../../../components/FormsUI/Textfield'
 import DateTimePicker from '../../../../components/FormsUI/DataTimePicker'
@@ -36,7 +33,7 @@ const INITIAL_FORM_STATE = {
     AssignmentStatus: '',
     TrackUsage: '',
     StartDate: '',
-    EndDate: ''
+    EndDate: '',
 }
 
 const FORM_VALIDATION = Yup.object().shape({
@@ -55,7 +52,8 @@ function AttendanceRequest() {
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'Attendance Reuqest', path: '/dashboard' },
+                        { name: 'My Requests', path: '/dashboard' },
+                        { name: 'Attendance Request' },
                     ]}
                 />
             </div>
@@ -76,22 +74,6 @@ function AttendanceRequest() {
                                 <Form>
                                     <Grid container spacing={2}>
                                         <Grid item xs={6}>
-                                            <Select
-                                                name="Employeeid"
-                                                label="Name"
-                                                options={itemlist}
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Select
-                                                name="department"
-                                                label="department"
-                                                options={itemlist}
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
                                             <DateTimePicker
                                                 name="attendanceDate"
                                                 label="Attendance Date "
@@ -99,17 +81,9 @@ function AttendanceRequest() {
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                             <Textfield
+                                            <Textfield
                                                 name="reason"
                                                 label="Reason"
-                                                rows={4}
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                             <Textfield
-                                                name="explanation"
-                                                label="Explanation"
                                                 rows={4}
                                             />
                                         </Grid>

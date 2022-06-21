@@ -32,8 +32,8 @@ const EmployeeDesignation = () => {
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'Employee', path: '/dashboard' },
-                        { name: 'Employee Designation' },
+                        { name: 'HR', path: '/dashboard' },
+                        { name: 'Designation' },
                     ]}
                 />
             </div>

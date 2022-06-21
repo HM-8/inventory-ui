@@ -135,10 +135,6 @@ export const navigations = [
                         path: '/profile/leave-request',
                     },
                     {
-                        name: 'Extend Leave Request',
-                        path: 'profile/extended-leave',
-                    },
-                    {
                         name: 'Attendance Request',
                         path: 'profile/attendance-request',
                     },

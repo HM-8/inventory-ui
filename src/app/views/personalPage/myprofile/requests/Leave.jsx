@@ -1,10 +1,7 @@
 import React from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import {
-    Grid,
-    Typography,
-} from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 
 import Textfield from '../../../../components/FormsUI/Textfield'
 import DateTimePicker from '../../../../components/FormsUI/DataTimePicker'
@@ -36,7 +33,7 @@ const INITIAL_FORM_STATE = {
     AssignmentStatus: '',
     TrackUsage: '',
     StartDate: '',
-    EndDate: ''
+    EndDate: '',
 }
 
 const FORM_VALIDATION = Yup.object().shape({
@@ -55,7 +52,8 @@ function LeaveRequest() {
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'Leave Reuqest', path: '/dashboard' },
+                        { name: 'My Requests', path: '/dashboard' },
+                        { name: 'Leave Request' },
                     ]}
                 />
             </div>
@@ -77,20 +75,18 @@ function LeaveRequest() {
                                     <Grid container spacing={2}>
                                         <Grid item xs={6}>
                                             <Select
-                                                name="Employeeid"
-                                                label="Name"
-                                                options={itemlist}
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Select
                                                 name="department"
                                                 label="Leave Type"
                                                 options={itemlist}
                                             />
                                         </Grid>
-
+                                        <Grid item xs={6}>
+                                            <Select
+                                                name="Employeeid"
+                                                label="Is Extended Leave?"
+                                                options={itemlist}
+                                            />
+                                        </Grid>
                                         <Grid item xs={6}>
                                             <DateTimePicker
                                                 name="TripDate"
@@ -111,9 +107,9 @@ function LeaveRequest() {
                                                 label="Description"
                                                 row={4}
                                             /> */}
-                                             <Textfield
+                                            <Textfield
                                                 name="description"
-                                                label="Description"
+                                                label="Reason"
                                                 rows={4}
                                             />
                                         </Grid>
