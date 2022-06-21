@@ -42,6 +42,7 @@ function AddDepartment() {
             description: '',
         },
     ])
+    let finalObj = {}
 
     function addComponent() {
         setComponents([
@@ -64,8 +65,12 @@ function AddDepartment() {
         setComponents(values)
     }
     const handleSubmit = () => {
+        console.log('Submited Components', components)
 
-        console.log(components)
+        for (let i = 0; i < components.length; i++) {
+            Object.assign(finalObj, components[i])
+        }
+        console.log('final Object', finalObj)
 
         if (location.state === 'edit') {
             dispatch(updateDepartmentInfo(components))
