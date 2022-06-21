@@ -73,7 +73,7 @@ const NewEmployee = () => {
                     ]}
                 />
             </div>
-            <SimpleCard title="New Employee">
+            <SimpleCard>
                 <StepperForm steps={steps} />
             </SimpleCard>
         </Container>
