@@ -106,7 +106,7 @@ export const navigations = [
                 children: [
                     {
                         name: 'Vehicle Registration',
-                        path: '/transport/regsitration',
+                        path: '/transport/registration',
                     },
                     {
                         name: 'Vechicle Assignment',

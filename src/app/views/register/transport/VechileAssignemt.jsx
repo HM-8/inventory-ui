@@ -4,7 +4,7 @@ import { Breadcrumb, SimpleCard } from 'app/components'
 import { Box, styled } from '@mui/system'
 import { Grid } from '@mui/material'
 import TableButton from '../../material-kit/buttons/LinkButton'
-
+import rows from '../../../utils/data/employmentType.json'
 
 import { useSelector } from 'react-redux'
 
@@ -67,7 +67,7 @@ const VehicleAssignment = () => {
                 </Grid>
             </Grid>
             <SimpleCard title="Vehicle Assignment">
-                <PaginationTable columns={columns} rows={null} />
+                <PaginationTable columns={columns} rows={rows} />
             </SimpleCard>
         </Container>
     )

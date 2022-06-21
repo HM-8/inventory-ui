@@ -53,7 +53,7 @@ const RegisterRouter = [
         element: <EditCompany />,
     },
     {
-        path: '/settings/tranport',
+        path: '/settings/transport',
         element: <Settings />,
     },
     {
@@ -61,9 +61,10 @@ const RegisterRouter = [
         element: <Creation />,
     },
     {
-        path: '/transport/regsitration',
+        path: '/transport/registration',
         element: <Registration />,
-    },{
+    },
+    {
         path: '/transport/assignment',
         element: <Assignment />,
     },
