@@ -13,6 +13,7 @@ const Creation= Loadable(lazy(()=>import('./hr/NewEmployee')))
 const Registration = Loadable(lazy(()=>import('./transport/VehicleRegistration')))
 const Assignment= Loadable(lazy(()=>import('./transport/VechileAssignemt')))
 const NewAssignment= Loadable(lazy(()=>import('./transport/AddVehicleAssignment')))
+const GeneralSettings= Loadable(lazy(()=>import('./General/Settings')))
 
 
 const RegisterRouter = [
@@ -35,6 +36,11 @@ const RegisterRouter = [
     {
         path: '/general/company',
         element: <Company />,
+        // auth: authRoles.admin,
+    },
+    {
+        path: '/general/settings',
+        element: <GeneralSettings />,
         // auth: authRoles.admin,
     },
     {
