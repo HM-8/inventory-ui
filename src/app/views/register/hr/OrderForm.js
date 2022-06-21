@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Formik } from 'formik';
-import { Button, Step, StepLabel, Stepper } from '@mui/material';
+import { Box, Button, Step, StepLabel, Stepper } from '@mui/material';
 import SwipeableViews from 'react-swipeable-views';
 
 import PersonalDetails from './employeeCreation/PersonalDetails';
@@ -63,6 +63,7 @@ export default props => {
 		>
 			{({ isSubmitting }) => (
 				<>
+				<Box py="12px" />
 					<Form>
 						<Stepper alternativeLabel activeStep={activeStep}>
 							{steps.map((step, index) => (

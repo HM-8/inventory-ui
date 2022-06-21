@@ -68,22 +68,7 @@ const FORM_VALIDATION = Yup.object().shape({
         .integer()
         .typeError('Please enter a valid phone number')
         .required('Required'),
-        city: Yup.string().required('Required'),
-        subcity: Yup.string(),
-        areaCode: Yup.date().required('Required'),
-        houseNo: Yup.date().required('Required'),
-        kebele: Yup.string().required('Required'),
-        wereda: Yup.string(),
-        subcity: Yup.date().required('Required'),
-        city: Yup.date().required('Required'),
-        nameofInsured: Yup.string().required('Required'),
-        subcity: Yup.string(),
-        areaCode: Yup.date().required('Required'),
-        houseNo: Yup.date().required('Required'),
-        kebele: Yup.string().required('Required'),
-        wereda: Yup.string(),
-        subcity: Yup.date().required('Required'),
-        city: Yup.date().required('Required'),
+    nameofInsured: Yup.string().required('Required'),
 })
 
 function InsuranceDetail() {
@@ -116,128 +101,30 @@ function InsuranceDetail() {
                                             label="Date of Issurance "
                                         />
                                     </Grid>
-                                    <Grid item xs={12}>
-                                        <Typography>Insured Details</Typography>
-                                    </Grid>
                                     <Grid item xs={6}>
                                         <Textfield
                                             name="nameofInsured"
                                             label="Name of Insured "
                                         />
                                     </Grid>
-                                    <Grid item xs={12}>
-                                        <Typography>Address</Typography>
-                                    </Grid>
 
                                     <Grid item xs={6}>
-                                        <Textfield name="city" label="City" />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="subcity"
-                                            label="Subcity"
-                                        />
-                                    </Grid>
-
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="kebele"
-                                            label="Kebele"
-                                        />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="wereda"
-                                            label="Wereda"
-                                        />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="houseNo"
-                                            label="House No"
-                                        />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="areaCode"
-                                            label="Area Code "
-                                        />
-                                    </Grid>
-
-                                    <Grid item xs={12}>
                                         <Textfield
                                             name="insurance_Policy_No"
                                             label="Insurance Policy Number"
                                         />
                                     </Grid>
-
-
-                                     <Grid item xs={12}>
+                                    <Grid item xs={12}>
                                         <Typography>Insurer Details</Typography>
                                     </Grid>
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="conditionsSubjectedTowhichThePolicyisIssued"
-                                            label="Conditions Subjected to which the policy is Issued"
-                                        />
-                                    </Grid>
+
                                     <Grid item xs={6}>
                                         <Textfield
                                             name="nameofInsurer"
                                             label="Name of Insurer "
                                         />
                                     </Grid>
-
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="personsEntitledtouse"
-                                            label="Persons entitled to Drive "
-                                        />
-                                    </Grid>
-                                   
-
-                                    <Grid item xs={12}>
-                                        <Typography>Insurer Address</Typography>
-                                    </Grid>
-
-                                    <Grid item xs={6}>
-                                        <Textfield name="Icity" label="City" />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="Isubcity"
-                                            label="Subcity"
-                                        />
-                                    </Grid>
-
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="Ikebele"
-                                            label="Kebele"
-                                        />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="Iwereda"
-                                            label="Wereda"
-                                        />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="IhouseNo"
-                                            label="House No"
-                                        />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <Textfield
-                                            name="IareaCode"
-                                            label="Area Code "
-                                        />
-                                    </Grid>
-
-                                    <Grid item xs={12}>
-                                        <Typography>Telephone Number</Typography>
-                                    </Grid>
+                                    <Grid item xs={6}></Grid>
                                     <Grid item xs={6}>
                                         <Textfield
                                             name="Personal Tel"
