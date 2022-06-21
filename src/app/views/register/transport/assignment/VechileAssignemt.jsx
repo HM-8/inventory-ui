@@ -1,11 +1,11 @@
 import React from 'react'
-import PaginationTable from '../../material-kit/tables/PaginationTable'
+import PaginationTable from '../../../material-kit/tables/PaginationTable'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import { Box, styled } from '@mui/system'
 import { Grid } from '@mui/material'
-import TableButton from '../../material-kit/buttons/LinkButton'
+import TableButton from '../../../material-kit/buttons/LinkButton'
 
-import rows from '../../../utils/data/AssignedVehicles.json'
+import rows from '../../../../utils/data/AssignedVehicles.json'
 
 
 import { useSelector } from 'react-redux'
@@ -39,13 +39,7 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 const VehicleAssignment = () => {
-    // const { vehicleList } = useSelector((state) => state.vehicle)
-
-    // const user= useSelector((state)=>state.auth.user[0])
-    // const token=useSelector((state)=>state.auth.token[0])
-    // console.log("user Info "+user.role);
-    // console.log("user token "+token);
-    // console.log(vehicleList);
+    
     return (
         <Container>
             <div className="breadcrumb">
@@ -57,12 +51,6 @@ const VehicleAssignment = () => {
                 />
             </div>
             <Box py="1px" />
-{/* 
-            {vehicleList.map((vhil)=>{
-                <div>{"vehicle"+vhil}</div>
-            })} */}
-
-
             <Grid container direction="row" spacing={2} justifyContent="flex-end">
                 <Grid item>
                     <TableButton buttonText="Assign" url={url}/>
