@@ -8,6 +8,7 @@ import DateTimePicker from '../../../../components/FormsUI/DataTimePicker'
 import Select from '../../../../components/FormsUI/Select'
 import genderList from '../../../../utils/data/GenderList.json'
 import styled from '@emotion/styled'
+import Upload from '../../../../components/FormsUI/fileupload'
 import { useDispatch } from 'react-redux'
 
 const Container = styled('div')(({ theme }) => ({
@@ -122,6 +123,13 @@ function PersonalDetails() {
                                         <DateTimePicker
                                             name="doj"
                                             label="Date Of Joining"
+                                        />
+                                    </Grid>
+
+                                    <Grid item xs={6}>
+                                        <Upload
+                                            name="upload"
+                                            label="Upload CV "
                                         />
                                     </Grid>
 
