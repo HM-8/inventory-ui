@@ -42,7 +42,7 @@ function AddDepartment() {
             description: '',
         },
     ])
-    let finalObj = {}
+    // let finalObj = []
 
     function addComponent() {
         setComponents([
@@ -66,11 +66,17 @@ function AddDepartment() {
     }
     const handleSubmit = () => {
         console.log('Submited Components', components)
+        // components.forEach((comp) => finalObj.push(comp))
+        console.log(JSON.stringify(components))
 
-        for (let i = 0; i < components.length; i++) {
-            Object.assign(finalObj, components[i])
-        }
-        console.log('final Object', finalObj)
+        // let compone= components.map(comp=>{return {...comp}});
+        // console.log("fixed", compone);
+        // console.log('with our index', components)
+
+        // for (let i = 0; i < components.length; i++) {
+        //     Object.assign(finalObj[i], components[i])
+        // }
+        // console.log({finalObj})
 
         if (location.state === 'edit') {
             dispatch(updateDepartmentInfo(components))

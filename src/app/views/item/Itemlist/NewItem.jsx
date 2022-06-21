@@ -18,6 +18,7 @@ import Select from 'app/components/FormsUI/Select'
 import TextField from 'app/components/FormsUI/Textfield'
 import Checkbox from 'app/components/FormsUI/Checkbox'
 import genderList from '../../../utils/data/GenderList.json'
+import Generator from './BarcodeGenerator'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -214,6 +215,9 @@ function NewItem() {
                                         </Grid>
                                         <Grid item xs={12}>
                                             <BracodeReader />
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <Generator />
                                         </Grid>
                                         <Grid item xs={12}>
                                             <FormButton
