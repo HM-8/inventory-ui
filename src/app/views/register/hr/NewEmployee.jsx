@@ -10,6 +10,7 @@ import Qualification from './employeeCreation/EducationalQualification'
 import Experience from './employeeCreation/WorkExperience'
 import SalaryDetails from './SalaryDetails'
 import EmployeeSetup from './employeeCreation/EmployeeSetup'
+import OrderForm from './OrderForm'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -25,41 +26,41 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 const steps = [
-    {
-        id: 0,
-        label: 'Personal Details',
-        form: <PersonalDetails />,
-    },
-    {
-        id: 1,
-        label: 'Family Background ',
-        form: <FamilyBackground />,
-    },
-    {
-        id: 2,
-        label: 'Insurance',
-        form: <Insurance />,
-    },
-    {
-        id: 3,
-        label: 'Educational Qualification',
-        form: <Qualification />,
-    },
-    {
-        id: 4,
-        label: 'Work Experience ',
-        form: <Experience />,
-    },
-    {
-        id: 5,
-        label: 'Setup ',
-        form: <EmployeeSetup />,
-    },
-    {
-        id: 6,
-        label: 'Salary Details ',
-        form: <SalaryDetails />,
-    },
+    // {
+    //     id: 0,
+    //     label: 'Personal Details',
+    //     form: <PersonalDetails />,
+    // },
+    // {
+    //     id: 1,
+    //     label: 'Family Background ',
+    //     form: <FamilyBackground />,
+    // },
+    // {
+    //     id: 2,
+    //     label: 'Insurance',
+    //     form: <Insurance />,
+    // },
+    // {
+    //     id: 3,
+    //     label: 'Educational Qualification',
+    //     form: <Qualification />,
+    // },
+    // {
+    //     id: 4,
+    //     label: 'Work Experience ',
+    //     form: <Experience />,
+    // },
+    // {
+    //     id: 5,
+    //     label: 'Setup ',
+    //     form: <EmployeeSetup />,
+    // },
+    // {
+    //     id: 6,
+    //     label: 'Salary Details ',
+    //     form: <SalaryDetails />,
+    // },
 ]
 
 const NewEmployee = () => {
@@ -73,8 +74,8 @@ const NewEmployee = () => {
                     ]}
                 />
             </div>
-            <SimpleCard>
-                <StepperForm steps={steps} />
+            <SimpleCard title="New Employee">
+            <OrderForm />
             </SimpleCard>
         </Container>
     )
