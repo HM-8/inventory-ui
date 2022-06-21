@@ -13,7 +13,7 @@ import {
 import FormButton from 'app/views/material-kit/buttons/FormButton'
 import { useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
-import BracodeReader from 'app/views/register/inventory/BracodeReader'
+import BracodeReader from 'app/views/item/Itemlist/BracodeReader'
 import Select from 'app/components/FormsUI/Select'
 import TextField from 'app/components/FormsUI/Textfield'
 import Checkbox from 'app/components/FormsUI/Checkbox'
