@@ -26,63 +26,52 @@ const Container = styled('div')(({ theme }) => ({
     },
 }))
 
-const INITIAL_FORM_STATE = {
-    roadFundNo: '',
-    dateofIssuance: '',
-    timeofIssuance: '',
-    expiryDate: '',
-    recievedFrom: '',
-    city: '',
-    subcity: '',
-    wereda: '',
-    kebele: '',
-    houseNo: '',
-    areaCode: '',
-    mobileNo: '',
-    totAmtRecievedInWords: '',
-    totAmtRecievedInNum: '',
-    collectionMode: '',
-}
+// const INITIAL_FORM_STATE = {
+//     roadFundNo: '',
+//     dateofIssuance: '',
+//     timeofIssuance: '',
+//     expiryDate: '',
+//     recievedFrom: '',
+//     city: '',
+//     subcity: '',
+//     wereda: '',
+//     kebele: '',
+//     houseNo: '',
+//     areaCode: '',
+//     mobileNo: '',
+//     totAmtRecievedInWords: '',
+//     totAmtRecievedInNum: '',
+//     collectionMode: '',
+// }
 
-const FORM_VALIDATION = Yup.object().shape({
-    vehicleName: Yup.string().required('Required'),
-    model: Yup.string().required('Required'),
-    numberOfCylinders: Yup.number()
-        .integer()
-        .typeError('Please enter a valid phone number')
-        .required('Required'),
-    horsepower: Yup.number()
-        .integer()
-        .typeError('Please enter a valid phone number')
-        .required('Required'),
+// const FORM_VALIDATION = Yup.object().shape({
+//     vehicleName: Yup.string().required('Required'),
+//     model: Yup.string().required('Required'),
+//     numberOfCylinders: Yup.number()
+//         .integer()
+//         .typeError('Please enter a valid phone number')
+//         .required('Required'),
+//     horsepower: Yup.number()
+//         .integer()
+//         .typeError('Please enter a valid phone number')
+//         .required('Required'),
 
-    cubic_capacity: Yup.number()
-        .integer()
-        .typeError('Please enter a valid phone number')
-        .required('Required'),
-    AssignmentStatus: Yup.string().required('Required'),
-    yearManufactured: Yup.string(),
-    StartDate: Yup.date().required('Required'),
-    EndDate: Yup.date().required('Required'),
-})
+//     cubic_capacity: Yup.number()
+//         .integer()
+//         .typeError('Please enter a valid phone number')
+//         .required('Required'),
+//     AssignmentStatus: Yup.string().required('Required'),
+//     yearManufactured: Yup.string(),
+//     StartDate: Yup.date().required('Required'),
+//     EndDate: Yup.date().required('Required'),
+// })
 
-function BoloDetails() {
+function ContactsDetails(props) {
     return (
         <Container>
             <Grid container>
-                <Grid item xs={12}></Grid>
                 <Grid item xs={12}>
-                    <Container maxWidth="md">
-                        <Formik
-                            initialValues={{
-                                ...INITIAL_FORM_STATE,
-                            }}
-                            validationSchema={FORM_VALIDATION}
-                            onSubmit={(values) => {
-                                console.log(values)
-                            }}
-                        >
-                            <Form>
+                    
                                 <Grid container spacing={2}>
                                 <Grid item xs={12}>
                                         <Typography>Telephone</Typography>
@@ -109,30 +98,30 @@ function BoloDetails() {
                                     <Grid item xs={6}>
                                         <Textfield
                                             name="firstName"
-                                            label="House No"
+                                            label="First Name"
                                         />
                                     </Grid>
 
                                     <Grid item xs={6}>
                                         <Textfield
                                             name="lastName"
-                                            label="Kebele"
+                                            label="last Name"
                                         />
                                     </Grid>
 
                                     <Grid item xs={6}>
                                         <Textfield
                                             name="email"
-                                            label="Wereda"
+                                            label="Email"
                                         />
                                     </Grid>
 
                                     <Grid item xs={6}>
-                                        <Textfield name="phone" label="City" />
+                                        <Textfield name="city" label="City" />
                                     </Grid>
                                     <Grid item xs={6}>
                                         <Textfield
-                                            name="phone"
+                                            name="Subcity"
                                             label="Subcity"
                                         />
                                     </Grid>
@@ -153,13 +142,14 @@ function BoloDetails() {
                                         />
                                     </Grid>
                                 </Grid>
-                            </Form>
-                        </Formik>
-                    </Container>
                 </Grid>
             </Grid>
         </Container>
     )
 }
-
-export default BoloDetails
+ContactsDetails.label = 'Contacts Details';
+ContactsDetails.initialValues = {
+    firstName: '',
+    lastName: ''
+};
+export default ContactsDetails
