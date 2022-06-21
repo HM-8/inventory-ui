@@ -1,10 +1,7 @@
 import React from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import {
-    Grid,
-    Typography,
-} from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 
 import Textfield from '../../../../components/FormsUI/Textfield'
 import DateTimePicker from '../../../../components/FormsUI/DataTimePicker'
@@ -36,7 +33,7 @@ const INITIAL_FORM_STATE = {
     AssignmentStatus: '',
     TrackUsage: '',
     StartDate: '',
-    EndDate: ''
+    EndDate: '',
 }
 
 const FORM_VALIDATION = Yup.object().shape({
@@ -55,7 +52,8 @@ function TravelRequest() {
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'Travel Reuqest', path: '/dashboard' },
+                        { name: 'My Requests', path: '/dashboard' },
+                        { name: 'Travel Request' },
                     ]}
                 />
             </div>
@@ -76,71 +74,55 @@ function TravelRequest() {
                                 <Form>
                                     <Grid container spacing={2}>
                                         <Grid item xs={6}>
-                                            <Select
-                                                name="Employeeid"
-                                                label="Employee"
-                                                options={itemlist}
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Select
-                                                name="department"
-                                                label="Department"
-                                                options={itemlist}
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={12}>
-                                            <Typography>Location</Typography>
-                                        </Grid>
-                                        <Grid item xs={6}>
                                             <Textfield
-                                                name="houseNo"
-                                                label="House No"
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="kebele"
-                                                label="Kebele"
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="wereda"
-                                                label="Wereda"
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Textfield
-                                                name="city"
-                                                label="City"
+                                                name="reason"
+                                                label="Travel Purpose"
+                                                rows={4}
                                             />
                                         </Grid>
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="subCity"
-                                                label="Subcity"
+                                                name="reason"
+                                                label="Destination"
+                                                rows={4}
+                                            />
+                                        </Grid>
+                                        <Grid item xs={4}>
+                                            <DateTimePicker
+                                                name="TripDate"
+                                                label="From Date "
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={4}>
+                                            <DateTimePicker
+                                                name="ToDate"
+                                                label="To Date "
+                                            />
+                                        </Grid>
+                                        <Grid item xs={4}>
+                                            <Textfield
+                                                name="reason"
+                                                label="Travel Days"
+                                                rows={4}
                                             />
                                         </Grid>
 
                                         <Grid item xs={6}>
                                             <Textfield
                                                 name="reason"
-                                                label="Reason"
+                                                label="Travel Justification"
                                                 rows={4}
                                             />
                                         </Grid>
                                         <Grid item xs={6}>
-                                            <DateTimePicker
-                                                name="TripDate"
-                                                label="Date of Trip "
+                                            <Textfield
+                                                name="reason"
+                                                label="Estimated Budget"
+                                                rows={4}
                                             />
                                         </Grid>
+
                                         <Grid item xs={12}>
                                             <Button>Submit Form</Button>
                                         </Grid>
