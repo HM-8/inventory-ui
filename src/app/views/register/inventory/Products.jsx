@@ -7,7 +7,6 @@ import NewProducts from './NewProducts'
 import data from '../../../utils/data/employmentType.json'
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
-import BracodeReader from './BracodeReader'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
