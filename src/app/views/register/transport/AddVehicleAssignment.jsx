@@ -1,10 +1,7 @@
 import React from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import {
-    Grid,
-    Typography,
-} from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 
 import Textfield from '../../../components/FormsUI/Textfield'
 import DateTimePicker from '../../../components/FormsUI/DataTimePicker'
@@ -32,19 +29,17 @@ const Container = styled('div')(({ theme }) => ({
 const INITIAL_FORM_STATE = {
     vehicleName: '',
     driverName: '',
-    FuelMeasurment: '',
-    AssignmentStatus: '',
-    TrackUsage: '',
+    status: '',
+    startingKilometer: '',
     StartDate: '',
-    EndDate: ''
+    EndDate: '',
 }
 
 const FORM_VALIDATION = Yup.object().shape({
     vehicleName: Yup.string().required('Required'),
     driverName: Yup.string().required('Required'),
-    FuelMeasurment: Yup.string().required('Required'),
-    AssignmentStatus: Yup.string().required('Required'),
-    TrackUsage: Yup.string(),
+    startingKilometer: Yup.string().required('Required'),
+    status: Yup.string().required('Required'),
     StartDate: Yup.date().required('Required'),
     EndDate: Yup.date().required('Required'),
 })
@@ -55,7 +50,10 @@ function AddVehicleAssignment() {
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'Vehicle Assignment', path: '/transport/assignment' },
+                        {
+                            name: 'Vehicle Assignment',
+                            path: '/transport/assignment',
+                        },
                         { name: 'New Vehicle Assignment' },
                     ]}
                 />
@@ -76,8 +74,12 @@ function AddVehicleAssignment() {
                             >
                                 <Form>
                                     <Grid container spacing={2}>
-                                        <Grid item xs={12}>
-                                            <Typography>Location</Typography>
+                                        <Grid item xs={6}>
+                                            <Select
+                                                name="driverName"
+                                                label="Driver Name"
+                                                options={itemlist}
+                                            />
                                         </Grid>
                                         <Grid item xs={6}>
                                             <Select
@@ -95,13 +97,6 @@ function AddVehicleAssignment() {
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <Select
-                                                name="driverName"
-                                                label="Driver Name"
-                                                options={itemlist}
-                                            />
-                                        </Grid>
-                                        <Grid item xs={6}>
                                             <DateTimePicker
                                                 name="EndDate"
                                                 label="End Date "
@@ -110,31 +105,15 @@ function AddVehicleAssignment() {
 
                                         <Grid item xs={6}>
                                             <Select
-                                                name="FuelMeasurment"
-                                                label="Fuel Measurment in"
-                                                options={itemlist}
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
-                                            <Select
-                                                name="AssignmentStatus"
+                                                name="status"
                                                 label="Assignment Status"
                                                 options={itemlist}
                                             />
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <Select
-                                                name="TrackUsage"
-                                                label="Track Usage As"
-                                                options={itemlist}
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
                                             <Textfield
-                                                name="StartingKM"
+                                                name="startingKilometer"
                                                 label="Starting Kilometer "
                                             />
                                         </Grid>

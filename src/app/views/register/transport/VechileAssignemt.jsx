@@ -5,21 +5,19 @@ import { Box, styled } from '@mui/system'
 import { Grid } from '@mui/material'
 import TableButton from '../../material-kit/buttons/LinkButton'
 
-import rows from '../../../utils/data/AssignedVehicles.json'
-
 
 import { useSelector } from 'react-redux'
 
 
 const columns = [
-    { id: 'DriverName', label: 'Driver Name' },
-    { id: 'Name', label: 'Vehicle Name' },
-    { id: 'PlateNum', label: 'Plate Number' },
-    { id: 'StartingKilometer', label: 'Starting Kilometer' },
-    { id: 'Year', label: 'Start Date' },
-    { id: 'Year', label: 'End Date' },
-    { id: 'Comments', label: 'Comments' },
+    { id: 'driver', label: 'Driver Name' },
+    { id: 'vehicle', label: 'Vehicle Name' },
+    { id: 'startingKilometer', label: 'Starting Kilometer' },
+    { id: 'startDate', label: 'Start Date' },
+    { id: 'endDate', label: 'End Date' },
     { id: 'Status', label: 'Status' },
+    { id: 'edit', label: '', minWidth: 10 },
+    { id: 'del', label: '', minWidth: 10 },
     
 
 ]
@@ -69,7 +67,7 @@ const VehicleAssignment = () => {
                 </Grid>
             </Grid>
             <SimpleCard title="Vehicle Assignment">
-                <PaginationTable columns={columns} rows={rows} />
+                <PaginationTable columns={columns} rows={null} />
             </SimpleCard>
         </Container>
     )
