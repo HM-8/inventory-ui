@@ -98,12 +98,10 @@ class EmployeeList extends React.Component {
             <table className="uk-table uk-table-hover uk-table-middle uk-table-divider">
               <thead className='table'>
                 <tr className="uk-table-shrink">
-                  <th ><p>Avatar</p></th>
-                  <th>Fullname</th>
+                  <th ><p></p></th>
+                  <th>Full Name</th>
                   <th>City</th>
                   <th>Registered</th>
-                  <th>Edit</th>
-                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody className='hell'>

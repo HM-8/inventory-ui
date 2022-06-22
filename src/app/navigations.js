@@ -399,7 +399,6 @@ export const navigations = [
         children: [
             {
                 name: 'Profile',
-                icon: 'exit_to_app',
                 path: '/profile'
             },
             {
