@@ -30,34 +30,25 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 const INITIAL_FORM_STATE = {
-    firstName: '',
-    barcode: '',
-    binNo: '',
-    subcategory: '',
-    variant: '',
+    issueno: '',
+    carrying_cap: '',
+    Idescription: '',
+    priority: '',
+    plate: '',
     uom: '',
     qty: '',
     discount: '',
 }
 
 const FORM_VALIDATION = Yup.object().shape({
-    firstName: Yup.string().required('Required'),
-    barcode: Yup.string().required('Required'),
-    binNo: Yup.number()
+    issueno: Yup.string().required('Required'),
+    carrying_cap: Yup.string().required('Required'),
+    Idescription: Yup.number()
         .integer()
         .typeError('Please enter a valid Bin number')
         .required('Required'),
-    addressLine1: Yup.string().required('Required'),
-    addressLine2: Yup.string(),
-    city: Yup.string().required('Required'),
-    state: Yup.string().required('Required'),
-    country: Yup.string().required('Required'),
-    arrivealDate: Yup.date().required('Required'),
-    departureDate: Yup.date().required('Required'),
-    message: Yup.string(),
-    termsOfService: Yup.boolean()
-        .oneOf([true], 'The terms and conditions must be accepted.')
-        .required('The terms and conditions must be accepted.'),
+        priority: Yup.string().required('Required'),
+    duedate: Yup.date().required('Required'),
 })
 
 function NewIssues() {

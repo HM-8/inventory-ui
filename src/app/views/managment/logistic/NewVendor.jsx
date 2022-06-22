@@ -2,15 +2,11 @@ import React from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import { Grid, Typography } from '@mui/material'
-import DropDownData from '../../../utils/data/subcategory.json'
-import uom from '../../../utils/data/uomlist.json'
 import Textfield from '../../../components/FormsUI/Textfield'
-import Select from '../../../components/FormsUI/Select'
 import Button from '../../../components/FormsUI/Button/index'
 
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
-import Variant from '../../../utils/data/variants.json'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -31,9 +27,10 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 const INITIAL_FORM_STATE = {
-    firstName: '',
-    barcode: '',
+    vendorname: '',
+    vendortype: '',
     binNo: '',
+    firstName:'',
     subcategory: '',
     variant: '',
     uom: '',
@@ -42,13 +39,13 @@ const INITIAL_FORM_STATE = {
 }
 
 const FORM_VALIDATION = Yup.object().shape({
-    firstName: Yup.string().required('Required'),
-    barcode: Yup.string().required('Required'),
+    vendorname: Yup.string().required('Required'),
+    vendortype: Yup.string().required('Required'),
     binNo: Yup.number()
         .integer()
         .typeError('Please enter a valid Bin number')
         .required('Required'),
-    addressLine1: Yup.string().required('Required'),
+        firstName: Yup.string().required('Required'),
     addressLine2: Yup.string(),
     city: Yup.string().required('Required'),
     state: Yup.string().required('Required'),
@@ -116,7 +113,7 @@ function NewVendor() {
                                 
                                         <Grid item xs={4}>
                                             <Textfield
-                                                name="binNo"
+                                                name="MiddleName"
                                                 label="Middle Name"
                                             />
                                         </Grid>

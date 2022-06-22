@@ -28,23 +28,20 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 const INITIAL_FORM_STATE = {
-    vehicleName: '',
-    driverName: '',
-    FuelMeasurment: '',
-    AssignmentStatus: '',
+    currentDesignation: '',
+    newDesignation: '',
+    SuggestedDate: '',
+    ApprovedDate: '',
     TrackUsage: '',
     StartDate: '',
     EndDate: '',
 }
 
 const FORM_VALIDATION = Yup.object().shape({
-    vehicleName: Yup.string().required('Required'),
-    driverName: Yup.string().required('Required'),
-    FuelMeasurment: Yup.string().required('Required'),
-    AssignmentStatus: Yup.string().required('Required'),
-    TrackUsage: Yup.string(),
-    StartDate: Yup.date().required('Required'),
-    EndDate: Yup.date().required('Required'),
+    currentDesignation: Yup.string().required('Required'),
+    newDesignation: Yup.string().required('Required'),
+    SuggestedDate: Yup.string().required('Required'),
+    ApprovedDate: Yup.string().required('Required'),
 })
 
 function NewPromotion() {

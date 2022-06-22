@@ -29,23 +29,20 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 const INITIAL_FORM_STATE = {
-    vehicleName: '',
-    driverName: '',
-    FuelMeasurment: '',
-    AssignmentStatus: '',
+    employeeid: '',
+    description: '',
+    returnedItems: '',
+    timeofIssuance: '',
     TrackUsage: '',
     StartDate: '',
     EndDate: '',
 }
 
 const FORM_VALIDATION = Yup.object().shape({
-    vehicleName: Yup.string().required('Required'),
-    driverName: Yup.string().required('Required'),
-    FuelMeasurment: Yup.string().required('Required'),
-    AssignmentStatus: Yup.string().required('Required'),
-    TrackUsage: Yup.string(),
-    StartDate: Yup.date().required('Required'),
-    EndDate: Yup.date().required('Required'),
+    employeeid: Yup.string().required('Required'),
+    description: Yup.string().required('Required'),
+    returnedItems: Yup.string().required('Required'),
+    timeofIssuance: Yup.string().required('Required'),
 })
 
 function Termination() {

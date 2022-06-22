@@ -8,21 +8,6 @@ import TableButton from '../../material-kit/buttons/LinkButton'
 import rows from '../../../utils/data/AssignedVehicles.json'
 
 const columns = [
-    // Issue no.
-    // Issue Approver
-    // Name
-    // Signature
-    // Vehicle Plate No.
-    // Issue Description
-    // Is it a kilometer service? - Checkbox
-    // Priority
-    // Low 
-    // Medium
-    // High
-    // Due Date
-    
-
-
     { id: 'Issue_no', label: 'Issue No' },
     { id: 'Issue Approver', label: 'Issue Approver' },
     { id: 'Name', label: 'Name' },
