@@ -109,6 +109,11 @@ export const navigations = [
                         path: '/transport/regsitration',
                     },
                     {
+                        name: 'Vehicle Map',
+                        path: '/logistic/VehicleMap',
+                    },
+                    // /logistic/VehicleMap
+                    {
                         name: 'Vechicle Assignment',
                         path: '/transport/assignment',
                     },
