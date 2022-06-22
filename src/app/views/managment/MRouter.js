@@ -34,6 +34,7 @@ const NewPromotion = Loadable(lazy(() => import('./employeemanagment/history/New
 const NewTransfer = Loadable(lazy(() => import('./employeemanagment/history/NewTranfer')))
 const NewEMPTransport = Loadable(lazy(() => import('./logistic/tripManagment/NewEmployeeTransfer')))
 const NewItemTransport = Loadable(lazy(() => import('./logistic/tripManagment/NewItemTransfer')))
+const EmployeeList = Loadable(lazy(() => import('./employeemanagment/employees/Employees')))
 
 
 const MRouter = [
@@ -161,6 +162,10 @@ const MRouter = [
     {
         path: '/general/NewTransfer',
         element: <NewTransfer />,
+    },
+    {
+        path: '/managment/employees',
+        element: <EmployeeList />,
     },
 ]
 
