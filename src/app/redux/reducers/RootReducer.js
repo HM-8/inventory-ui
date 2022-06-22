@@ -8,17 +8,19 @@ import CompanyReducer from './CompanyReducer'
 import BranchReducer from './BranchReducer'
 import DepartmentReducer from './DepartmentReducer'
 import DesignationReducer from './DesignationReducer'
+import AttendanceReducer from './AttendanceReducer'
 
 const RootReducer = combineReducers({
     notifications: NotificationReducer,
     navigations: NavigationReducer,
     scrumboard: ScrumBoardReducer,
     ecommerce: EcommerceReducer,
-    vehicle:VehicleReducer,
-    company:CompanyReducer,
+    vehicle: VehicleReducer,
+    company: CompanyReducer,
     branch: BranchReducer,
-    department: DepartmentReducer, 
-    designation: DesignationReducer, 
+    department: DepartmentReducer,
+    designation: DesignationReducer,
+    attendance: AttendanceReducer,
 })
 
 export default RootReducer

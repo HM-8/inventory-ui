@@ -432,16 +432,16 @@ export const navigations = [
             //     path: '/profile/my-salary',
             //     iconText: 'E',
             // },
-            {
-                name: 'Log Out',
-                path: '/session/logout',
-                iconText: 'E',
-            },
-            {
-                name: 'Log In',
-                path: '/session/login',
-                iconText: 'E',
-            },
+            // {
+            //     name: 'Log Out',
+            //     path: '/session/logout',
+            //     iconText: 'E',
+            // },
+            // {
+            //     name: 'Log In',
+            //     path: '/session/login',
+            //     iconText: 'E',
+            // },
         ],
     },
 
