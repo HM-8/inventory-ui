@@ -5,14 +5,13 @@ import SwipeableViews from 'react-swipeable-views';
 
 import PersonalDetails from './employeeCreation/PersonalDetails';
 import EmergencyContact from './employeeCreation/EmergencyContact';
-import FamilyBackground from './employeeCreation/FamilyBackground';
 import Insurance from './employeeCreation/InsuranceDetail';
 import EducationalQualification from './employeeCreation/EducationalQualification';
 import Experience from './employeeCreation/WorkExperience';
 import Setup from './employeeCreation/EmployeeSetup'
 import SalaryDetails from './SalaryDetails';
 
-const steps = [PersonalDetails,Insurance,EducationalQualification,Experience,Setup,SalaryDetails, EmergencyContact];
+const steps = [PersonalDetails,Insurance,EducationalQualification,Experience,Setup,SalaryDetails];
 
 export default props => {
 	const [activeStep, setActiveStep] = useState(0);
@@ -61,7 +60,7 @@ export default props => {
 			onSubmit={onSubmit}
 			validationSchema={validationSchema}
 		>
-			{({ isSubmitting }) => (
+			{({ isSubmitting, values, touched }) => (
 				<>
 				<Box py="12px" />
 					<Form>
@@ -79,10 +78,11 @@ export default props => {
 								return <Component key={index} />;
 							})}
 						</SwipeableViews>
-							
+							<br />
 						<Button
 							disabled={activeStep === 0 || isSubmitting}
 							onClick={handlePrev}
+							variant="contained"
 						>
 							Previous
 						</Button>
@@ -91,8 +91,8 @@ export default props => {
 						</Button>
 						
 					</Form>
-					{/* <pre>{JSON.stringify(values, null, 2)}</pre>
-					<pre>{JSON.stringify(touched, null, 2)}</pre> */}
+					<pre>{JSON.stringify(values, null, 2)}</pre>
+					<pre>{JSON.stringify(touched, null, 2)}</pre>
 				</>
 			)}
 		</Formik>

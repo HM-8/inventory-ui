@@ -69,7 +69,7 @@ export const deleteDepartmentInfo = (departmentid) => (dispatch) => {
 
 export const updateDepartmentInfo = (departmentid, data) => (dispatch) => {
     axios
-        .patch(`http://localhost:4040/v1/department/${departmentid}`, [data])
+        .patch(`http://localhost:4040/v1/department/${departmentid}`, data)
         .then((res) => {
             dispatch({
                 type: UPDATE_DEPARTMENT_INFO,

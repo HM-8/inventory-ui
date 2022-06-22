@@ -30,7 +30,7 @@ function Company() {
     }, [])
 
     const companyInfo = useSelector((state) => state.company.companyInfo)
-    console.log('Company state' + companyInfo)
+    console.log('Company state', companyInfo)
 
     useEffect(() => {
         localStorage.setItem('COMPANY_INFO', JSON.stringify(companyInfo))
@@ -101,9 +101,17 @@ function Company() {
                     <Grid item xs={6}>
                         <strong>{companyInfo.fax}</strong>
                     </Grid>
-                    <Grid item xs={6}>
-                        <TableButton buttonText="Edit" url={url} state="edit" />
+                    {companyInfo === [] ? (
+                        <Grid item xs={6}>
+                        <TableButton
+                            buttonText="Edit"
+                            url={url}
+                            state="edit"
+                        />
                     </Grid>
+                    ) : (
+                        ''
+                    )}
                 </Grid>
             </SimpleCard>
         </Container>

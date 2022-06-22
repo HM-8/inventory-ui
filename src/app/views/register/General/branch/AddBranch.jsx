@@ -37,7 +37,8 @@ function Branch() {
     var buttonText = 'Submit'
     var titleText = 'Add Branch'
     var data = ''
-    const url = '/hr/branch'
+    var id = ''
+    const url = null
     console.log('location state', location.search)
 
     if (location.state === 'edit') {
@@ -45,6 +46,7 @@ function Branch() {
         titleText = 'Edit Branch'
         const object = JSON.parse(window.localStorage.getItem('BRANCHES_INFO'))
         const index = Number(location.search.charAt(1))
+        id = object[index].id
         data = {
             city: object[index].location.city,
             subCity: object[index].location.subCity,
@@ -108,7 +110,7 @@ function Branch() {
                                 validationSchema={FORM_VALIDATION}
                                 onSubmit={(values) => {
                                     if (location.state === 'edit') {
-                                        dispatch(updateBranchInfo(values))
+                                        dispatch(updateBranchInfo(id, values))
                                     } else {
                                         dispatch(addBranchInfo(values))
                                     }

@@ -5,6 +5,7 @@ import { useFormikContext } from 'formik';
 const FormButton = ({
   title,
   url,
+  state, 
   children,
   ...otherProps
 }) => {
@@ -29,6 +30,7 @@ const FormButton = ({
     <Button
       {...configButton}
       style={{ color: 'white' }}
+      state={state}
     >
       {children}
       {title}

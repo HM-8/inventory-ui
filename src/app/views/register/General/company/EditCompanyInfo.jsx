@@ -140,7 +140,7 @@ function Company() {
                                         <Grid item xs={12}>
                                             <FormButton
                                                 title={buttonText}
-                                                url={url}
+                                                url={null}
                                             ></FormButton>
                                         </Grid>
                                     </Grid>

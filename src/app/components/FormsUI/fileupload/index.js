@@ -24,7 +24,7 @@ const TextfieldWrapper = ({
   }
 
   return (
-    <TextField {...configTextfield} />
+    <TextField {...configTextfield}/>
   );
 };
 
