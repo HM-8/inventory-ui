@@ -5,6 +5,7 @@ const NotFound = Loadable(lazy(() => import("./NotFound")));
 const ForgotPassword = Loadable(lazy(() => import("./ForgotPassword")));
 const JwtLogin = Loadable(lazy(() => import("./login/JwtLogin")));
 const JwtLogout = Loadable(lazy(() => import("./logout/JwtLogout")));
+const Landing = Loadable(lazy(() => import("./LandingPage")));
 
 //const JwtRegister = Loadable(lazy(() => import("./register/JwtRegister")));
 
@@ -28,6 +29,10 @@ const sessionRoutes = [
     {
         path: '/session/404',
         element: <NotFound />,
+    },
+    {
+        path: '/landing',
+        element: <Landing />,
     },
 ]
 
