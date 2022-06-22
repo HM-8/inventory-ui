@@ -113,7 +113,7 @@ export const navigations = [
                         path: '/transport/registration',
                     },
                     {
-                        name: 'Vechicle Assignment',
+                        name: 'Vehicle Assignment',
                         path: '/transport/assignment',
                     },
                 ],
@@ -360,6 +360,10 @@ export const navigations = [
                 name: 'Transport',
                 icon: 'local_shipping',
                 children: [
+                    {
+                        name: 'Vehicle List',
+                        path: '/transport/vehicle',
+                    },
                     {
                         name: 'Travel Request',
                         path: '/report/transport/employee-transport',

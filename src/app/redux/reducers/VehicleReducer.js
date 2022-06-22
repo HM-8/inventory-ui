@@ -1,61 +1,86 @@
 import {
-    GET_VEHICLE_LIST,
+    GET_VEHICLE_INFO,
+    GET_ALL_VEHICLE_INFO,
+    ADD_VEHICLE_INFO,
+    UPDATE_VEHICLE_INFO,
+    DELETE_VEHICLE_INFO,
+    GET_ASSIGNMENT_INFO,
+    GET_ALL_ASSIGNMENT_INFO,
+    ADD_ASSIGNMENT_INFO,
+    UPDATE_ASSIGNMENT_INFO,
+    DELETE_ASSIGNMENT_INFO,
+
 } from '../actions/VehicleAction'
 
 const initialState = {
-    vehicleList: []
+    vehicle: [],
+    vehicles: [],
+    assignment: [],
+    assignments: []
 }
 
 const VehicleReducer = function (state = initialState, action) {
     switch (action.type) {
-        case GET_VEHICLE_LIST: {
+        case GET_VEHICLE_INFO: {
             return {
                 ...state,
-                vehicleList: [...action.payload],
+                vehicle: action.payload,
             }
         }
-    //     case GET_CATEGORY_LIST: {
-    //         return {
-    //             ...state,
-    //             categoryList: [...action.payload],
-    //         }
-    //     }
-    //     case GET_RATING_LIST: {
-    //         return {
-    //             ...state,
-    //             ratingList: [...action.payload],
-    //         }
-    //     }
-    //     case GET_BRAND_LIST: {
-    //         return {
-    //             ...state,
-    //             brandList: [...action.payload],
-    //         }
-    //     }
-    //     case GET_CART_LIST: {
-    //         return {
-    //             ...state,
-    //             cartList: [...action.payload],
-    //         }
-    //     }
-    //     case ADD_PRODUCT_TO_CART: {
-    //         return {
-    //             ...state,
-    //             cartList: [...action.payload],
-    //         }
-    //     }
-    //     case DELETE_PRODUCT_FROM_CART: {
-    //         return {
-    //             ...state,
-    //             cartList: [...action.payload],
-    //         }
-    //     }
-    //     case UPDATE_CART_AMOUNT: {
-    //         return {
-    //             ...state,
-    //             cartList: [...action.payload],
-    //         }
-    //     }
+        case GET_ALL_VEHICLE_INFO: {
+            return {
+                ...state,
+                vehicles: action.payload,
+            }
+        }
+        case ADD_VEHICLE_INFO: {
+            return {
+                ...state,
+                vehicle: action.payload,
+            }
+        }
+        case UPDATE_VEHICLE_INFO: {
+            return {
+                ...state,
+                vehicle: action.payload,
+            }
+        }
+        case DELETE_VEHICLE_INFO: {
+            return {
+                ...state,
+                vehicle: action.payload,
+            }
+        }
+        case GET_ASSIGNMENT_INFO: {
+            return {
+                ...state,
+                assignment: action.payload,
+            }
+        }
+        case GET_ALL_ASSIGNMENT_INFO: {
+            return {
+                ...state,
+                assignments: action.payload,
+            }
+        }
+        case ADD_ASSIGNMENT_INFO: {
+            return {
+                ...state,
+                assignment: action.payload,
+            }
+        }
+        case UPDATE_ASSIGNMENT_INFO: {
+            return {
+                ...state,
+                assignment: action.payload,
+            }
+        }
+        case DELETE_ASSIGNMENT_INFO: {
+            return {
+                ...state,
+                assignment: action.payload,
+            }
+        }
         default: {
             return {
                 ...state,

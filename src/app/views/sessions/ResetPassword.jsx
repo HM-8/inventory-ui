@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Box, styled } from '@mui/system'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { Span } from 'app/components/Typography'
 import { Card, Grid, Button } from '@mui/material'
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator'
@@ -39,6 +39,8 @@ const ForgotPasswordRoot = styled(JustifyBox)(() => ({
 const ForgotPassword = () => {
     const navigate = useNavigate()
     const [state, setState] = useState({})
+    const search = useLocation().search
+    const token = new URLSearchParams(search).get('token')
 
     const handleChange = ({ target: { name, value } }) => {
         setState({
@@ -50,13 +52,15 @@ const ForgotPassword = () => {
     const handleFormSubmit = (event) => {
         console.log(state)
         axios
-            .post('http://localhost:4040/v1/auth/forgot-password', state)
+            .post('http://localhost:4040/v1/auth/reset-password', state, {
+                params: { token: token },
+            })
             .then((res) => {
-                console.log("posted")
+                console.log('posted')
             })
     }
 
-    let { email } = state
+    let { password } = state
 
     return (
         <ForgotPasswordRoot>
@@ -76,13 +80,13 @@ const ForgotPassword = () => {
                                 <TextValidator
                                     sx={{ mb: 3, width: '100%' }}
                                     variant="outlined"
-                                    label="Email"
+                                    label="New Password"
                                     onChange={handleChange}
-                                    type="email"
-                                    name="email"
+                                    type="password"
+                                    name="password"
                                     size="small"
-                                    value={email || ''}
-                                    validators={['required', 'isEmail']}
+                                    value={password || ''}
+                                    validators={['required', 'isPassword']}
                                     errorMessages={[
                                         'this field is required',
                                         'email is not valid',
