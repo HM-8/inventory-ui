@@ -46,22 +46,8 @@ export const getallDepartments = () => (dispatch) => {
 }
 
 export const addDepartmentInfo = (data) => (dispatch) => {
-    // var departments = {};
-    
-    // departments = data.map((item) => {
-    //     console.log('item', item)
-    //     const container = {
-    //         name: item.name,
-    //         head: item.head,
-    //         description: item.description
-    //     }
-
-    //     return container
-    // })
-    // console.log("fixed dep", departments);
-
-    axios.post('http://localhost:4040/v1/department', { data }).then((res) => {
-        console.log(res.data)
+    axios.post('http://localhost:4040/v1/department', [data]).then((res) => {
+        console.log("Response Data",res.data)
         dispatch({
             type: ADD_DEPARTMENT_INFO,
             payload: res.data,
@@ -83,7 +69,7 @@ export const deleteDepartmentInfo = (departmentid) => (dispatch) => {
 
 export const updateDepartmentInfo = (departmentid, data) => (dispatch) => {
     axios
-        .patch(`http://localhost:4040/v1/department/${departmentid}`, { data })
+        .patch(`http://localhost:4040/v1/department/${departmentid}`, [data])
         .then((res) => {
             dispatch({
                 type: UPDATE_DEPARTMENT_INFO,
