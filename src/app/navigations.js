@@ -21,7 +21,7 @@ export const navigations = [
             },
             {
                 name: 'Settings',
-                path: '/general/settings',
+                path: '/company/setting',
             },
         ],
     },
@@ -388,6 +388,11 @@ export const navigations = [
         name: 'My Profile',
         icon: 'account_circle',
         children: [
+            {
+                name: 'Profile',
+                icon: 'exit_to_app',
+                path: '/profile'
+            },
             {
                 name: 'My Request',
                 icon: 'exit_to_app',
