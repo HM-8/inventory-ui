@@ -27,6 +27,8 @@ const reducer = (state, action) => {
     }
 }
 
+const role = window.localStorage.getItem('userRole')
+
 const NotificationContext = createContext({
     notifications: [],
     deleteNotification: () => {},
@@ -54,7 +56,7 @@ export const NotificationProvider = ({ settings, children }) => {
 
     const clearNotifications = async () => {
         try {
-            const res = await axios.post('/api/notification/delete-all')
+            const res = await axios.delete('http://localhost:4040/v1/notification', {params: {role: role}})
             dispatch({
                 type: 'CLEAR_NOTIFICATIONS',
                 payload: res.data,
@@ -66,7 +68,7 @@ export const NotificationProvider = ({ settings, children }) => {
 
     const getNotifications = async () => {
         try {
-            const res = await axios.get('/api/notification')
+            const res = await axios.get('http://localhost:4040/v1/notification', {params: {role: role}})
             dispatch({
                 type: 'LOAD_NOTIFICATIONS',
                 payload: res.data,

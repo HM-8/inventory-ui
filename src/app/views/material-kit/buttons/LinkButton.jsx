@@ -7,12 +7,33 @@ const StyledButton = styled(Button)(({ theme }) => ({
     margin: theme.spacing(1),
 }))
 
-function TableButton({buttonText, url, state}) {
-    return (
-        <StyledButton variant="contained" color="primary" component={Link} to={url} state={state}>
-            {buttonText}
-        </StyledButton>
-    )
+function TableButton({ buttonText, url, state }) {
+    if (url === null) {
+        return (
+            <div style={{ color: '#66b1ad' }} state={state}>
+                <StyledButton
+                    variant="contained"
+                    color="primary"
+                    state={state}
+                >
+                    {buttonText}
+                </StyledButton>
+            </div>
+        )
+    } else {
+        return (
+            <StyledButton
+                variant="contained"
+                color="primary"
+                component={Link}
+                to={url}
+                state={state}
+            >
+                {buttonText}
+            </StyledButton>
+        )
+    }
+ 
 }
 
 export default TableButton

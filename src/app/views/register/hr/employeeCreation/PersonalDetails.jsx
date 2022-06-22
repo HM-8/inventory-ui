@@ -22,7 +22,7 @@ const Container = styled('div')(({ theme }) => ({
     },
 }))
 
-const PersonalDetails=props =>{
+const PersonalDetails = (props) => {
     return (
         <section>
             <Container>
@@ -66,7 +66,7 @@ const PersonalDetails=props =>{
                             <Typography>Telephone</Typography>
                         </Grid>
                         <Grid item xs={6}>
-                            <Textfield name="houseTel" label="House No" />
+                            <Textfield name="homeTel" label="House No" />
                         </Grid>
 
                         <Grid item xs={6}>
@@ -107,9 +107,15 @@ const PersonalDetails=props =>{
 
                         <Grid item xs={6}>
                             <Textfield
-                                name="companyEmail"
+                                name="officeEmail"
                                 label="Company Email"
                             />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Typography>Upload CV</Typography>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Upload name="file" />
                         </Grid>
                     </Grid>
                 </Grid>
@@ -119,7 +125,7 @@ const PersonalDetails=props =>{
     )
 }
 
-PersonalDetails.label = 'Personal Details';
+PersonalDetails.label = 'Personal Details'
 PersonalDetails.initialValues = {
     firstName: '',
     middleName: '',
@@ -127,7 +133,7 @@ PersonalDetails.initialValues = {
     gender: '',
     dob: '',
     doj: '',
-    houseTel: '',
+    homeTel: '',
     mobileTel: '',
     houseNo: '',
     kebele: '',
@@ -135,7 +141,8 @@ PersonalDetails.initialValues = {
     city: '',
     subCity: '',
     personalEmail: '',
-    companyEmail: '',
+    officeEmail: '',
+    file: ''
 }
 PersonalDetails.validationSchema = Yup.object().shape({
     firstName: Yup.string().required('Required'),
@@ -144,7 +151,7 @@ PersonalDetails.validationSchema = Yup.object().shape({
     gender: Yup.string().required('Required'),
     dob: Yup.date().required('Required'),
     doj: Yup.date().required('Required'),
-    houseTel: Yup.string(),
+    homeTel: Yup.string(),
     mobileTel: Yup.string().required('Required'),
     houseNo: Yup.number().required('Required'),
     kebele: Yup.number().required('Required'),
@@ -152,6 +159,7 @@ PersonalDetails.validationSchema = Yup.object().shape({
     city: Yup.string().required('Required'),
     subCity: Yup.string().required('Required'),
     personalEmail: Yup.string(),
-    companyEmail: Yup.string().required('Required'),
+    officeEmail: Yup.string().required('Required'),
+    file: Yup.mixed().required('Required')
 })
 export default PersonalDetails

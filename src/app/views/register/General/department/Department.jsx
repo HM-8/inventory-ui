@@ -25,7 +25,7 @@ const Container = styled('div')(({ theme }) => ({
         },
     },
 }))
-const url = 'null'
+const url = '/hr/edit-department'
 const columns = [
     { id: 'name', label: 'Department Name', minWidth: 10 },
     { id: 'head', label: 'Department Head', minWidth: 10 },
@@ -64,15 +64,7 @@ const Department = () => {
             (container.name = item.name),
             (container.head = item.head),
             (container.description = item.description),
-            (container.edit = (
-                <Button
-                    onClick={(index) => {
-                        console.log('Add modal here')
-                    }}
-                >
-                    <EditButton url={null} state="edit" />
-                </Button>
-            )),
+            (container.edit = <EditButton url={`${url}/?${index}`} state="edit" />),
             (container.del = (
                 <DeleteButton action={deleteDepartmentInfo(item.id)} />
             ))
@@ -84,7 +76,7 @@ const Department = () => {
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'HR', path: '/dashboard' },
+                        { name: 'General', path: '/dashboard' },
                         { name: 'Department' },
                     ]}
                 />

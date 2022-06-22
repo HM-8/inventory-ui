@@ -15,6 +15,8 @@ const Assignment= Loadable(lazy(()=>import('./transport/VechileAssignemt')))
 const NewAssignment= Loadable(lazy(()=>import('./transport/AddVehicleAssignment')))
 const GeneralSettings= Loadable(lazy(()=>import('./General/Settings')))
 const EmployeeDesignation = Loadable(lazy(()=>import('../employee/designation/EmployeeDesignation')))
+const AddEmployeeDesignation = Loadable(lazy(()=>import('../employee/designation/AddEmployeeDesignation')))
+const EditDepartment = Loadable(lazy(()=>import('./General/department/EditDepartment')))
 
 
 const RegisterRouter = [
@@ -35,6 +37,10 @@ const RegisterRouter = [
         element: <Department />,
     },
     {
+        path: '/hr/new-designation',
+        element: <AddEmployeeDesignation />,
+    },
+    {
         path: '/hr/designation',
         element: <EmployeeDesignation />,
     },
@@ -51,6 +57,10 @@ const RegisterRouter = [
     {
         path: '/general/edit-company',
         element: <EditCompany />,
+    },
+    {
+        path: '/hr/edit-department',
+        element: <EditDepartment />,
     },
     {
         path: '/settings/transport',

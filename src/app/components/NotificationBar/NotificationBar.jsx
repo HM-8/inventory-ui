@@ -134,36 +134,10 @@ const NotificationBar = ({ container }) => {
                                     style={{ textDecoration: 'none' }}
                                 >
                                     <Card sx={{ mx: 2, mb: 3 }} elevation={3}>
-                                        <CardLeftContent>
-                                            <Box display="flex">
-                                                <Icon
-                                                    className="icon"
-                                                    color={
-                                                        notification.icon.color
-                                                    }
-                                                >
-                                                    {notification.icon.name}
-                                                </Icon>
-                                                <Heading>
-                                                    {notification.heading}
-                                                </Heading>
-                                            </Box>
-                                            <Small className="messageTime">
-                                                {getTimeDifference(
-                                                    new Date(
-                                                        notification.timestamp
-                                                    )
-                                                )}
-                                                ago
-                                            </Small>
-                                        </CardLeftContent>
                                         <Box sx={{ px: 2, pt: 1, pb: 2 }}>
                                             <Paragraph sx={{ m: 0 }}>
-                                                {notification.title}
+                                                {notification.message}
                                             </Paragraph>
-                                            <Small sx={{ color: secondary }}>
-                                                {notification.subtitle}
-                                            </Small>
                                         </Box>
                                     </Card>
                                 </Link>
