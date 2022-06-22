@@ -2,6 +2,7 @@ import React from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import { Grid, Typography } from '@mui/material'
+import Button from '../../../../components/FormsUI/Button'
 
 import Textfield from '../../../../components/FormsUI/Textfield'
 import Select from '../../../../components/FormsUI/Select'
@@ -11,6 +12,7 @@ import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
 import { useLocation } from 'react-router-dom'
 import FormButton from 'app/views/material-kit/buttons/FormButton'
+import { useNavigate } from 'react-router-dom'
 
 import {
     addBranchInfo,
@@ -34,6 +36,8 @@ const Container = styled('div')(({ theme }) => ({
 function Branch() {
     const location = useLocation()
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     var buttonText = 'Submit'
     var titleText = 'Add Branch'
     var data = ''
@@ -65,6 +69,7 @@ function Branch() {
     console.log('initial', INITIAL_FORM_STATE)
 
     const FORM_VALIDATION = Yup.object().shape({
+        branchManager:Yup.string().required('Required'),
         city: Yup.string().required('Required'),
         subCity: Yup.string().required('Required'),
         wereda: Yup.string().required('Required'),
@@ -112,7 +117,8 @@ function Branch() {
                                     } else {
                                         dispatch(addBranchInfo(values))
                                     }
-                                    console.log(values)
+                                    // console.log(values)
+                                        navigate(url)
                                 }}
                             >
                                 <Form>
@@ -207,10 +213,9 @@ function Branch() {
                                         </Grid>
 
                                         <Grid item xs={12}>
-                                            <FormButton
-                                                url={url}
-                                                title={buttonText}
-                                            ></FormButton>
+                                        <Grid item xs={12}>
+                                            <Button>{buttonText}</Button>
+                                        </Grid>
                                         </Grid>
                                     </Grid>
                                 </Form>
