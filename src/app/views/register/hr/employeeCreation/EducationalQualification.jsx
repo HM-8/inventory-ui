@@ -27,27 +27,27 @@ const EducationalQuliafication = (props) => {
         <Container>
             <Grid container spacing={2}>
                 <Grid item xs={6}>
-                    <Textfield name="school" label="School/University Name " />
-                </Grid>
-
-                <Grid item xs={6}>
-                    <Textfield name="degree" label="Degree Type" />
-                </Grid>
-
-                <Grid item xs={6}>
-                    <DateTimePicker
-                        name="completed_year"
-                        label="Year Started "
+                    <Textfield
+                        name="schoolName"
+                        label="School/University Name "
                     />
                 </Grid>
+
+                <Grid item xs={6}>
+                    <Textfield name="degreeType" label="Degree Type" />
+                </Grid>
+
+                <Grid item xs={6}>
+                    <DateTimePicker name="yearStarted" label="Year Started " />
+                </Grid>
                 <Grid item xs={6}>
                     <DateTimePicker
-                        name="timeofIssuance"
+                        name="yearCompleted"
                         label="Year Completed "
                     />
                 </Grid>
                 <Grid item xs={6}>
-                    <Upload name="upload" label="Upload Certification" />
+                    <Upload name="certification" label="Upload Certification" />
                 </Grid>
             </Grid>
         </Container>
@@ -55,16 +55,17 @@ const EducationalQuliafication = (props) => {
 }
 EducationalQuliafication.label = 'Educational Quliafication'
 EducationalQuliafication.initialValues = {
-    school: '',
-    degree: '',
-    completed_year: '',
-    timeofIssuance: '',
-    upload: '',
+    yearCompleted: '',
+    yearStarted: '',
+    degreeType: '',
+    schoolName: '',
+    certification: '',
 }
 EducationalQuliafication.validationSchema = Yup.object().shape({
-    school: Yup.string().required('Required'),
-    degree: Yup.string().required('Required'),
-    completed_year: Yup.string().required('Required'),
-    timeofIssuance: Yup.string().required('Required'),
+    yearCompleted: Yup.date().required(),
+    yearStarted: Yup.date().required(),
+    degreeType: Yup.string(),
+    schoolName: Yup.string(),
+    certification: Yup.string(),
 })
 export default EducationalQuliafication

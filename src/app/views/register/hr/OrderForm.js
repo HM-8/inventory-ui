@@ -3,15 +3,15 @@ import { Form, Formik } from 'formik';
 import { Box, Button, Step, StepLabel, Stepper } from '@mui/material';
 import SwipeableViews from 'react-swipeable-views';
 
-import PersonalDetails from './employeeCreation/PersonalDetails';
-import EmergencyContact from './employeeCreation/EmergencyContact';
+import Employee from './employeeCreation/Employee';
 import Insurance from './employeeCreation/InsuranceDetail';
 import EducationalQualification from './employeeCreation/EducationalQualification';
 import Experience from './employeeCreation/WorkExperience';
-import Setup from './employeeCreation/EmployeeSetup'
 import SalaryDetails from './SalaryDetails';
+import { addEmployeeInfo,addQualificationInfo,addInsuranceInfo,addSalaryInfo,addWorkInfo } from 'app/redux/actions/EmployeeAction'
+import { useDispatch } from 'react-redux'
 
-const steps = [PersonalDetails,Insurance,EducationalQualification,Experience,Setup,SalaryDetails];
+const steps = [Employee,EducationalQualification,Insurance,SalaryDetails,Experience];
 
 export default props => {
 	const [activeStep, setActiveStep] = useState(0);
@@ -27,6 +27,7 @@ export default props => {
 	const handleNext = () => [
 		setActiveStep(Math.min(activeStep + 1, steps.length - 1))
 	];
+	const dispatch = useDispatch();
 
 	const onSubmit = (values, formikBag) => {
 		const { setSubmitting } = formikBag;
@@ -37,12 +38,19 @@ export default props => {
 			return;
 		}
 
-		console.log(values);
+		console.log("Form Values",values);
 
 		setTimeout(() => {
 			setSubmitting(false);
 		}, 1000);
+		dispatch(addEmployeeInfo(values))
+		dispatch(addQualificationInfo(values))
+		dispatch(addInsuranceInfo(values))
+		dispatch(addSalaryInfo(values))
+		dispatch(addWorkInfo(values))
 	};
+	
+	// var data = JSON.parse(window.localStorage.getItem('EMPLOYEE_INFO'))
 
 	const initialValues = steps.reduce(
 		(values, { initialValues }) => ({
@@ -53,6 +61,7 @@ export default props => {
 	);
 	const ActiveStep = steps[activeStep];
 	const validationSchema = ActiveStep.validationSchema;
+	
 
 	return (
 		<Formik

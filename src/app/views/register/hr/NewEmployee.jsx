@@ -3,7 +3,7 @@ import { styled } from '@mui/system'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import StepperForm from '../../material-kit/forms/StepperForm'
 
-import PersonalDetails from './employeeCreation/PersonalDetails'
+import PersonalDetails from './employeeCreation/Employee'
 import FamilyBackground from './employeeCreation/FamilyBackground'
 import Insurance from './employeeCreation/InsuranceDetail'
 import Qualification from './employeeCreation/EducationalQualification'
