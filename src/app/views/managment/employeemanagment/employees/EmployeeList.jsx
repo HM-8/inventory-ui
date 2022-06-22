@@ -181,7 +181,7 @@
 // export default EmployeeList
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getallEmployees } from 'app/redux/actions/EmployeeAction'
+import { getallEmployees,getallQualification,getallInsurance,getallSalary,getallWork } from 'app/redux/actions/EmployeeAction'
 
 function EmployeeList() {
   const dispatch = useDispatch()
