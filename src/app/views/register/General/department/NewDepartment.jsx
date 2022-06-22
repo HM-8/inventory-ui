@@ -42,7 +42,7 @@ function AddDepartment() {
             description: '',
         },
     ])
-    let finalObj = {}
+    let finalObj = new Object();
 
     function addComponent() {
         setComponents([
@@ -72,10 +72,19 @@ function AddDepartment() {
         }
         console.log('final Object', finalObj)
 
+        let comp = JSON.stringify(components)
+        comp=JSON.parse(comp)
+        console.log({ components })
+
+        // var obj = JSON.parse(comp)
+        // var res = []
+        // for (var i in obj) res.push(obj[i])
+        // console.log({res})
+
         if (location.state === 'edit') {
-            dispatch(updateDepartmentInfo(components))
+            dispatch(updateDepartmentInfo(finalObj))
         } else {
-            dispatch(addDepartmentInfo(components))
+            dispatch(addDepartmentInfo(finalObj))
         }
     }
     return (
@@ -127,6 +136,7 @@ function AddDepartment() {
                                             }
                                         />
                                     </Grid>
+                                    {location.state==='edit'? '':  <>
                                     <Grid item xs={2}>
                                         <IconButton
                                             sx={{ mt: 0.5 }}
@@ -157,6 +167,9 @@ function AddDepartment() {
                                             </Icon>
                                         </IconButton>
                                     </Grid>
+                                    </>
+                                    }
+                                  
                                 </Grid>
                             ))}
                             <Grid item xs={12}>

@@ -22,17 +22,16 @@ const Container = styled('div')(({ theme }) => ({
             marginBottom: '16px',
         },
     },
-    '& .font':{
-        fontWeight:'bold',
-        fontSize:'16px'
-    }
-
+    '& .font': {
+        fontWeight: 'bold',
+        fontSize: '16px',
+    },
 }))
 
 const INITIAL_FORM_STATE = {
-    firstName: '',
-    barcode: '',
-    binNo: '',
+    platenumber: '',
+    Vendor: '',
+    platenumber: '',
     subcategory: '',
     variant: '',
     uom: '',
@@ -41,18 +40,17 @@ const INITIAL_FORM_STATE = {
 }
 
 const FORM_VALIDATION = Yup.object().shape({
-    firstName: Yup.string().required('Required'),
-    barcode: Yup.string().required('Required'),
-    binNo: Yup.number()
+    platenumber: Yup.string().required('Required'),
+    Vendor: Yup.string().required('Required'),
+    platenumber: Yup.number()
         .integer()
         .typeError('Please enter a valid Bin number')
         .required('Required'),
-    addressLine1: Yup.string().required('Required'),
-    addressLine2: Yup.string(),
-    city: Yup.string().required('Required'),
+    coupon: Yup.string(),
+    driver: Yup.string().required('Required'),
     state: Yup.string().required('Required'),
     country: Yup.string().required('Required'),
-    arrivealDate: Yup.date().required('Required'),
+    date: Yup.date().required('Required'),
     departureDate: Yup.date().required('Required'),
     message: Yup.string(),
     termsOfService: Yup.boolean()
@@ -68,7 +66,10 @@ function NewFuelEntry() {
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'Fuel Entry List', path: '/logistic/fuel-entry' },
+                        {
+                            name: 'Fuel Entry List',
+                            path: '/logistic/fuel-entry',
+                        },
                         { name: 'New Fuel Entry' },
                     ]}
                 />
@@ -90,16 +91,16 @@ function NewFuelEntry() {
                                     <Grid container spacing={2}>
                                         <Grid item xs={12}>
                                             <Textfield
-                                                name="plate number"
+                                                name="platenumber"
                                                 label="Plate Number"
                                             />
                                         </Grid>
                                         <Grid item xs={6}>
-                                                    <DateTimePicker
-                                                        name="date"
-                                                        label="Date"
-                                                    />
-                                                </Grid>
+                                            <DateTimePicker
+                                                name="date"
+                                                label="Date"
+                                            />
+                                        </Grid>
                                         <Grid item xs={12}>
                                             <Select
                                                 name="Vendor"
@@ -109,13 +110,13 @@ function NewFuelEntry() {
                                         </Grid>
                                         <Grid item xs={12}>
                                             <Textfield
-                                                name="plate number"
+                                                name="platenumber"
                                                 label="Price unit"
                                             />
                                         </Grid>
                                         <Grid item xs={12}>
                                             <Textfield
-                                                name="plate number"
+                                                name="coupon"
                                                 label="Coupon Number"
                                             />
                                         </Grid>
@@ -124,7 +125,7 @@ function NewFuelEntry() {
                                         </Grid>
                                         <Grid item xs={6}>
                                             <Select
-                                                name="Driver"
+                                                name="driver"
                                                 label="Coupon Number"
                                                 options={Vehicle}
                                             />

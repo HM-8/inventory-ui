@@ -10,14 +10,16 @@ import {
     addCompanyInfo,
     updateCompanyInfo,
 } from 'app/redux/actions/CompanyAction.js'
-import FormButton from 'app/views/material-kit/buttons/FormButton'
+// import FormButton from 'app/views/material-kit/buttons/FormButton'
 import { useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import BracodeReader from 'app/views/item/Itemlist/BracodeReader'
-import Select from 'app/components/FormsUI/Select'
-import TextField from 'app/components/FormsUI/Textfield'
+import Select from '../../../components/FormsUI/Select'
+import Textfield from '../../../components/FormsUI/Textfield'
 import Checkbox from 'app/components/FormsUI/Checkbox'
 import genderList from '../../../utils/data/GenderList.json'
+import Button from '../../../components/FormsUI/Button'
+import Upload from '../../../components/FormsUI/fileupload'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -32,6 +34,53 @@ const Container = styled('div')(({ theme }) => ({
     },
 }))
 
+
+    const INITIAL_FORM_STATE = {
+        itemName: '',
+        itemCode: '',
+        itemGroup: '',
+        defaultMesurment: '',
+        brand: '',
+        description: '',
+        shelfLife: '',
+        warrentyPeriod: '',
+        weight: '',
+        endOfLife: '',
+        defaultMaterialRequest: '',
+        weightUOM: '',
+        checkIN: '',
+        requestFor: '',
+        reorderLevel: '',
+        reorderQty: '',
+        materialRequest: '',
+        disabled:'',
+        maintainStock:'',
+        alternativeItem:'',
+        fixedAsset:''
+    }
+    // console.log('data', data)
+    // console.log('initial', INITIAL_FORM_STATE)
+
+    const FORM_VALIDATION = Yup.object().shape({
+        itemName: Yup.string().required('Required'),
+        itemCode: Yup.string().required('Required'),
+        itemGroup: Yup.string().required('Required'),
+        defaultMesurment: Yup.string().required('Required'),
+        brand: Yup.string().required('Required'),
+        description: Yup.string().required('Required'),
+        shelfLife: Yup.string().required('Required'),
+        warrentyPeriod: Yup.string().required('Required'),
+        weight: Yup.string().required('Required'),
+        endOfLife: Yup.date().required('Required'),
+        defaultMaterialRequest: Yup.string().required('Required'),
+        weightUOM: Yup.string().required('Required'),
+        checkIN: Yup.string().required('Required'),
+        requestFor: Yup.string().required('Required'),
+        reorderLevel: Yup.string().required('Required'),
+        reorderQty: Yup.string().required('Required'),
+        materialRequest: Yup.string().required('Required'),
+    })
+
 function NewItem() {
     const location = useLocation()
     const dispatch = useDispatch()
@@ -41,37 +90,13 @@ function NewItem() {
     const url = '/general/company'
     console.log('location state', location.search)
 
-    if (location.state === 'edit') {
-        buttonText = 'Update'
-        titleText = 'Edit Item'
-        data = JSON.parse(window.localStorage.getItem('ITEMS_INFO'))
-    }
+    // if (location.state === 'edit') {
+    //     buttonText = 'Update'
+    //     titleText = 'Edit Item'
+    //     data = JSON.parse(window.localStorage.getItem('ITEMS_INFO'))
+    // }
 
-    const INITIAL_FORM_STATE = { ...data }
-    console.log('data', data)
-    console.log('initial', INITIAL_FORM_STATE)
-
-    const FORM_VALIDATION = Yup.object().shape({
-      itemName: Yup.string().required('Required'),
-      itemCode: Yup.string().required('Required'),
-      itemGroup: Yup.string().required('Required'),
-      defaultMesurment: Yup.string().required('Required'),
-      brand: Yup.string().required('Required'),
-      description: Yup.string().required('Required'),
-      shelfLife: Yup.string().required('Required'),
-      warrentyPeriod: Yup.string().required('Required'),
-      weight: Yup.string().required('Required'),
-      endOfLife: Yup.date().required('Required'),
-      defaultMaterialRequest: Yup.string().required('Required'),
-      weightUOM: Yup.string().required('Required'),
-      checkIN: Yup.string().required('Required'),
-      requestFor: Yup.string().required('Required'),
-      reorderLevel: Yup.string().required('Required'),
-      reorderQty: Yup.string().required('Required'),
-      materialRequest: Yup.string().required('Required')
-  });
-
-    useEffect(() => {}, [])
+    // useEffect(() => {}, [])
 
     return (
         <Container>
@@ -97,25 +122,31 @@ function NewItem() {
                                 }}
                                 validationSchema={FORM_VALIDATION}
                                 onSubmit={(values) => {
-                                    if (location.state === 'edit') {
-                                        dispatch(
-                                            updateCompanyInfo(data.id, values)
-                                        )
-                                    } else {
-                                        dispatch(addCompanyInfo(values))
-                                    }
+                                    // if (location.state === 'edit') {
+                                    //     dispatch(
+                                    //         updateCompanyInfo(data.id, values)
+                                    //     )
+                                    // } else {
+                                    //     dispatch(addCompanyInfo(values))
+                                    // }
+                                    console.log(values)
                                 }}
                             >
                                 <Form>
                                     <Grid container spacing={2}>
-                                    <Grid item xs={12}>
-                                            <Typography>Item details</Typography>
+                                        <Grid item xs={12}>
+                                            <Typography>
+                                                Item details
+                                            </Typography>
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <TextField name="itemName" label="Item Name" />
+                                            <Textfield
+                                                name="itemName"
+                                                label="Item Name"
+                                            />
                                         </Grid>
-
+                                        
                                         <Grid item xs={3}>
                                             <Checkbox name="disabled" label="Disabled" />
                                         </Grid>
@@ -125,7 +156,10 @@ function NewItem() {
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <TextField name="itemCode" label="Item Code" />
+                                            <Upload
+                                                name="upload"
+                                                label="Upload Item Image "
+                                            />
                                         </Grid>
 
                                         <Grid item xs={3}>
@@ -137,23 +171,40 @@ function NewItem() {
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <TextField name="itemGroup" label="Item Group" />
+                                            <Textfield
+                                                name="itemGroup"
+                                                label="Item Group"
+                                            />
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <Select name="defaultMesurment" label="Default Unit of Measurment" options={genderList} />
+                                            <Select
+                                                name="defaultMesurment"
+                                                label="Default Unit of Measurment"
+                                                options={genderList}
+                                            />
                                         </Grid>
 
                                         <Grid item xs={12}>
-                                            <Typography>Brand description</Typography>
+                                            <Typography>
+                                                Brand description
+                                            </Typography>
                                         </Grid>
 
                                         <Grid item xs={12}>
-                                            <TextField name="brand" label="Brand" />
+                                            <Textfield
+                                                name="brand"
+                                                label="Brand"
+                                            />
                                         </Grid>
 
                                         <Grid item xs={12}>
-                                            <TextField name="description" label="Description" multiline={true} rows={4} />
+                                            <Textfield
+                                                name="description"
+                                                label="Description"
+                                                multiline={true}
+                                                rows={4}
+                                            />
                                         </Grid>
 
                                         <Grid item xs={12}>
@@ -161,65 +212,99 @@ function NewItem() {
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <TextField name="shelfLife" label="Shelf Life in Days" />
+                                            <Textfield
+                                                name="shelfLife"
+                                                label="Shelf Life in Days"
+                                            />
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <TextField name="warrentyPeriod" label="Warrenty Period(in days)" />
+                                            <Textfield
+                                                name="warrentyPeriod"
+                                                label="Warrenty Period(in days)"
+                                            />
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <DateTimePicker name="endOfLife" label="End of Life" />
+                                            <DateTimePicker
+                                                name="endOfLife"
+                                                label="End of Life"
+                                            />
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <TextField name="weight" label="Weights Per Unit" />
+                                            <Textfield
+                                                name="weight"
+                                                label="Weights Per Unit"
+                                            />
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <Select name="defaultMaterialRequest" label="Default Material Request Type" options={genderList} />
+                                            <Select
+                                                name="defaultMaterialRequest"
+                                                label="Default Material Request Type"
+                                                options={genderList}
+                                            />
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <TextField name="weightUOM" label="Weight UOM" />
+                                            <Textfield
+                                                name="weightUOM"
+                                                label="Weight UOM"
+                                            />
                                         </Grid>
 
                                         <Grid item xs={12}>
-                                            <Typography>Automatic Re-ordering</Typography>
+                                            <Typography>
+                                                Automatic Re-ordering
+                                            </Typography>
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <TextField name="checkIN" label="Check in(group)" />
+                                            <Textfield
+                                                name="checkIN"
+                                                label="Check in(group)"
+                                            />
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <TextField name="requestFor" label="Request for" />
+                                            <Textfield
+                                                name="requestFor"
+                                                label="Request for"
+                                            />
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <TextField name="reorderLevel" label="Re-order Level" />
+                                            <Textfield
+                                                name="reorderLevel"
+                                                label="Re-order Level"
+                                            />
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <TextField name="reorderQty" label="Re-order Qty" />
+                                            <Textfield
+                                                name="reorderQty"
+                                                label="Re-order Qty"
+                                            />
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <Select name="materialRequest" label="Material Request Type" options={genderList} />
+                                            <Select
+                                                name="materialRequest"
+                                                label="Material Request Type"
+                                                options={genderList}
+                                            />
                                         </Grid>
-                                        <Grid item xs={12}>
+                                        {/* <Grid item xs={12}>
                                             <Typography>
                                                 Scan Barcode or Generate
                                             </Typography>
                                         </Grid>
                                         <Grid item xs={12}>
                                             <BracodeReader />
-                                        </Grid>
+                                        </Grid> */}
                                         <Grid item xs={12}>
-                                            <FormButton
-                                                title={buttonText}
-                                                url={url}
-                                            ></FormButton>
+                                            <Button>Submit Form</Button>
                                         </Grid>
                                     </Grid>
                                 </Form>

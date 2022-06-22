@@ -8,9 +8,7 @@ import Select from '../../../../components/FormsUI/Select'
 import Button from '../../../../components/FormsUI/Button'
 import DateTimePicker from '../../../../components/FormsUI/DataTimePicker'
 import { Breadcrumb, SimpleCard } from 'app/components'
-import styled from '@emotion/styled'
-import Paymentmode from '../../../../utils/data/paymentmode.json'
-import Upload from '../../../../components/FormsUI/fileupload'
+import styled from '@emotion/styled'    
 import itemlist from '../../../../utils/data/itemlist.json'
 
 const buttonText = 'Save'
@@ -29,23 +27,17 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 const INITIAL_FORM_STATE = {
-    vehicleName: '',
-    driverName: '',
-    FuelMeasurment: '',
-    AssignmentStatus: '',
-    TrackUsage: '',
-    StartDate: '',
-    EndDate: '',
+    employeeid: '',
+    CurrentBranch: '',
+    NewBranch: '',
+    SuggestedDate: '',
 }
 
 const FORM_VALIDATION = Yup.object().shape({
-    vehicleName: Yup.string().required('Required'),
-    driverName: Yup.string().required('Required'),
-    FuelMeasurment: Yup.string().required('Required'),
-    AssignmentStatus: Yup.string().required('Required'),
-    TrackUsage: Yup.string(),
-    StartDate: Yup.date().required('Required'),
-    EndDate: Yup.date().required('Required'),
+    employeeid: Yup.string().required('Required'),
+    CurrentBranch: Yup.string().required('Required'),
+    NewBranch: Yup.string().required('Required'),
+    SuggestedDate: Yup.date().required('Required'),
 })
 
 function NewTransfer() {
@@ -61,7 +53,6 @@ function NewTransfer() {
             </div>
             <SimpleCard title="Transfer">
                 <Grid container>
-                    <Grid item xs={12}></Grid>
                     <Grid item xs={12}>
                         <Container maxWidth="md">
                             <Formik
@@ -101,14 +92,6 @@ function NewTransfer() {
                                                 label="Suggested Date "
                                             />
                                         </Grid>
-
-                                        {/* <Grid item xs={6}>
-                                            <DateTimePicker
-                                                name="ApprovedDate"
-                                                label="Approved Date "
-                                            />
-                                        </Grid> */}
-
                                         <Grid item xs={12}>
                                             <Button>Submit Form</Button>
                                         </Grid>
