@@ -23,6 +23,10 @@ export const navigations = [
                 name: 'Settings',
                 path: '/company/setting',
             },
+            {
+                name: 'Account',
+                path: '/general/account',
+            },
         ],
     },
     {
@@ -109,7 +113,7 @@ export const navigations = [
                         path: '/transport/registration',
                     },
                     {
-                        name: 'Vechicle Assignment',
+                        name: 'Vehicle Assignment',
                         path: '/transport/assignment',
                     },
                 ],
@@ -357,6 +361,10 @@ export const navigations = [
                 icon: 'local_shipping',
                 children: [
                     {
+                        name: 'Vehicle List',
+                        path: '/transport/vehicle',
+                    },
+                    {
                         name: 'Travel Request',
                         path: '/report/transport/employee-transport',
                     },
@@ -395,7 +403,6 @@ export const navigations = [
         children: [
             {
                 name: 'Profile',
-                icon: 'exit_to_app',
                 path: '/profile'
             },
             {

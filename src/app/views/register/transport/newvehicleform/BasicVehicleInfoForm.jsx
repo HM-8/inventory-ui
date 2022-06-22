@@ -193,13 +193,7 @@ function BasicVehicleInfo() {
                                             />
                                         </Grid>
 
-                                        <Grid item xs={6}>
-                                            <Select
-                                                name="status"
-                                                label="Status"
-                                                options={itemlist}
-                                            />
-                                        </Grid>
+                                      
                                     </Grid>
                                 </Form>
                             </Formik>

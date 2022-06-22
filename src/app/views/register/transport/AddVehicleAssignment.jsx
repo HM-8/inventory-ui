@@ -10,6 +10,12 @@ import Button from '../../../components/FormsUI/Button/index'
 import itemlist from '../../../utils/data/BranchList.json'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
+import {
+    addAssignmentInfo,
+    updateAssignmentInfo,
+} from 'app/redux/actions/VehicleAction'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
 const buttonText = 'Save'
 
@@ -27,8 +33,8 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 const INITIAL_FORM_STATE = {
-    vehicleName: '',
-    driverName: '',
+    vehicle: '',
+    driver: '',
     status: '',
     startingKilometer: '',
     StartDate: '',
@@ -36,15 +42,48 @@ const INITIAL_FORM_STATE = {
 }
 
 const FORM_VALIDATION = Yup.object().shape({
-    vehicleName: Yup.string().required('Required'),
-    driverName: Yup.string().required('Required'),
+    vehicle: Yup.string().required('Required'),
+    driver: Yup.string().required('Required'),
     startingKilometer: Yup.string().required('Required'),
     status: Yup.string().required('Required'),
-    StartDate: Yup.date().required('Required'),
-    EndDate: Yup.date().required('Required'),
+    startDate: Yup.date().required('Required'),
+    endDate: Yup.date().required('Required'),
 })
 
 function AddVehicleAssignment() {
+    const location = useLocation()
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    var buttonText = 'Submit'
+    var titleText = 'Add Branch'
+    var data = ''
+    var id = ''
+    const url = null
+    console.log('location state', location.search)
+
+    if (location.state === 'edit') {
+        buttonText = 'Update'
+        titleText = 'Edit Branch'
+        const object = JSON.parse(
+            window.localStorage.getItem('ASSIGNMENTS_INFO')
+        )
+        const index = Number(location.search.charAt(1))
+        id = object[index].id
+        data = {
+            driver: object[index].driver,
+            vehicle: object[index].vehicle,
+            status: object[index].status,
+            startingKilometer: object[index].startingKilometer,
+            startDate: object[index].startDate,
+            endDate: object[index].endDate,
+        }
+    }
+
+    const INITIAL_FORM_STATE = { ...data }
+    console.log('data', data)
+    console.log('initial', INITIAL_FORM_STATE)
+
     return (
         <Container>
             <div className="breadcrumb">
@@ -54,7 +93,7 @@ function AddVehicleAssignment() {
                             name: 'Vehicle Assignment',
                             path: '/transport/assignment',
                         },
-                        { name: 'New Vehicle Assignment' },
+                        { name: titleText },
                     ]}
                 />
             </div>
@@ -70,44 +109,50 @@ function AddVehicleAssignment() {
                                 validationSchema={FORM_VALIDATION}
                                 onSubmit={(values) => {
                                     console.log(values)
+                                    if (location.state === 'edit') {
+                                        dispatch(
+                                            updateAssignmentInfo(id, values)
+                                        )
+                                    } else {
+                                        dispatch(addAssignmentInfo(values))
+                                    }
+
+                                    // navigate(url)
                                 }}
                             >
                                 <Form>
                                     <Grid container spacing={2}>
                                         <Grid item xs={6}>
-                                            <Select
-                                                name="driverName"
+                                            <Textfield
+                                                name="driver"
                                                 label="Driver Name"
-                                                options={itemlist}
                                             />
                                         </Grid>
                                         <Grid item xs={6}>
-                                            <Select
-                                                name="vehicleName"
+                                            <Textfield
+                                                name="vehicle"
                                                 label="Vehicle Name"
-                                                options={itemlist}
                                             />
                                         </Grid>
 
                                         <Grid item xs={6}>
                                             <DateTimePicker
-                                                name="StartDate"
+                                                name="startDate"
                                                 label="Start Date "
                                             />
                                         </Grid>
 
                                         <Grid item xs={6}>
                                             <DateTimePicker
-                                                name="EndDate"
+                                                name="endDate"
                                                 label="End Date "
                                             />
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            <Select
+                                            <Textfield
                                                 name="status"
                                                 label="Assignment Status"
-                                                options={itemlist}
                                             />
                                         </Grid>
 
@@ -119,7 +164,7 @@ function AddVehicleAssignment() {
                                         </Grid>
 
                                         <Grid item xs={12}>
-                                            <Button>Submit Form</Button>
+                                            <Button>{buttonText}</Button>
                                         </Grid>
                                     </Grid>
                                 </Form>
