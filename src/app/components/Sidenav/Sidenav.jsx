@@ -27,11 +27,9 @@ const SideNavMobile = styled('div')(({ theme }) => ({
 
 const Sidenav = ({ children }) => {
     const { settings, updateSettings } = useSettings()
-
     const updateSidebarMode = (sidebarSettings) => {
         let activeLayoutSettingsName = settings.activeLayout + 'Settings'
         let activeLayoutSettings = settings[activeLayoutSettingsName]
-
         updateSettings({
             ...settings,
             [activeLayoutSettingsName]: {

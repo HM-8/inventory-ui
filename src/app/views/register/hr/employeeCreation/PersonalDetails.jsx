@@ -25,6 +25,7 @@ const Container = styled('div')(({ theme }) => ({
 const PersonalDetails = (props) => {
     return (
         <section>
+            <Container>
             <Box py="12px" />
             <Grid container>
                 <Grid item xs={12}>
@@ -119,6 +120,7 @@ const PersonalDetails = (props) => {
                     </Grid>
                 </Grid>
             </Grid>
+            </Container>
         </section>
     )
 }

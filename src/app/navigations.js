@@ -131,6 +131,11 @@ export const navigations = [
         icon: 'supervisor_account',
         children: [
             {
+                name: 'Employee List',
+                path: '/managment/employees',
+                icon: 'assignment_turned_in',
+            },
+            {
                 name: 'Attendance',
                 icon: 'assignment_turned_in',
                 children: [

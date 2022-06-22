@@ -7,10 +7,11 @@ import styled from '@emotion/styled'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import DateTimePicker from 'app/components/FormsUI/DataTimePicker'
 import { addCompanyInfo, updateCompanyInfo } from 'app/redux/actions/CompanyAction.js'
-import FormButton from 'app/views/material-kit/buttons/FormButton'
 import { useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 import Textfield from '../../../../components/FormsUI/Textfield'
+import Button from '../../../../components/FormsUI/Button'
+import { useNavigate } from 'react-router-dom'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -28,6 +29,7 @@ const Container = styled('div')(({ theme }) => ({
 function Company() {
     const location = useLocation()
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     var buttonText = 'Submit'
     var titleText = 'Add Company'
     var data = ''
@@ -81,6 +83,9 @@ function Company() {
                                         dispatch(updateCompanyInfo(data.id, values))
                                     } else {
                                         dispatch(addCompanyInfo(values))
+                                    }
+                                    if(values){
+                                        navigate(url)
                                     }
                                 }}
                             >
@@ -138,10 +143,7 @@ function Company() {
                                             /> */}
                                         </Grid>
                                         <Grid item xs={12}>
-                                            <FormButton
-                                                title={buttonText}
-                                                url={null}
-                                            ></FormButton>
+                                            <Button>{buttonText}</Button>
                                         </Grid>
                                     </Grid>
                                 </Form>

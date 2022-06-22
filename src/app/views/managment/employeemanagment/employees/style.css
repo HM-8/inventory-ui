@@ -1,0 +1,34 @@
+main {
+    margin: auto;
+    padding: -3rem;
+    width: 90%;
+    /* border-radius: 30px; */
+    /* box-shadow: 0 3px 6px 3px rgba(107, 192, 252, 0.2);  */
+    /* border: 1px solid rgba(107, 192, 252, 0.2); */
+}
+
+.table-container {
+    padding: 0;
+    border-radius: 5px;
+}
+.uk-table {
+    width: 100%;
+}
+tr.expandable > td {
+    box-shadow: inset 0 3px 6px -3px rgba(107, 192, 252, 0.2);
+    padding: 0;
+}
+.uk-border-circle {
+    border-radius: 90px;
+}
+tr.expandable > td > .inner {
+    margin: 15px;
+    overflow: hidden;
+}
+.hell {
+    text-align: center;
+    padding: 5px;
+}
+.uk-table-divider {
+  margin: -20px;
+}
