@@ -23,6 +23,10 @@ export const navigations = [
                 name: 'Settings',
                 path: '/company/setting',
             },
+            {
+                name: 'Account',
+                path: '/general/account',
+            },
         ],
     },
     {
