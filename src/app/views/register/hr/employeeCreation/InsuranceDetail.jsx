@@ -1,18 +1,11 @@
 import React from 'react'
-import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import { Grid, Typography } from '@mui/material'
-
 import Textfield from '../../../../components/FormsUI/Textfield'
-import DateTimePicker from '../../../../components/FormsUI/DataTimePicker'
 import Select from '../../../../components/FormsUI/Select'
-import Button from '../../../../components/FormsUI/Button/index'
-import itemlist from '../../../../utils/data/BranchList.json'
-import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
 import InsurnaceType from '../../../../utils/data/InsurnaceType.json'
 import Upload from '../../../../components/FormsUI/fileupload'
-const buttonText = 'Save'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -26,6 +19,8 @@ const Container = styled('div')(({ theme }) => ({
         },
     },
 }))
+const phoneRegExp =
+    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 
 const InsuranceDetail = (props) => {
     return (
@@ -33,7 +28,7 @@ const InsuranceDetail = (props) => {
             <Grid container spacing={2}>
                 <Grid item xs={6}>
                     <Select
-                        name="insurance_type"
+                        name="insuranceType"
                         label="Insurance Type"
                         options={InsurnaceType}
                     />
@@ -48,72 +43,34 @@ const InsuranceDetail = (props) => {
                     <Typography>Insurance Agents</Typography>
                 </Grid>
                 <Grid item xs={4}>
-                    <Textfield name="first_name" label="First Name " />
+                    <Textfield name="agentName" label="First Name " />
                 </Grid>
-
-                <Grid item xs={4}>
-                    <Textfield name="middle_name" label="Middle Name " />
-                </Grid>
-                <Grid item xs={4}>
-                    <Textfield name="last_name" label="Last Name " />
-                </Grid>
-
                 <Grid item xs={12}>
                     <Typography>Telephone</Typography>
                 </Grid>
                 <Grid item xs={6}>
-                    <Textfield name="MobileNumber" label="Mobile No " />
+                    <Textfield name="agentPhonenumber" label="Mobile No " />
                 </Grid>
                 <Grid item xs={6}>
-                    <Textfield name="OfficeNumber" label="Office No " />
-                </Grid>
-
-                <Grid item xs={6}>
-                    <Textfield
-                        name="insuranceNo"
-                        label="Health insurance No "
-                    />
-                </Grid>
-
-                <Grid item xs={6}>
-                    <Upload name="upload" label="Upload Document " />
-                </Grid>
-                <Grid item xs={12}>
-                    <Typography>Other</Typography>
+                    <Upload name="insuranceDocument" />
                 </Grid>
             </Grid>
         </Container>
     )
 }
-InsuranceDetail.label = 'Insurance Detail';
+InsuranceDetail.label = 'Insurance Detail'
 InsuranceDetail.initialValues = {
-    insurance_type: '',
+    insuranceType: '',
     insuranceprovider: '',
-    nameofInsured: '',
-    first_name: '',
-    middle_name: '',
-    last_name: '',
-    MobileNumber: '',
-    OfficeNumber: '',
-    insuranceNo: '',
-    upload: '',
-};
-InsuranceDetail.validationSchema =Yup.object().shape({
-    insurance_type: Yup.string().required('Required'),
-    insuranceprovider: Yup.string().required('Required'),
-    nameofInsured: Yup.number()
-        .integer()
-        .typeError('Please enter a valid number')
-        .required('Required'),
-    // cubic_capacity: Yup.number()
-    //     .integer()
-    //     .typeError('Please enter a valid phone number')
-    //     .required('Required'),
-    first_name: Yup.string().required('Required'),
-    middle_name: Yup.string(),
-    last_name: Yup.string(),
-    MobileNumber: Yup.string(),
-    insuranceNo: Yup.date().required('Required'),
-    OfficeNumber: Yup.date().required('Required'),
-});
+    agentName: '',
+    agentPhonenumber: '',
+    insuranceDocument: '',
+}
+InsuranceDetail.validationSchema = Yup.object().shape({
+    insuranceType: Yup.string(),
+    insuranceprovider: Yup.string(),
+    agentName: Yup.string(),
+    agentPhonenumber: Yup.string().matches(phoneRegExp, 'Phone number is not valid'),
+    insuranceDocument: Yup.string(),
+})
 export default InsuranceDetail

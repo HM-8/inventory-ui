@@ -25,25 +25,25 @@ const Experience = (props) => {
         <Container>
             <Grid container spacing={2}>
                 <Grid item xs={6}>
-                    <Textfield name="name" label="Company Name " />
+                    <Textfield name="companyName" label="Company Name " />
                 </Grid>
                 <Grid item xs={6}>
-                    <Textfield name="website" label="Website" />
+                    <Textfield name="companyWebsite" label="Website" />
                 </Grid>
 
                 <Grid item xs={6}>
-                    <Textfield name="email" label="Company Email" />
+                    <Textfield name="companyEmail" label="Company Email" />
                 </Grid>
 
                 <Grid item xs={6}>
                     <Textfield
-                        name="previous_salary"
+                        name="personalEmail"
                         label="Person of Contact (Email)"
                     />
                 </Grid>
                 <Grid item xs={6}>
                     <Textfield
-                        name="previous_designation"
+                        name="previousDesignation"
                         label="Previous Designation "
                     />
                 </Grid>
@@ -53,21 +53,18 @@ const Experience = (props) => {
 }
 Experience.label = 'Work Experience'
 Experience.initialValues = {
-    name: '',
-    website: '',
-    email: '',
-    previous_designation: '',
-    previous_salary: '',
+    companyName: '',
+    companyWebsite: '',
+    companyEmail: '',
+    personalEmail: '',
+    previousDesignation: '',
 }
 Experience.validationSchema = Yup.object().shape({
-    name: Yup.string().required('Required'),
-    website: Yup.string().required('Required'),
-    email: Yup.string().required('Required'),
-    previous_salary: Yup.number()
-        .integer()
-        .typeError('Please enter a valid phone number')
-        .required('Required'),
-    previous_designation: Yup.string().required('Required'),
-   })
+    companyName: Yup.string().required('Required'),
+    companyWebsite: Yup.string().required('Required'),
+    companyEmail: Yup.string().email().required('Required'),
+    personalEmail: Yup.string().email().required('Required'),
+    previousDesignation: Yup.string().required('Required'),
+})
 
 export default Experience

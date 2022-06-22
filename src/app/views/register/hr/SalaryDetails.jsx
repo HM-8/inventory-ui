@@ -38,15 +38,14 @@ const SalaryDetails = (props) => {
                     <Typography>Bank Details</Typography>
                 </Grid>
                 <Grid item xs={6}>
-                    <Textfield name="bank_name" label="Bank Name " />
+                    <Textfield name="bname" label="Bank Name " />
                 </Grid>
                 <Grid item xs={6}>
-                    <Textfield name="account_name" label="Account Name " />
+                    <Textfield name="bAccountName" label="Account Name " />
                 </Grid>
                 <Grid item xs={6}>
-                    <Textfield name="account_no" label="Account No " />
+                    <Textfield name="baccountNumber" label="Account Name " />
                 </Grid>
-
                 <Grid item xs={6}>
                     <Textfield name="salary" label="Base Salary " />
                 </Grid>
@@ -56,68 +55,39 @@ const SalaryDetails = (props) => {
                 </Grid>
                 <Grid item xs={6}>
                     <Textfield
-                        name="travel_allowence"
-                        label="Travel Allowance fee "
+                        name="atype"
+                        label="Type "
                     />
                 </Grid>
                 <Grid item xs={6}>
                     <Textfield
-                        name="position_allowance"
-                        label="Position Allowance fee "
+                        name="aamount"
+                        label="Amount"
                     />
-                </Grid>
-                <Grid item xs={6}>
-                    <Textfield
-                        name="house_allownace"
-                        label="House Allowance fee "
-                    />
-                </Grid>
-
-                <Grid item xs={6}>
-                    <Textfield
-                        name="livin_cost"
-                        label="Living Cost Adjustment fee "
-                    />
-                </Grid>
-
-                <Grid item xs={12}>
-                    <Typography>Other</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                    <Textfield name="alllowanc_name" label="Allowance name " />
-                </Grid>
-                <Grid item xs={6}>
-                    <Textfield name="amount" label="Amount " />
                 </Grid>
             </Grid>
         </Container>
     )
 }
 
-SalaryDetails.label = 'Contact Information'
+SalaryDetails.label = 'Salary Details'
 SalaryDetails.initialValues = {
-    payment_mode: '',
-    bank_name: '',
-    account_name: '',
-    account_no: '',
-    salary: '',
-    travel_allowence: '',
-    position_allowance: '',
-    livin_cost: '',
-    alllowanc_name: '',
-    amount: '',
+    paymentMode:'',
+    bname:'',
+    bAccountName:'',
+    baccountNumber:'',
+    salary:'',
+    atype:'',
+    aamount:'',
 }
 SalaryDetails.validationSchema = Yup.object().shape({
     payment_mode: Yup.string().required('Required'),
-    bank_name: Yup.string().required('Required'),
-    account_name: Yup.string().required('Required'),
-    account_no: Yup.string().required('Required'),
-    salary: Yup.string(),
-    travel_allowence: Yup.date().required('Required'),
-    position_allowance: Yup.date().required('Required'),
-    livin_cost: Yup.date().required('Required'),
-    alllowanc_name: Yup.date().required('Required'),
-    amount: Yup.date().required('Required'),
+    bname: Yup.string().required('Required'),
+    bAccountName: Yup.string().required('Required'),
+    baccountNumber: Yup.number().required(),
+    salary: Yup.number().required(),
+    atype: Yup.string().required('Required'),
+    aamount: Yup.number().required(),
 })
 
 export default SalaryDetails

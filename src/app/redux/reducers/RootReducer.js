@@ -8,6 +8,7 @@ import CompanyReducer from './CompanyReducer'
 import BranchReducer from './BranchReducer'
 import DepartmentReducer from './DepartmentReducer'
 import DesignationReducer from './DesignationReducer'
+import EmployeeReducer from './EmployeeReducer'
 
 const RootReducer = combineReducers({
     notifications: NotificationReducer,
@@ -19,6 +20,7 @@ const RootReducer = combineReducers({
     branch: BranchReducer,
     department: DepartmentReducer, 
     designation: DesignationReducer, 
+    employee:EmployeeReducer,
 })
 
 export default RootReducer
