@@ -94,7 +94,7 @@ function Branch() {
                 <Breadcrumb
                     routeSegments={[
                         { name: 'Branch', path: '/hr/branch' },
-                        { name: 'New Branch' },
+                        { name: titleText },
                     ]}
                 />
             </div>

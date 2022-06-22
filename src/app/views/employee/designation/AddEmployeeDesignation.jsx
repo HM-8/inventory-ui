@@ -1,15 +1,20 @@
-import { Grid, Icon, IconButton, TextField, Typography } from '@mui/material'
-import React, { useEffect, useState } from 'react'
-import Form from '../../material-kit/forms/Form'
-import DropDown from '../../material-kit/drop-down/DropDown'
+import React from 'react'
+import { Formik, Form } from 'formik'
+import * as Yup from 'yup'
+import { Grid, Typography } from '@mui/material'
+
+import { useDispatch } from 'react-redux'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
-import dropDownData from '../../../utils/data/dropDownData.json'
-import { DatePicker, LocalizationProvider } from '@mui/lab'
-import AdapterDateFns from '@mui/lab/AdapterDateFns'
-import { useTheme } from '@emotion/react'
+import { useLocation } from 'react-router-dom'
+import FormButton from 'app/views/material-kit/buttons/FormButton'
 
-const buttonText = 'Save'
+import {
+    addDesignationInfo,
+    updateDesignationInfo,
+} from 'app/redux/actions/DesignationAction'
+import Textfield from 'app/components/FormsUI/Textfield'
+import Select from 'app/components/FormsUI/Select'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -24,106 +29,112 @@ const Container = styled('div')(({ theme }) => ({
     },
 }))
 
-function AddEmployeeDesignation() {
-    const { palette } = useTheme()
-    const textColor = palette.text.primary
-    const [components, setComponents] = useState(['required-skill'])
+function Designation() {
+    const location = useLocation()
+    const dispatch = useDispatch()
+    var buttonText = 'Submit'
+    var titleText = 'Add Designation'
+    var data = ''
+    var id = ''
+    const url = null
+    console.log('location state', location.search)
 
-    function addComponent() {
-        setComponents([...components, 'required-skill'])
-        console.log(components)
+    if (location.state === 'edit') {
+        buttonText = 'Update'
+        titleText = 'Edit Designation'
+        const object = JSON.parse(
+            window.localStorage.getItem('DESIGNATIONS_INFO')
+        )
+        const index = Number(location.search.charAt(1))
+        id = object[index].id
+        data = {
+            name: object[index].name,
+            description: object[index].description,
+            requiredSkills: object[index].requiredSkills,
+        }
     }
-    function removeComponent() {
-        components.pop();
-        setComponents([...components, 'required-skill'])
-        console.log(components)
-    }
+
+    const INITIAL_FORM_STATE = { ...data }
+    console.log('data', data)
+    console.log('initial', INITIAL_FORM_STATE)
+
+    const FORM_VALIDATION = Yup.object().shape({
+        name: Yup.string().required('Required'),
+        description: Yup.string().required('Required'),
+        requiredSkills: Yup.string().required('Required'),
+    })
 
     return (
         <Container>
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        {
-                            name: 'Employee Designation',
-                            path: '/employee/employee-designation',
-                        },
-                        { name: 'Add Employee Designation' },
+                        { name: 'Designation', path: '/hr/designation' },
+                        { name: titleText },
                     ]}
                 />
             </div>
-            <SimpleCard title="Add Employee Designation">
-                <Form buttonText={buttonText}>
-                    <Grid container spacing={4}>
-                        <Grid item xs={6}>
-                            <TextField
-                                required
-                                type="text"
-                                id="standard-basic"
-                                name="name"
-                                fullWidth
-                                sx={{ mb: 3 }}
-                                label="Designation Name"
-                            />
-                        </Grid>
-                        <Grid item xs={6}>
-                            <Grid container spacing={2}>
-                                <Grid item xs={8}>
-                                    {components.map((item, i) => (
-                                        <TextField
-                                            required
-                                            type="text"
-                                            id="standard-basic"
-                                            name="required-skill"
-                                            fullWidth
-                                            sx={{ mb: 3 }}
-                                            label="Required Skill"
-                                        />
-                                    ))}
-                                </Grid>
-                                <Grid item xs={2}>
-                                    <IconButton
-                                        sx={{ mt: 0.5}}
-                                        onClick={addComponent}
-                                    >
-                                        <Icon sx={{ color: textColor }}>
-                                            add_circle
-                                        </Icon>
-                                    </IconButton>
-                                </Grid>
-                                <Grid item xs={2}>
-                                    <IconButton
-                                        sx={{ mt: 0.5, ml: -8 }}
-                                        onClick={removeComponent}
-                                    >
-                                        <Icon sx={{ color: textColor }}>
-                                            remove_circle
-                                        </Icon>
-                                    </IconButton>
-                                </Grid>
-                            </Grid>
-                        </Grid>
+            <SimpleCard title={titleText}>
+                <Grid container>
+                    <Grid item xs={12}></Grid>
+                    <Grid item xs={12}>
+                        <Container maxWidth="md">
+                            <Formik
+                                initialValues={{
+                                    ...INITIAL_FORM_STATE,
+                                }}
+                                validationSchema={FORM_VALIDATION}
+                                onSubmit={(values) => {
+                                    if (location.state === 'edit') {
+                                        dispatch(
+                                            updateDesignationInfo(id, values)
+                                        )
+                                    } else {
+                                        dispatch(addDesignationInfo(values))
+                                    }
+                                    console.log(values)
+                                }}
+                            >
+                                <Form>
+                                    <Grid container spacing={2}>
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="name"
+                                                label="Name"
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                name="description"
+                                                label="Description"
+                                            />
+                                        </Grid>
+
+                                        <Grid item xs={6}>
+                                            <Textfield
+                                                multiline
+                                                maxRows={4}
+                                                name="requiredSkills"
+                                                label="Required Skills"
+                                            />
+                                        </Grid>
+                                        <Grid item xs={6}></Grid>
+                                        <Grid item>
+                                            <FormButton
+                                                url={url}
+                                                title={buttonText}
+                                            ></FormButton>
+                                        </Grid>
+                                    </Grid>
+                                </Form>
+                            </Formik>
+                        </Container>
                     </Grid>
-                    <Grid container spacing={4}>
-                        <Grid item xs={6}>
-                            <TextField
-                                required
-                                id="outlined-multiline-static"
-                                label="Description"
-                                multiline
-                                rows={4}
-                                fullWidth
-                                type="text"
-                                name="description"
-                                sx={{ mb: 3 }}
-                            />
-                        </Grid>
-                    </Grid>
-                    <Grid container spacing={2}></Grid>
-                </Form>
+                </Grid>
             </SimpleCard>
         </Container>
     )
 }
 
-export default AddEmployeeDesignation
+export default Designation
