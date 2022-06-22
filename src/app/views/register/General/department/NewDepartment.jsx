@@ -73,7 +73,7 @@ function AddDepartment() {
         console.log('final Object', finalObj)
 
         let comp = JSON.stringify(components)
-        comp=JSON.parse(comp)
+        comp = JSON.parse(comp)
         console.log({ components })
 
         // var obj = JSON.parse(comp)
@@ -82,9 +82,9 @@ function AddDepartment() {
         // console.log({res})
 
         if (location.state === 'edit') {
-            dispatch(updateDepartmentInfo(finalObj))
+            dispatch(updateDepartmentInfo(comp))
         } else {
-            dispatch(addDepartmentInfo(finalObj))
+            dispatch(addDepartmentInfo(comp))
         }
     }
     return (
