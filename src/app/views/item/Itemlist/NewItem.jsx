@@ -19,6 +19,7 @@ import Textfield from '../../../components/FormsUI/Textfield'
 import Checkbox from 'app/components/FormsUI/Checkbox'
 import genderList from '../../../utils/data/GenderList.json'
 import Button from '../../../components/FormsUI/Button'
+import Upload from '../../../components/FormsUI/fileupload'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -52,6 +53,10 @@ const Container = styled('div')(({ theme }) => ({
         reorderLevel: '',
         reorderQty: '',
         materialRequest: '',
+        disabled:'',
+        maintainStock:'',
+        alternativeItem:'',
+        fixedAsset:''
     }
     // console.log('data', data)
     // console.log('initial', INITIAL_FORM_STATE)
@@ -141,29 +146,29 @@ function NewItem() {
                                                 label="Item Name"
                                             />
                                         </Grid>
-                                        {/* 
+                                        
                                         <Grid item xs={3}>
                                             <Checkbox name="disabled" label="Disabled" />
                                         </Grid>
 
                                         <Grid item xs={3}>
                                             <Checkbox name="maintainStock" label="Maintain Stock" />
-                                        </Grid> */}
+                                        </Grid>
 
                                         <Grid item xs={6}>
-                                            <Textfield
-                                                name="itemCode"
-                                                label="Item Code"
+                                            <Upload
+                                                name="upload"
+                                                label="Upload Item Image "
                                             />
                                         </Grid>
 
-                                        {/* <Grid item xs={3}>
+                                        <Grid item xs={3}>
                                             <Checkbox name="alternativeItem" label="Allow Alternative Item" />
                                         </Grid>
 
                                         <Grid item xs={3}>
                                             <Checkbox name="fixedAsset" label="Is Fixed Asset" />
-                                        </Grid> */}
+                                        </Grid>
 
                                         <Grid item xs={6}>
                                             <Textfield
