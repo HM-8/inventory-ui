@@ -152,24 +152,6 @@ function Products() {
                                                 label="Description"
                                             />
                                         </Grid>
-                                        {/* <Grid item lg={6} md={6} sm={12} xs={12} sx={{ mt: 2 }}>
-                                            <TextField
-                                                sx={{ mb: 4 }}
-                                                label="Quantity"
-                                                // onChange={handleChange}
-                                                type="number"
-                                                name="quantity"
-                                                value={quantity || ''}
-                                                validators={[
-                                                    'required',
-                                                    'minStringLength:16',
-                                                    'maxStringLength: 16',
-                                                ]}
-                                                errorMessages={[
-                                                    'this field is required',
-                                                ]}
-                                            />
-                                        </Grid> */}
 
                                         <Grid item xs={12}>
                                             <Typography>
@@ -204,7 +186,7 @@ function Products() {
                                                 label="SubCategory "
                                                 options={subcategory}
                                             />
-                                        </Grid>
+                                        </Grid>1
 
                                         <Grid item xs={12}>
                                             <Button>Send</Button>

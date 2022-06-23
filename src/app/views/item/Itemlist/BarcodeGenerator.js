@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Fab, Button, TextField, styled, Grid, Typography } from '@mui/material'
 import { useBarcode } from '@createnextapp/react-barcode'
+import {arrow_drop_down} from '@mui/icons-material'
 
 function BarcodeGenerator() {
     const StyledButton = styled(Button)(({ theme }) => ({
@@ -56,7 +57,7 @@ function BarcodeGenerator() {
                                 <Grid container style={{ marginTop: 30 }}>
                                     <Grid item xs={2}>
                                         <Fab onClick={downloadBarcode} style={{ marginLeft: 10 }} color="secondary">
-                                            <button>download</button>
+                                            <button>{arrow_drop_down}</button>
                                         </Fab>
                                     </Grid>
                                 </Grid> :
