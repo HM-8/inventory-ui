@@ -1,13 +1,3 @@
-// import React from 'react'
-
-// function CompanySetting() {
-//   return (
-//     <div>CompanySetting</div>
-//   )
-// }
-
-// export default CompanySetting
-
 import React from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
