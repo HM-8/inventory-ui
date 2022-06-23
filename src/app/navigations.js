@@ -108,10 +108,7 @@ export const navigations = [
                         name: 'Vehicle Registration',
                         path: '/transport/regsitration',
                     },
-                    {
-                        name: 'Vehicle Map',
-                        path: '/logistic/VehicleMap',
-                    },
+                   
                     // /logistic/VehicleMap
                     {
                         name: 'Vechicle Assignment',
@@ -257,6 +254,10 @@ export const navigations = [
             {
                 name: 'Vehicle History',
                 path: '/logistic/vehicle-history',
+            },
+            {
+                name: 'Vehicle Tracking',
+                path: '/logistic/VehicleMap',
             },
             {
                 name: 'Managing Trips',

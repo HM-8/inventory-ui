@@ -1,16 +1,21 @@
 import React, { Component, useEffect,useState } from 'react'
 import GoogleMapReact from 'google-map-react'
 
-const AnyReactComponent = ({ text }) => (
+const AnyReactComponent = ({ text }) => ( 
     <div>
         <img
             src="/assets/images/placeholder.png"
             height={'50px'}
             width={'50px'}
             alt="marker"
+            onClick={onMarkerClick}
+            
         />
     </div>
 )
+function onMarkerClick(){
+  console.log('marker clicked');
+}
 
 const SimpleMap = ({vehicles}) => {
   const [locations, setLocations] = useState([])
@@ -37,6 +42,9 @@ const SimpleMap = ({vehicles}) => {
                     lat={vehicle.location.lat}
                     lng={vehicle.location.lng}
                     key= {vehicle._id}
+                    onClick={onMarkerClick}
+                    
+                   
                    
                 />
                 }
