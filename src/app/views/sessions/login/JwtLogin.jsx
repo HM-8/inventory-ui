@@ -137,15 +137,6 @@ const JwtLogin = () => {
                                             />
                                         )}
                                     </Box>
-                                    <Span sx={{ mr: 1, ml: '20px' }}>or</Span>
-                                    <Button
-                                        sx={{ textTransform: 'capitalize' }}
-                                        onClick={() =>
-                                            navigate('/session/signup')
-                                        }
-                                    >
-                                        Sign up
-                                    </Button>
                                 </FlexBox>
                                 <Button
                                     sx={{ color: textPrimary }}

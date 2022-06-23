@@ -26,12 +26,14 @@ const setSession = (accessToken, refreshToken, user) => {
         localStorage.setItem('userID', user.id)
         localStorage.setItem('userName', user.name)
         localStorage.setItem('userImage', user.image)
+        localStorage.setItem('userRole', user.role)
         axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`
     } else {
         localStorage.removeItem('accessToken')
         localStorage.removeItem('userID')
         localStorage.removeItem('userName')
         localStorage.removeItem('userImage')
+        localStorage.removeItem('userRole')
         delete axios.defaults.headers.common.Authorization
     }
 }

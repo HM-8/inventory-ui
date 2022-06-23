@@ -80,7 +80,7 @@ export const deleteProductFromCart = (uid, productId) => (dispatch) => {
 export const updateCartAmount = (uid, productId, amount) => (dispatch) => {
     console.log(uid, productId, amount)
     axios
-        .post('/api/ecommerce/update-cart-amount', { uid, productId, amount })
+        .patch('/api/ecommerce/update-cart-amount', { uid, productId, amount })
         .then((res) => {
             dispatch({
                 type: UPDATE_CART_AMOUNT,

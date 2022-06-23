@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { Span } from 'app/components/Typography'
 import { Card, Grid, Button } from '@mui/material'
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator'
+import axios from 'axios'
 
 const FlexBox = styled(Box)(() => ({
     display: 'flex',
@@ -48,6 +49,11 @@ const ForgotPassword = () => {
 
     const handleFormSubmit = (event) => {
         console.log(state)
+        axios
+            .post('http://localhost:4040/v1/auth/forgot-password', state)
+            .then((res) => {
+                console.log("posted")
+            })
     }
 
     let { email } = state
@@ -93,7 +99,9 @@ const ForgotPassword = () => {
                                     <Span sx={{ mr: 1, ml: '16px' }}>or</Span>
                                     <Button
                                         sx={{ textTransform: 'capitalize' }}
-                                        onClick={() => navigate("/session/signin")}
+                                        onClick={() =>
+                                            navigate('/session/signin')
+                                        }
                                     >
                                         Sign in
                                     </Button>

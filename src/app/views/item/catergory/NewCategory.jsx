@@ -86,7 +86,7 @@ function NewCategories() {
                             <Form>
                                 {components.map((item, index) => (
                                     <Grid container spacing={3} key={index}>
-                                        <Grid item xs={4}>
+                                        <Grid item xs={3}>
                                             <Textfield
                                                 name="productName"
                                                 label="Categroy Name"

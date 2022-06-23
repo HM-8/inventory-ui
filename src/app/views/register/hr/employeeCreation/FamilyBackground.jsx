@@ -54,13 +54,13 @@ const INITIAL_FORM_STATE = {
 }
 
 const FORM_VALIDATION = Yup.object().shape({
-    full_name: Yup.string().required('Required'),
-    model: Yup.string().required('Required'),
-    numberOfCylinders: Yup.number()
+    s_first_name: Yup.string().required('Required'),
+    s_middle_name: Yup.string().required('Required'),
+    income: Yup.number()
         .integer()
         .typeError('Please enter a valid phone number')
         .required('Required'),
-    horsepower: Yup.number()
+        years: Yup.number()
         .integer()
         .typeError('Please enter a valid phone number')
         .required('Required'),
@@ -69,17 +69,22 @@ const FORM_VALIDATION = Yup.object().shape({
         .integer()
         .typeError('Please enter a valid phone number')
         .required('Required'),
-    middle_name: Yup.string().required('Required'),
+        s_last_name: Yup.string().required('Required'),
     last_name: Yup.string().required('Required'),
-    StartDate: Yup.date().required('Required'),
+    Dateofjoin: Yup.date().required('Required'),
     EndDate: Yup.date().required('Required'),
+    nationality: Yup.string().required('Required'),
+    education: Yup.string().required('Required'),
+    last_name: Yup.string().required('Required'),
+    last_name: Yup.string().required('Required'),
+    last_name: Yup.string().required('Required'),
+
 })
 
-function FamilyBackGround() {
+const FamilyBackGround=props=> {
     return (
         <Container>
             <Grid container>
-                <Grid item xs={12}></Grid>
                 <Grid item xs={12}>
                     <Container maxWidth="md">
                         <Formik

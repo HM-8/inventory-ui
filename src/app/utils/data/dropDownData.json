@@ -1,5 +1,5 @@
 {
-    "Data 1": "Supermarket / Display",
-    "Data 2": "Inventory/supermarket stock",
-    "Data 3": "Warehouse/main"
+    "Supermarket": "Supermarket",
+    "Inventory": "Inventory",
+    "Warehouse": "Warehouse"
 }

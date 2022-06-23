@@ -10,6 +10,12 @@ import {
 } from '@mui/material'
 import styled from '@emotion/styled'
 import { useTheme } from '@emotion/react'
+import { useLocation } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import {
+    addDepartmentInfo,
+    updateDepartmentInfo,
+} from 'app/redux/actions/DepartmentAction'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '10px',
@@ -25,22 +31,25 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 function AddDepartment() {
+    const location = useLocation()
+    const dispatch = useDispatch()
     const { palette } = useTheme()
     const textColor = palette.text.primary
     const [components, setComponents] = useState([
         {
-            DepartmentName: '',
-            DepartmentHead: '',
+            name: '',
+            head: '',
             description: '',
         },
     ])
+    // let finalObj = new Object();
 
     function addComponent() {
         setComponents([
             ...components,
             {
-                DepartmentName: '',
-                DepartmentHead: '',
+                name: '',
+                head: '',
                 description: '',
             },
         ])
@@ -56,108 +65,134 @@ function AddDepartment() {
         setComponents(values)
     }
     const handleSubmit = () => {
-        console.log(components)
+        console.log('Submited Components', components)
+        // components.forEach((comp) => finalObj.push(comp))
+        console.log(JSON.stringify(components))
+
+        // let compone= components.map(comp=>{return {...comp}});
+        // console.log("fixed", compone);
+        // console.log('with our index', components)
+
+        // for (let i = 0; i < components.length; i++) {
+        //     Object.assign(finalObj[i], components[i])
+        // }
+        // console.log({finalObj})
+
+        let comp = JSON.stringify(components)
+        comp = JSON.parse(comp)
+        console.log({ components })
+
+        // var obj = JSON.parse(comp)
+        // var res = []
+        // for (var i in obj) res.push(obj[i])
+        // console.log({res})
+
+        if (location.state === 'edit') {
+            dispatch(updateDepartmentInfo(comp))
+        } else {
+            dispatch(addDepartmentInfo(comp))
+        }
     }
     return (
-            <Grid container>
-                <Grid item xs={12}>
-                    <Container maxWidth="md">
-                        <form onSubmit={handleSubmit}>
-                            <Grid container spacing={2}>
-                                <Grid item xs={12} style={{marginLeft:'2px'}}>
-                                    <Typography>Add Product</Typography>
-                                </Grid>
-                                {components.map((item, index) => (
-                                    <Grid
-                                        container
-                                        spacing={2}
-                                        key={index}
-                                        style={{
-                                            margin: '1px',
-                                        }}
-                                    >
-                                        <Grid item xs={3}>
-                                            <TextField
-                                                name="DepartmentName"
-                                                label="Department Name"
-                                                fullWidth
-                                                value={item.DepartmentName}
-                                                onChange={(event) =>
-                                                    handleChange(index, event)
-                                                }
-                                            />
-                                        </Grid>
-                                        <Grid item xs={3}>
-                                            <TextField
-                                                name="DepartmentHead"
-                                                label="Head"
-                                                fullWidth
-                                                value={item.DepartmentHead}
-                                                onChange={(event) =>
-                                                    handleChange(index, event)
-                                                }
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={3}>
-                                            <TextField
-                                                name="description"
-                                                label="Description"
-                                                fullWidth
-                                                value={item.description}
-                                                onChange={(event) =>
-                                                    handleChange(index, event)
-                                                }
-                                            />
-                                        </Grid>
-                                        <Grid item xs={2}>
-                                            <IconButton
-                                                sx={{ mt: 0.5 }}
-                                                onClick={addComponent}
-                                            >
-                                                <Icon
-                                                    sx={{
-                                                        color: textColor,
-                                                    }}
-                                                >
-                                                    add_circle
-                                                </Icon>
-                                            </IconButton>
-                                        </Grid>
-                                        <Grid item xs={1}>
-                                            <IconButton
-                                                sx={{ mt: 0.5, ml: -8 }}
-                                                onClick={() =>
-                                                    removeComponent(index)
-                                                }
-                                            >
-                                                <Icon
-                                                    sx={{
-                                                        color: textColor,
-                                                    }}
-                                                >
-                                                    remove_circle
-                                                </Icon>
-                                            </IconButton>
-                                        </Grid>
+        <Grid container>
+            <Grid item xs={12}>
+                <Container>
+                    <form onSubmit={handleSubmit}>
+                        <Grid container spacing={2}>
+                            {components.map((item, index) => (
+                                <Grid
+                                    container
+                                    spacing={2}
+                                    key={index}
+                                    style={{
+                                        margin: '1px',
+                                    }}
+                                >
+                                    <Grid item xs={3}>
+                                        <TextField
+                                            name="name"
+                                            label="Department Name"
+                                            fullWidth
+                                            value={item.name}
+                                            onChange={(event) =>
+                                                handleChange(index, event)
+                                            }
+                                        />
                                     </Grid>
-                                ))}
-                                <Grid item xs={12}>
-                                    <Button
-                                        variant="contained"
-                                        color="primary"
-                                        onClick={() => handleSubmit()}
-                                    >
-                                        Add
-                                    </Button>
+                                    <Grid item xs={3}>
+                                        <TextField
+                                            name="head"
+                                            label="Head"
+                                            fullWidth
+                                            value={item.head}
+                                            onChange={(event) =>
+                                                handleChange(index, event)
+                                            }
+                                        />
+                                    </Grid>
+
+                                    <Grid item xs={3}>
+                                        <TextField
+                                            name="description"
+                                            label="Description"
+                                            fullWidth
+                                            value={item.description}
+                                            onChange={(event) =>
+                                                handleChange(index, event)
+                                            }
+                                        />
+                                    </Grid>
+                                    {location.state==='edit'? '':  <>
+                                    <Grid item xs={2}>
+                                        <IconButton
+                                            sx={{ mt: 0.5 }}
+                                            onClick={addComponent}
+                                        >
+                                            <Icon
+                                                sx={{
+                                                    color: textColor,
+                                                }}
+                                            >
+                                                add_circle
+                                            </Icon>
+                                        </IconButton>
+                                    </Grid>
+                                    <Grid item xs={1}>
+                                        <IconButton
+                                            sx={{ mt: 0.5, ml: -8 }}
+                                            onClick={() =>
+                                                removeComponent(index)
+                                            }
+                                        >
+                                            <Icon
+                                                sx={{
+                                                    color: textColor,
+                                                }}
+                                            >
+                                                remove_circle
+                                            </Icon>
+                                        </IconButton>
+                                    </Grid>
+                                    </>
+                                    }
+                                  
                                 </Grid>
+                            ))}
+                            <Grid item xs={12}>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={() => handleSubmit()}
+                                >
+                                    Add
+                                </Button>
                             </Grid>
-                        </form>
-                    </Container>
-                </Grid>
+                        </Grid>
+                    </form>
+                </Container>
             </Grid>
+        </Grid>
     )
 }
 
 export default AddDepartment
-

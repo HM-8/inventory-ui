@@ -27,23 +27,21 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 const INITIAL_FORM_STATE = {
-    vehicleName: '',
-    driverName: '',
-    FuelMeasurment: '',
-    AssignmentStatus: '',
-    TrackUsage: '',
-    StartDate: '',
-    EndDate: '',
+    emp_id: '',
+    emp_name: '',
+    status: '',
+    start_date: '',
+    end_date: '',
+    date: '',
 }
 
 const FORM_VALIDATION = Yup.object().shape({
-    vehicleName: Yup.string().required('Required'),
-    driverName: Yup.string().required('Required'),
-    FuelMeasurment: Yup.string().required('Required'),
-    AssignmentStatus: Yup.string().required('Required'),
-    TrackUsage: Yup.string(),
-    StartDate: Yup.date().required('Required'),
-    EndDate: Yup.date().required('Required'),
+    emp_id: Yup.string().required('Required'),
+    emp_name: Yup.string().required('Required'),
+    status: Yup.string().required('Required'),
+    start_date: Yup.string().required('Required'),
+    end_date: Yup.string(),
+    date: Yup.date().required('Required'),
 })
 
 function Attendance() {

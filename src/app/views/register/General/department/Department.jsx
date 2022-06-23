@@ -1,15 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import PaginationTable from '../../../material-kit/tables/PaginationTable'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import { Box, styled } from '@mui/system'
-import { Grid, Button } from '@mui/material'
-import data from '../../../../utils/data/employmentType.json'
-import EditIcon from '@mui/icons-material/Edit'
-import DeleteIcon from '@mui/icons-material/Delete'
-// import BracodeReader from './BracodeReader'
+import { Button, Grid } from '@mui/material'
 import FormDialog from 'app/views/material-kit/dialog/FormDialog'
-
 import AddDepartment from './NewDepartment'
+import { useDispatch, useSelector } from 'react-redux'
+import { EditButton } from 'app/views/material-kit/buttons/EditButton'
+import { DeleteButton } from 'app/views/material-kit/buttons/DeleteButton'
+import {
+    deleteDepartmentInfo,
+    getallDepartments,
+} from 'app/redux/actions/DepartmentAction'
+
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
     [theme.breakpoints.down('sm')]: {
@@ -22,54 +25,58 @@ const Container = styled('div')(({ theme }) => ({
         },
     },
 }))
-
+const url = '/hr/edit-department'
 const columns = [
-    { id: 'departmentName', label: 'Department Name', minWidth: 10 },
-    { id: 'departmentHead', label: 'Department Head', minWidth: 10 },
+    { id: 'name', label: 'Department Name', minWidth: 10 },
+    { id: 'head', label: 'Department Head', minWidth: 10 },
     { id: 'description', label: 'Description', minWidth: 10 },
     { id: 'edit', label: '', minWidth: 10 },
     { id: 'del', label: '', minWidth: 10 },
 ]
 
-function createData(departmentName, departmentHead, description, edit, del) {
+function createData(name, head, description, edit, del) {
     return {
-        departmentName: departmentName,
-        departmentHead: departmentHead,
+        name: name,
+        head: head,
         description: description,
         edit: edit,
         del: del,
     }
 }
 
-const rows = data.map((item, index) => {
-    const container = {}
-    createData(
-        (container.departmentName = item.departmentName),
-        (container.departmentHead = item.departmentHead),
-        (container.description = item.description),
-        (container.edit = <EditIcon />),
-        (container.del = <DeleteIcon />)
-    )
-    return container
-})
+const Department = () => {
+    const dispatch = useDispatch()
 
-const StyledButton = styled(Button)(({ theme }) => ({
-    margin: theme.spacing(1),
-}))
+    useEffect(() => {
+        dispatch(getallDepartments())
+    }, [])
+    const { departments } = useSelector((state) => state.department)
 
-const Deparment = () => {
-    const [show, setShow] = useState(false)
+    console.log('Departments', departments)
 
-    const handleButton = () => {
-        setShow(!show)
-        console.log(show)
-    }
+    useEffect(() => {
+        localStorage.setItem('DEPARTMENTS_INFO', JSON.stringify(departments))
+    }, [departments])
+
+    const rows = departments.map((item, index) => {
+        const container = {}
+        createData(
+            (container.name = item.name),
+            (container.head = item.head),
+            (container.description = item.description),
+            (container.edit = <EditButton url={`${url}/?${index}`} state="edit" />),
+            (container.del = (
+                <DeleteButton action={deleteDepartmentInfo(item.id)} />
+            ))
+        )
+        return container
+    })
     return (
         <Container>
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'Inventory', path: '/dashboard' },
+                        { name: 'General', path: '/dashboard' },
                         { name: 'Department' },
                     ]}
                 />
@@ -81,18 +88,24 @@ const Deparment = () => {
                 spacing={2}
                 justifyContent="flex-end"
             >
-                
                 <Grid item>
-                <Grid item>
-                    <FormDialog title={'New Variant'} buttonText={'Add Row'}><AddDepartment /></FormDialog>
-                </Grid>
+                    <Grid item>
+                        <Grid item>
+                            <FormDialog
+                                title={'Add Department'}
+                                buttonText={'Add Row'}
+                            >
+                                <AddDepartment />
+                            </FormDialog>
+                        </Grid>
+                    </Grid>
                 </Grid>
             </Grid>
-            <SimpleCard title="Pagination Table">
+            <SimpleCard title="Departments">
                 <PaginationTable columns={columns} rows={rows} />
             </SimpleCard>
         </Container>
     )
 }
 
-export default Deparment
+export default Department

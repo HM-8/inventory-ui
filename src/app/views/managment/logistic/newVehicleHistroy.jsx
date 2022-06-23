@@ -30,31 +30,32 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 const INITIAL_FORM_STATE = {
-    firstName: '',
-    barcode: '',
-    binNo: '',
-    subcategory: '',
-    variant: '',
-    uom: '',
+    driver: '',
+    VehicleName:'',
+    startdate:'',
+    Priority: '',
+    Skm: '',
+    plate: '',
+    EmployeeName: '',
     qty: '',
-    discount: '',
+    issueno: '',
 }
 
 const FORM_VALIDATION = Yup.object().shape({
-    firstName: Yup.string().required('Required'),
-    barcode: Yup.string().required('Required'),
-    binNo: Yup.number()
+    VehicleName: Yup.string().required('Required'),
+    driver: Yup.string().required('Required'),
+    Priority: Yup.number()
         .integer()
         .typeError('Please enter a valid Bin number')
         .required('Required'),
-    addressLine1: Yup.string().required('Required'),
+        EmployeeName: Yup.string().required('Required'),
     addressLine2: Yup.string(),
-    city: Yup.string().required('Required'),
-    state: Yup.string().required('Required'),
-    country: Yup.string().required('Required'),
-    arrivealDate: Yup.date().required('Required'),
-    departureDate: Yup.date().required('Required'),
-    message: Yup.string(),
+    issueno: Yup.string().required('Required'),
+    plate: Yup.string().required('Required'),
+    Rkm: Yup.string().required('Required'),
+    startdate: Yup.date().required('Required'),
+    enddate: Yup.date().required('Required'),
+    Skm: Yup.string(),
     termsOfService: Yup.boolean()
         .oneOf([true], 'The terms and conditions must be accepted.')
         .required('The terms and conditions must be accepted.'),
@@ -90,20 +91,20 @@ function newVehicleHistroy() {
                                     <Grid container spacing={2}>
                                         <Grid item xs={6}>
                                             <Textfield
-                                                name="issueno"
+                                                name="plate"
                                                 label="Vehicle Plate No"
                                             />
                                         </Grid>
                                         <Grid item xs={6}>
                                             <Select
-                                                name="Vehicle Name"
+                                                name="VehicleName"
                                                 label="Carrying Capacity"
                                                 options={Vehicle}
                                             />
                                         </Grid>
                                         <Grid item xs={6}>
                                             <Select
-                                                name="Driver"
+                                                name="driver"
                                                 label="Priority"
                                                 options={Vehicle}
                                             />
@@ -122,7 +123,7 @@ function newVehicleHistroy() {
                                         </Grid>
                                         <Grid item xs={6}>
                                             <Select
-                                                name="Assignment Status"
+                                                name="Priority"
                                                 label="Priority"
                                                 options={Vehicle}
                                             />
@@ -149,7 +150,7 @@ function newVehicleHistroy() {
                                         </Grid>
                                         <Grid item xs={6}>
                                             <Select
-                                                name="Assignment Status"
+                                                name="EmployeeName"
                                                 label="Employee Name"
                                                 options={Vehicle}
                                             />

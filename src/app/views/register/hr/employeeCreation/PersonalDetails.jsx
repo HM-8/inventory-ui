@@ -1,23 +1,13 @@
-import React, { useState } from 'react'
-import { Formik, Form } from 'formik'
+import React from 'react'
 import * as Yup from 'yup'
-import {
-    Grid,
-    Typography,
-    Radio,
-    RadioGroup,
-    FormControlLabel,
-} from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
 
 import Textfield from '../../../../components/FormsUI/Textfield'
 import DateTimePicker from '../../../../components/FormsUI/DataTimePicker'
 import Select from '../../../../components/FormsUI/Select'
-import Button from '../../../../components/FormsUI/Button/index'
-import itemlist from '../../../../utils/data/BranchList.json'
-import { Breadcrumb, SimpleCard } from 'app/components'
+import genderList from '../../../../utils/data/GenderList.json'
 import styled from '@emotion/styled'
-
-const buttonText = 'Save'
+import Upload from '../../../../components/FormsUI/fileupload'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -32,176 +22,135 @@ const Container = styled('div')(({ theme }) => ({
     },
 }))
 
-const INITIAL_FORM_STATE = {
-    full_name: '',
-    middle_name: '',
-    last_name: '',
-    model: '',
-    yearManufactured: '',
-    numberOfCylinders: '',
-    horsepower: '',
-    cubic_capacity: '',
-    color: '',
-    carrying_cap: '',
-    status: '',
-    registration_num: '',
-    engine_num: '',
-    chassis_num: '',
-    plate_num: '',
-    fuel_type: '',
-    fuel_measurment: '',
-    track_usage: '',
-}
-
-const FORM_VALIDATION = Yup.object().shape({
-    full_name: Yup.string().required('Required'),
-    model: Yup.string().required('Required'),
-    numberOfCylinders: Yup.number()
-        .integer()
-        .typeError('Please enter a valid phone number')
-        .required('Required'),
-    horsepower: Yup.number()
-        .integer()
-        .typeError('Please enter a valid phone number')
-        .required('Required'),
-
-    cubic_capacity: Yup.number()
-        .integer()
-        .typeError('Please enter a valid phone number')
-        .required('Required'),
-    middle_name: Yup.string().required('Required'),
-    last_name: Yup.string().required('Required'),
-    StartDate: Yup.date().required('Required'),
-    EndDate: Yup.date().required('Required'),
-})
-
-function PersonalDetails() {
-    // const [state, setState] = useState()
-
-    // const handleChange = (event) => {
-    //     event.persist()
-    //     setState({
-    //         ...state,
-    //         [event.target.name]: event.target.value,
-    //     })
-    // }
-
-    // const handleDateChange = (date) => {
-    //     setState({ ...state, date })
-    // }
-
-    // const {
-    //     gender,
-    // } = state
-
+const PersonalDetails=props =>{
     return (
-        <Container>
+        <section>
+            <Container>
             <Grid container>
-                <Grid item xs={12}></Grid>
                 <Grid item xs={12}>
-                    <Container maxWidth="md">
-                        <Formik
-                            initialValues={{
-                                ...INITIAL_FORM_STATE,
-                            }}
-                            validationSchema={FORM_VALIDATION}
-                            onSubmit={(values) => {
-                                console.log(values)
-                            }}
-                        >
-                            <Form>
-                                <Grid container spacing={2}>
-                                    <Grid item xs={12}>
-                                        <Typography>
-                                            Employee Full Name
-                                        </Typography>
-                                    </Grid>
-                                    <Grid item xs={4}>
-                                        <Textfield
-                                            name="first_name"
-                                            label="First Name "
-                                        />
-                                    </Grid>
+                    <Grid container spacing={2}>
+                        <Grid item xs={12}>
+                            <Typography>Employee Full Name</Typography>
+                        </Grid>
+                        <Grid item xs={4}>
+                            <Textfield name="firstName" label="First Name " />
+                        </Grid>
 
-                                    <Grid item xs={4}>
-                                        <Textfield
-                                            name="middle_name"
-                                            label="Middle Name "
-                                        />
-                                    </Grid>
-                                    <Grid item xs={4}>
-                                        <Textfield
-                                            name="last_name"
-                                            label="Last Name "
-                                        />
-                                    </Grid>
+                        <Grid item xs={4}>
+                            <Textfield name="middleName" label="Middle Name " />
+                        </Grid>
+                        <Grid item xs={4}>
+                            <Textfield name="lastName" label="Last Name " />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Select
+                                name="gender"
+                                label="Gender"
+                                options={genderList}
+                            />
+                        </Grid>
 
-                                    <Grid item xs={12}>
-                                        <Typography>Gender</Typography>
-                                    </Grid>
-{/* 
-                                    <RadioGroup
-                                        sx={{ mb: 2 }}
-                                        value={gender || ''}
-                                        name="gender"
-                                        onChange={handleChange}
-                                        row
-                                    >
-                                        <FormControlLabel
-                                            value="Male"
-                                            control={
-                                                <Radio color="secondary" />
-                                            }
-                                            label="Male"
-                                            labelPlacement="end"
-                                        />
-                                        <FormControlLabel
-                                            value="Female"
-                                            control={
-                                                <Radio color="secondary" />
-                                            }
-                                            label="Female"
-                                            labelPlacement="end"
-                                        />
-                                        <FormControlLabel
-                                            value="Others"
-                                            control={
-                                                <Radio color="secondary" />
-                                            }
-                                            label="Others"
-                                            labelPlacement="end"
-                                        />
-                                    </RadioGroup> */}
-                                    
-                                    <Grid item xs={6}>
-                                        <DateTimePicker
-                                            name="DateofBirth"
-                                            label="Date of Birth"
-                                        />
-                                    </Grid>
+                        <Grid item xs={6}>
+                            <DateTimePicker name="dob" label="Date of Birth" />
+                        </Grid>
 
-                                    <Grid item xs={6}>
-                                        <DateTimePicker
-                                            name="Dateofjoin"
-                                            label="Date Of Joining"
-                                        />
-                                    </Grid>
+                        <Grid item xs={6}>
+                            <DateTimePicker
+                                name="doj"
+                                label="Date Of Joining"
+                            />
+                        </Grid>
 
-                                    <Grid item xs={6}>
-                                        <Select
-                                            name="nationality"
-                                            label="Nationality"
-                                            options={itemlist}
-                                        />
-                                    </Grid>
-                                </Grid>
-                            </Form>
-                        </Formik>
-                    </Container>
+                        <Grid item xs={12}>
+                            <Typography>Telephone</Typography>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Textfield name="houseTel" label="House No" />
+                        </Grid>
+
+                        <Grid item xs={6}>
+                            <Textfield name="mobileTel" label="Mobile No" />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Typography>Address</Typography>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Typography></Typography>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Textfield name="houseNo" label="House No" />
+                        </Grid>
+
+                        <Grid item xs={6}>
+                            <Textfield name="kebele" label="Kebele" />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Textfield name="wereda" label="Wereda" />
+                        </Grid>
+
+                        <Grid item xs={6}>
+                            <Textfield name="city" label="City" />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Textfield name="subCity" label="SubCity" />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Typography>Email</Typography>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Textfield
+                                name="personalEmail"
+                                label="Personal Email"
+                            />
+                        </Grid>
+
+                        <Grid item xs={6}>
+                            <Textfield
+                                name="companyEmail"
+                                label="Company Email"
+                            />
+                        </Grid>
+                    </Grid>
                 </Grid>
             </Grid>
-        </Container>
+            </Container>
+        </section>
     )
 }
 
+PersonalDetails.label = 'Personal Details';
+PersonalDetails.initialValues = {
+    firstName: '',
+    middleName: '',
+    lastName: '',
+    gender: '',
+    dob: '',
+    doj: '',
+    houseTel: '',
+    mobileTel: '',
+    houseNo: '',
+    kebele: '',
+    wereda: '',
+    city: '',
+    subCity: '',
+    personalEmail: '',
+    companyEmail: '',
+}
+PersonalDetails.validationSchema = Yup.object().shape({
+    firstName: Yup.string().required('Required'),
+    middleName: Yup.string().required('Required'),
+    lastName: Yup.string().required('Required'),
+    gender: Yup.string().required('Required'),
+    dob: Yup.date().required('Required'),
+    doj: Yup.date().required('Required'),
+    houseTel: Yup.string(),
+    mobileTel: Yup.string().required('Required'),
+    houseNo: Yup.number().required('Required'),
+    kebele: Yup.number().required('Required'),
+    wereda: Yup.number().required('Required'),
+    city: Yup.string().required('Required'),
+    subCity: Yup.string().required('Required'),
+    personalEmail: Yup.string(),
+    companyEmail: Yup.string().required('Required'),
+})
 export default PersonalDetails

@@ -3,14 +3,15 @@ import { styled } from '@mui/system'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import StepperForm from '../../material-kit/forms/StepperForm'
 
-import PersonalDetails from './employeeCreation/PersonalDetails'
-import FamilyBackground from './employeeCreation/FamilyBackground';
-import Insurance from './employeeCreation/InsuranceDetail';
-import ContactDetails from './employeeCreation/ContactsDetails';
-import Qualification from './employeeCreation/EducationalQualification';
-import Experience  from './employeeCreation/WorkExperience';
-import EmergencyContact from './employeeCreation/EmergencyContact';
- 
+import PersonalDetails from './employeeCreation/Employee'
+import FamilyBackground from './employeeCreation/FamilyBackground'
+import Insurance from './employeeCreation/InsuranceDetail'
+import Qualification from './employeeCreation/EducationalQualification'
+import Experience from './employeeCreation/WorkExperience'
+import SalaryDetails from './SalaryDetails'
+import EmployeeSetup from './employeeCreation/EmployeeSetup'
+import OrderForm from './OrderForm'
+
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
     [theme.breakpoints.down('sm')]: {
@@ -25,42 +26,41 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 const steps = [
-    {
-        id: 0,
-        label: 'Personal Details',
-        form: <PersonalDetails/>,
-    },
-    {
-        id: 1,
-        label: 'Family Background ',
-        form: <FamilyBackground />,
-    },
-    {
-        id: 2,
-        label: 'Insurance',
-        form: <Insurance />,
-    },
-    {
-        id: 3,
-        label: 'Contact Details',
-        form: <ContactDetails />,
-    },
-    {
-        id: 4,
-        label: 'Educational Qualification',
-        form: <Qualification />,
-    },
-    {
-        id: 5,
-        label: 'Work Experience ',
-        form: <Experience />,
-    },
-    {
-        id: 6,
-        label: 'Emergency Contact ',
-        form: <EmergencyContact />,
-    }
-
+    // {
+    //     id: 0,
+    //     label: 'Personal Details',
+    //     form: <PersonalDetails />,
+    // },
+    // {
+    //     id: 1,
+    //     label: 'Family Background ',
+    //     form: <FamilyBackground />,
+    // },
+    // {
+    //     id: 2,
+    //     label: 'Insurance',
+    //     form: <Insurance />,
+    // },
+    // {
+    //     id: 3,
+    //     label: 'Educational Qualification',
+    //     form: <Qualification />,
+    // },
+    // {
+    //     id: 4,
+    //     label: 'Work Experience ',
+    //     form: <Experience />,
+    // },
+    // {
+    //     id: 5,
+    //     label: 'Setup ',
+    //     form: <EmployeeSetup />,
+    // },
+    // {
+    //     id: 6,
+    //     label: 'Salary Details ',
+    //     form: <SalaryDetails />,
+    // },
 ]
 
 const NewEmployee = () => {
@@ -69,18 +69,17 @@ const NewEmployee = () => {
             <div className="breadcrumb">
                 <Breadcrumb
                     routeSegments={[
-                        { name: 'Dashboard', path: '/dashboard' },
+                        { name: 'HR', path: '/dashboard' },
                         { name: 'Add Employee' },
                     ]}
                 />
             </div>
-            <SimpleCard title="stepper form">
-                <StepperForm steps={steps} />
+            
+            <SimpleCard title="New Employee">
+            <OrderForm />
             </SimpleCard>
         </Container>
     )
 }
 
 export default NewEmployee
-
-

@@ -6,6 +6,7 @@ import StepperForm from '../../material-kit/forms/StepperForm'
 import InsuranceDetail from './newvehicleform/InsuranceDetail';
 import RoadFunds from './newvehicleform/RoadFunds';
 import BoloDetail from './newvehicleform/BoloDetail';
+import OrderForm from './OrderForm'
  
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -55,7 +56,7 @@ const VehicleRegistration = () => {
                 />
             </div>
             <SimpleCard title="stepper form">
-                <StepperForm steps={steps} />
+                <OrderForm />
             </SimpleCard>
         </Container>
     )

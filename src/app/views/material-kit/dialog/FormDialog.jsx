@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
-import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
+import styled from '@emotion/styled'
 
-export default function FormDialog({ title,buttonText, children}) {
-    const [open, setOpen] = React.useState(false)
+const StyledButton = styled(Button)(({ theme }) => ({
+    margin: theme.spacing(1),
+}))
+
+export default function FormDialog({ title, buttonText, children }) {
+    const [open, setOpen] = useState(false)
 
     function handleClickOpen() {
         setOpen(true)
@@ -20,31 +23,34 @@ export default function FormDialog({ title,buttonText, children}) {
 
     return (
         <div>
-            <Button
-                variant="outlined"
+            <StyledButton
+                variant="contained"
                 color="primary"
                 onClick={handleClickOpen}
             >
                 {buttonText}
-            </Button>
+            </StyledButton>
+
             <Dialog
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="form-dialog-title"
             >
                 <DialogTitle id="form-dialog-title">{title}</DialogTitle>
-                <DialogContent>
-                    {children}
-                </DialogContent>
+                <DialogContent>{children}</DialogContent>
                 <DialogActions>
                     <Button
-                        variant="outlined"
+                        variant="contained"
                         color="secondary"
                         onClick={handleClose}
                     >
                         Cancel
                     </Button>
-                    <Button onClick={handleClose} color="primary">
+                    <Button
+                        onClick={handleClose}
+                        color="primary"
+                        variant="contained"
+                    >
                         Done
                     </Button>
                 </DialogActions>

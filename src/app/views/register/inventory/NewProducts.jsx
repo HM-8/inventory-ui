@@ -33,11 +33,6 @@ const INITIAL_FORM_STATE = {
     description: '',
 }
 
-const FORM_VALIDATION = Yup.object().shape({
-    // productName: Yup.string().required('Required'),
-    // productType: Yup.string().required('Required'),
-    // description: Yup.string().required('Required'),
-})
 
 function Products() {
     const { palette } = useTheme()
