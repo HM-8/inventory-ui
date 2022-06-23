@@ -1,6 +1,5 @@
-import { styled } from '@mui/system'
 import React, { useState, useEffect } from 'react'
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
+import { ValidatorForm } from 'react-material-ui-form-validator'
 import NormalButton from '../buttons/NormalButton'
 
 const Form = ({ children, buttonText }) => {
@@ -21,8 +20,6 @@ const Form = ({ children, buttonText }) => {
     }, [state.password])
 
     const handleSubmit = (event) => {
-        // console.log("submitted");
-        // console.log(event);
     }
 
     const handleChange = (event) => {

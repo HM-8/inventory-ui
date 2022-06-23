@@ -71,7 +71,6 @@ const StyledButton = styled(Button)(({ theme }) => ({
 }))
 
 function Adjustments() {
-    // const classes = useStyles();
 
     return (
         <Container>

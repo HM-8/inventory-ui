@@ -5,8 +5,6 @@ import { Grid, Typography } from '@mui/material'
 
 import Textfield from '../../../../components/FormsUI/Textfield'
 import DateTimePicker from '../../../../components/FormsUI/DataTimePicker'
-import Select from '../../../../components/FormsUI/Select'
-import itemlist from '../../../../utils/data/BranchList.json'
 import styled from '@emotion/styled'
 
 const Container = styled('div')(({ theme }) => ({

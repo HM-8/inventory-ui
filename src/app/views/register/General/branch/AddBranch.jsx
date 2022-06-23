@@ -11,7 +11,6 @@ import { useDispatch } from 'react-redux'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
 import { useLocation } from 'react-router-dom'
-import FormButton from 'app/views/material-kit/buttons/FormButton'
 import { useNavigate } from 'react-router-dom'
 
 import {
@@ -119,7 +118,6 @@ function Branch() {
                                     } else {
                                         dispatch(addBranchInfo(values))
                                     }
-                                    // console.log(values)
                                         navigate(url)
                                 }}
                             >

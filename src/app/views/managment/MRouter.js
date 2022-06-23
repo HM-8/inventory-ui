@@ -1,6 +1,5 @@
 import React, { lazy } from 'react'
 import Loadable from 'app/components/Loadable/Loadable'
-//import { authRoles } from '../../auth/authRoles'
 
 const EmployeeAttendance = Loadable(lazy(() => import('./employeemanagment/attendance/EmployeeAttendance')))
 const UploadAttendance = Loadable(lazy(() => import('./employeemanagment/attendance/UploadAttendance')))

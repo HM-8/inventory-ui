@@ -4,7 +4,7 @@ import useAuth from 'app/hooks/useAuth'
 import { useNavigate } from 'react-router-dom'
 import { Box, styled, useTheme } from '@mui/system'
 import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator'
-import { Paragraph, Span } from 'app/components/Typography'
+import { Paragraph} from 'app/components/Typography'
 
 const FlexBox = styled(Box)(() => ({
     display: 'flex',

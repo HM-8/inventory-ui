@@ -148,8 +148,6 @@ function Company() {
                                     </Grid>
                                 </Form>
                             </Formik>
-
-                            {/* </div> */}
                         </Container>
                     </Grid>
                 </Grid>

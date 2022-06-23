@@ -6,9 +6,6 @@ import { Grid } from '@mui/material'
 import TableButton from '../../material-kit/buttons/LinkButton'
 import rows from '../../../utils/data/employmentType.json'
 
-import { useSelector } from 'react-redux'
-
-
 const columns = [
     { id: 'driver', label: 'Driver Name' },
     { id: 'vehicle', label: 'Vehicle Name' },
@@ -37,13 +34,6 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 const VehicleAssignment = () => {
-    // const { vehicleList } = useSelector((state) => state.vehicle)
-
-    // const user= useSelector((state)=>state.auth.user[0])
-    // const token=useSelector((state)=>state.auth.token[0])
-    // console.log("user Info "+user.role);
-    // console.log("user token "+token);
-    // console.log(vehicleList);
     return (
         <Container>
             <div className="breadcrumb">
@@ -55,12 +45,6 @@ const VehicleAssignment = () => {
                 />
             </div>
             <Box py="1px" />
-{/* 
-            {vehicleList.map((vhil)=>{
-                <div>{"vehicle"+vhil}</div>
-            })} */}
-
-
             <Grid container direction="row" spacing={2} justifyContent="flex-end">
                 <Grid item>
                     <TableButton buttonText="Assign" url={url}/>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import { Grid, TextField, Typography } from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 
 import Textfield from '../../../components/FormsUI/Textfield'
 import Select from '../../../components/FormsUI/Select'
@@ -152,25 +152,6 @@ function Products() {
                                                 label="Description"
                                             />
                                         </Grid>
-                                        {/* <Grid item lg={6} md={6} sm={12} xs={12} sx={{ mt: 2 }}>
-                                            <TextField
-                                                sx={{ mb: 4 }}
-                                                label="Quantity"
-                                                // onChange={handleChange}
-                                                type="number"
-                                                name="quantity"
-                                                value={quantity || ''}
-                                                validators={[
-                                                    'required',
-                                                    'minStringLength:16',
-                                                    'maxStringLength: 16',
-                                                ]}
-                                                errorMessages={[
-                                                    'this field is required',
-                                                ]}
-                                            />
-                                        </Grid> */}
-
                                         <Grid item xs={12}>
                                             <Typography>
                                                 Item Variant

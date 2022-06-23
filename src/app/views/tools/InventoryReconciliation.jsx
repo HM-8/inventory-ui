@@ -1,24 +1,12 @@
-// import {TextField,  } from '@mui/material'
 import React from 'react'
-// import Form from '../material-kit/forms/Form'
-// import DropDown from '../material-kit/drop-down/DropDown'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-
-// import { makeStyles } from '@mui/styles';
-import {
-    //   Container,
-    Grid,
-    Typography,
-} from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 
 import Textfield from '../../components/FormsUI/Textfield'
 import Select from '../../components/FormsUI/Select'
 import DateTimePicker from '../../components/FormsUI/DataTimePicker'
-import Checkbox from '../../components/FormsUI/Checkbox'
 import Button from '../../components/FormsUI/Button/index'
-// import countries from './data/countries.json';
-import countries from '../../utils/data/countries.json'
 
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
@@ -48,11 +36,11 @@ const INITIAL_FORM_STATE = {
     phone: '',
     addressLine1: '',
     addressLine2: '',
-    code:'',
+    code: '',
     city: '',
     state: '',
     country: '',
-    reportTo:'',
+    reportTo: '',
     reportDate: '',
     departureDate: '',
     message: '',
@@ -109,7 +97,7 @@ function Reconciliation() {
                             >
                                 <Form>
                                     <Grid container spacing={2}>
-                                    <Grid item xs={6}>
+                                        <Grid item xs={6}>
                                             <Select
                                                 name="country"
                                                 label="Item name "
@@ -126,7 +114,9 @@ function Reconciliation() {
                                         </Grid>
 
                                         <Grid item xs={12}>
-                                            <Typography>Counted quantity </Typography>
+                                            <Typography>
+                                                Counted quantity{' '}
+                                            </Typography>
                                         </Grid>
 
                                         <Grid item xs={6}>
@@ -142,7 +132,7 @@ function Reconciliation() {
                                                 label="Qty"
                                             />
                                         </Grid>
-                                        
+
                                         <Grid item xs={12}>
                                             <Typography>Posting </Typography>
                                         </Grid>
@@ -161,7 +151,7 @@ function Reconciliation() {
                                         </Grid>
 
                                         <Grid item xs={12}>
-                                            <Typography>Report  </Typography>
+                                            <Typography>Report </Typography>
                                         </Grid>
                                         <Grid item xs={12}>
                                             <DateTimePicker
@@ -188,8 +178,6 @@ function Reconciliation() {
                                     </Grid>
                                 </Form>
                             </Formik>
-
-                            {/* </div> */}
                         </Container>
                     </Grid>
                 </Grid>

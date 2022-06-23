@@ -1,7 +1,7 @@
 import React from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import { Grid, Typography } from '@mui/material'
+import { Grid} from '@mui/material'
 
 import Textfield from '../../../../components/FormsUI/Textfield'
 import Select from '../../../../components/FormsUI/Select'
@@ -9,8 +9,6 @@ import Button from '../../../../components/FormsUI/Button'
 import DateTimePicker from '../../../../components/FormsUI/DataTimePicker'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
-import Paymentmode from '../../../../utils/data/paymentmode.json'
-import Upload from '../../../../components/FormsUI/fileupload'
 import itemlist from '../../../../utils/data/itemlist.json'
 
 const buttonText = 'Save'
@@ -101,14 +99,6 @@ function Transfer() {
                                                 label="Suggested Date "
                                             />
                                         </Grid>
-
-                                        {/* <Grid item xs={6}>
-                                            <DateTimePicker
-                                                name="ApprovedDate"
-                                                label="Approved Date "
-                                            />
-                                        </Grid> */}
-
                                         <Grid item xs={12}>
                                             <Button>Submit Form</Button>
                                         </Grid>

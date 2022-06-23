@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
-import * as Yup from 'yup'
 import {
     Grid,
     Icon,
-    Typography,
     TextField,
     Button,
     IconButton,
@@ -75,11 +73,6 @@ function AddDepartment() {
         let comp = JSON.stringify(components)
         comp = JSON.parse(comp)
         console.log({ components })
-
-        // var obj = JSON.parse(comp)
-        // var res = []
-        // for (var i in obj) res.push(obj[i])
-        // console.log({res})
 
         if (location.state === 'edit') {
             dispatch(updateDepartmentInfo(comp))

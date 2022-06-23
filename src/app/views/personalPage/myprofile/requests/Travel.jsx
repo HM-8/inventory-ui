@@ -129,8 +129,6 @@ function TravelRequest() {
                                     </Grid>
                                 </Form>
                             </Formik>
-
-                            {/* </div> */}
                         </Container>
                     </Grid>
                 </Grid>

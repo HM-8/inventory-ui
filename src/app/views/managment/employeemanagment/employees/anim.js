@@ -1,8 +1,5 @@
-// import { easeBounceOut } from 'd3-ease';
 import { easeBounceOut } from 'd3-ease';
-// import { interpolateString } from 'd3-interpolate';
 import {interpolateString} from 'd3-interpolate'
-
 
 function startAnimationLoop({ onProgress, onComplete, duration, initialProgress }) {
   let start = null;
@@ -35,8 +32,6 @@ function startAnimationLoop({ onProgress, onComplete, duration, initialProgress 
   }
 }
 
-
-
 function getStyles(element, props) {
   const computed = window.getComputedStyle(element);
   return props.reduce((obj, prop) => {
@@ -45,9 +40,6 @@ function getStyles(element, props) {
   }, {});
 }
 
-
-
-/* custom animations */
 function slide(element, { duration, direction, onComplete }) {
   const collapsedStyles = {
     marginTop: '0px',

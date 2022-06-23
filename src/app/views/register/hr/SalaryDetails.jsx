@@ -1,12 +1,10 @@
 import React from 'react'
-import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import { Grid, Typography } from '@mui/material'
 import Textfield from '../../../components/FormsUI/Textfield'
 import Select from '../../../components/FormsUI/Select'
 import styled from '@emotion/styled'
 import Paymentmode from '../../../utils/data/paymentmode.json'
-import allowance from '../../../utils/data/allowance.json'
 
 const buttonText = 'Save'
 

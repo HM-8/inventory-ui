@@ -2,8 +2,7 @@ import React from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import {
-    Grid,
-    Typography,
+    Grid
 } from '@mui/material'
 import DropDownData from '../../../utils/data/subcategory.json'
 import uom from '../../../utils/data/uomlist.json'
@@ -60,7 +59,6 @@ const FORM_VALIDATION = Yup.object().shape({
 })
 
 function SalesItem() {
-    // const classes = useStyles();
 
     return (
         <Container>
@@ -148,8 +146,6 @@ function SalesItem() {
                                     </Grid>
                                 </Form>
                             </Formik>
-
-                            {/* </div> */}
                         </Container>
                     </Grid>
                 </Grid>

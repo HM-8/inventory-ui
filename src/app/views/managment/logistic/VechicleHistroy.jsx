@@ -19,8 +19,6 @@ const columns = [
     { id: 'End_Date', label: 'End Date' },
     { id: 'Starting_km', label: 'Start KM' },
     { id: 'Returning_km', label: 'Returning KM' },
-    
-
 ]
 const url = '/logistic/vehicle-history/new';
 

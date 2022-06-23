@@ -2,15 +2,11 @@ import React from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import { Grid, Typography } from '@mui/material'
-import DropDownData from '../../../utils/data/subcategory.json'
-import uom from '../../../utils/data/uomlist.json'
 import Textfield from '../../../components/FormsUI/Textfield'
-import Select from '../../../components/FormsUI/Select'
 import Button from '../../../components/FormsUI/Button/index'
 import Uploader from '../../../components/FormsUI/fileupload'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
-import Variant from '../../../utils/data/variants.json'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -63,8 +59,6 @@ const FORM_VALIDATION = Yup.object().shape({
 
 function MaintenanceDetails
 () {
-    // const classes = useStyles();
-
     return (
         <Container>
             <div className="breadcrumb">
@@ -195,8 +189,6 @@ function MaintenanceDetails
                                     </Grid>
                                 </Form>
                             </Formik>
-
-                            {/* </div> */}
                         </Container>
                     </Grid>
                 </Grid>

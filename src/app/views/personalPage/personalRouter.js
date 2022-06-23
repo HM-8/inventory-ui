@@ -1,8 +1,5 @@
 import React, { lazy } from 'react'
 import Loadable from 'app/components/Loadable/Loadable'
-//import { authRoles } from '../../auth/authRoles'
-
-// const AddEmployee = Loadable(lazy(() => import('./AddEmployee')))
 const TravelRequest= Loadable(lazy(()=>import('./myprofile/requests/Travel')))
 const LeaveRequest= Loadable(lazy(()=>import('./myprofile/requests/Leave')))
 const ExtendedLeave= Loadable(lazy(()=>import('./myprofile/requests/Extended')))

@@ -1,5 +1,4 @@
 import React from 'react'
-// import PaginationTable from '../../../material-kit/tables/PaginationTable'
 import PaginationTable from '../../material-kit/tables/PaginationTable'
 
 import { Breadcrumb, SimpleCard } from 'app/components'

@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import { Grid, Icon, Typography, IconButton } from '@mui/material'
+import { Grid, Icon, IconButton } from '@mui/material'
 
 import Textfield from '../../../components/FormsUI/Textfield'
 import Button from '../../../components/FormsUI/Button/index'
-import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
 import { useTheme } from '@emotion/react'
 
@@ -29,9 +28,6 @@ const INITIAL_FORM_STATE = {
 }
 
 const FORM_VALIDATION = Yup.object().shape({
-    // productName: Yup.string().required('Required'),
-    // productType: Yup.string().required('Required'),
-    // description: Yup.string().required('Required'),
 })
 
 function NewCategories() {
@@ -70,7 +66,6 @@ function NewCategories() {
         console.log(components)
     }
     return (
-        // <SimpleCard>
             <Grid container>
                 <Grid item xs={12}>
                     <Container maxWidth="md">
@@ -156,12 +151,9 @@ function NewCategories() {
                                 </Grid>
                             </Form>
                         </Formik>
-
-                        {/* </div> */}
                     </Container>
                 </Grid>
             </Grid>
-        // </SimpleCard>
     )
 }
 

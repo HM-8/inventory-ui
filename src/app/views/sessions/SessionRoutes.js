@@ -7,13 +7,7 @@ const JwtLogin = Loadable(lazy(() => import("./login/JwtLogin")));
 const JwtLogout = Loadable(lazy(() => import("./logout/JwtLogout")));
 const Landing = Loadable(lazy(() => import("./LandingPage")));
 
-//const JwtRegister = Loadable(lazy(() => import("./register/JwtRegister")));
-
 const sessionRoutes = [
-    // {
-    //     path: '/session/signup',
-    //     element: <JwtRegister />,
-    // },
     {
         path: '/session/login',
         element: <JwtLogin />,

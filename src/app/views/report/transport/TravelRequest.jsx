@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PaginationTable from '../../material-kit/tables/PaginationTable'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import { Box, styled } from '@mui/system'
-import { Grid,Button } from '@mui/material'
+import { Button } from '@mui/material'
 import data from '../../../utils/data/employmentType.json'
 
 const Container = styled('div')(({ theme }) => ({
@@ -42,7 +42,7 @@ function createData(EmployeeNo ,Department , Address  , Requestor ,Head ,Approve
     }
 }
 
-const rows = data.map((item, index) => {
+const rows = data.map((item ) => {
     const container = {}
     createData(
         (container.EmployeeNo  = item.EmployeeNo ),

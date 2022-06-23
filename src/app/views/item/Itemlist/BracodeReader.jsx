@@ -22,11 +22,7 @@ function BarcodeReader() {
                         onUpdate={(err, result) => {
                             if (result) {
                                 setData(result.text)
-                                // setStopStream(true)
                             }
-                            //  else {
-                            //     setData('Not Found')
-                            // }
                         }}
                     />
                     <p>{data}</p>
@@ -48,7 +44,6 @@ function BarcodeReader() {
                 Cancel Scan
             </StyledButton>
             <StyledButton
-                // onClick={() => setStopStream(true)}
                 variant="contained"
                 color="secondary"
             >

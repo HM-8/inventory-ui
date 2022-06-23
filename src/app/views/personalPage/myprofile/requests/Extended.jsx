@@ -1,10 +1,7 @@
 import React from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import {
-    Grid,
-    Typography,
-} from '@mui/material'
+import { Grid } from '@mui/material'
 
 import Textfield from '../../../../components/FormsUI/Textfield'
 import DateTimePicker from '../../../../components/FormsUI/DataTimePicker'
@@ -36,7 +33,7 @@ const INITIAL_FORM_STATE = {
     AssignmentStatus: '',
     TrackUsage: '',
     StartDate: '',
-    EndDate: ''
+    EndDate: '',
 }
 
 const FORM_VALIDATION = Yup.object().shape({
@@ -106,7 +103,7 @@ function ExtendedLeaveRequest() {
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                             <Textfield
+                                            <Textfield
                                                 name="description"
                                                 label="Description"
                                                 rows={4}
@@ -118,8 +115,6 @@ function ExtendedLeaveRequest() {
                                     </Grid>
                                 </Form>
                             </Formik>
-
-                            {/* </div> */}
                         </Container>
                     </Grid>
                 </Grid>

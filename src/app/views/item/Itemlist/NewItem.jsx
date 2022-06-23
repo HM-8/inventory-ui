@@ -1,19 +1,12 @@
 import { Grid, Typography } from '@mui/material'
 import { Form, Formik } from 'formik'
-import { useEffect } from 'react'
 import * as Yup from 'yup'
 
 import styled from '@emotion/styled'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import DateTimePicker from 'app/components/FormsUI/DataTimePicker'
-import {
-    addCompanyInfo,
-    updateCompanyInfo,
-} from 'app/redux/actions/CompanyAction.js'
-// import FormButton from 'app/views/material-kit/buttons/FormButton'
 import { useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
-import BracodeReader from 'app/views/item/Itemlist/BracodeReader'
 import Select from '../../../components/FormsUI/Select'
 import Textfield from '../../../components/FormsUI/Textfield'
 import Checkbox from 'app/components/FormsUI/Checkbox'
@@ -34,52 +27,49 @@ const Container = styled('div')(({ theme }) => ({
     },
 }))
 
+const INITIAL_FORM_STATE = {
+    itemName: '',
+    itemCode: '',
+    itemGroup: '',
+    defaultMesurment: '',
+    brand: '',
+    description: '',
+    shelfLife: '',
+    warrentyPeriod: '',
+    weight: '',
+    endOfLife: '',
+    defaultMaterialRequest: '',
+    weightUOM: '',
+    checkIN: '',
+    requestFor: '',
+    reorderLevel: '',
+    reorderQty: '',
+    materialRequest: '',
+    disabled: '',
+    maintainStock: '',
+    alternativeItem: '',
+    fixedAsset: '',
+}
 
-    const INITIAL_FORM_STATE = {
-        itemName: '',
-        itemCode: '',
-        itemGroup: '',
-        defaultMesurment: '',
-        brand: '',
-        description: '',
-        shelfLife: '',
-        warrentyPeriod: '',
-        weight: '',
-        endOfLife: '',
-        defaultMaterialRequest: '',
-        weightUOM: '',
-        checkIN: '',
-        requestFor: '',
-        reorderLevel: '',
-        reorderQty: '',
-        materialRequest: '',
-        disabled:'',
-        maintainStock:'',
-        alternativeItem:'',
-        fixedAsset:''
-    }
-    // console.log('data', data)
-    // console.log('initial', INITIAL_FORM_STATE)
-
-    const FORM_VALIDATION = Yup.object().shape({
-        itemName: Yup.string().required('Required'),
-        itemCode: Yup.string().required('Required'),
-        itemGroup: Yup.string().required('Required'),
-        defaultMesurment: Yup.string().required('Required'),
-        brand: Yup.string().required('Required'),
-        description: Yup.string().required('Required'),
-        shelfLife: Yup.string().required('Required'),
-        warrentyPeriod: Yup.string().required('Required'),
-        weight: Yup.string().required('Required'),
-        endOfLife: Yup.date().required('Required'),
-        defaultMaterialRequest: Yup.string().required('Required'),
-        weightUOM: Yup.string().required('Required'),
-        checkIN: Yup.string().required('Required'),
-        requestFor: Yup.string().required('Required'),
-        reorderLevel: Yup.string().required('Required'),
-        reorderQty: Yup.string().required('Required'),
-        materialRequest: Yup.string().required('Required'),
-    })
+const FORM_VALIDATION = Yup.object().shape({
+    itemName: Yup.string().required('Required'),
+    itemCode: Yup.string().required('Required'),
+    itemGroup: Yup.string().required('Required'),
+    defaultMesurment: Yup.string().required('Required'),
+    brand: Yup.string().required('Required'),
+    description: Yup.string().required('Required'),
+    shelfLife: Yup.string().required('Required'),
+    warrentyPeriod: Yup.string().required('Required'),
+    weight: Yup.string().required('Required'),
+    endOfLife: Yup.date().required('Required'),
+    defaultMaterialRequest: Yup.string().required('Required'),
+    weightUOM: Yup.string().required('Required'),
+    checkIN: Yup.string().required('Required'),
+    requestFor: Yup.string().required('Required'),
+    reorderLevel: Yup.string().required('Required'),
+    reorderQty: Yup.string().required('Required'),
+    materialRequest: Yup.string().required('Required'),
+})
 
 function NewItem() {
     const location = useLocation()
@@ -89,14 +79,6 @@ function NewItem() {
     var data = ''
     const url = '/general/company'
     console.log('location state', location.search)
-
-    // if (location.state === 'edit') {
-    //     buttonText = 'Update'
-    //     titleText = 'Edit Item'
-    //     data = JSON.parse(window.localStorage.getItem('ITEMS_INFO'))
-    // }
-
-    // useEffect(() => {}, [])
 
     return (
         <Container>
@@ -122,13 +104,6 @@ function NewItem() {
                                 }}
                                 validationSchema={FORM_VALIDATION}
                                 onSubmit={(values) => {
-                                    // if (location.state === 'edit') {
-                                    //     dispatch(
-                                    //         updateCompanyInfo(data.id, values)
-                                    //     )
-                                    // } else {
-                                    //     dispatch(addCompanyInfo(values))
-                                    // }
                                     console.log(values)
                                 }}
                             >
@@ -146,13 +121,19 @@ function NewItem() {
                                                 label="Item Name"
                                             />
                                         </Grid>
-                                        
+
                                         <Grid item xs={3}>
-                                            <Checkbox name="disabled" label="Disabled" />
+                                            <Checkbox
+                                                name="disabled"
+                                                label="Disabled"
+                                            />
                                         </Grid>
 
                                         <Grid item xs={3}>
-                                            <Checkbox name="maintainStock" label="Maintain Stock" />
+                                            <Checkbox
+                                                name="maintainStock"
+                                                label="Maintain Stock"
+                                            />
                                         </Grid>
 
                                         <Grid item xs={6}>
@@ -163,11 +144,17 @@ function NewItem() {
                                         </Grid>
 
                                         <Grid item xs={3}>
-                                            <Checkbox name="alternativeItem" label="Allow Alternative Item" />
+                                            <Checkbox
+                                                name="alternativeItem"
+                                                label="Allow Alternative Item"
+                                            />
                                         </Grid>
 
                                         <Grid item xs={3}>
-                                            <Checkbox name="fixedAsset" label="Is Fixed Asset" />
+                                            <Checkbox
+                                                name="fixedAsset"
+                                                label="Is Fixed Asset"
+                                            />
                                         </Grid>
 
                                         <Grid item xs={6}>
@@ -295,14 +282,6 @@ function NewItem() {
                                                 options={genderList}
                                             />
                                         </Grid>
-                                        {/* <Grid item xs={12}>
-                                            <Typography>
-                                                Scan Barcode or Generate
-                                            </Typography>
-                                        </Grid>
-                                        <Grid item xs={12}>
-                                            <BracodeReader />
-                                        </Grid> */}
                                         <Grid item xs={12}>
                                             <Button>Submit Form</Button>
                                         </Grid>

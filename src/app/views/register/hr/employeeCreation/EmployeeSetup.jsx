@@ -1,11 +1,9 @@
 import React from 'react'
-import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import { Grid, Typography } from '@mui/material'
 import Select from '../../../../components/FormsUI/Select'
 import genderList from '../../../../utils/data/GenderList.json'
 import styled from '@emotion/styled'
-import { useDispatch } from 'react-redux'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',

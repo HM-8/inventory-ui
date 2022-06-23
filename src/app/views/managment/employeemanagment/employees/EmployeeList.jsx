@@ -2,7 +2,6 @@ import React from 'react';
 import { slideDown, slideUp } from './anim';
 import './style.css';
 
-
 function formatDate(str) {
   return str.substr(0, 10);
 }
@@ -12,8 +11,6 @@ function capitalize(str) {
     return s.charAt(0).toUpperCase() + s.substr(1);
   }).join(' ');
 }
-
-
 class UserTableRow extends React.Component {
   state = { expanded: false }
 
@@ -76,8 +73,6 @@ class UserTableRow extends React.Component {
     ];
   }
 }
-
-
 
 class EmployeeList extends React.Component {
   state = { users: null }

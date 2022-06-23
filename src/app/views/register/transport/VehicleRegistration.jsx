@@ -62,5 +62,3 @@ const VehicleRegistration = () => {
 }
 
 export default VehicleRegistration
-
-

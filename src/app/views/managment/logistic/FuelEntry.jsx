@@ -8,26 +8,6 @@ import TableButton from '../../material-kit/buttons/LinkButton'
 import rows from '../../../utils/data/AssignedVehicles.json'
 
 const columns = [
-    
-    // Vehicle name - Dropdown
-    // Plate Number - Dropdown
-    // Date
-    // Kilometer
-    // Vendor - Dropdown
-    // Price Unit
-    // Coupon Number
-    // Approver 
-    // Name
-    // Signature
-    // Driver
-    // Name - Dropdown
-    // Signature
-    
-    
-    
-    
-
-
     { id: 'vn', label: 'Vehicle Name' },
     { id: 'pn', label: 'Plate No' },
     { id: 'd', label: 'Date' },
@@ -40,10 +20,7 @@ const columns = [
     { id: 'an', label: ' A. Name' }, 
     { id: 'as', label: ' A. Signature' },
     { id: 'dn', label: ' D. Name' },
-    { id: 'ds', label: ' D. Signature' },
-   
-    
-
+    { id: 'ds', label: ' D. Signature' }
 ]
 const url = '/logistic/fuel-entry/new';
 

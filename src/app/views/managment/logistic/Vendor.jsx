@@ -8,39 +8,10 @@ import TableButton from '../../material-kit/buttons/LinkButton'
 import rows from '../../../utils/data/AssignedVehicles.json'
 
 const columns = [
-    // Vendor Name
-    // Vendor Type - Dropdown
-    // Fuel
-    // Service/maintenance
-    // Other 
-    // [if other, add new vendor type]
-    // Contact Person  Full Name (text field)
-    // First Name
-    // Last Name
-    // Middle Name
-    // Telephone
-    // Mobile No.
-    // Company Tel. No.
-    // Email
-    // Company Email
-    // Personal Email
-    // Company Website
-    // Company Address
-    // House No.
-    // Kebele
-    // Wereda
-    // Subcity
-    // City
-    // Area name (optional)
-    
-    
-
-
     { id: 'vendor_name', label: 'Vendor Name' },
     { id: 'Vendor_type', label: 'Vendor Type' },
     { id: 'First_name', label: 'First Name' },
      
-    
     { id: 'Company-Tel', label: 'C. Tel ' },
     { id: 'pemail', label: 'P. Email' },
     { id: 'cemail', label: 'C. Email' },
@@ -51,11 +22,7 @@ const columns = [
     { id: 'kebele', label: 'Kebele' }, 
     { id: 'wereda', label: 'Wereda' },
    
-    { id: 'city', label: 'City' },
- 
-   
-    
-
+    { id: 'city', label: 'City' }
 ]
 const url = '/logistic/vendor/new-add';
 

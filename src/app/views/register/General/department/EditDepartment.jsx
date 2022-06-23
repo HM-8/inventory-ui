@@ -4,8 +4,6 @@ import * as Yup from 'yup'
 import { Grid, Typography } from '@mui/material'
 
 import Textfield from '../../../../components/FormsUI/Textfield'
-import Select from '../../../../components/FormsUI/Select'
-import DropDownData from '../../../../utils/data/dropDownData.json'
 import { useDispatch } from 'react-redux'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'

@@ -1,6 +1,4 @@
 import {
-    Button,
-    Icon,
     Grid,
     Radio,
     RadioGroup,
@@ -8,7 +6,6 @@ import {
     Checkbox,
 } from '@mui/material'
 import { styled } from '@mui/system'
-import { Span } from 'app/components/Typography'
 import React, { useState, useEffect } from 'react'
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
 import AdapterDateFns from '@mui/lab/AdapterDateFns'
@@ -38,8 +35,6 @@ const PersonalInformation = () => {
     }, [state.password])
 
     const handleSubmit = (event) => {
-        // console.log("submitted");
-        // console.log(event);
     }
 
     const handleChange = (event) => {

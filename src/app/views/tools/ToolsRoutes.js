@@ -1,10 +1,9 @@
 import React, { lazy } from 'react'
 import Loadable from 'app/components/Loadable/Loadable'
 
-const Inspection= Loadable(lazy(()=>import('./Adjustments')))
-const Reconciliation= Loadable(lazy(()=>import('./InventoryReconciliation')))
-const Balance= Loadable(lazy(()=>import('./QuickInventoryBalance')))
-
+const Inspection = Loadable(lazy(() => import('./Adjustments')))
+const Reconciliation = Loadable(lazy(() => import('./InventoryReconciliation')))
+const Balance = Loadable(lazy(() => import('./QuickInventoryBalance')))
 
 const ToolsRoutes = [
     {
@@ -18,7 +17,7 @@ const ToolsRoutes = [
     {
         path: '/tools/balance',
         element: <Balance />,
-    }
+    },
 ]
 
 export default ToolsRoutes

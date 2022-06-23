@@ -1,6 +1,5 @@
 import React, { lazy } from 'react'
 import Loadable from 'app/components/Loadable/Loadable'
-//import { authRoles } from '../../auth/authRoles'
 
 const AddEmployee = Loadable(lazy(() => import('./AddEmployee')))
 
@@ -18,42 +17,34 @@ const employeeRoutes = [
     {
         path: '/employee/add-employee',
         element: <AddEmployee />,
-        //auth: authRoles.admin,
     },
     {
         path: '/employee/employment-type',
         element: <EmploymentType />,
-        //auth: authRoles.admin,
     },
     {
         path: '/employee/employment-type/add',
         element: <AddEmploymentType />,
-        //auth: authRoles.admin,
     },
     {
         path: '/employee/employee-designation',
         element: <EmployeeDesignation />,
-        //auth: authRoles.admin,
     },
     {
         path: '/employee/employee-designation/add',
         element: <AddEmployeeDesignation />,
-        //auth: authRoles.admin,
     },
     {
         path: '/employee/employee-appraisal',
         element: <EmployeeAppraisal />,
-        //auth: authRoles.admin,
     },
     {
         path: '/employee/branch',
         element: <Branch />,
-        //auth: authRoles.admin,
     },
     {
         path: '/employee/department',
         element: <Department />,
-        //auth: authRoles.admin,
     }
 ]
 

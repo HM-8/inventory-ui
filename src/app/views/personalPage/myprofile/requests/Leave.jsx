@@ -1,7 +1,7 @@
 import React from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import { Grid, Typography } from '@mui/material'
+import { Grid } from '@mui/material'
 
 import Textfield from '../../../../components/FormsUI/Textfield'
 import DateTimePicker from '../../../../components/FormsUI/DataTimePicker'
@@ -102,11 +102,6 @@ function LeaveRequest() {
                                         </Grid>
 
                                         <Grid item xs={6}>
-                                            {/* <DateTimePicker
-                                                name="description"
-                                                label="Description"
-                                                row={4}
-                                            /> */}
                                             <Textfield
                                                 name="description"
                                                 label="Reason"
@@ -119,8 +114,6 @@ function LeaveRequest() {
                                     </Grid>
                                 </Form>
                             </Formik>
-
-                            {/* </div> */}
                         </Container>
                     </Grid>
                 </Grid>

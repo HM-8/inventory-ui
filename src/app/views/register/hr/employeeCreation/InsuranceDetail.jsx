@@ -1,14 +1,9 @@
 import React from 'react'
-import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import { Grid, Typography } from '@mui/material'
 
 import Textfield from '../../../../components/FormsUI/Textfield'
-import DateTimePicker from '../../../../components/FormsUI/DataTimePicker'
 import Select from '../../../../components/FormsUI/Select'
-import Button from '../../../../components/FormsUI/Button/index'
-import itemlist from '../../../../utils/data/BranchList.json'
-import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
 import InsurnaceType from '../../../../utils/data/InsurnaceType.json'
 import Upload from '../../../../components/FormsUI/fileupload'
@@ -105,10 +100,6 @@ InsuranceDetail.validationSchema =Yup.object().shape({
         .integer()
         .typeError('Please enter a valid number')
         .required('Required'),
-    // cubic_capacity: Yup.number()
-    //     .integer()
-    //     .typeError('Please enter a valid phone number')
-    //     .required('Required'),
     first_name: Yup.string().required('Required'),
     middle_name: Yup.string(),
     last_name: Yup.string(),

@@ -1,13 +1,7 @@
-// import {TextField,  } from '@mui/material'
 import React from 'react'
-// import Form from '../material-kit/forms/Form'
-// import DropDown from '../material-kit/drop-down/DropDown'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-
-// import { makeStyles } from '@mui/styles';
 import {
-    //   Container,
     Grid,
     Typography,
 } from '@mui/material'
@@ -17,13 +11,11 @@ import Select from '../../components/FormsUI/Select'
 import DateTimePicker from '../../components/FormsUI/DataTimePicker'
 import Checkbox from '../../components/FormsUI/Checkbox'
 import Button from '../../components/FormsUI/Button/index'
-// import countries from './data/countries.json';
 import countries from '../../utils/data/countries.json'
 
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
 
-// import dropDownData from '../../../utils/data/dropDownData.json'
 import dropDownData from '../../utils/data/dropDownData.json'
 import { DatePicker, LocalizationProvider } from '@mui/lab'
 import AdapterDateFns from '@mui/lab/AdapterDateFns'
@@ -86,7 +78,6 @@ const StyledButton = styled(Button)(({ theme }) => ({
 }))
 
 function SIV() {
-    // const classes = useStyles();
 
     return (
         <Container>
@@ -205,8 +196,6 @@ function SIV() {
                                     </Grid>
                                 </Form>
                             </Formik>
-
-                            {/* </div> */}
                         </Container>
                     </Grid>
                 </Grid>

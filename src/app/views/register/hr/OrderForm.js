@@ -4,7 +4,6 @@ import { Box, Button, Step, StepLabel, Stepper } from '@mui/material';
 import SwipeableViews from 'react-swipeable-views';
 
 import PersonalDetails from './employeeCreation/PersonalDetails';
-import EmergencyContact from './employeeCreation/EmergencyContact';
 import Insurance from './employeeCreation/InsuranceDetail';
 import EducationalQualification from './employeeCreation/EducationalQualification';
 import Experience from './employeeCreation/WorkExperience';

@@ -18,9 +18,6 @@ const columns = [
     { id: 'IsKM', label: 'KM Service' },
     { id: 'Priority', label: 'Priority' },
     { id: 'Due_date', label: 'Due date' },
-   
-    
-
 ]
 const url = '/logistic/new-issues';
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-import { Grid, Typography } from '@mui/material'
+import { Grid } from '@mui/material'
 import Textfield from '../../../components/FormsUI/Textfield'
 import Select from '../../../components/FormsUI/Select'
 import Button from '../../../components/FormsUI/Button/index'
@@ -62,7 +62,6 @@ const FORM_VALIDATION = Yup.object().shape({
 })
 
 function newVehicleHistroy() {
-    // const classes = useStyles();
 
     return (
         <Container>
@@ -161,8 +160,6 @@ function newVehicleHistroy() {
                                     </Grid>
                                 </Form>
                             </Formik>
-
-                            {/* </div> */}
                         </Container>
                     </Grid>
                 </Grid>

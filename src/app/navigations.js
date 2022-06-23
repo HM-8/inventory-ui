@@ -58,10 +58,6 @@ export const navigations = [
                         name: 'Designation',
                         path: '/hr/designation',
                     },
-                    // {
-                    //     name: 'Salery Details',
-                    //     path: '/hr/salaryDetails',
-                    // },
                 ],
             },
             {
@@ -143,38 +139,12 @@ export const navigations = [
                         name: 'Employee Attendance',
                         path: '/attendance/employee-attendance/add',
                     },
-                    // {
-                    //     name: 'Upload Attendance',
-                    //     path: '/attendance/upload-attendance',
-                    // },
-                    // {
-                    //     name: 'Employee Attendance Tool',
-                    //     path: '/attendance/attendance-tool',
-                    // },
                 ],
             },
-            // {
-            //     name: 'Leave',
-            //     icon: 'assignment_return',
-            //     children: [
-            //         {
-            //             name: 'Update Leave Policy',
-            //             path: '/leave/leave-policy',
-            //         },
-            //         // {
-            //         //     name: 'Leave Type',
-            //         //     path: '/leave/leave-type',
-            //         // },
-            //     ],
-            // },
             {
                 name: 'Employee History',
                 icon: 'assignment_ind',
                 children: [
-                    // {
-                    //     name: 'Employee Appraisal',
-                    //     path: '/history/appraisal',
-                    // },
                     {
                         name: 'Employee Promotion',
                         path: '/history/promotion',
@@ -217,24 +187,6 @@ export const navigations = [
                     },
                 ],
             },
-            // {
-            //     name: 'Tool',
-            //     icon: 'build',
-            //     children: [
-            //         {
-            //             name: 'Inspection',
-            //             path: '/IM/tool/inspection',
-            //         },
-            //         {
-            //             name: 'Adjustment',
-            //             path: '/IM/tool/adjustment',
-            //         },
-            //         {
-            //             name: 'Search',
-            //             path: '/IM/tool/search',
-            //         },
-            //     ],
-            // },
         ],
     },
 
@@ -304,10 +256,6 @@ export const navigations = [
                         name: 'Employee Transfer',
                         path: '/report/hr/transfers',
                     },
-                    // {
-                    //     name: 'Employee Appraisal',
-                    //     path: '/report/hr/appraisal',
-                    // },
                     {
                         name: 'Employee Termination',
                         path: '/report/hr/termination',
@@ -320,10 +268,6 @@ export const navigations = [
                         name: 'Employee Attendance',
                         path: '/report/hr/attendance',
                     },
-                    // {
-                    //     name: 'Travel Requests',
-                    //     path: '/report/hr/travelRequest',
-                    // },
                 ],
             },
             {
@@ -368,23 +312,6 @@ export const navigations = [
                         name: 'Item Transfer',
                         path: '/report/inventory/item-transfer',
                     },
-                    // {
-                    //     name: 'Expiry Reinders ',
-                    //     path: '/report/inventory/expiry',
-                    // },
-                    // {
-                    //     name: 'Reminders',
-                    //     children: [
-                    //         {
-                    //             name: 'Kilometer Service Reminder ',
-                    //             path: '/report/transport/reminders/kmservice',
-                    //         },
-                    //         {
-                    //             name: 'Renewal Reminder ',
-                    //             path: '/report/inventory/reminders/renewal',
-                    //         },
-                    //     ],
-                    // },
                 ],
             },
         ],
@@ -420,15 +347,6 @@ export const navigations = [
                     },
                 ],
             },
-            // {
-            //     name: 'My Status',
-            //     path: '/profile/my-status',
-            // },
-            // {
-            //     name: 'My Salary',
-            //     path: '/profile/my-salary',
-            //     iconText: 'E',
-            // },
             {
                 name: 'Log Out',
                 path: '/session/logout',
@@ -440,111 +358,5 @@ export const navigations = [
                 iconText: 'E',
             },
         ],
-    },
-
-    // {
-    //     label: 'Defaults',
-    //     type: 'label',
-    // },
-
-    // {
-    //     name: 'Settings',
-    //     icon: 'settings',
-    //     children: [
-    //         {
-    //             name: 'Human Resource',
-    //             path: '/settings/hr',
-    //         },
-    //         {
-    //             name: 'Inventory',
-    //             path: '/settings/inventory',
-    //         },
-    //         {
-    //             name: 'Transport',
-    //             path: '/settings/tranport',
-    //         },
-    //     ],
-    // },
-
-    // {
-    //     label: 'General',
-    //     type: 'label',
-    // },
-    // {
-    //     name: 'Components',
-    //     icon: 'favorite',
-    //     badge: { value: '30+', color: 'secondary' },
-    //     children: [
-    //         {
-    //             name: 'Auto Complete',
-    //             path: '/material/autocomplete',
-    //             iconText: 'A',
-    //         },
-    //         {
-    //             name: 'Buttons',
-    //             path: '/material/buttons',
-    //             iconText: 'B',
-    //         },
-    //         {
-    //             name: 'Checkbox',
-    //             path: '/material/checkbox',
-    //             iconText: 'C',
-    //         },
-    //         {
-    //             name: 'Dialog',
-    //             path: '/material/dialog',
-    //             iconText: 'D',
-    //         },
-    //         {
-    //             name: 'Expansion Panel',
-    //             path: '/material/expansion-panel',
-    //             iconText: 'E',
-    //         },
-    //         {
-    //             name: 'Form',
-    //             path: '/material/form',
-    //             iconText: 'F',
-    //         },
-    //         {
-    //             name: 'Icons',
-    //             path: '/material/icons',
-    //             iconText: 'I',
-    //         },
-    //         {
-    //             name: 'Menu',
-    //             path: '/material/menu',
-    //             iconText: 'M',
-    //         },
-    //         {
-    //             name: 'Progress',
-    //             path: '/material/progress',
-    //             iconText: 'P',
-    //         },
-    //         {
-    //             name: 'Radio',
-    //             path: '/material/radio',
-    //             iconText: 'R',
-    //         },
-    //         {
-    //             name: 'Switch',
-    //             path: '/material/switch',
-    //             iconText: 'S',
-    //         },
-    //         {
-    //             name: 'Slider',
-    //             path: '/material/slider',
-    //             iconText: 'S',
-    //         },
-    //         {
-    //             name: 'Snackbar',
-    //             path: '/material/snackbar',
-    //             iconText: 'S',
-    //         },
-    //         {
-    //             name: 'Table',
-    //             path: '/material/table',
-    //             iconText: 'T',
-    //         },
-    //     ],
-    // },
+    }
 ]

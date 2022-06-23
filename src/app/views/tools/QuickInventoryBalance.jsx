@@ -1,21 +1,8 @@
-// import {TextField,  } from '@mui/material'
 import React from 'react'
-// import Form from '../material-kit/forms/Form'
-// import DropDown from '../material-kit/drop-down/DropDown'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-
-// import { makeStyles } from '@mui/styles';
-import {
-    //   Container,
-    Grid,
-    Typography,
-} from '@mui/material'
-
-import Textfield from '../../components/FormsUI/Textfield'
+import { Grid, Typography } from '@mui/material'
 import Select from '../../components/FormsUI/Select'
-import DateTimePicker from '../../components/FormsUI/DataTimePicker'
-import Checkbox from '../../components/FormsUI/Checkbox'
 import Button from '../../components/FormsUI/Button/index'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
@@ -74,8 +61,6 @@ const FORM_VALIDATION = Yup.object().shape({
 })
 
 function QIB() {
-    // const classes = useStyles();
-
     return (
         <Container>
             <div className="breadcrumb">
@@ -102,7 +87,7 @@ function QIB() {
                             >
                                 <Form>
                                     <Grid container spacing={2}>
-                                    <Grid item xs={6}>
+                                        <Grid item xs={6}>
                                             <Select
                                                 name="country"
                                                 label="Item name "
@@ -128,8 +113,6 @@ function QIB() {
                                     </Grid>
                                 </Form>
                             </Formik>
-
-                            {/* </div> */}
                         </Container>
                     </Grid>
                 </Grid>

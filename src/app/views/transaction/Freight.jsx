@@ -1,29 +1,17 @@
-// import {TextField,  } from '@mui/material'
 import React from 'react'
-// import Form from '../material-kit/forms/Form'
-// import DropDown from '../material-kit/drop-down/DropDown'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
-
-// import { makeStyles } from '@mui/styles';
-import {
-    //   Container,
-    Grid,
-    Typography,
-} from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 
 import Textfield from '../../components/FormsUI/Textfield'
 import Select from '../../components/FormsUI/Select'
 import DateTimePicker from '../../components/FormsUI/DataTimePicker'
 import Checkbox from '../../components/FormsUI/Checkbox'
 import Button from '../../components/FormsUI/Button/index'
-// import countries from './data/countries.json';
 import countries from '../../utils/data/countries.json'
 
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
-
-// import dropDownData from '../../../utils/data/dropDownData.json'
 import dropDownData from '../../utils/data/dropDownData.json'
 import { DatePicker, LocalizationProvider } from '@mui/lab'
 import AdapterDateFns from '@mui/lab/AdapterDateFns'
@@ -86,8 +74,6 @@ const StyledButton = styled(Button)(({ theme }) => ({
 }))
 
 function Freight() {
-    // const classes = useStyles();
-
     return (
         <Container>
             <div className="breadcrumb">
@@ -355,14 +341,14 @@ function Freight() {
                                         </Grid>
 
                                         <Link to="/transaction/SIV">
-                                        <Grid xs={12}>
-                                            <StyledButton
-                                                variant="contained"
-                                                color="secondary"
-                                            >
-                                                SIV 
-                                            </StyledButton>
-                                        </Grid>
+                                            <Grid xs={12}>
+                                                <StyledButton
+                                                    variant="contained"
+                                                    color="secondary"
+                                                >
+                                                    SIV
+                                                </StyledButton>
+                                            </Grid>
                                         </Link>
                                         <Grid item xs={12}>
                                             <Button>Submit Form</Button>
@@ -370,8 +356,6 @@ function Freight() {
                                     </Grid>
                                 </Form>
                             </Formik>
-
-                            {/* </div> */}
                         </Container>
                     </Grid>
                 </Grid>

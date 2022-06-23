@@ -4,9 +4,6 @@ import { Breadcrumb, SimpleCard } from 'app/components'
 import { Box, styled } from '@mui/system'
 import { Grid, Button } from '@mui/material'
 import data from '../../../utils/data/employmentType.json'
-import EditIcon from '@mui/icons-material/Edit'
-import DeleteIcon from '@mui/icons-material/Delete'
-import TableButton from '../../material-kit/buttons/LinkButton'
 
 const url = '/general/NewPromotion'
 

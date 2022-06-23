@@ -1,5 +1,4 @@
 import React from 'react'
-// import PaginationTable from '../../../material-kit/tables/PaginationTable'
 import PaginationTable from '../../material-kit/tables/PaginationTable'
 
 import { Breadcrumb, SimpleCard } from 'app/components'
@@ -77,7 +76,6 @@ const UOM = () => {
             <Box py="1px" />
             <Grid container direction="row" spacing={2} justifyContent="flex-end">
                 <Grid item>
-                    {/* <TableButton buttonText="Add UOM" url={url}/> */}
                     <FormDialog title={'New UOM'} buttonText={'Add Row'}><AddUOM /></FormDialog>
                 </Grid>
             </Grid>

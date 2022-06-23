@@ -2,8 +2,6 @@ import React from 'react'
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import { Grid, Typography } from '@mui/material'
-
-import Textfield from '../../../../components/FormsUI/Textfield'
 import Select from '../../../../components/FormsUI/Select'
 import Button from '../../../../components/FormsUI/Button'
 import DateTimePicker from '../../../../components/FormsUI/DataTimePicker'
@@ -80,44 +78,42 @@ function Tool() {
                                                 options={Paymentmode}
                                             />
                                         </Grid>
-  <Grid item xs={6}>
-                                              <DateTimePicker
-                                                  name="date"
-                                                  label="Date "
-                                              />
-                                          </Grid>
+                                        <Grid item xs={6}>
+                                            <DateTimePicker
+                                                name="date"
+                                                label="Date "
+                                            />
+                                        </Grid>
 
-                                          <Grid item xs={6}>
+                                        <Grid item xs={6}>
                                             <Select
                                                 name="status"
                                                 label="Status"
                                                 options={Paymentmode}
                                             />
                                         </Grid>
-                                        
+
                                         <Grid item xs={12}>
-                                        <Typography>Shift time</Typography>
-                                      </Grid>
-                                    <Grid item xs={6}>
-                                        <DateTimePicker
-                                            name="start_date"
-                                            label="Start date  "
-                                        />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <DateTimePicker
-                                            name="end_date"
-                                            label="End date "
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12}>
+                                            <Typography>Shift time</Typography>
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <DateTimePicker
+                                                name="start_date"
+                                                label="Start date  "
+                                            />
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <DateTimePicker
+                                                name="end_date"
+                                                label="End date "
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12}>
                                             <Button>Submit Form</Button>
                                         </Grid>
                                     </Grid>
                                 </Form>
                             </Formik>
-
-                            {/* </div> */}
                         </Container>
                     </Grid>
                 </Grid>

@@ -52,7 +52,6 @@ const FORM_VALIDATION = Yup.object().shape({
 })
 
 function NewIssues() {
-    // const classes = useStyles();
 
     return (
         <Container>
@@ -124,8 +123,6 @@ function NewIssues() {
                                     </Grid>
                                 </Form>
                             </Formik>
-
-                            {/* </div> */}
                         </Container>
                     </Grid>
                 </Grid>

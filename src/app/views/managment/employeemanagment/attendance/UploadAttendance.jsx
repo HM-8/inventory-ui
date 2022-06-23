@@ -3,7 +3,6 @@ import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 import {
     Grid,
-    Typography,
 } from '@mui/material'
 
 import Button from '../../../../components/FormsUI/Button/index'
@@ -87,8 +86,6 @@ function UploadAttendance() {
                                     </Grid>
                                 </Form>
                             </Formik>
-
-                            {/* </div> */}
                         </Container>
                     </Grid>
                 </Grid>

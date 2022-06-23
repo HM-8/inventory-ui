@@ -1,4 +1,3 @@
-//import useAuth from 'app/hooks/useAuth'
 import React, { useState } from 'react'
 import { Box, styled } from '@mui/system'
 import { useNavigate } from 'react-router-dom'
@@ -38,7 +37,6 @@ const JWTRegister = styled(JustifyBox)(() => ({
 const JwtRegister = () => {
     const navigate = useNavigate()
     const [state, setState] = useState({})
-    //const { register } = useAuth()
 
     const handleChange = ({ target: { name, value } }) => {
         setState({
@@ -46,15 +44,6 @@ const JwtRegister = () => {
             [name]: value,
         })
     }
-
-    // const handleFormSubmit = (event) => {
-    //     try {
-    //         register(state.email, state.username, state.password)
-    //         navigate('/')
-    //     } catch (e) {
-    //         console.log(e)
-    //     }
-    // }
 
     let { username, email, password, agreement } = state
 

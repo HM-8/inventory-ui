@@ -1,15 +1,9 @@
 import React, { Fragment } from 'react'
-import RowCards from './shared/RowCards'
 import StatCards from './shared/StatCards'
 import Campaigns from './shared/Campaigns'
-import { Grid, Card, Box, Container } from '@mui/material'
+import { Grid} from '@mui/material'
 import StatCards2 from './shared/StatCards2'
-import DoughnutChart from './shared/Doughnut'
-import UpgradeCard from './shared/UpgradeCard'
 import { styled, useTheme } from '@mui/system'
-import TopSellingTable from './shared/TopSellingTable'
-import { SimpleCard } from 'app/components'
-import LineChart from '../cards/echarts/LineChart'
 
 const ContentBox = styled('div')(({ theme }) => ({
     margin: '30px',
@@ -49,38 +43,10 @@ const Analytics = () => {
                             <StatCards2 />
                             <H4>My Requests</H4>
                             <StatCards />
-                            {/* <TopSellingTable />  */}
-                            {/* <H4>My Requests</H4> */}
-                            {/* <RowCards />  */}
-
-                            {/* <Container>
-                            <SimpleCard title="Leave Stats">
-                                <LineChart
-                                    height="350px"
-                                    color={[
-                                        palette.primary.main,
-                                        palette.primary.light,
-                                    ]}
-                                />
-                            </SimpleCard>
-                        </Container> */}
                         </Grid>
 
                         <Grid item lg={4} md={4} sm={12} xs={12}>
                             <Campaigns />
-                            {/* <Card sx={{ px: 3, py: 2, mb: 3 }}>
-                            <Title>Traffic Sources </Title>
-                            <SubTitle>Last 30 days</SubTitle>
-                            <DoughnutChart
-                                height="300px"
-                                color={[
-                                    palette.primary.dark,
-                                    palette.primary.main,
-                                    palette.primary.light,
-                                ]}
-                            />
-                        </Card> */}
-                            {/* <UpgradeCard />    */}
                         </Grid>
                     </Grid>
                 </ContentBox>
