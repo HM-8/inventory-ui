@@ -36,6 +36,7 @@ export default props => {
 
 		console.log(values);
 
+
 		setTimeout(() => {
 			setSubmitting(false);
 		}, 1000);
@@ -57,7 +58,7 @@ export default props => {
 			onSubmit={onSubmit}
 			validationSchema={validationSchema}
 		>
-			{({ isSubmitting }) => (
+			{({ isSubmitting,touched,values }) => (
 				<>
 				<Box py="12px" />
 					<Form>
@@ -87,8 +88,8 @@ export default props => {
 						</Button>
 						
 					</Form>
-					{/* <pre>{JSON.stringify(values, null, 2)}</pre>
-					<pre>{JSON.stringify(touched, null, 2)}</pre> */}
+					<pre>{JSON.stringify(values, null, 2)}</pre>
+					<pre>{JSON.stringify(touched, null, 2)}</pre>
 				</>
 			)}
 		</Formik>

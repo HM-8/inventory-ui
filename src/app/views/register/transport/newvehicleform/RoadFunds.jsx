@@ -93,10 +93,6 @@ RoadFunds.initialValues = {
 RoadFunds.validationSchema = Yup.object().shape({
     roadFundNo: Yup.string().required('Required'),
     dateofIssuance: Yup.string().required('Required'),
-    numberOfCylinders: Yup.number()
-        .integer()
-        .typeError('Please enter a valid phone number')
-        .required('Required'),
     mobileNo: Yup.number()
         .integer()
         .typeError('Please enter a valid phone number')

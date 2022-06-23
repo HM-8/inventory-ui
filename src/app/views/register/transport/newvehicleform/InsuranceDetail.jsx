@@ -93,7 +93,6 @@ InsuranceDetail.validationSchema = Yup.object().shape({
         .typeError('Please enter a valid phone number')
         .required('Required'),
     nameofInsurer: Yup.string().required('Required'),
-    dateofIssuance: Yup.string().required('Required'),
     companyTel: Yup.string().required('Required'),
     insurance_Policy_No: Yup.string().required('Required'),
 })

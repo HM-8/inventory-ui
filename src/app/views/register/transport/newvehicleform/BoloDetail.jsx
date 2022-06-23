@@ -30,9 +30,6 @@ function BoloDetails() {
                         <Textfield name="receiptNo" label="Receipt Number " />
                     </Grid>
                     <Grid item xs={6}>
-                        <Textfield name="plateNo" label="Plate Number" />
-                    </Grid>
-                    <Grid item xs={6}>
                         <DateTimePicker
                             name="inspectionDate"
                             label="Inspection Date "
@@ -53,17 +50,12 @@ function BoloDetails() {
 BoloDetails.label = 'Bolo Details';
 BoloDetails.initialValues = {
     receiptNo: '',
-    plateNo: '',
     inspectionDate: '',
     expiryDate: '',
 };
 Yup.object().shape({
     inspectionDate: Yup.string().required('Required'),
     receiptNo: Yup.number()
-        .integer()
-        .typeError('Please enter a valid phone number')
-        .required('Required'),
-    plateNo: Yup.number()
         .integer()
         .typeError('Please enter a valid phone number')
         .required('Required'),

@@ -120,13 +120,13 @@ const BasicVehicleInfo=props=> {
                         />
                     </Grid>
 
-                    <Grid item xs={6}>
+                    {/* <Grid item xs={6}>
                         <Select
                             name="status"
                             label="Status"
                             options={itemlist}
                         />
-                    </Grid>
+                    </Grid> */}
                 </Grid>
             </Grid>
         </Container>
@@ -142,7 +142,7 @@ BasicVehicleInfo.initialValues = {
     cubic_capacity: '',
     color: '',
     carrying_cap: '',
-    status: '',
+    // status: '',
     registration_num: '',
     engine_num: '',
     chassis_num: '',
@@ -165,9 +165,10 @@ BasicVehicleInfo.validationSchema = Yup.object().shape({
     yearManufactured: Yup.string(),
     color:Yup.string().required('Required'),
     carrying_cap:Yup.string().required('Required'),
-    Status:Yup.string(),
+    // Status:Yup.string(),
     registration_num:Yup.string(),
     engine_num:Yup.string(),
+    chassis_num:Yup.string(),
     plate_num:Yup.string(),
     fuel_type:Yup.string(),
     fuel_measurment:Yup.string(),
