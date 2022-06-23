@@ -80,7 +80,7 @@ function AddDepartment() {
 
         let comp = JSON.stringify(components)
         comp = JSON.parse(comp)
-        console.log({ components })
+        console.log(comp)
 
         // var obj = JSON.parse(comp)
         // var res = []

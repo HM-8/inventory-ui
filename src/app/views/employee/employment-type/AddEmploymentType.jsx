@@ -5,7 +5,7 @@ import DropDown from '../../material-kit/drop-down/DropDown'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
 import dropDownData from '../../../utils/data/dropDownData.json'
-import { DatePicker, LocalizationProvider } from '@mui/lab'
+import { DatePicker, LocalizationProvider, TimePicker } from '@mui/lab'
 import AdapterDateFns from '@mui/lab/AdapterDateFns'
 
 const buttonText = 'Save'
@@ -59,7 +59,7 @@ function AddEmploymentType() {
                     <Grid container spacing={4}>
                         <Grid item xs={6}>
                             <LocalizationProvider dateAdapter={AdapterDateFns}>
-                                <DatePicker
+                                <TimePicker
                                     renderInput={(props) => (
                                         <TextField
                                             {...props}

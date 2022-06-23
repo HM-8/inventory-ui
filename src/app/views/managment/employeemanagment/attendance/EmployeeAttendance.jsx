@@ -7,9 +7,16 @@ import Textfield from '../../../../components/FormsUI/Textfield'
 import Select from '../../../../components/FormsUI/Select'
 import Button from '../../../../components/FormsUI/Button'
 import DateTimePicker from '../../../../components/FormsUI/DataTimePicker'
+import TimePicker from '../../../../components/FormsUI/TimePicker'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
-import Paymentmode from '../../../../utils/data/paymentmode.json'
+import Paymentmode from '../../../../utils/data/attendance.json'
+import {
+    addAttendanceInfo,
+    updateAttendanceInfo,
+} from 'app/redux/actions/AttendanceAction'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
 const buttonText = 'Save'
 
@@ -27,24 +34,28 @@ const Container = styled('div')(({ theme }) => ({
 }))
 
 const INITIAL_FORM_STATE = {
-    emp_id: '',
-    emp_name: '',
+    employee: '',
     status: '',
-    start_date: '',
-    end_date: '',
-    date: '',
+    startShift: '',
+    endShift: '',
+    attendanceDate: '',
 }
 
 const FORM_VALIDATION = Yup.object().shape({
-    emp_id: Yup.string().required('Required'),
-    emp_name: Yup.string().required('Required'),
+    employee: Yup.string().required('Required'),
     status: Yup.string().required('Required'),
-    start_date: Yup.string().required('Required'),
-    end_date: Yup.string(),
-    date: Yup.date().required('Required'),
+    startShift: Yup.string().required('Required'),
+    endShift: Yup.string(),
+    attendanceDate: Yup.date().required('Required'),
 })
 
 function Attendance() {
+    const dispatch = useDispatch()
+    const data = ''
+    const INITIAL_FORM_STATE = { ...data }
+    console.log('data', data)
+    console.log('initial', INITIAL_FORM_STATE)
+
     return (
         <Container>
             <div className="breadcrumb">
@@ -67,27 +78,20 @@ function Attendance() {
                                 validationSchema={FORM_VALIDATION}
                                 onSubmit={(values) => {
                                     console.log(values)
+                                    dispatch(addAttendanceInfo(values))
                                 }}
                             >
                                 <Form>
                                     <Grid container spacing={2}>
                                         <Grid item xs={6}>
-                                            <Select
-                                                name="emp_id"
-                                                label="Employee Id"
-                                                options={Paymentmode}
-                                            />
-                                        </Grid>
-
-                                        <Grid item xs={6}>
                                             <Textfield
-                                                name="emp_name"
-                                                label="Employee Name "
+                                                name="employee"
+                                                label="Employee Id"
                                             />
                                         </Grid>
                                         <Grid item xs={6}>
                                             <DateTimePicker
-                                                name="date"
+                                                name="attendanceDate"
                                                 label="Date "
                                             />
                                         </Grid>
@@ -99,21 +103,21 @@ function Attendance() {
                                             />
                                         </Grid>
                                         <Grid item xs={12}>
-                                        <Typography>Shift time</Typography>
-                                      </Grid>
-                                    <Grid item xs={6}>
-                                        <DateTimePicker
-                                            name="start_date"
-                                            label="Start date  "
-                                        />
-                                    </Grid>
-                                    <Grid item xs={6}>
-                                        <DateTimePicker
-                                            name="end_date"
-                                            label="End date "
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12}>
+                                            <Typography>Shift time</Typography>
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <TimePicker
+                                                name="startShift"
+                                                label="Start Shift"
+                                            />
+                                        </Grid>
+                                        <Grid item xs={6}>
+                                            <TimePicker
+                                                name="endShift"
+                                                label="End Shift"
+                                            />
+                                        </Grid>
+                                        <Grid item xs={12}>
                                             <Button>Submit Form</Button>
                                         </Grid>
                                     </Grid>

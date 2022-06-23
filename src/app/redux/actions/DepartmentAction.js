@@ -46,8 +46,8 @@ export const getallDepartments = () => (dispatch) => {
 }
 
 export const addDepartmentInfo = (data) => (dispatch) => {
-    axios.post('http://localhost:4040/v1/department', {...data}).then((res) => {
-        console.log("Response Data",res.data)
+    axios.post('http://localhost:4040/v1/department', [data]).then((res) => {
+        console.log("Response Data", res.data)
         dispatch({
             type: ADD_DEPARTMENT_INFO,
             payload: res.data,
