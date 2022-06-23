@@ -6,7 +6,6 @@ import { Grid, Typography } from '@mui/material'
 import Textfield from '../../components/FormsUI/Textfield'
 import DateTimePicker from '../../components/FormsUI/DataTimePicker'
 import Button from '../../components/FormsUI/Button/index'
-import countries from '../../utils/data/countries.json'
 
 import { Breadcrumb, SimpleCard } from 'app/components'
 import styled from '@emotion/styled'
@@ -64,7 +63,6 @@ const FORM_VALIDATION = Yup.object().shape({
 })
 
 function ItemTransfer() {
-    // const classes = useStyles();
 
     return (
         <Container>
