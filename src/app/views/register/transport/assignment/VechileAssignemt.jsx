@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import PaginationTable from '../../material-kit/tables/PaginationTable'
+import PaginationTable from '../../../material-kit/tables/PaginationTable'
 import { Breadcrumb, SimpleCard } from 'app/components'
 import { Box, styled } from '@mui/system'
 import { Grid } from '@mui/material'
-import TableButton from '../../material-kit/buttons/LinkButton'
+import TableButton from '../../../material-kit/buttons/LinkButton'
 import {
     deleteAssignmentInfo,
     getallAssignments,

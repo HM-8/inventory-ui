@@ -25,47 +25,6 @@ const Container = styled('div')(({ theme }) => ({
         },
     },
 }))
-
-// const INITIAL_FORM_STATE = {
-//     roadFundNo: '',
-//     dateofIssuance: '',
-//     timeofIssuance: '',
-//     expiryDate: '',
-//     recievedFrom: '',
-//     city: '',
-//     subcity: '',
-//     wereda: '',
-//     kebele: '',
-//     houseNo: '',
-//     areaCode: '',
-//     mobileNo: '',
-//     totAmtRecievedInWords: '',
-//     totAmtRecievedInNum: '',
-//     collectionMode: '',
-// }
-
-// const FORM_VALIDATION = Yup.object().shape({
-//     vehicleName: Yup.string().required('Required'),
-//     model: Yup.string().required('Required'),
-//     numberOfCylinders: Yup.number()
-//         .integer()
-//         .typeError('Please enter a valid phone number')
-//         .required('Required'),
-//     horsepower: Yup.number()
-//         .integer()
-//         .typeError('Please enter a valid phone number')
-//         .required('Required'),
-
-//     cubic_capacity: Yup.number()
-//         .integer()
-//         .typeError('Please enter a valid phone number')
-//         .required('Required'),
-//     AssignmentStatus: Yup.string().required('Required'),
-//     yearManufactured: Yup.string(),
-//     StartDate: Yup.date().required('Required'),
-//     EndDate: Yup.date().required('Required'),
-// })
-
 function ContactsDetails(props) {
     return (
         <Container>

@@ -20,6 +20,7 @@ import Checkbox from 'app/components/FormsUI/Checkbox'
 import genderList from '../../../utils/data/GenderList.json'
 import Button from '../../../components/FormsUI/Button'
 import Upload from '../../../components/FormsUI/fileupload'
+import Generator from './BarcodeGenerator'
 
 const Container = styled('div')(({ theme }) => ({
     margin: '30px',

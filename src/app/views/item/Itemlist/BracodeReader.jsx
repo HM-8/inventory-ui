@@ -32,7 +32,7 @@ function BarcodeReader() {
                     <p>{data}</p>
                 </div>
             )}
-            
+
             <Button
                 onClick={() => setStopStream(false)}
                 variant="contained"
@@ -46,13 +46,6 @@ function BarcodeReader() {
                 variant="outlined"
             >
                 Cancel Scan
-            </StyledButton>
-            <StyledButton
-                // onClick={() => setStopStream(true)}
-                variant="contained"
-                color="secondary"
-            >
-                Generate
             </StyledButton>
         </>
     )
