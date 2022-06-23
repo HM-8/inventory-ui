@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import RowCards from './shared/RowCards'
 import StatCards from './shared/StatCards'
-import Campaigns from './shared/Campaigns'
+//import Campaigns from './shared/Campaigns'
 import { Grid, Card, Box, Container } from '@mui/material'
 import StatCards2 from './shared/StatCards2'
 import DoughnutChart from './shared/Doughnut'
@@ -44,7 +44,7 @@ const Analytics = () => {
         <Fragment>
             <ContentBox className="analytics">
                 <Grid container spacing={3}>
-                    <Grid item lg={8} md={8} sm={12} xs={12}>
+                    <Grid item lg={12} md={8} sm={12} xs={12}>
                         <StatCards />
                         {/*     <TopSellingTable /> */}
                         {/* <StatCards2 /> */}
@@ -52,7 +52,7 @@ const Analytics = () => {
                         <RowCards /> */}
                         <Container>
                            
-                            <SimpleCard title="Leave Stats">
+                            <SimpleCard title="Revenue Stats">
                                 <LineChart
                                     height="350px"
                                     color={[
@@ -65,7 +65,7 @@ const Analytics = () => {
                     </Grid>
 
                     <Grid item lg={4} md={4} sm={12} xs={12}>
-                        <Card sx={{ px: 3, py: 2, mb: 3 }}>
+                        {/* <Card sx={{ px: 3, py: 2, mb: 3 }}>
                             <Title>Traffic Sources </Title>
                             <SubTitle>Last 30 days</SubTitle>
                             <DoughnutChart
@@ -76,7 +76,7 @@ const Analytics = () => {
                                     palette.primary.light,
                                 ]}
                             />
-                        </Card>
+                        </Card> */}
                         {/* <UpgradeCard /> */}
                         {/* <Campaigns /> */}
                     </Grid>

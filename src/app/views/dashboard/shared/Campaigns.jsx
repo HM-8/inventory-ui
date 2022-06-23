@@ -9,67 +9,85 @@ const Campaigns = () => {
 
     return (
         <div>
-            <SimpleCard title="Campaigns">
-                <Small sx={{ color: secondary }}>Today</Small>
-                <Box sx={{ pt: 1 }} />
+            <SimpleCard title="Last Yesr Revenue">
+                <Small sx={{ color: secondary }}>Jan</Small>
+                <Box sx={{ py: '4px' }} />
                 <MatxProgressBar
                     value={75}
                     color="primary"
-                    text="Google (102k)"
+                    text=""
                 />
+                <Small sx={{ color: secondary }}>Fab</Small>
                 <Box sx={{ py: '4px' }} />
                 <MatxProgressBar
                     value={45}
                     color="secondary"
                     text="Twitter (40k)"
                 />
+                <Small sx={{ color: secondary }}>Mar</Small>
                 <Box sx={{ py: '4px' }} />
                 <MatxProgressBar
-                    value={75}
+                    value={65}
                     color="primary"
                     text="Tensor (80k)"
                 />
 
-                <Box sx={{ py: '12px' }} />
-                <Small sx={{ color: secondary }}>Yesterday</Small>
+                <Small sx={{ color: secondary }}>Apr</Small>
                 <Box sx={{ py: 1 }} />
                 <MatxProgressBar
-                    value={75}
+                    value={85}
                     color="primary"
                     text="Google (102k)"
                 />
+                <Small sx={{ color: secondary }}>May</Small>
                 <Box sx={{ py: '4px' }} />
                 <MatxProgressBar
-                    value={45}
+                    value={25}
                     color="secondary"
-                    text="Twitter (40k)"
                 />
+                <Small sx={{ color: secondary }}>Jun</Small>
                 <Box sx={{ py: '4px' }} />
                 <MatxProgressBar
-                    value={75}
+                    value={55}
                     color="primary"
-                    text="Tensor (80k)"
                 />
 
-                <Box sx={{ py: '12px' }} />
-                <Small sx={{ color: secondary }}>Yesterday</Small>
-                <Box sx={{ py: '8px' }} />
+                <Small sx={{ color: secondary }}>Jul</Small>
+                <Box sx={{ py: '4px' }} />
                 <MatxProgressBar
-                    value={75}
+                    value={95}
                     color="primary"
-                    text="Google (102k)"
                 />
+                <Small sx={{ color: secondary }}>Aug</Small>
                 <Box sx={{ py: '4px' }} />
                 <MatxProgressBar
                     value={45}
                     color="secondary"
-                    text="Twitter (40k)"
                 />
+                <Small sx={{ color: secondary }}>Sept</Small>
                 <Box sx={{ py: '4px' }} />
                 <MatxProgressBar
                     value={75}
                     color="primary"
-                    text="Tensor (80k)"
+                />
+              
+                <Small sx={{ color: secondary }}>Oct</Small>
+                <Box sx={{ py: '4px' }} />
+                <MatxProgressBar
+                    value={35}
+                    color="primary"
+                />
+                <Small sx={{ color: secondary }}>Nov</Small>
+                <Box sx={{ py: '4px' }} />
+                <MatxProgressBar
+                    value={75}
+                    color="secondary"
+                />
+                <Small sx={{ color: secondary }}>Dec</Small>
+                <Box sx={{ py: '4px' }} />
+                <MatxProgressBar
+                    value={45}
+                    color="primary"
                 />
             </SimpleCard>
         </div>

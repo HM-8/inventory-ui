@@ -43,67 +43,67 @@ const StatCards = () => {
             <Grid item xs={12} md={6}>
                 <StyledCard elevation={6}>
                     <ContentBox>
-                        <Icon className="icon">group</Icon>
+                        {/* <Icon className="icon">group</Icon> */}
                         <Box ml="12px">
-                            <Small>Total Employees</Small>
-                            <Heading>3050</Heading>
+                            <Small>New Employees joined in a month</Small>
+                            <Heading>30</Heading>
                         </Box>
                     </ContentBox>
-                    <Tooltip title="View Details" placement="top">
+                    {/* <Tooltip title="View Details" placement="top">
                         <IconButton>
                             <Icon>arrow_right_alt</Icon>
                         </IconButton>
-                    </Tooltip>
+                    </Tooltip> */}
                 </StyledCard>
             </Grid>
             <Grid item xs={12} md={6}>
                 <StyledCard elevation={6}>
                     <ContentBox>
-                        <Icon className="icon">chat_bubble</Icon>
+                        {/* <Icon className="icon">timeline</Icon> */}
                         <Box ml="12px">
                             <Small sx={{ lineHeight: 1 }}>
-                                Total Employees Online
+                                Total Employees Promoted in this month
                             </Small>
-                            <Heading>$80,500</Heading>
+                            <Heading>80</Heading>
                         </Box>
                     </ContentBox>
-                    <Tooltip title="View Details" placement="top">
+                    {/* <Tooltip title="View Details" placement="top">
                         <IconButton>
                             <Icon>arrow_right_alt</Icon>
                         </IconButton>
-                    </Tooltip>
+                    </Tooltip> */}
                 </StyledCard>
             </Grid>
             <Grid item xs={12} md={6}>
                 <StyledCard elevation={6}>
                     <ContentBox>
-                        <Icon className="icon">store</Icon>
+                        {/* <Icon className="icon">store</Icon> */}
                         <Box ml="12px">
-                            <Small>Inventory Status</Small>
-                            <Heading>8.5% Stock Surplus</Heading>
+                            <Small>Total Employees Transfered in this month</Small>
+                            <Heading>8</Heading>
                         </Box>
                     </ContentBox>
-                    <Tooltip title="View Details" placement="top">
+                    {/* <Tooltip title="View Details" placement="top">
                         <IconButton>
                             <Icon>arrow_right_alt</Icon>
                         </IconButton>
-                    </Tooltip>
+                    </Tooltip> */}
                 </StyledCard>
             </Grid>
             <Grid item xs={12} md={6}>
                 <StyledCard elevation={6}>
                     <ContentBox>
-                        <Icon className="icon">shopping_cart</Icon>
+                        {/* <Icon className="icon">shopping_cart</Icon> */}
                         <Box ml="12px">
-                            <Small>Orders to deliver</Small>
-                            <Heading>305 Orders</Heading>
+                            <Small>Total Employees Terminated in this month</Small>
+                            <Heading>31</Heading>
                         </Box>
                     </ContentBox>
-                    <Tooltip title="View Details" placement="top">
+                    {/* <Tooltip title="View Details" placement="top">
                         <IconButton>
                             <Icon>arrow_right_alt</Icon>
                         </IconButton>
-                    </Tooltip>
+                    </Tooltip> */}
                 </StyledCard>
             </Grid>
         </Grid>
